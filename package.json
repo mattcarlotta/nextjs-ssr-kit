@@ -1,11 +1,11 @@
 {
-  "name": "example",
+  "name": "nextjs-ssr-kit",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p 8080"
   },
   "dependencies": {
     "next": "9.1.6",
