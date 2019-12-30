@@ -3,11 +3,9 @@ import Head from "next/head";
 import Link from "next/link";
 import ExampleIcon from "@components/ExampleIcon";
 import SSRLogo from "@images/ssrLogo.png";
-import GlobalStylesheet from "@components/GlobalStylesheet";
 
 const Home = () => (
 	<div css="text-align: center;height: 100%;color: #007ec5;background-color: #ebebeb;">
-		<GlobalStylesheet />
 		<Head>
 			<title>Home</title>
 			<link rel="icon" href="/favicon.ico" />

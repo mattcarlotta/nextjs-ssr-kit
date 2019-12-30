@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import EditButton from "@components/EditButton";
-// import DeleteButton from "@components/DeleteButton";
+import EditButton from "@components/EditButton";
+import DeleteButton from "@components/DeleteButton";
 import Flex from "@components/Flex";
 import FlexEnd from "@components/FlexEnd";
 import FlexStart from "@components/FlexStart";
@@ -26,8 +26,8 @@ const Card = ({
 				</h1>
 			</FlexStart>
 			<FlexEnd>
-				{/* <EditButton onClick={() => onEditClick(_id)} />
-				<DeleteButton onClick={() => onDeleteClick(_id)} /> */}
+				<EditButton onClick={() => onEditClick(_id)} />
+				<DeleteButton onClick={() => onDeleteClick(_id)} />
 			</FlexEnd>
 		</Flex>
 		<p css="color: #666;margin: 0;">

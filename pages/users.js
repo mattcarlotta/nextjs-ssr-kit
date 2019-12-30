@@ -1,11 +1,19 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import app from "@utils/axiosConfig";
+import { connect } from "react-redux";
 import DisplayUserList from "@components/DisplayUserList";
 import UserListNavigation from "@components/UserListNavigation";
 import Modal from "@components/Modal";
 import UserForm from "@containers/UserForm";
-import GlobalStylesheet from "@components/GlobalStylesheet";
+import {
+	createUser,
+	deleteUser,
+	fetchUsers,
+	seedDB,
+	updateUser,
+} from "@actions/Users";
+import { resetMessage } from "@actions/Server";
+import * as types from "@types";
 
 export class ShowUsers extends Component {
 	state = {
@@ -13,10 +21,8 @@ export class ShowUsers extends Component {
 		openModal: false,
 	};
 
-	static async getInitialProps() {
-    const res = await app.get("users");
-    
-		return { data: res.data.users };
+	static async getInitialProps({ store }) {
+		store.dispatch({ type: types.USERS_FETCH });
 	}
 
 	handleEditClick = id => this.setState({ isEditingID: id });
@@ -28,43 +34,42 @@ export class ShowUsers extends Component {
 	handleCloseModal = () => this.setState({ openModal: false, isEditingID: "" });
 
 	render = () => (
-    <>
-    <GlobalStylesheet />
 		<div
 			css="width: 100%;min-height: 100vh;background: #ebebeb;text-align: center;"
 			style={this.state.openModal ? { overflow: "hidden" } : {}}
 		>
-			<UserListNavigation openModal={this.handleOpenModal} seedDB={() => {}} />
+			<UserListNavigation
+				openModal={this.handleOpenModal}
+				seedDB={this.props.seedDB}
+			/>
 			{this.state.openModal && (
 				<Modal onClick={this.handleCloseModal} title="Create New User">
 					<UserForm
 						{...this.props}
-						submitAction={() => {}}
+						submitAction={this.props.createUser}
 						resetForm={this.handleCloseModal}
 					/>
 				</Modal>
 			)}
-				<DisplayUserList
-					{...this.props}
-					{...this.state}
-					onHandleCloseModal={this.handleCloseModal}
-					onHandleDeleteClick={() => {}}
-					onHandleEditClick={this.handleEditClick}
-					onHandleResetEditClick={this.handleResetEditClick}
-				/>
+			<DisplayUserList
+				{...this.props}
+				{...this.state}
+				onHandleCloseModal={this.handleCloseModal}
+				onHandleDeleteClick={this.props.deleteUser}
+				onHandleEditClick={this.handleEditClick}
+				onHandleResetEditClick={this.handleResetEditClick}
+			/>
 		</div>
-    </>
 	);
 }
 
 ShowUsers.propTypes = {
-	// isLoading: PropTypes.bool.isRequired,
-	// createUser: PropTypes.func.isRequired,
-	// deleteUser: PropTypes.func.isRequired,
-	// fetchUsers: PropTypes.func.isRequired,
-	// seedDB: PropTypes.func.isRequired,
-	// resetMessage: PropTypes.func.isRequired,
-	// updateUser: PropTypes.func.isRequired,
+	createUser: PropTypes.func.isRequired,
+	deleteUser: PropTypes.func.isRequired,
+	fetchUsers: PropTypes.func.isRequired,
+	seedDB: PropTypes.func.isRequired,
+	resetMessage: PropTypes.func.isRequired,
+	updateUser: PropTypes.func.isRequired,
 	serverError: PropTypes.string,
 	serverMessage: PropTypes.string,
 	data: PropTypes.arrayOf(
@@ -86,4 +91,19 @@ ShowUsers.propTypes = {
 	),
 };
 
-export default ShowUsers;
+const mapStateToProps = ({ users, server }) => ({
+	data: users.data,
+	serverError: server.error,
+	serverMessage: server.message,
+});
+
+const mapDispatchToProps = {
+	createUser,
+	deleteUser,
+	fetchUsers,
+	resetMessage,
+	seedDB,
+	updateUser,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShowUsers);

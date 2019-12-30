@@ -1,11 +1,18 @@
 {
 	"ignore": [
-		"components",
-		"images",
-		"pages",
 		".next",
+		"actions",
+		"build",
+		"components",
+		"containers",
+		"images",
+		"node_modules",
+		"pages",
 		"public",
-		"node_modules"
+		"reducers",
+		"sagas",
+		"store",
+		"types"
 	],
 	"ext": "js json"
 }
