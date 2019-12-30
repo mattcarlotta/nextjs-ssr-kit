@@ -1,0 +1,16 @@
+@import "../../styles/styles.scss";
+
+.linkStyle {
+	cursor: pointer;
+	display: block;
+	color: $lightblue;
+	font-size: 16px;
+	text-align: center;
+	transition: all 0.2s ease-in-out;
+	text-decoration: none;
+	text-transform: uppercase;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}

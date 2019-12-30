@@ -1,33 +1,43 @@
 import "@env";
-import express from "express";
 import next from "next";
-import middlewares from "./middlewares";
+import express from "express";
+import middlewares from "@middlewares";
+import routes from "@routes";
 
-const { PORT, HOST, inDevelopment, inProduction } = process.env;
+const { PORT, HOST, inProduction, inDevelopment } = process.env;
 
 const app = next({ dev: inDevelopment });
-const handle = app.getRequestHandler();
+const handler = app.getRequestHandler();
 
 //= ===========================================================//
 // CREATE EXPRESS SERVER                                       //
 //= ===========================================================//
 
-app.prepare().then(() => {
-	const server = express();
+(async () => {
+	try {
+		await app.prepare();
+		const server = express();
 
-	middlewares(server);
+		middlewares(server);
+		routes(server);
 
-	server.get("*", (req, res) => handle(req, res));
+		server.get("/users", (req, res) => app.render(req, res, "/users"));
 
-	server.listen(PORT, err => {
-		if (!err) {
-			if (!inProduction) {
-				console.log(
-					`Your application is running on \x1b[1m${HOST}${PORT}\x1b[0m\n`,
-				);
+		server.get("*", (req, res) => handler(req, res));
+
+		server.listen(PORT, err => {
+			if (!err) {
+				if (!inProduction) {
+					console.log(
+						`Your application is running on \x1b[1m${HOST}${PORT}\x1b[0m\n`,
+					);
+				}
+			} else {
+				throw `\nUnable to start server: ${err}`;
 			}
-		} else {
-			console.err(`\nUnable to start server: ${err}`);
-		}
-	});
-});
+		});
+	} catch (error) {
+		console.log(error.toString());
+		process.exit(1);
+	}
+})();

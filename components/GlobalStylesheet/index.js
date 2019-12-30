@@ -7,15 +7,15 @@ export default createGlobalStyle`
   html,body {
     height: 100%;
     width: 100% !important;
+    margin: 0;
+    padding: 0;
   }
   body {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    margin: 0;
-    ${
-      "" /* font-family: "Karla Regular", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif !important; */
-    }
+    background-color: #ebebeb;
+    min-height: 100vh;
   }
   @-webkit-keyframes wave {
     0% {
