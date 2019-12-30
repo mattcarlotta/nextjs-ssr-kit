@@ -1,0 +1,11 @@
+{
+	"ignore": [
+		"components",
+		"images",
+		"pages",
+		".next",
+		"public",
+		"node_modules"
+	],
+	"ext": "js json"
+}
