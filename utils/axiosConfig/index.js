@@ -2,7 +2,7 @@ import get from "lodash/get";
 import axios from "axios";
 import getConfig from "next/config";
 
-const { baseURL } = getConfig().publicRuntimeConfig;
+const baseURL = get(getConfig(), ["publicRuntimeConfig", "baseURL"]);
 
 export const app = axios.create({
 	baseURL,

@@ -1,4 +1,5 @@
 import React from "react";
+import get from "lodash/get";
 import { Provider } from "react-redux";
 import getConfig from "next/config";
 import App from "next/app";
@@ -9,7 +10,10 @@ import configureStore from "~store";
 import GlobalStylesheet from "~components/GlobalStylesheet";
 import toast from "~components/Toast";
 
-const { inDevelopment } = getConfig().publicRuntimeConfig;
+const inDevelopment = get(getConfig(), [
+	"publicRuntimeConfig",
+	"inDevelopment",
+]);
 
 class MyApp extends App {
 	componentDidMount() {

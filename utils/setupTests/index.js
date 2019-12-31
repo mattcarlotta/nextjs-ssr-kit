@@ -1,8 +1,8 @@
 import { JSDOM } from "jsdom";
 import { configure, mount } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import { HOCWrap, shallowWrap } from "@utils/testing";
-import mockApp from "@utils/__mocks__/mockAxios.js";
+import { HOCWrap, shallowWrap } from "~utils/testing";
+import mockApp from "~utils/__mocks__/mockAxios.js";
 import "jest-styled-components";
 
 configure({ adapter: new Adapter() });
@@ -28,10 +28,6 @@ global.mount = mount;
 global.mockApp = mockApp;
 global.React = require("react");
 global.Provider = require("react-redux").Provider;
-global.ConnectedRouter = require("connected-react-router").ConnectedRouter;
-global.Router = require("react-router").MemoryRouter;
-global.Route = require("react-router-dom").Route;
-global.Switch = require("react-router-dom").Switch;
 
 Object.keys(document.defaultView).forEach(property => {
 	if (typeof global[property] === "undefined") {

@@ -3,6 +3,7 @@ import chalk from "chalk";
 const { PORT, HOST, inDevelopment } = process.env;
 const { log } = console;
 
+/* istanbul ignore next */
 const greetMessage = () => {
 	log(
 		`\n${chalk.rgb(7, 54, 66).bgRgb(38, 139, 210)(" I ")} ${chalk.white(

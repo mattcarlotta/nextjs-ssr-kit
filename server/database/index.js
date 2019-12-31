@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import bluebird from "bluebird";
 import mongoose from "mongoose";
 import chalk from "chalk";
