@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Spinner from "@components/Spinner";
+import Spinner from "~components/Spinner";
 
 class DynamicImport extends Component {
 	state = {

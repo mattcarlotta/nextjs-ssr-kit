@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import EditButton from "@components/EditButton";
-import DeleteButton from "@components/DeleteButton";
-import Flex from "@components/Flex";
-import FlexEnd from "@components/FlexEnd";
-import FlexStart from "@components/FlexStart";
+import EditButton from "~components/EditButton";
+import DeleteButton from "~components/DeleteButton";
+import Flex from "~components/Flex";
+import FlexEnd from "~components/FlexEnd";
+import FlexStart from "~components/FlexStart";
 import Divider from "./Divider";
 
 const Card = ({

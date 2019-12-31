@@ -1,7 +1,7 @@
 import isEmpty from "lodash/isEmpty";
-import User from "@models/user";
-import { sendError } from "@helpers";
-import seeds from "@seeds";
+import User from "~models/user";
+import { sendError } from "~helpers";
+import seeds from "~seeds";
 
 const createUser = async (req, res) => {
 	try {

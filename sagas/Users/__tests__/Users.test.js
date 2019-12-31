@@ -1,12 +1,12 @@
 import { expectSaga, testSaga } from "redux-saga-test-plan";
 import app from "utils/axiosConfig";
-import * as actions from "@actions/Users";
-import * as sagas from "@sagas/Users";
-import userReducer from "@reducers/Users";
-import { setMessage } from "@actions/Server";
-import serverReducer from "@reducers/Server";
+import * as actions from "~actions/Users";
+import * as sagas from "~sagas/Users";
+import userReducer from "~reducers/Users";
+import { setMessage } from "~actions/Server";
+import serverReducer from "~reducers/Server";
 import { parseData, parseMessage } from "utils/parseResponse";
-import toast from "@components/Toast";
+import toast from "~components/Toast";
 
 const id = "123456789";
 
@@ -19,7 +19,7 @@ const user = {
 		zipCode: "55555",
 	},
 	backgroundInfo: "Hi.",
-	email: "test@test.com",
+	email: "test~test.com",
 	firstName: "Bob",
 	lastName: "Dole",
 	userName: "bobdole",

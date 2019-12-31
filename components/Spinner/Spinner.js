@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import FlexCenter from "@components/FlexCenter";
-import FadeIn from "@components/FadeIn";
+import FlexCenter from "~components/FlexCenter";
+import FadeIn from "~components/FadeIn";
 
 const Spinner = ({ className }) => (
 	<FadeIn timing="0.6s">

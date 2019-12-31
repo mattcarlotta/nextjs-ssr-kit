@@ -1,8 +1,8 @@
 import React from "react";
 import Head from "next/head";
-import Link from "@components/StyledLink";
-import ExampleIcon from "@components/ExampleIcon";
-import SSRLogo from "@images/ssrLogo.png";
+import Link from "~components/StyledLink";
+import ExampleIcon from "~components/ExampleIcon";
+import SSRLogo from "~images/ssrLogo.png";
 
 const Home = () => (
 	<div css="text-align: center;height: 100%;color: #007ec5;background-color: #ebebeb;">

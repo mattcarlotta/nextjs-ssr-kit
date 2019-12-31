@@ -19,7 +19,9 @@ class ClickHandler extends PureComponent {
 	};
 
 	render = () => (
-		<div ref={node => (this.wrapperRef = node)}>{this.props.children}</div>
+		<div id="click-handler" ref={node => (this.wrapperRef = node)}>
+			{this.props.children}
+		</div>
 	);
 }
 

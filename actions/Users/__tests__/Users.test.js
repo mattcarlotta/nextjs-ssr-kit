@@ -1,8 +1,8 @@
-import * as types from "@types";
+import * as types from "~types";
 import * as actions from "../index";
 
 const props = {
-	email: "test@test.com",
+	email: "test~test.com",
 	firstName: "Bob",
 	lastName: "Dole",
 	userName: "Bob Dole",

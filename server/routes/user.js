@@ -4,7 +4,7 @@ import {
 	getUsers,
 	seedDatabase,
 	updateUser,
-} from "@controllers/user";
+} from "~controllers/user";
 
 export default app => {
 	app.get("/api/users", getUsers);

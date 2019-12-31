@@ -2,13 +2,12 @@ import React from "react";
 import { Provider } from "react-redux";
 import getConfig from "next/config";
 import App from "next/app";
-// import Router from "next/router";
 import withRedux from "next-redux-wrapper";
 import withReduxSaga from "next-redux-saga";
 import { ToastContainer } from "react-toastify";
-import configureStore from "@store";
-import GlobalStylesheet from "@components/GlobalStylesheet";
-import toast from "@components/Toast";
+import configureStore from "~store";
+import GlobalStylesheet from "~components/GlobalStylesheet";
+import toast from "~components/Toast";
 
 const { inDevelopment } = getConfig().publicRuntimeConfig;
 

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Button from "@components/Button";
-import FormError from "@components/FormError";
-import Input from "@components/Input";
-import TextArea from "@components/TextArea";
-import Flex from "@components/Flex";
-import FlexEnd from "@components/FlexEnd";
-import FlexStart from "@components/FlexStart";
+import Button from "~components/Button";
+import FormError from "~components/FormError";
+import Input from "~components/Input";
+import TextArea from "~components/TextArea";
+import Flex from "~components/Flex";
+import FlexEnd from "~components/FlexEnd";
+import FlexStart from "~components/FlexStart";
 import fields from "./formFields";
 
 class UserForm extends Component {

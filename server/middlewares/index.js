@@ -2,7 +2,7 @@ import bodyParser from "body-parser";
 import morgan from "morgan";
 import compression from "compression";
 import moment from "moment-timezone";
-import "@database";
+import "~database";
 
 const { inProduction, inTesting } = process.env;
 

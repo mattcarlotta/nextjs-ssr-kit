@@ -1,10 +1,10 @@
 import isEmpty from "lodash/isEmpty";
 import React from "react";
 import PropTypes from "prop-types";
-import Card from "@components/Card";
-import Container from "@components/Container";
-import NoData from "@components/NoData";
-import UserForm from "@components/UserForm";
+import Card from "~components/Card";
+import Container from "~components/Container";
+import NoData from "~components/NoData";
+import UserForm from "~components/UserForm";
 
 const DisplayUserList = ({
 	data,

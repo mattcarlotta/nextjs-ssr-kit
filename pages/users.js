@@ -2,18 +2,18 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Head from "next/head";
 import { connect } from "react-redux";
-import DisplayUserList from "@components/DisplayUserList";
-import UserListNavigation from "@components/UserListNavigation";
-import Modal from "@components/Modal";
-import UserForm from "@components/UserForm";
+import DisplayUserList from "~components/DisplayUserList";
+import UserListNavigation from "~components/UserListNavigation";
+import Modal from "~components/Modal";
+import UserForm from "~components/UserForm";
 import {
 	createUser,
 	deleteUser,
 	fetchUsers,
 	seedDB,
 	updateUser,
-} from "@actions/Users";
-import { resetMessage } from "@actions/Server";
+} from "~actions/Users";
+import { resetMessage } from "~actions/Server";
 
 export class ShowUsers extends Component {
 	state = {
@@ -34,15 +34,12 @@ export class ShowUsers extends Component {
 	handleCloseModal = () => this.setState({ openModal: false, isEditingID: "" });
 
 	render = () => (
-		<>
+		<div css="padding: 10px 0 40px;">
 			<Head>
 				<title>NextJS SSR Kit - Users</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<div
-				css="width: 100%;min-height: 100vh;background: #ebebeb;text-align: center;"
-				style={this.state.openModal ? { overflow: "hidden" } : {}}
-			>
+			<div css="text-align: center;">
 				<UserListNavigation
 					openModal={this.handleOpenModal}
 					seedDB={this.props.seedDB}
@@ -65,7 +62,7 @@ export class ShowUsers extends Component {
 					onHandleResetEditClick={this.handleResetEditClick}
 				/>
 			</div>
-		</>
+		</div>
 	);
 }
 

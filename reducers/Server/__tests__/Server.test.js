@@ -1,4 +1,4 @@
-import * as types from "@types";
+import * as types from "~types";
 import serverReducer, { initialState } from "../index";
 
 const message = "Hello";

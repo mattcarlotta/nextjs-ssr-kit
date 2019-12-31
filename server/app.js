@@ -1,8 +1,8 @@
-import "@env";
+import "~env";
 import next from "next";
 import express from "express";
-import middlewares from "@middlewares";
-import routes from "@routes";
+import middlewares from "~middlewares";
+import routes from "~routes";
 
 const { PORT, HOST, inProduction, inDevelopment } = process.env;
 

@@ -1,9 +1,9 @@
 import React from "react";
 import Head from "next/head";
 import { FaBug } from "react-icons/fa";
-import StyledLink from "@components/StyledLink";
-import FlexCenter from "@components/FlexCenter";
-import HomeIcon from "@components/HomeIcon";
+import StyledLink from "~components/StyledLink";
+import FlexCenter from "~components/FlexCenter";
+import HomeIcon from "~components/HomeIcon";
 
 const NotFound = () => (
 	<FlexCenter style={{ height: "100%" }} id="notfound-container">

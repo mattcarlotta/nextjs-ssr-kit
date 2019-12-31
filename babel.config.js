@@ -10,7 +10,7 @@ const readDirectory = path =>
 			!folder.match(ignoreFolders) &&
 			statSync(resolve(dirPath)).isDirectory()
 		) {
-			acc[`@${folder.replace(/[^\w\s]/gi, "")}`] = dirPath;
+			acc[`~${folder.replace(/[^\w\s]/gi, "")}`] = dirPath;
 		}
 
 		return acc;

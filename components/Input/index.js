@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import FieldError from "@components/FieldError";
+import FieldError from "~components/FieldError";
 
 const Input = ({
 	hasError,
@@ -17,12 +17,16 @@ const Input = ({
 		</label>
 		<input
 			id={name}
-			css="text-indent: 10px;height: 40px;width: 100%;background-color: #fff;color: #b3b3b3; border: 1px solid #d3d3d3;transition: 0.2s ease-in-out;transition-property: color, background-color, border;"
-			style={
-				hasError && isRequired
-					? { border: "1px solid #d03916 !important;" }
-					: {}
-			}
+			css={`
+				text-indent: 10px;
+				height: 40px;
+				width: 100%;
+				background-color: #fff;
+				color: #b3b3b3;
+				border: 1px solid ${hasError && isRequired ? "#d03916" : "#d3d3d3"};
+				transition: 0.2s ease-in-out;
+				transition-property: color, background-color, border;
+			`}
 			name={name}
 			value={value}
 			onChange={onHandleChange}

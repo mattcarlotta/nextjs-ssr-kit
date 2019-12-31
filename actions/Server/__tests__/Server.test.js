@@ -1,4 +1,4 @@
-import * as types from "@types";
+import * as types from "~types";
 import * as actions from "../index";
 
 describe("Server Actions", () => {
