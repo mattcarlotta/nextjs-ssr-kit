@@ -3,12 +3,14 @@ import { createStore, applyMiddleware } from "redux";
 import rootReducer from "@reducers";
 import rootSaga from "@sagas";
 
-const saga = createSagaMiddleware();
+export default (initialState, { isServer, req = null }) => {
+	const saga = createSagaMiddleware();
 
-export default initialState => {
 	const store = createStore(rootReducer, initialState, applyMiddleware(saga));
 
-	saga.run(rootSaga);
+	if (req || !isServer) {
+		store.sagaTask = saga.run(rootSaga);
+	}
 
 	return store;
 };

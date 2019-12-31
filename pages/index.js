@@ -1,13 +1,13 @@
 import React from "react";
 import Head from "next/head";
-import Link from "next/link";
+import Link from "@components/StyledLink";
 import ExampleIcon from "@components/ExampleIcon";
 import SSRLogo from "@images/ssrLogo.png";
 
 const Home = () => (
 	<div css="text-align: center;height: 100%;color: #007ec5;background-color: #ebebeb;">
 		<Head>
-			<title>Home</title>
+			<title>NextJS SSR Kit - Home</title>
 			<link rel="icon" href="/favicon.ico" />
 		</Head>
 		<div css="width: 850px;margin: 0 auto;padding-top: 10%;">
@@ -21,10 +21,8 @@ const Home = () => (
 				Edit files in the root directory and save to reload.
 			</h1>
 			<Link href="/users">
-				<a className="link">
-					<ExampleIcon />
-					See Example
-				</a>
+				<ExampleIcon />
+				See Example
 			</Link>
 		</div>
 	</div>

@@ -1,10 +1,11 @@
 import get from "lodash/get";
 import axios from "axios";
+import getConfig from "next/config";
 
-// const { baseURL } = process.env;
+const { baseURL } = getConfig().publicRuntimeConfig;
 
 export const app = axios.create({
-	baseURL: "http://localhost:5000/api",
+	baseURL,
 });
 
 app.interceptors.response.use(

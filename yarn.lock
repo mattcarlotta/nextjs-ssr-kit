@@ -3172,6 +3172,14 @@ file-loader@4.2.0:
     loader-utils "^1.2.3"
     schema-utils "^2.0.0"
 
+file-loader@^4.0.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-4.3.0.tgz#780f040f729b3d18019f20605f723e844b8a58af"
+  integrity sha512-aKrYPYjF1yG3oX0kWRrqrSMfgftm7oJW5M+m4owoldH5C51C0RkIwB++JbRvEW3IU6/ZG5n8UvEcdgwOt2UOWA==
+  dependencies:
+    loader-utils "^1.2.3"
+    schema-utils "^2.5.0"
+
 file-loader@^5.0.2:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-5.0.2.tgz#7f3d8b4ac85a5e8df61338cfec95d7405f971caa"
@@ -5132,6 +5140,19 @@ neo-async@^2.5.0, neo-async@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
+
+next-images@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/next-images/-/next-images-1.2.0.tgz#9bbcc4ea8787bc5ed4abc0da575a212bd75bbbd0"
+  integrity sha512-NhOiUk5StO82074KpnrcITM0OdONUu0T15Sd0VbipxHJueofKAw9zdmAejht0EhwgQDFt63+1OLFYA5web0x9w==
+  dependencies:
+    file-loader "^4.0.0"
+    url-loader "^2.0.0"
+
+next-redux-saga@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/next-redux-saga/-/next-redux-saga-4.1.2.tgz#adf65cd694deac2514676767d3b733862297db66"
+  integrity sha512-UEI/8bRObquIpHeHX1RuqOFBe2zhI2gTHLijBLiinOZrCbir18B4/lJpymrEoHHpel0iiZEwV4R6jeUWYv+Avw==
 
 next-redux-wrapper@^4.0.1:
   version "4.0.1"
@@ -8204,6 +8225,15 @@ urix@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/urix/-/urix-0.1.0.tgz#da937f7a62e21fec1fd18d49b35c2935067a6c72"
   integrity sha1-2pN/emLiH+wf0Y1Js1wpNQZ6bHI=
+
+url-loader@^2.0.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/url-loader/-/url-loader-2.3.0.tgz#e0e2ef658f003efb8ca41b0f3ffbf76bab88658b"
+  integrity sha512-goSdg8VY+7nPZKUEChZSEtW5gjbS66USIGCeSJ1OVOJ7Yfuh/36YxCwMi5HVEJh6mqUYOoy3NJ0vlOMrWsSHog==
+  dependencies:
+    loader-utils "^1.2.3"
+    mime "^2.4.4"
+    schema-utils "^2.5.0"
 
 url-loader@^3.0.0:
   version "3.0.0"

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import Head from "next/head";
 import { connect } from "react-redux";
 import DisplayUserList from "@components/DisplayUserList";
 import UserListNavigation from "@components/UserListNavigation";
@@ -13,7 +14,6 @@ import {
 	updateUser,
 } from "@actions/Users";
 import { resetMessage } from "@actions/Server";
-import * as types from "@types";
 
 export class ShowUsers extends Component {
 	state = {
@@ -22,7 +22,7 @@ export class ShowUsers extends Component {
 	};
 
 	static async getInitialProps({ store }) {
-		store.dispatch({ type: types.USERS_FETCH });
+		store.dispatch(fetchUsers());
 	}
 
 	handleEditClick = id => this.setState({ isEditingID: id });
@@ -34,32 +34,38 @@ export class ShowUsers extends Component {
 	handleCloseModal = () => this.setState({ openModal: false, isEditingID: "" });
 
 	render = () => (
-		<div
-			css="width: 100%;min-height: 100vh;background: #ebebeb;text-align: center;"
-			style={this.state.openModal ? { overflow: "hidden" } : {}}
-		>
-			<UserListNavigation
-				openModal={this.handleOpenModal}
-				seedDB={this.props.seedDB}
-			/>
-			{this.state.openModal && (
-				<Modal onClick={this.handleCloseModal} title="Create New User">
-					<UserForm
-						{...this.props}
-						submitAction={this.props.createUser}
-						resetForm={this.handleCloseModal}
-					/>
-				</Modal>
-			)}
-			<DisplayUserList
-				{...this.props}
-				{...this.state}
-				onHandleCloseModal={this.handleCloseModal}
-				onHandleDeleteClick={this.props.deleteUser}
-				onHandleEditClick={this.handleEditClick}
-				onHandleResetEditClick={this.handleResetEditClick}
-			/>
-		</div>
+		<>
+			<Head>
+				<title>NextJS SSR Kit - Users</title>
+				<link rel="icon" href="/favicon.ico" />
+			</Head>
+			<div
+				css="width: 100%;min-height: 100vh;background: #ebebeb;text-align: center;"
+				style={this.state.openModal ? { overflow: "hidden" } : {}}
+			>
+				<UserListNavigation
+					openModal={this.handleOpenModal}
+					seedDB={this.props.seedDB}
+				/>
+				{this.state.openModal && (
+					<Modal onClick={this.handleCloseModal} title="Create New User">
+						<UserForm
+							{...this.props}
+							submitAction={this.props.createUser}
+							resetForm={this.handleCloseModal}
+						/>
+					</Modal>
+				)}
+				<DisplayUserList
+					{...this.props}
+					{...this.state}
+					onHandleCloseModal={this.handleCloseModal}
+					onHandleDeleteClick={this.props.deleteUser}
+					onHandleEditClick={this.handleEditClick}
+					onHandleResetEditClick={this.handleResetEditClick}
+				/>
+			</div>
+		</>
 	);
 }
 
