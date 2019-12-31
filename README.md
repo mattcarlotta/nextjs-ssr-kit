@@ -229,4 +229,4 @@ If you run into any issues, please fill out an issue report <a href="https://git
 
 ⚠️ (Status: Unresolveable) - Saving files within the `server` folder causes the entire process to restart (as intended); however, this causes webpack hot loading to be broken (due to the NextJS files being recompiled upon restart). That said, NextJS will automatically rebuild the `hot-loading.json` file and hot reloading will work after a few seconds.
 
-⚠️ (Status: Unresolveable) - Adding `test.js` files within the `pages` folder causes NextJS to fail upon production compilation. Unfortunately, NextJS handles all files and folders within the `pages` file as .
+⚠️ (Status: Unresolveable) - Adding `test.js` files within the `pages` folder causes NextJS to fail upon production compilation. Unfortunately, NextJS handles all files and folders within the `pages` file as reachable views. Instead, place a `__tests__` folder for `pages` folder into `components`.
