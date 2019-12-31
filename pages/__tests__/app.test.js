@@ -30,9 +30,17 @@ const ctx = {
 
 const getInitialProps = jest.fn();
 
-const wrapper = mount(<App {...initProps} />);
-
 describe("App", () => {
+	let wrapper;
+	beforeEach(() => {
+		wrapper = mount(<App {...initProps} />);
+	});
+
+	afterEach(() => {
+		toast.mockClear();
+		getInitialProps.mockClear();
+	});
+
 	it("renders without errors", () => {
 		expect(wrapper.find("HomeContainer").exists()).toBeTruthy();
 	});
