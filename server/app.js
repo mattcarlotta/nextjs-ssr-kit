@@ -3,8 +3,9 @@ import next from "next";
 import express from "express";
 import middlewares from "~middlewares";
 import routes from "~routes";
+import { greetMessage } from "./helpers";
 
-const { PORT, HOST, inProduction, inDevelopment } = process.env;
+const { PORT, HOST, inDevelopment } = process.env;
 
 const app = next({ dev: inDevelopment });
 const handler = app.getRequestHandler();
@@ -26,15 +27,9 @@ const handler = app.getRequestHandler();
 		server.get("*", (req, res) => handler(req, res));
 
 		server.listen(PORT, err => {
-			if (!err) {
-				if (!inProduction) {
-					console.log(
-						`Your application is running on \x1b[1m${HOST}${PORT}\x1b[0m\n`,
-					);
-				}
-			} else {
-				throw `\nUnable to start server: ${err}`;
-			}
+			if (err) throw `\nUnable to start server: ${err}`;
+
+			greetMessage();
 		});
 	} catch (error) {
 		console.log(error.toString());

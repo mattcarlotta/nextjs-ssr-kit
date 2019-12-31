@@ -2,30 +2,29 @@ import React from "react";
 import Head from "next/head";
 import Link from "~components/StyledLink";
 import ExampleIcon from "~components/ExampleIcon";
+import HomeContainer from "~components/HomeContainer";
+import LandingContainer from "~components/LandingContainer";
+import Title from "~components/Title";
 import SSRLogo from "~images/ssrLogo.png";
 
 const Home = () => (
-	<div css="text-align: center;height: 100%;color: #007ec5;background-color: #ebebeb;">
+	<>
 		<Head>
 			<title>NextJS SSR Kit - Home</title>
 			<link rel="icon" href="/favicon.ico" />
 		</Head>
-		<div css="width: 850px;margin: 0 auto;padding-top: 10%;">
-			<img
-				css="height: 300px;margin-bottom: 20px;"
-				src={SSRLogo}
-				alt="ssrLogoLight.png"
-			/>
-			<h1 css="margin: 5px;">NextJS SSR Kit</h1>
-			<h1 css="margin: 5px;">
-				Edit files in the root directory and save to reload.
-			</h1>
-			<Link href="/users">
-				<ExampleIcon />
-				See Example
-			</Link>
-		</div>
-	</div>
+		<HomeContainer>
+			<LandingContainer>
+				<img src={SSRLogo} alt="ssrLogoLight.png" />
+				<Title>NextJS SSR Kit</Title>
+				<Title>Edit files in the root directory and save to reload.</Title>
+				<Link href="/users">
+					<ExampleIcon />
+					See Example
+				</Link>
+			</LandingContainer>
+		</HomeContainer>
+	</>
 );
 
 export default Home;
