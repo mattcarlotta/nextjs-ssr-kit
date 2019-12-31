@@ -1,4 +1,4 @@
-import { ShowUsers } from "../users";
+import { ShowUsers } from "~pages/users";
 import * as types from "~types";
 
 const data = [

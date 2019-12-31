@@ -71,7 +71,7 @@
 git clone git@github.com:mattcarlotta/nextjs-ssr-kit.git
 ```
 
-2 - Run `yarn initialize` to install dependencies.
+2 - Run `yarn install` to install dependencies.
 
 3 - While at the application's root directory, start both servers by running `yarn dev`.
 
@@ -79,23 +79,24 @@ git clone git@github.com:mattcarlotta/nextjs-ssr-kit.git
 
 ## Commands
 
-| `yarn <command>`     | Description                                                                             |
-| -------------------- | --------------------------------------------------------------------------------------- |
-| `compile`            | Compiles server application to a `build` folder.                                        |
-| `checkbuild`         | Checks to see if the `.next/static` folder is ES5 compliant (for IE11).                 |
-| `dev`                | Starts both servers (client: `localhost:3000`, API: `localhost:5000`).                  |
-| `build`              | Compiles client application to a `.next` folder.                                        |
-| `start`              | Starts a production server at `localhost:8080` (must run `build` and `compile` first).† |
-| `test`               | Runs `.test.js` files for the client and server.                                        |
-| `test:front`         | Runs `.test.js` files for the client only.                                              |
-| `test:frontcov`      | Runs `.test.js` files for the client with code coverage.                                |
-| `test:frontwatch`    | Runs and watches changed `.test.js` files for the client.                               |
-| `test:frontwatchall` | Runs and watches all `.test.js` files for the client.                                   |
-| `test:back`          | Runs `.test.js` files for the server only.                                              |
-| `test:backcov`       | Runs `.test.js` files for the server with code coverage.                                |
-| `test:backwatch`     | Runs and watches `.test.js` files for the server.                                       |
+| `yarn <command>`     | Description                                                              |
+| -------------------- | ------------------------------------------------------------------------ |
+| `compile`            | Compiles server application to a `build` folder.                         |
+| `checkbuild`         | Checks to see if the `.next/static` folder is ES5 compliant (for IE11).  |
+| `dev`                | Starts both servers (client: `localhost:3000`, API: `localhost:5000`).   |
+| `build`              | Compiles client application to a `.next` folder.                         |
+| `production`         | Executes `build` and `compile` commands in sequence.                     |
+| `start`              | Starts a production server at `localhost:8080` (must run `production`).† |
+| `test`               | Runs `.test.js` files for the client and server.                         |
+| `test:front`         | Runs `.test.js` files for the client only.                               |
+| `test:frontcov`      | Runs `.test.js` files for the client with code coverage.                 |
+| `test:frontwatch`    | Runs and watches changed `.test.js` files for the client.                |
+| `test:frontwatchall` | Runs and watches all `.test.js` files for the client.                    |
+| `test:back`          | Runs `.test.js` files for the server only.                               |
+| `test:backcov`       | Runs `.test.js` files for the server with code coverage.                 |
+| `test:backwatch`     | Runs and watches `.test.js` files for the server.                        |
 
-† Note: Before running this command, you must edit the <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/tree/master/env/.env.production#L=4">.env.production</a> file and update the `baseURL` from `http://localhost:8080/api/` to include your remote server address!
+† Note: Before running this command, you must edit the <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/env/.env.production#L4">env/.env.production</a> file and update the `baseURL` from `http://localhost:8080/api/` to include your remote server address!
 
 <hr />
 
@@ -161,7 +162,7 @@ If you wish to utilize the API:
 
 ## Packages Incorporated
 
-Click <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/package.json#L25-L87">here</a> to see latest versions.
+Click <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/package.json#L29-L90">here</a> to see latest versions.
 
 ### Shared
 
@@ -227,3 +228,5 @@ Notes: This feature extends to new folders created within either the main or `se
 If you run into any issues, please fill out an issue report <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/issues">here</a>.
 
 ⚠️ (Status: Unresolveable) - Saving files within the `server` folder causes the entire process to restart (as intended); however, this causes webpack hot loading to be broken (due to the NextJS files being recompiled upon restart). That said, NextJS will automatically rebuild the `hot-loading.json` file and hot reloading will work after a few seconds.
+
+⚠️ (Status: Unresolveable) - Adding `test.js` files within the `pages` folder causes NextJS to fail upon production compilation. Unfortunately, NextJS handles all files and folders within the `pages` file as .

@@ -1,4 +1,4 @@
-import NotFound from "../_error";
+import NotFound from "~pages/_error";
 
 const wrapper = shallow(<NotFound />);
 

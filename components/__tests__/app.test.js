@@ -1,5 +1,5 @@
-import App from "../_app";
-import Home from "../index";
+import App from "~pages/_app";
+import Home from "~pages/index";
 import toast from "~components/Toast";
 
 jest.mock("~components/Toast", () => jest.fn());
