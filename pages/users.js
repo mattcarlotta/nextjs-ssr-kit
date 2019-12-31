@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import DisplayUserList from "@components/DisplayUserList";
 import UserListNavigation from "@components/UserListNavigation";
 import Modal from "@components/Modal";
-import UserForm from "@containers/UserForm";
+import UserForm from "@components/UserForm";
 import {
 	createUser,
 	deleteUser,

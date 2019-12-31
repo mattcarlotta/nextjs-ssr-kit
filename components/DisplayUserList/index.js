@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Card from "@components/Card";
 import Container from "@components/Container";
 import NoData from "@components/NoData";
-import UserForm from "@containers/UserForm";
+import UserForm from "@components/UserForm";
 
 const DisplayUserList = ({
 	data,

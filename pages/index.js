@@ -20,8 +20,8 @@ const Home = () => (
 			<h1 css="margin: 5px;">
 				Edit files in the root directory and save to reload.
 			</h1>
-			<Link href="/users" prefetch={false}>
-				<a>
+			<Link href="/users">
+				<a className="link">
 					<ExampleIcon />
 					See Example
 				</a>

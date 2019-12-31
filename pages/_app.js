@@ -8,6 +8,7 @@ import createStore from "@store";
 import GlobalStylesheet from "@components/GlobalStylesheet";
 import toast from "@components/Toast";
 import "react-toastify/dist/ReactToastify.css";
+import "./styles.css";
 
 export default withRedux(createStore, { debug: true })(
 	class MyApp extends App {
