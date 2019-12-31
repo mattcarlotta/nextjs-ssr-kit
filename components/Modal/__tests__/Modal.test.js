@@ -1,4 +1,4 @@
-import { Modal } from "../index";
+import Modal from "../index";
 
 const onClick = jest.fn();
 

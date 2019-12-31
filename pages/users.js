@@ -94,12 +94,14 @@ ShowUsers.propTypes = {
 	),
 };
 
+/* istanbul ignore next */
 const mapStateToProps = ({ users, server }) => ({
 	data: users.data,
 	serverError: server.error,
 	serverMessage: server.message,
 });
 
+/* istanbul ignore next */
 const mapDispatchToProps = {
 	createUser,
 	deleteUser,

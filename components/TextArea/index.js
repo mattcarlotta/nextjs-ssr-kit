@@ -11,7 +11,11 @@ const TextArea = ({
 	value,
 	style,
 }) => (
-	<div style={style} css="min-height: 225px;padding: 0 10px;">
+	<div
+		id="textarea-container"
+		style={style}
+		css="min-height: 225px;padding: 0 10px;"
+	>
 		<label css="margin: 0;display: block;" htmlFor={name}>
 			{label}
 		</label>

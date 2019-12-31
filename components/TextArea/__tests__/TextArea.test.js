@@ -14,18 +14,21 @@ const initProps = {
 describe("Display User List", () => {
 	let wrapper;
 	beforeEach(() => {
-		wrapper = shallow(<TextArea {...initProps} />);
+		wrapper = mount(<TextArea {...initProps} />);
 	});
 
 	it("renders without errors", () => {
-		expect(wrapper.find("div.textAreaContainer").exists()).toBeTruthy();
+		expect(wrapper.find("div#textarea-container").exists()).toBeTruthy();
+		expect(wrapper.find("textarea")).toHaveStyleRule(
+			"border: 1px solid #d3d3d3",
+		);
 	});
 
-	it("add a 'hasFieldError' if 'hasError' is true", () => {
+	it("add a red border if 'hasError' is true", () => {
 		wrapper.setProps({ hasError: true });
 
-		expect(wrapper.find("textarea").props().className).toContain(
-			"hasFieldError",
+		expect(wrapper.find("textarea")).toHaveStyleRule(
+			"border: 1px solid #d03916",
 		);
 	});
 });

@@ -15,7 +15,7 @@ const inDevelopment = get(getConfig(), [
 	"inDevelopment",
 ]);
 
-class MyApp extends App {
+export class MyApp extends App {
 	componentDidMount() {
 		toast({ type: "info", message: "Welcome to the NextJS SSR Kit!" });
 	}

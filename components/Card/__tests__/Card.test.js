@@ -26,7 +26,7 @@ const initProps = {
 describe("Card", () => {
 	let wrapper;
 	beforeEach(() => {
-		wrapper = shallow(<Card {...initProps} />);
+		wrapper = mount(<Card {...initProps} />);
 	});
 
 	afterEach(() => {
@@ -35,17 +35,23 @@ describe("Card", () => {
 	});
 
 	it("renders without errors", () => {
-		expect(wrapper.find("p.user").exists()).toBeTruthy();
+		expect(wrapper.find("div#card-container").exists()).toBeTruthy();
 	});
 
 	it("clicking on the 'DeleteButton' calls 'onDeleteClick' with '_id'", () => {
-		wrapper.find("DeleteButton").simulate("click");
+		wrapper
+			.find("DeleteButton")
+			.first()
+			.simulate("click");
 
 		expect(onDeleteClick).toHaveBeenCalledWith(_id);
 	});
 
 	it("clicking on the 'EditButton' calls 'onEditClick' with '_id'", () => {
-		wrapper.find("EditButton").simulate("click");
+		wrapper
+			.find("EditButton")
+			.first()
+			.simulate("click");
 
 		expect(onEditClick).toHaveBeenCalledWith(_id);
 	});

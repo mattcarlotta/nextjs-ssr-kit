@@ -14,16 +14,17 @@ const initProps = {
 describe("Display User List", () => {
 	let wrapper;
 	beforeEach(() => {
-		wrapper = shallow(<Input {...initProps} />);
+		wrapper = mount(<Input {...initProps} />);
 	});
 
 	it("renders without errors", () => {
-		expect(wrapper.find("div.inputContainer").exists()).toBeTruthy();
+		expect(wrapper.find("div#input-container").exists()).toBeTruthy();
+		expect(wrapper.find("input")).toHaveStyleRule("border: 1px solid #d3d3d3");
 	});
 
-	it("add a 'hasFieldError' if 'hasError' is true", () => {
+	it("add a red border if 'hasError' is true", () => {
 		wrapper.setProps({ hasError: true });
 
-		expect(wrapper.find("input").props().className).toContain("hasFieldError");
+		expect(wrapper.find("input")).toHaveStyleRule("border: 1px solid #d03916");
 	});
 });

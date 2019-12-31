@@ -19,7 +19,7 @@ const Card = ({
 	lastName,
 	userName,
 }) => (
-	<div className={className}>
+	<div id="card-container" className={className}>
 		<Flex>
 			<FlexStart>
 				<h1 css="margin: 0;font-size: 30px;line-height: 1.4;color: #03a9f3;">
@@ -27,8 +27,8 @@ const Card = ({
 				</h1>
 			</FlexStart>
 			<FlexEnd>
-				<EditButton onClick={() => onEditClick(_id)} />
-				<DeleteButton onClick={() => onDeleteClick(_id)} />
+				<EditButton id="edit" onClick={() => onEditClick(_id)} />
+				<DeleteButton id="delete" onClick={() => onDeleteClick(_id)} />
 			</FlexEnd>
 		</Flex>
 		<p css="color: #666;margin: 0;">

@@ -12,7 +12,7 @@ const Input = ({
 	value,
 	style,
 }) => (
-	<div style={style} className={className}>
+	<div id="input-container" style={style} className={className}>
 		<label css="margin: 0;display: block;" htmlFor={name}>
 			{label}
 		</label>

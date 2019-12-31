@@ -10,7 +10,7 @@ import FlexEnd from "~components/FlexEnd";
 import FlexStart from "~components/FlexStart";
 
 const UserListNavigation = ({ className, openModal, seedDB }) => (
-	<div className={className}>
+	<div id="userlist" className={className}>
 		<Link href="/">
 			<HomeIcon />
 			<span>Go Back</span>

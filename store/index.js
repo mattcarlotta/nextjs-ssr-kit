@@ -13,6 +13,7 @@ export default (initialState, { isServer, req = null }) => {
 		composeWithDevTools(applyMiddleware(saga)),
 	);
 
+	/* istanbul ignore next */
 	if (req || !isServer) {
 		store.sagaTask = saga.run(rootSaga);
 	}

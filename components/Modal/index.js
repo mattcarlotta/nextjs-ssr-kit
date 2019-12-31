@@ -20,6 +20,7 @@ class Modal extends PureComponent {
 		document.body.style.overflow = "hidden";
 	}
 
+	/* istanbul ignore next */
 	componentWillUnmount() {
 		document.body.style.overflow = null;
 	}

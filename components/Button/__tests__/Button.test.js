@@ -19,13 +19,13 @@ describe("Styled Button", () => {
 
 	it("initially displays a default button", () => {
 		const StyledButton = findStyledButton();
-		expect(StyledButton).toHaveStyleRule("color", "#ddd");
-		expect(StyledButton).toHaveStyleRule("border", "1px solid #ddd");
+		expect(StyledButton).toHaveStyleRule("color", "#828282");
+		expect(StyledButton).toHaveStyleRule("border", "1px solid #828282");
 
-		expect(StyledButton).toHaveStyleRule("color", "#bbb", {
+		expect(StyledButton).toHaveStyleRule("color", "#6f6f6f", {
 			modifier: ":hover",
 		});
-		expect(StyledButton).toHaveStyleRule("border-color", "#bbb", {
+		expect(StyledButton).toHaveStyleRule("border-color", "#6f6f6f", {
 			modifier: ":hover",
 		});
 	});

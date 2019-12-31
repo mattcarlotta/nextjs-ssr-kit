@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import get from "lodash/get";
 import axios from "axios";
 import getConfig from "next/config";

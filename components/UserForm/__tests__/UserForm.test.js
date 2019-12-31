@@ -89,7 +89,7 @@ describe("User Form Container", () => {
 	it("displays errors when a form is submitted with empty fields", () => {
 		wrapper.find("form").simulate("submit");
 
-		expect(wrapper.find("span.errorStyle")).toHaveLength(9);
+		expect(wrapper.find("span#error")).toHaveLength(9);
 		expect(wrapper.state("submitted")).toBeTruthy();
 
 		wrapper.find("form").simulate("submit");
@@ -107,7 +107,7 @@ describe("User Form Container", () => {
 		const serverError = "Network Error";
 		wrapper.setProps({ serverError });
 
-		expect(wrapper.find("p.errorStyle").text()).toEqual(serverError);
+		expect(wrapper.find("p#form-error").text()).toEqual(serverError);
 	});
 
 	it("calls 'resetForm' if an API success message is set", () => {

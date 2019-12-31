@@ -14,6 +14,6 @@ describe("FieldError", () => {
 
 	it("displays an error", () => {
 		wrapper.setProps({ hasError: true });
-		expect(wrapper.find("span").text()).toEqual("Required!");
+		expect(wrapper.find("span").text()).toEqual("Required");
 	});
 });

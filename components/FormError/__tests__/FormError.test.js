@@ -15,6 +15,6 @@ describe("FieldError", () => {
 		const hasError = "Invalid input.";
 		wrapper.setProps({ hasError });
 
-		expect(wrapper.find("p.errorStyle").text()).toEqual(hasError);
+		expect(wrapper.find("p").text()).toEqual(hasError);
 	});
 });

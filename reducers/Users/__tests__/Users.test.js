@@ -34,7 +34,6 @@ describe("User Reducer", () => {
 
 		expect(state).toEqual({
 			data: users,
-			isLoading: false,
 		});
 	});
 

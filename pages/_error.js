@@ -6,7 +6,7 @@ import FlexCenter from "~components/FlexCenter";
 import HomeIcon from "~components/HomeIcon";
 
 const NotFound = () => (
-	<FlexCenter style={{ height: "100%" }} id="notfound-container">
+	<FlexCenter style={{ height: "100%" }} id="notfound">
 		<Head>
 			<title>NextJS SSR Kit - Not Found</title>
 			<link rel="icon" href="/favicon.ico" />
