@@ -36,7 +36,7 @@ const greetMessage = () => {
 };
 
 /**
- * Function to display compilation notes.
+ * Function to send API error responses.
  *
  * @function sendError
  * @params - err contains error object and res contains express res object
