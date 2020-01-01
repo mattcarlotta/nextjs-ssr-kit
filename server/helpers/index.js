@@ -3,6 +3,11 @@ import chalk from "chalk";
 const { PORT, HOST, inDevelopment } = process.env;
 const { log } = console;
 
+/**
+ * Function to display compilation notes.
+ *
+ * @function greetMessage
+ */
 /* istanbul ignore next */
 const greetMessage = () => {
 	log(
@@ -30,6 +35,13 @@ const greetMessage = () => {
 	}
 };
 
+/**
+ * Function to display compilation notes.
+ *
+ * @function sendError
+ * @params - err contains error object and res contains express res object
+ * @returns {response} - express response with status and error message.
+ */
 const sendError = (err, res) => res.status(400).json({ err: err.toString() });
 
 export { greetMessage, sendError };
