@@ -24,6 +24,8 @@
 
 [Known Issues](#known-issues)
 
+<hr />
+
 ## Pre-Configured
 
 ✔️ ES6 import/export on client and API syntax.
