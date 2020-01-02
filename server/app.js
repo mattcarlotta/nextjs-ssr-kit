@@ -5,7 +5,7 @@ import middlewares from "~middlewares";
 import routes from "~routes";
 import { greetMessage } from "./helpers";
 
-const { PORT, HOST, inDevelopment } = process.env;
+const { PORT, inDevelopment } = process.env;
 
 const app = next({ dev: inDevelopment });
 const handler = app.getRequestHandler();

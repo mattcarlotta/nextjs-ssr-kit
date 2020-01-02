@@ -2,8 +2,8 @@
 import bluebird from "bluebird";
 import mongoose from "mongoose";
 import chalk from "chalk";
-const { log } = console;
 
+const { log } = console;
 const { DATABASE, inTesting } = process.env;
 
 const options = {
@@ -13,7 +13,8 @@ const options = {
 	useUnifiedTopology: true, // avoids DeprecationWarning: current Server Discovery and Monitoring engine is deprecated
 };
 
-const connectDatabase = () => mongoose.createConnection(DATABASE, options);
+export const connectDatabase = () =>
+	mongoose.createConnection(DATABASE, options);
 
 //= ===========================================================//
 //* MONGO DB CONFIG */

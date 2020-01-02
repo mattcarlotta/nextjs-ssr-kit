@@ -5,7 +5,7 @@ import { shallow, mount } from "enzyme";
 import { store } from "~store";
 
 //= =============================================================================//
-// CUSTOM TESTING FUNCTIONS                                                       /
+// CUSTOM REACT TESTING FUNCTIONS                                                 /
 //= =============================================================================//
 
 /**

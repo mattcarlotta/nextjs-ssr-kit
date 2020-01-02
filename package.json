@@ -11,6 +11,9 @@
 		"checkbuild": "es-check  es5 './.next/static/**/*.js'",
 		"dev": "cross-env NODE_ENV=development nodemon --exec babel-node ./server/app.js",
 		"build": "rimraf .next/static && next build",
+		"lint": "npm run lint:front && npm run lint:back",
+		"lint:back": "eslint -c ./server/.eslintrc --ignore-path ./server/.eslintignore ./server/**/*.js",
+		"lint:front": "eslint \"**/*.js\"",
 		"production": "npm run build && npm run compile",
 		"start": "cross-env NODE_ENV=production node ./build/app.js",
 		"test": "npm run test:back && npm run test:front",
@@ -24,7 +27,7 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "npm run test"
+			"pre-commit": "npm run lint && npm run test"
 		}
 	},
 	"dependencies": {
@@ -57,7 +60,9 @@
 		"@babel/node": "^7.7.7",
 		"@zeit/next-css": "^1.0.1",
 		"@zeit/next-sass": "^1.0.1",
+		"autoprefixer": "^9.7.3",
 		"axios-mock-adapter": "^1.17.0",
+		"babel-eslint": "^10.0.3",
 		"babel-jest": "^24.9.0",
 		"babel-plugin-lodash": "^3.3.4",
 		"babel-plugin-module-resolver": "^4.0.0",
@@ -68,6 +73,19 @@
 		"enzyme": "^3.11.0",
 		"enzyme-adapter-react-16": "^1.15.2",
 		"es-check": "^5.1.0",
+		"eslint": "^6.7.2",
+		"eslint-config-airbnb": "^18.0.0",
+		"eslint-config-airbnb-base": "^13.2.0",
+		"eslint-config-prettier": "^6.7.0",
+		"eslint-import-resolver-babel-module": "^5.1.0",
+		"eslint-loader": "^3.0.3",
+		"eslint-plugin-import": "^2.19.1",
+		"eslint-plugin-jest": "^23.1.1",
+		"eslint-plugin-jsx-a11y": "^6.2.3",
+		"eslint-plugin-prettier": "^3.1.2",
+		"eslint-plugin-react": "^7.17.0",
+		"eslint-plugin-react-hooks": "^2.3.0",
+		"eslint-watch": "^6.0.1",
 		"extracted-loader": "^1.0.7",
 		"file-loader": "^5.0.2",
 		"husky": "^3.1.0",

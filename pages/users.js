@@ -16,14 +16,14 @@ import {
 import { resetMessage } from "~actions/Server";
 
 export class ShowUsers extends Component {
+	static async getInitialProps({ store }) {
+		store.dispatch(fetchUsers());
+	}
+
 	state = {
 		isEditingID: "",
 		openModal: false,
 	};
-
-	static async getInitialProps({ store }) {
-		store.dispatch(fetchUsers());
-	}
 
 	handleEditClick = id => this.setState({ isEditingID: id });
 

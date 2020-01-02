@@ -5,7 +5,7 @@ import * as sagas from "~sagas/Users";
 import userReducer from "~reducers/Users";
 import { setMessage } from "~actions/Server";
 import serverReducer from "~reducers/Server";
-import { parseData, parseMessage } from "utils/parseResponse";
+import { parseData, parseMessage } from "~utils/parseResponse";
 import toast from "~components/Toast";
 
 const id = "123456789";

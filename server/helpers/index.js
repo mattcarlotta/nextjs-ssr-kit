@@ -20,7 +20,7 @@ const greetMessage = () => {
 	if (inDevelopment) {
 		log(
 			`${chalk.rgb(7, 54, 66).bgRgb(238, 232, 213)(" N ")} ${chalk.white(
-				`Note that the development build is not optimized.`,
+				"Note that the development build is not optimized.",
 			)}`,
 		);
 		log(

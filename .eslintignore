@@ -1,0 +1,5 @@
+*.json
+server
+node_modules
+.next
+build

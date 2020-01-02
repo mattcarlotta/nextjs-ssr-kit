@@ -1,8 +1,9 @@
+require("./env");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const paths = require("./paths");
-const { mediaRule, styleRule } = require("./utils/config");
+const paths = require("./config/paths");
+const { jsRule, mediaRule, styleRule } = require("./config/rules");
 
-const { inDevelopment } = process.env;
+const { baseURL, inDevelopment } = process.env;
 
 const filename = inDevelopment
 	? "static/css/[name].css"
@@ -21,8 +22,8 @@ const sassModuleRegex = /\.module\.scss$/;
 
 module.exports = {
 	publicRuntimeConfig: {
-		inDevelopment: process.env.inDevelopment,
-		baseURL: process.env.baseURL,
+		inDevelopment,
+		baseURL,
 	},
 	webpack(config, { isServer }) {
 		/* add custom webpack aliased extensions */
@@ -30,6 +31,14 @@ module.exports = {
 
 		/* add custom webpack rules */
 		config.module.rules.push(
+			/* lints js files */
+			jsRule({
+				loader: "eslint-loader",
+				options: {
+					cache: inDevelopment,
+					emitWarning: Boolean(inDevelopment),
+				},
+			}),
 			/* handle image assets */
 			mediaRule({
 				test: imagesRegex,
@@ -54,7 +63,6 @@ module.exports = {
 			styleRule({
 				test: cssRegex,
 				exclude: cssModuleRegex,
-				modules: false,
 				isServer,
 			}),
 			/* handles CSS module imports */
@@ -68,7 +76,6 @@ module.exports = {
 			styleRule({
 				test: sassRegex,
 				exclude: sassModuleRegex,
-				modules: false,
 				isServer,
 			}),
 			/* handles SCSS module imports */
@@ -81,14 +88,14 @@ module.exports = {
 		);
 
 		if (!isServer) {
-			/* caches style chunks for server */
+			/* caches style chunks for client */
 			config.optimization.splitChunks.cacheGroups.styles = {
 				name: "styles",
 				test: /\.+(scss|css)$/,
 				chunks: "all",
 				enforce: true,
 			};
-			/* extracts css chunks for server */
+			/* extracts css chunks for client */
 			config.plugins.push(
 				new MiniCssExtractPlugin({
 					filename,

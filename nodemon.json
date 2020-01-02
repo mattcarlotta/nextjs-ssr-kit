@@ -1,20 +1,4 @@
 {
-	"ignore": [
-		".next",
-		"actions",
-		"build",
-		"components",
-		"containers",
-		"images",
-		"node_modules",
-		"pages",
-		"paths",
-		"public",
-		"reducers",
-		"sagas",
-		"store",
-		"styles",
-		"types"
-	],
-	"ext": "js json"
+	"watch": ["server", "next.config.js"],
+	"ext": "js,json"
 }
