@@ -32,7 +32,7 @@ const handler = app.getRequestHandler();
 			greetMessage();
 		});
 	} catch (error) {
-		console.log(error.toString());
+		console.log(error.toString()); // eslint-disable-line no-console
 		process.exit(1);
 	}
 })();

@@ -1,5 +1,5 @@
 require("./env");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // eslint-disable-line import/no-extraneous-dependencies
 const paths = require("./config/paths");
 const { jsRule, mediaRule, styleRule } = require("./config/rules");
 
@@ -17,8 +17,10 @@ const imagesRegex = /\.(jpe?g|png|svg|gif|ico|webp)$/;
 const fontsRegex = /\.(woff2|ttf|woff|eot)$/;
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
-const sassRegex = /\.scss$/;
-const sassModuleRegex = /\.module\.scss$/;
+const scssRegex = /\.scss$/;
+const scssModuleRegex = /\.module\.scss$/;
+const sassRegex = /\.sass$/;
+const sassModuleRegex = /\.module\.sass$/;
 
 module.exports = {
 	publicRuntimeConfig: {
@@ -74,11 +76,24 @@ module.exports = {
 			}),
 			/* handles global SCSS imports */
 			styleRule({
+				test: scssRegex,
+				exclude: scssModuleRegex,
+				isServer,
+			}),
+			/* handles SCSS module imports */
+			styleRule({
+				test: scssRegex,
+				include: scssModuleRegex,
+				modules: true,
+				isServer,
+			}),
+			/* handles global SASS imports */
+			styleRule({
 				test: sassRegex,
 				exclude: sassModuleRegex,
 				isServer,
 			}),
-			/* handles SCSS module imports */
+			/* handles SASS module imports */
 			styleRule({
 				test: sassRegex,
 				include: sassModuleRegex,
@@ -91,7 +106,7 @@ module.exports = {
 			/* caches style chunks for client */
 			config.optimization.splitChunks.cacheGroups.styles = {
 				name: "styles",
-				test: /\.+(scss|css)$/,
+				test: /\.+(scss|sass|css)$/,
 				chunks: "all",
 				enforce: true,
 			};

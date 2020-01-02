@@ -116,6 +116,7 @@ git clone git@github.com:mattcarlotta/NextJS-ssr-kit.git
 | `lint`               | Lints all `.js` files.                                                   |
 | `lint:back`          | Lints all of API's `.js` files.                                          |
 | `lint:front`         | Lints all of NextJS's `.js` files.                                       |
+| `lint:styles`        | Lints all of NextJS's `.scss` files.                                     |
 | `build`              | Compiles NextJS application to a `.next/static` folder.                  |
 | `production`         | Executes `build` and `compile` commands in sequence.                     |
 | `start`              | Starts a production server at `localhost:8080` (must run `production`).† |
@@ -232,6 +233,9 @@ Click <a href="https://github.com/mattcarlotta/NextJS-ssr-kit/blob/master/packag
 - <a href="https://github.com/zalmoxisus/redux-devtools-extension">Redux DevTools Extension</a>
 - <a href="https://redux-saga.js.org/">Redux Saga</a>
 - <a href="https://github.com/webpack-contrib/sass-loader">Sass Loader</a>
+- <a href="https://stylelint.io/">Stylelint</a>
+- <a href="https://github.com/kristerkari/stylelint-scss">Stylelint-SCSS</a>
+- <a href="https://github.com/stylelint/stylelint-config-recommended">Stylelint-Config-Recommended</a>
 - <a href="https://github.com/styled-components/styled-components">Stylized Components</a>
 - <a href="https://github.com/webpack/webpack">Webpack</a>
 </code></pre>
@@ -246,6 +250,8 @@ Click <a href="https://github.com/mattcarlotta/NextJS-ssr-kit/blob/master/packag
 - <a href="https://github.com/petkaantonov/bluebird">Bluebird</a>
 - <a href="https://github.com/expressjs/body-parser">Body Parser</a>
 - <a href="https://github.com/expressjs/compression">Compression</a>
+- <a href="https://github.com/motdotla/dotenv">DotENV</a>
+- <a href="https://github.com/eslint/eslint/">Eslint</a>
 - <a href="http://expressjs.com/">Express</a>
 - <a href="https://momentjs.com/timezone/">Moment Timezone</a>
 - <a href="https://mongoosejs.com/">Mongoose</a>

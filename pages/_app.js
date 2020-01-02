@@ -9,7 +9,7 @@ import { ToastContainer } from "react-toastify";
 import configureStore from "~store";
 import GlobalStylesheet from "~styles/globalStylesheet";
 import toast from "~components/Toast";
-import "~styles/empty.scss";
+import "~styles/empty.css";
 
 const inDevelopment = get(getConfig(), [
 	"publicRuntimeConfig",
