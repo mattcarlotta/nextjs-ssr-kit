@@ -35,7 +35,7 @@ module.exports = {
 			jsRule({
 				loader: "eslint-loader",
 				options: {
-					cache: inDevelopment,
+					cache: Boolean(inDevelopment),
 					emitWarning: Boolean(inDevelopment),
 				},
 			}),

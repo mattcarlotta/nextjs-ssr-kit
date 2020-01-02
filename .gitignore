@@ -15,6 +15,9 @@
 # production
 /build
 
+# eslint caches
+.caches
+
 # misc
 .DS_Store
 
