@@ -28,7 +28,7 @@
 
 ## Pre-Configured
 
-✔️ ES6 import/export syntax on NextJS and API.
+✔️ ES6 import/export syntax for the NextJS and API apps.
 
 ✔️ Redux + Redux + Redux Saga implementation.
 
@@ -97,7 +97,7 @@
 1 - Clone the repository.
 
 ```
-git clone git@github.com:mattcarlotta/NextJS-ssr-kit.git
+git clone git@github.com:mattcarlotta/nextjs-ssr-kit.git
 ```
 
 2 - Run `yarn install` to install dependencies.
@@ -266,7 +266,7 @@ Click <a href="https://github.com/mattcarlotta/NextJS-ssr-kit/blob/master/packag
 
 ## NextJS and API Integrations
 
-By default, all root directories within the main application (with <a href="https://github.com/mattcarlotta/NextJS-ssr-kit/blob/master/babel.config.js#L4">exceptions</a>), as well as within the `server` folders are aliased (`~`). This means you can refer to the root directories by using the ~ symbol followed by the folder name. For example, in the API (custom Express APU server inside `server`): `~controllers`, refers to the `server/controllers` folder; or, for example, in the main directory: `~components` refers to the `components` folder directory. This allows for rapid development when referring to reusable components or functions as it eliminates the hassle of traversing the folder tree for relative pathing!
+By default, all root directories within the main application (with <a href="https://github.com/mattcarlotta/NextJS-ssr-kit/blob/master/babel.config.js#L4">exceptions</a>), as well as within the `server` folders are aliased (`~`). This means you can refer to the root directories by using the ~ symbol followed by the folder name. For example, in the API (custom Express server inside `server`): `~controllers`, refers to the `server/controllers` folder; or, for example, in the main directory: `~components` refers to the `components` folder directory. This allows for rapid development when referring to reusable components or functions as it eliminates the hassle of traversing the folder tree for relative pathing!
 
 <hr />
 
@@ -274,8 +274,8 @@ By default, all root directories within the main application (with <a href="http
 
 If you run into any issues, please fill out an issue report <a href="https://github.com/mattcarlotta/NextJS-ssr-kit/issues">here</a>.
 
-⚠️ (Status: Unresolved) - Importing a component or page that imports a `.css` or `.scss` file breaks `next/link` components. See <a href="https://github.com/zeit/next-plugins/issues/282">issue tracker</a>.
+⚠️ (Status: Unresolved) - Importing a component or page that imports a `.css`, `.scss` or `.sass` file breaks `next/link` components. See <a href="https://github.com/zeit/next-plugins/issues/282">issue tracker</a>.
 
-⚠️ (Status: Unresolveable) - Saving files within the `server` folder causes the entire process to restart (as intended); however, this causes webpack hot loading to be broken (due to the NextJS files being recompiled upon restart). That said, NextJS will automatically rebuild the `hot-loading.json` file and hot reloading will work after a few seconds.
+⚠️ (Status: Unresolveable) - Saving files within the `server` folder or `next.config.js` file causes the entire process to restart (as intended); however, this causes webpack hot loading to be broken (due to the NextJS files being recompiled upon restart). That said, NextJS will automatically rebuild the `hot-loading.json` file and hot reloading will work after a few seconds.
 
 ⚠️ (Status: Unresolveable) - Adding `test.js` files within the `pages` folder causes NextJS to fail upon production compilation. Unfortunately, NextJS handles all files and folders within the `pages` file as reachable views. Instead, a workaround is to place a `__tests__` folder for `pages` at the root of the `components` folder.
