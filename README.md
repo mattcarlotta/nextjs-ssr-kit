@@ -1,6 +1,6 @@
 ## NextJS SSR Kit
 
-![XhgJKxh.png](https://i.imgur.com/XhgJKxh.png)
+![bnej5es.png](https://i.imgur.com/bnej5es.png)
 
 ## Table of contents
 
