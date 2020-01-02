@@ -1,9 +1,8 @@
 /* istanbul ignore file */
 import get from "lodash/get";
 import axios from "axios";
-import getConfig from "next/config";
 
-const baseURL = get(getConfig(), ["publicRuntimeConfig", "baseURL"]);
+const { baseURL } = process.env;
 
 export const app = axios.create({
 	baseURL,

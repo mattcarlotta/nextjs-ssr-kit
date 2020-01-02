@@ -1,4 +1,5 @@
 require("./env");
+const { DefinePlugin } = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 	.BundleAnalyzerPlugin;
@@ -8,12 +9,10 @@ const { jsRule, mediaRule, styleRule } = require("./config/rules");
 const { baseURL, inDevelopment, analyze } = process.env;
 
 const filename = inDevelopment
-	? "static/css/[name].css"
-	: "static/css/[name].[contenthash:8].css";
+	? paths.staticCSSDevPath
+	: paths.staticCSSProdPath;
 
-const chunkFilename = inDevelopment
-	? "static/css/[name].chunk.css"
-	: "static/css/[name].[contenthash:8].chunk.css";
+const chunkFilename = filename;
 
 const imagesRegex = /\.(jpe?g|png|svg|gif|ico|webp)$/;
 const fontsRegex = /\.(woff2|ttf|woff|eot)$/;
@@ -25,16 +24,19 @@ const sassRegex = /\.sass$/;
 const sassModuleRegex = /\.module\.sass$/;
 
 module.exports = {
-	publicRuntimeConfig: {
-		inDevelopment,
-		baseURL,
-	},
 	webpack(config, { isServer }) {
+		const {
+			module: { rules },
+			optimization: { splitChunks },
+			plugins,
+			resolve: { extensions },
+		} = config;
+
 		/* add custom webpack aliased extensions */
-		config.resolve.extensions = [...config.resolve.extensions, ".scss", ".css"];
+		extensions.push(".css", ".sass", "scss");
 
 		/* add custom webpack rules */
-		config.module.rules.push(
+		rules.push(
 			/* lints js files */
 			jsRule({
 				loader: "eslint-loader",
@@ -106,28 +108,37 @@ module.exports = {
 
 		if (!isServer) {
 			/* caches style chunks for client */
-			config.optimization.splitChunks.cacheGroups.styles = {
+			splitChunks.cacheGroups.styles = {
 				name: "styles",
 				test: /\.+(scss|sass|css)$/,
 				chunks: "all",
 				enforce: true,
 			};
-			/* extracts css chunks for client */
-			config.plugins.push(
+
+			plugins.push(
+				/* extracts css chunks for client */
 				new MiniCssExtractPlugin({
 					filename,
 					chunkFilename,
+				}),
+				/* envs for client */
+				new DefinePlugin({
+					"process.env": {
+						inDevelopment: JSON.stringify(inDevelopment),
+						baseURL: JSON.stringify(baseURL),
+					},
 				}),
 			);
 		}
 
 		if (analyze) {
-			config.plugins.push(
+			/* analyzes webpack chunk distribution */
+			plugins.push(
 				new BundleAnalyzerPlugin({
 					analyzerMode: "static",
 					reportFilename: isServer
-						? "../analyze/server.html"
-						: "./analyze/client.html",
+						? paths.analyzeServerPath
+						: paths.analyzeClientPath,
 				}),
 			);
 		}

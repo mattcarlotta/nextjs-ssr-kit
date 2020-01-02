@@ -4,9 +4,8 @@ import Link from "~components/StyledLink";
 import ExampleIcon from "~components/ExampleIcon";
 import HomeContainer from "~components/HomeContainer";
 import LandingContainer from "~components/LandingContainer";
-import Title from "~components/Title";
 import SubTitle from "~components/SubTitle";
-import SSRLogo from "~images/ssrLogo.png";
+import NextJSSKitLogo from "~images/nextjsKit.png";
 
 const Home = () => (
 	<HomeContainer>
@@ -15,8 +14,7 @@ const Home = () => (
 			<link rel="icon" href="/favicon.ico" />
 		</Head>
 		<LandingContainer>
-			<img src={SSRLogo} alt="ssrLogoLight.png" />
-			<Title>NextJS SSR Kit</Title>
+			<img src={NextJSSKitLogo} alt="ssrLogoLight.png" />
 			<SubTitle>Edit files in the root directory and save to reload.</SubTitle>
 			<Link href="/users">
 				<ExampleIcon />

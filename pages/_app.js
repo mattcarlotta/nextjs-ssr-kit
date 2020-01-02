@@ -1,7 +1,5 @@
 import React from "react";
-import get from "lodash/get";
 import { Provider } from "react-redux";
-import getConfig from "next/config";
 import App from "next/app";
 import withRedux from "next-redux-wrapper";
 import withReduxSaga from "next-redux-saga";
@@ -11,10 +9,7 @@ import GlobalStylesheet from "~styles/globalStylesheet";
 import toast from "~components/Toast";
 import "~styles/empty.css";
 
-const inDevelopment = get(getConfig(), [
-	"publicRuntimeConfig",
-	"inDevelopment",
-]);
+const { inDevelopment } = process.env;
 
 export class MyApp extends App {
 	componentDidMount() {
