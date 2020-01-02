@@ -7,8 +7,9 @@ import withRedux from "next-redux-wrapper";
 import withReduxSaga from "next-redux-saga";
 import { ToastContainer } from "react-toastify";
 import configureStore from "~store";
-import GlobalStylesheet from "~components/GlobalStylesheet";
+import GlobalStylesheet from "~styles/globalStylesheet";
 import toast from "~components/Toast";
+import "~styles/empty.scss";
 
 const inDevelopment = get(getConfig(), [
 	"publicRuntimeConfig",

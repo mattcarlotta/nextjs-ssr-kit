@@ -5,6 +5,7 @@ import ExampleIcon from "~components/ExampleIcon";
 import HomeContainer from "~components/HomeContainer";
 import LandingContainer from "~components/LandingContainer";
 import Title from "~components/Title";
+import SubTitle from "~components/SubTitle";
 import SSRLogo from "~images/ssrLogo.png";
 
 const Home = () => (
@@ -16,7 +17,7 @@ const Home = () => (
 		<LandingContainer>
 			<img src={SSRLogo} alt="ssrLogoLight.png" />
 			<Title>NextJS SSR Kit</Title>
-			<Title>Edit files in the root directory and save to reload.</Title>
+			<SubTitle>Edit files in the root directory and save to reload.</SubTitle>
 			<Link href="/users">
 				<ExampleIcon />
 				See Example

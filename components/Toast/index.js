@@ -9,25 +9,29 @@ import {
 	FaBug,
 } from "react-icons/fa";
 
+const style = {
+	marginTop: 9,
+};
+
 export const displayIcon = type => {
 	switch (type) {
 		case "success":
-			return <FaCheck />;
+			return <FaCheck style={style} />;
 		case "info":
 			return <FaInfo />;
 		case "error":
-			return <FaTimes />;
+			return <FaTimes style={style} />;
 		case "warning":
-			return <FaExclamationTriangle />;
+			return <FaExclamationTriangle style={style} />;
 		default:
-			return <FaBug />;
+			return <FaBug style={style} />;
 	}
 };
 
 const ToastMessage = ({ type, message }) =>
 	toast[type](
 		<div css="display: flex; color: white;">
-			<div css="font-size:15px;padding-top: 12px;flex-shrink: 0;text-align: center;width: 30px;">
+			<div css="font-size:15px;padding-top: 8px;flex-shrink: 0;text-align: center;width: 30px;">
 				{displayIcon(type)}
 			</div>
 			<div css="flex-grow: 1;font-size: 15px;padding: 8px 12px;">{message}</div>

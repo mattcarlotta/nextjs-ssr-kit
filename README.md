@@ -4,6 +4,8 @@
 
 ## Table of contents
 
+[Pre-Configured](#pre-configured)
+
 [Project Structure](#project-structure)
 
 [Installation](#installation)
@@ -12,7 +14,7 @@
 
 [Example API](#example-api)
 
-[Configuration](#configuration)
+[NextJS Configuration](#nextjs-configuration)
 
 [API Configuration](#api-configuration)
 
@@ -21,6 +23,15 @@
 [Client and API Integrations](#client-and-api-integrations)
 
 [Known Issues](#known-issues)
+
+## Pre-Configured
+
+✔️ ES6 import/export on client and API syntax.
+✔️ CSS/SCSS module and global imports.
+✔️ Redux + Redux + Redux Saga implementation.
+✔️ Styled-components implementation.
+✔️ Custom 404 error page.
+✔️ Custom Express server with interactive API.
 
 <hr />
 
@@ -36,6 +47,7 @@
 ├── env
 ├── images
 ├── pages
+├── paths
 ├── public
 ├── reducers
 ├── sagas
@@ -48,6 +60,7 @@
 |   ├── routes
 |   ├── app.js
 |   └── jest.json
+├── styles
 ├── types
 ├── utils
 ├── .browserslistrc
@@ -111,10 +124,10 @@ If you wish to utilize the API:
 
 <hr />
 
-## Configuration
+## NextJS Configuration
 
 <details>
-<summary>Click to expand client configuration</summary>
+<summary>Click to expand nextJS configuration</summary>
 <pre><code>
 - actions: redux actions.
 - components: react components.
@@ -122,10 +135,12 @@ If you wish to utilize the API:
 - pages/_app,js: nextjs app configuration (redux + redux saga + global stylesheet).
 - pages/_document.js: nextjs document configuration for styled-components.
 - pages/_error.js: nextjs fallback 404 page.
+- paths: webpack paths.
 - reducers: redux reducers.
 - sagas: redux sagas.
 - server: custom express server configuration.
 - store: redux store configuration.
+- styles: custom component/page styles.
 - types: redux constants.
 - utils/__mocks__/mockAxios.js: a mocked axios instance for testing.
 - utils/setupTest/index.js: enzyme test setup for your React components.
@@ -172,6 +187,7 @@ Click <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/packag
 - <a href="https://github.com/axios/axios">Axios</a>
 - <a href="https://github.com/babel/babel">Babel</a>
 - <a href="https://github.com/motdotla/dotenv">DotENV</a>
+- <a href="https://github.com/webpack-contrib/css-loader">CSS Loader</a>
 - <a href="http://airbnb.io/enzyme/">Enzyme</a>
 - <a href="https://github.com/typicode/husky">Husky</a>
 - <a href="https://github.com/facebook/jest">Jest</a>
@@ -190,7 +206,6 @@ Click <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/packag
 - <a href="https://redux-saga.js.org/">Redux Saga</a>
 - <a href="https://github.com/webpack-contrib/sass-loader">Sass Loader</a>
 - <a href="https://github.com/styled-components/styled-components">Stylized Components</a>
-- <a href="https://github.com/webpack-contrib/style-loader">Style Loader</a>
 - <a href="https://github.com/webpack/webpack">Webpack</a>
 </code></pre>
 </details>
@@ -226,6 +241,8 @@ Notes: This feature extends to new folders created within either the main or `se
 ## Known Issues
 
 If you run into any issues, please fill out an issue report <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/issues">here</a>.
+
+⚠️ (Status: Unresolved) - Importing a component or page that imports a `.css` or `.scss` file breaks `next/link` components. See <a href="https://github.com/zeit/next-plugins/issues/282">issue tracker</a>.
 
 ⚠️ (Status: Unresolveable) - Saving files within the `server` folder causes the entire process to restart (as intended); however, this causes webpack hot loading to be broken (due to the NextJS files being recompiled upon restart). That said, NextJS will automatically rebuild the `hot-loading.json` file and hot reloading will work after a few seconds.
 
