@@ -177,7 +177,7 @@ If you wish to utilize the API:
 
 ## Packages Incorporated
 
-Click <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/package.json#L30-L87">here</a> to see latest versions.
+Click <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/package.json#L30-L97">here</a> to see latest versions.
 
 ### Shared
 
