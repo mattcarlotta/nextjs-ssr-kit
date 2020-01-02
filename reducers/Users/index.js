@@ -2,6 +2,7 @@ import * as types from "~types";
 
 export const initialState = {
 	data: [],
+	isLoading: true,
 };
 
 /**
@@ -19,6 +20,7 @@ const userReducer = (state = initialState, { payload, type }) => {
 			return {
 				...state,
 				data: payload.users,
+				isLoading: false,
 			};
 		}
 		default: {

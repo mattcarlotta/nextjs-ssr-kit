@@ -40,6 +40,7 @@ const initProps = {
 	serverError: "",
 	serverMessage: "",
 	data: [],
+	isLoading: true,
 	store,
 };
 
@@ -56,6 +57,10 @@ describe("Show Users Container", () => {
 	it("initially calls a 'FetchUsers' redux action", async () => {
 		await ShowUsers.getInitialProps({ store });
 		expect(store.dispatch).toHaveBeenCalledWith({ type: types.USERS_FETCH });
+	});
+
+	it("initially renders a 'LoadingUsers' component", () => {
+		expect(wrapper.find("LoadingUsers").exists()).toBeTruthy();
 	});
 
 	it("handles editing a user card inline", () => {

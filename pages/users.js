@@ -6,6 +6,7 @@ import DisplayUserList from "~components/DisplayUserList";
 import UserListNavigation from "~components/UserListNavigation";
 import Modal from "~components/Modal";
 import UserForm from "~components/UserForm";
+import LoadingUsers from "~components/LoadingUsers";
 import {
 	createUser,
 	deleteUser,
@@ -16,7 +17,7 @@ import {
 import { resetMessage } from "~actions/Server";
 
 export class ShowUsers extends Component {
-	static async getInitialProps({ store }) {
+	static getInitialProps({ store }) {
 		store.dispatch(fetchUsers());
 	}
 
@@ -53,14 +54,18 @@ export class ShowUsers extends Component {
 						/>
 					</Modal>
 				)}
-				<DisplayUserList
-					{...this.props}
-					{...this.state}
-					onHandleCloseModal={this.handleCloseModal}
-					onHandleDeleteClick={this.props.deleteUser}
-					onHandleEditClick={this.handleEditClick}
-					onHandleResetEditClick={this.handleResetEditClick}
-				/>
+				{this.props.isLoading ? (
+					<LoadingUsers height={398} width={780} opacity="1" />
+				) : (
+					<DisplayUserList
+						{...this.props}
+						{...this.state}
+						onHandleCloseModal={this.handleCloseModal}
+						onHandleDeleteClick={this.props.deleteUser}
+						onHandleEditClick={this.handleEditClick}
+						onHandleResetEditClick={this.handleResetEditClick}
+					/>
+				)}
 			</div>
 		</div>
 	);
@@ -75,6 +80,7 @@ ShowUsers.propTypes = {
 	updateUser: PropTypes.func.isRequired,
 	serverError: PropTypes.string,
 	serverMessage: PropTypes.string,
+	isLoading: PropTypes.bool.isRequired,
 	data: PropTypes.arrayOf(
 		PropTypes.shape({
 			address: PropTypes.shape({
@@ -97,6 +103,7 @@ ShowUsers.propTypes = {
 /* istanbul ignore next */
 const mapStateToProps = ({ users, server }) => ({
 	data: users.data,
+	isLoading: users.isLoading,
 	serverError: server.error,
 	serverMessage: server.message,
 });

@@ -60,6 +60,7 @@ describe("User Sagas", () => {
 				.withReducer(userReducer)
 				.hasFinalState({
 					data: [user],
+					isLoading: false,
 				})
 				.run();
 		});
@@ -114,6 +115,7 @@ describe("User Sagas", () => {
 				.withReducer(userReducer)
 				.hasFinalState({
 					data: [user],
+					isLoading: false,
 				})
 				.run();
 		});
@@ -166,6 +168,7 @@ describe("User Sagas", () => {
 				.withReducer(userReducer)
 				.hasFinalState({
 					data: [user],
+					isLoading: false,
 				})
 				.run();
 		});
@@ -208,6 +211,7 @@ describe("User Sagas", () => {
 				.withReducer(userReducer)
 				.hasFinalState({
 					data: [user],
+					isLoading: false,
 				})
 				.run();
 		});
@@ -262,6 +266,7 @@ describe("User Sagas", () => {
 				.withReducer(userReducer)
 				.hasFinalState({
 					data: [user],
+					isLoading: false,
 				})
 				.run();
 		});

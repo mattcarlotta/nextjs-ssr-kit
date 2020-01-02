@@ -2,6 +2,7 @@
 import styled from "styled-components";
 
 export default styled.div`
+	flex-direction: ${({ direction }) => direction || "row"};
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
