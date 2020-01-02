@@ -42,7 +42,7 @@
 
 ✔️ Custom 404 error page.
 
-✔️ Custom Express server with interactive API.
+✔️ Custom Express API server with interactive API.
 
 <hr />
 
@@ -102,7 +102,7 @@ git clone git@github.com:mattcarlotta/NextJS-ssr-kit.git
 
 2 - Run `yarn install` to install dependencies.
 
-3 - While at the application's root directory, start both servers by running `yarn dev`.
+3 - While at the application's root directory, start a dev server by running `yarn dev`.
 
 <hr />
 
@@ -110,7 +110,7 @@ git clone git@github.com:mattcarlotta/NextJS-ssr-kit.git
 
 | `yarn <command>`     | Description                                                              |
 | -------------------- | ------------------------------------------------------------------------ |
-| `compile`            | Compiles server application to a `build` folder.                         |
+| `compile`            | Compiles API application to a `build` folder.                            |
 | `checkbuild`         | Checks to see if the `.next/static` folder is ES5 compliant (for IE11).  |
 | `dev`                | Starts development server (`localhost:5000`).                            |
 | `lint`               | Lints all `.js` files.                                                   |
@@ -119,14 +119,14 @@ git clone git@github.com:mattcarlotta/NextJS-ssr-kit.git
 | `build`              | Compiles NextJS application to a `.next/static` folder.                  |
 | `production`         | Executes `build` and `compile` commands in sequence.                     |
 | `start`              | Starts a production server at `localhost:8080` (must run `production`).† |
-| `test`               | Runs `.test.js` files for the NextJS and server.                         |
+| `test`               | Runs `.test.js` files for the NextJS and API.                            |
 | `test:front`         | Runs `.test.js` files for the NextJS only.                               |
 | `test:frontcov`      | Runs `.test.js` files for the NextJS with code coverage.                 |
 | `test:frontwatch`    | Runs and watches changed `.test.js` files for the NextJS.                |
 | `test:frontwatchall` | Runs and watches all `.test.js` files for the NextJS.                    |
-| `test:back`          | Runs `.test.js` files for the server only.                               |
-| `test:backcov`       | Runs `.test.js` files for the server with code coverage.                 |
-| `test:backwatch`     | Runs and watches `.test.js` files for the server.                        |
+| `test:back`          | Runs `.test.js` files for the API only.                                  |
+| `test:backcov`       | Runs `.test.js` files for the API with code coverage.                    |
+| `test:backwatch`     | Runs and watches `.test.js` files for the API.                           |
 
 † Note: Before running this command, you must edit the <a href="https://github.com/mattcarlotta/NextJS-ssr-kit/blob/master/env/.env.production#L4">env/.env.production</a> file and update the `baseURL` from `http://localhost:8080/api/` to include your remote server address!
 
@@ -158,7 +158,7 @@ If you wish to utilize the API:
 - paths: webpack paths.
 - reducers: redux reducers.
 - sagas: redux sagas.
-- server: custom express server configuration.
+- server: custom Express API configuration.
 - store: redux store configuration.
 - styles: custom component/page styles.
 - types: redux constants.
@@ -259,7 +259,7 @@ Click <a href="https://github.com/mattcarlotta/NextJS-ssr-kit/blob/master/packag
 
 ## NextJS and API Integrations
 
-By default, all root directories within the main application (with <a href="https://github.com/mattcarlotta/NextJS-ssr-kit/blob/master/babel.config.js#L4">exceptions</a>), as well as within the `server` folders are aliased (`~`). This means you can refer to the root directories by using the ~ symbol followed by the folder name. For example, in the API (custom Express server inside `server`): `~controllers`, refers to the `server/controllers` folder; or, for example, in the main directory: `~components` refers to the `components` folder directory. This allows for rapid development when referring to reusable components or functions as it eliminates the hassle of traversing the folder tree for relative pathing!
+By default, all root directories within the main application (with <a href="https://github.com/mattcarlotta/NextJS-ssr-kit/blob/master/babel.config.js#L4">exceptions</a>), as well as within the `server` folders are aliased (`~`). This means you can refer to the root directories by using the ~ symbol followed by the folder name. For example, in the API (custom Express APU server inside `server`): `~controllers`, refers to the `server/controllers` folder; or, for example, in the main directory: `~components` refers to the `components` folder directory. This allows for rapid development when referring to reusable components or functions as it eliminates the hassle of traversing the folder tree for relative pathing!
 
 <hr />
 
