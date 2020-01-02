@@ -28,7 +28,7 @@
 
 ## Pre-Configured
 
-✔️ ES6 import/export on NextJS and API syntax.
+✔️ ES6 import/export syntax on NextJS and API.
 
 ✔️ Redux + Redux + Redux Saga implementation.
 
