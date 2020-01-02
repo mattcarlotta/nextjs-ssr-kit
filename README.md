@@ -30,17 +30,17 @@
 
 ✔️ ES6 import/export on NextJS and API syntax.
 
-✔️ CSS/SCSS module and global imports.
+✔️ CSS/SCSS/SASS module and global imports.
 
 ✔️ Redux + Redux + Redux Saga implementation.
 
 ✔️ Eslint JS/JSX files.
 
-✔️ Runs Eslint and Jest before committing.
+✔️ Runs Eslint, Jest, and Stylelint before committing.
+
+✔️ Stylelint SCSS files.
 
 ✔️ Styled-components implementation.
-
-✔️ Custom 404 error page.
 
 ✔️ Custom Express API server with interactive API.
 

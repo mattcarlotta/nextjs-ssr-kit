@@ -11,7 +11,7 @@
 		"checkbuild": "es-check  es5 './.next/static/**/*.js'",
 		"dev": "cross-env NODE_ENV=development nodemon --exec babel-node ./server/app.js",
 		"build": "rimraf .next/static && next build",
-		"lint": "npm run lint:front && npm run lint:back",
+		"lint": "npm run lint:front && npm run lint:back && npm run lint:styles",
 		"lint:back": "eslint -c ./server/.eslintrc --ignore-path ./server/.eslintignore ./server --ext .js",
 		"lint:front": "eslint ./ --ext .js,.jsx",
 		"lint:styles": "stylelint **/*.scss",
