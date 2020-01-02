@@ -27,10 +27,15 @@
 ## Pre-Configured
 
 ✔️ ES6 import/export on client and API syntax.
+
 ✔️ CSS/SCSS module and global imports.
+
 ✔️ Redux + Redux + Redux Saga implementation.
+
 ✔️ Styled-components implementation.
+
 ✔️ Custom 404 error page.
+
 ✔️ Custom Express server with interactive API.
 
 <hr />
