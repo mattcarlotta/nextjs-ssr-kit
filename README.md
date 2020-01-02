@@ -36,9 +36,9 @@
 
 ✔️ Eslint JS/JSX files.
 
-✔️ Runs Eslint, Jest, and Stylelint before committing.
-
 ✔️ Stylelint SCSS files.
+
+✔️ Runs Eslint, Jest, and Stylelint before committing.
 
 ✔️ Styled-components implementation.
 
