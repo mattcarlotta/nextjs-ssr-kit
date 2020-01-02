@@ -110,6 +110,7 @@ git clone git@github.com:mattcarlotta/NextJS-ssr-kit.git
 
 | `yarn <command>`     | Description                                                              |
 | -------------------- | ------------------------------------------------------------------------ |
+| `analyze`            | Compiles NextJS/API apps and spawns webpack chunk distribution charts.   |
 | `compile`            | Compiles API application to a `build` folder.                            |
 | `checkbuild`         | Checks to see if the `.next/static` folder is ES5 compliant (for IE11).  |
 | `dev`                | Starts development server (`localhost:5000`).                            |

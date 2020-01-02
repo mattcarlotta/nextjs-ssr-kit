@@ -1,9 +1,11 @@
 require("./env");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // eslint-disable-line import/no-extraneous-dependencies
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+	.BundleAnalyzerPlugin;
 const paths = require("./config/paths");
 const { jsRule, mediaRule, styleRule } = require("./config/rules");
 
-const { baseURL, inDevelopment } = process.env;
+const { baseURL, inDevelopment, analyze } = process.env;
 
 const filename = inDevelopment
 	? "static/css/[name].css"
@@ -115,6 +117,17 @@ module.exports = {
 				new MiniCssExtractPlugin({
 					filename,
 					chunkFilename,
+				}),
+			);
+		}
+
+		if (analyze) {
+			config.plugins.push(
+				new BundleAnalyzerPlugin({
+					analyzerMode: "static",
+					reportFilename: isServer
+						? "../analyze/server.html"
+						: "./analyze/client.html",
 				}),
 			);
 		}

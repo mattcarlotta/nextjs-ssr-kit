@@ -7,6 +7,7 @@
 	"license": "MIT",
 	"private": false,
 	"scripts": {
+		"analyze": "analyze=true npm run build",
 		"compile": "rimraf build && babel ./server -d build --no-comments --ignore **/__tests__,**/__mocks__,coverage,setupTests.js,.next,components,images,pages,public,next.config.js,babel.config.js",
 		"checkbuild": "es-check  es5 './.next/static/**/*.js'",
 		"dev": "cross-env NODE_ENV=development nodemon --exec babel-node ./server/app.js",
@@ -40,6 +41,7 @@
 		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
 		"lodash": "^4.17.15",
+		"mini-css-extract-plugin": "^0.9.0",
 		"moment-timezone": "^0.5.27",
 		"mongoose": "^5.8.3",
 		"morgan": "^1.9.1",
@@ -53,7 +55,8 @@
 		"react-toastify": "^5.5.0",
 		"redux": "^4.0.5",
 		"redux-saga": "^1.1.3",
-		"styled-components": "^4.4.1"
+		"styled-components": "^4.4.1",
+		"webpack-bundle-analyzer": "^3.6.0"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.7.7",
@@ -98,7 +101,6 @@
 		"jest-resolve": "^24.9.0",
 		"jest-styled-components": "^6.3.4",
 		"jsdom": "^15.2.1",
-		"mini-css-extract-plugin": "^0.9.0",
 		"node-sass": "^4.13.0",
 		"nodemon": "^2.0.2",
 		"postcss-flexbugs-fixes": "^4.1.0",
