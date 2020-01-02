@@ -42,7 +42,7 @@
 
 ✔️ Runs Eslint, Jest, and Stylelint before committing.
 
-✔️ Custom Express API server with interactive API.
+✔️ Custom Express server with interactive API.
 
 <hr />
 
