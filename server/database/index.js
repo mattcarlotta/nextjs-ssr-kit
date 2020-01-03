@@ -4,7 +4,9 @@ import mongoose from "mongoose";
 import chalk from "chalk";
 
 const { log } = console;
-const { DATABASE, inTesting } = process.env;
+const { NODE_ENV, DATABASE, inTesting } = process.env;
+
+const inProduction = NODE_ENV === "production";
 
 const options = {
 	useNewUrlParser: true, // avoids DeprecationWarning: current URL string parser is deprecated
@@ -28,9 +30,9 @@ if (!inTesting) {
 		"connected",
 		() =>
 			log(
-				`\n${chalk.rgb(7, 54, 66).bgRgb(38, 139, 210)(" I ")} ${chalk.blue(
-					`Connected to ${DATABASE}`,
-				)}\n`,
+				`${!inProduction ? "\n" : ""}${chalk.rgb(7, 54, 66).bgRgb(38, 139, 210)(
+					" I ",
+				)} ${chalk.blue(`Connected to ${DATABASE}`)}\n`,
 			), // log mongodb connection established
 	);
 

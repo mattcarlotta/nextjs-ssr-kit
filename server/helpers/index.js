@@ -15,7 +15,7 @@ const greetMessage = () => {
 			`Your application is running on ${chalk
 				.rgb(250, 182, 23)
 				.bold(`${HOST}${PORT}`)}`,
-		)}\n`,
+		)}`,
 	);
 	if (inDevelopment) {
 		log(
