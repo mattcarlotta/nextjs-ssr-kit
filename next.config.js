@@ -8,9 +8,9 @@ const { jsRule, mediaRule, styleRule } = require("./config/rules");
 
 const { baseURL, inDevelopment, analyze } = process.env;
 
-const isDev = Boolean(inDevelopment);
+const inDev = Boolean(inDevelopment);
 
-const filename = isDev ? paths.staticCSSDevPath : paths.staticCSSProdPath;
+const filename = inDev ? paths.staticCSSDevPath : paths.staticCSSProdPath;
 
 const chunkFilename = filename;
 
@@ -41,8 +41,8 @@ module.exports = {
 			jsRule({
 				loader: "eslint-loader",
 				options: {
-					cache: isDev,
-					emitWarning: isDev,
+					cache: inDev,
+					emitWarning: inDev,
 				},
 			}),
 			/* handle image assets */
@@ -124,7 +124,7 @@ module.exports = {
 				/* envs for client */
 				new DefinePlugin({
 					"process.env": {
-						inDevelopment: isDev,
+						inDevelopment: inDev,
 						baseURL: JSON.stringify(baseURL),
 					},
 				}),

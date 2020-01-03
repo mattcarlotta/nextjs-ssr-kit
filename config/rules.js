@@ -11,7 +11,7 @@ const postcssEnv = require("postcss-preset-env")({
 
 const { inDevelopment } = process.env;
 
-const isDev = Boolean(inDevelopment);
+const inDev = Boolean(inDevelopment);
 const localIdentName = "[local]___[hash:base64:10]";
 const name = "[name]-[hash].[ext]";
 
@@ -73,14 +73,14 @@ const styleRule = ({
 	include,
 	exclude,
 	use: [
-		!isServer && isDev && "extracted-loader",
+		!isServer && inDev && "extracted-loader",
 		!isServer && MiniCssExtractPlugin.loader,
 		{
 			loader: isServer ? "css-loader/locals" : "css-loader",
 			options: {
 				modules,
-				minimize: !isDev,
-				sourceMap: isDev,
+				minimize: !inDev,
+				sourceMap: inDev,
 				importLoaders: 1,
 				localIdentName,
 			},
@@ -95,7 +95,7 @@ const styleRule = ({
 					autoprefixer(),
 					postcssNormalize(),
 				],
-				sourceMap: !isDev,
+				sourceMap: !inDev,
 			},
 		},
 		"sass-loader",
