@@ -1,6 +1,6 @@
 {
 	"name": "nextjs-ssr-kit",
-	"version": "0.1.0",
+	"version": "0.0.1",
 	"description": "A fullstack MERN SSR boilerplate.",
 	"repository": "https://github.com/mattcarlotta/nextjs-ssr-kit",
 	"author": "Matt Carlotta",
