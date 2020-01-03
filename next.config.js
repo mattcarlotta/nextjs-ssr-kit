@@ -124,7 +124,7 @@ module.exports = {
 				/* envs for client */
 				new DefinePlugin({
 					"process.env": {
-						inDevelopment: JSON.stringify(inDevelopment),
+						inDevelopment: isDev,
 						baseURL: JSON.stringify(baseURL),
 					},
 				}),
