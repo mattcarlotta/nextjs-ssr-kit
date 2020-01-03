@@ -1,4 +1,4 @@
 {
-	"watch": ["server", "next.config.js"],
+	"watch": ["server", "next.config.js", "config"],
 	"ext": "js,json"
 }
