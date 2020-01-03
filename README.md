@@ -1,10 +1,10 @@
-## NextJS SSR Kit [![Codecov](https://img.shields.io/codecov/c/github/mattcarlotta/nextjs-ssr-kit)](https://codecov.io/gh/mattcarlotta/nextjs-ssr-kit) [![Dependencies](https://img.shields.io/david/mattcarlotta/nextjs-ssr-kit.svg?style=flat-square)](https://david-dm.org/mattcarlotta/nextjs-ssr-kit)
-
 ![bnej5es.png](https://i.imgur.com/bnej5es.png)
+
+[![Codecov](https://img.shields.io/codecov/c/github/mattcarlotta/nextjs-ssr-kit?style=for-the-badge)](https://codecov.io/gh/mattcarlotta/nextjs-ssr-kit) [![Dependencies](https://img.shields.io/david/mattcarlotta/nextjs-ssr-kit.svg?style=for-the-badge)](https://david-dm.org/mattcarlotta/nextjs-ssr-kit) [![License](https://img.shields.io/github/license/mattcarlotta/nextjs-ssr-kit?style=for-the-badge)](https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/LICENSE)
 
 ## Table of contents
 
-[Pre-Configured](#pre-configured)
+[Pre-Configured Packages](#pre-configured-packages)
 
 [Project Structure](#project-structure)
 
@@ -24,9 +24,7 @@
 
 [Known Issues](#known-issues)
 
-<hr />
-
-## Pre-Configured
+## Pre-Configured Packages
 
 ✔️ ES6 import/export syntax for the NextJS and API apps.
 
@@ -43,8 +41,6 @@
 ✔️ Runs Eslint, Jest, and Stylelint before committing.
 
 ✔️ Custom Express server with interactive API.
-
-<hr />
 
 ## Project Structure
 
