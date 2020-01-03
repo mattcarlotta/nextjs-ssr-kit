@@ -63,6 +63,7 @@
 ├── public
 ├── reducers
 ├── sagas
+├── scripts
 ├── server
 |   ├── controllers
 |   ├── database
@@ -160,6 +161,7 @@ If you wish to utilize the API:
 - paths: webpack paths.
 - reducers: redux reducers.
 - sagas: redux sagas.
+- scripts: custom scripts to handle building and compiling production assets.
 - server: custom Express API configuration.
 - store: redux store configuration.
 - styles: custom component/page styles.
