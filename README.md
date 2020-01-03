@@ -1,4 +1,4 @@
-## NextJS SSR Kit [![Codecov](https://img.shields.io/codecov/c/github/mattcarlotta/nextjs-ssr-kit)](https://codecov.io/gh/mattcarlotta/nextjs-ssr-kit)
+## NextJS SSR Kit [![Codecov](https://img.shields.io/codecov/c/github/mattcarlotta/nextjs-ssr-kit)](https://codecov.io/gh/mattcarlotta/nextjs-ssr-kit) [![Dependencies](https://img.shields.io/david/mattcarlotta/nextjs-ssr-kit.svg?style=flat-square)](https://david-dm.org/mattcarlotta/nextjs-ssr-kit)
 
 ![bnej5es.png](https://i.imgur.com/bnej5es.png)
 
