@@ -18,6 +18,9 @@
 # eslint caches
 .caches
 
+# codecov token
+.cc_token
+
 # misc
 .DS_Store
 
