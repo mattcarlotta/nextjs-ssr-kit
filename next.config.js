@@ -8,9 +8,9 @@ const { jsRule, mediaRule, styleRule } = require("./config/rules");
 
 const { baseURL, inDevelopment, analyze } = process.env;
 
-const filename = inDevelopment
-	? paths.staticCSSDevPath
-	: paths.staticCSSProdPath;
+const isDev = Boolean(inDevelopment);
+
+const filename = isDev ? paths.staticCSSDevPath : paths.staticCSSProdPath;
 
 const chunkFilename = filename;
 
@@ -41,8 +41,8 @@ module.exports = {
 			jsRule({
 				loader: "eslint-loader",
 				options: {
-					cache: Boolean(inDevelopment),
-					emitWarning: Boolean(inDevelopment),
+					cache: isDev,
+					emitWarning: isDev,
 				},
 			}),
 			/* handle image assets */
