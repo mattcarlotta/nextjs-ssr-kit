@@ -105,29 +105,29 @@ git clone git@github.com:mattcarlotta/nextjs-ssr-kit.git
 
 ## Commands
 
-| `yarn <command>`     | Description                                                              |
-| -------------------- | ------------------------------------------------------------------------ |
-| `analyze`            | Compiles NextJS/API apps and spawns webpack chunk distribution charts.   |
-| `compile`            | Compiles API application to a `build` folder.                            |
-| `checkbuild`         | Checks to see if the `.next/static` folder is ES5 compliant (for IE11).  |
-| `dev`                | Starts development server (`localhost:5000`).                            |
-| `lint`               | Lints all `.js` files.                                                   |
-| `lint:back`          | Lints all of API's `.js` files.                                          |
-| `lint:front`         | Lints all of NextJS's `.js` files.                                       |
-| `lint:styles`        | Lints all of NextJS's `.scss` files.                                     |
-| `build`              | Compiles NextJS application to a `.next/static` folder.                  |
-| `production`         | Executes `build` and `compile` commands in sequence.                     |
-| `start`              | Starts a production server at `localhost:8080` (must run `production`).† |
-| `test`               | Runs `.test.js` files for the NextJS and API.                            |
-| `test:front`         | Runs `.test.js` files for the NextJS only.                               |
-| `test:frontcov`      | Runs `.test.js` files for the NextJS with code coverage.                 |
-| `test:frontwatch`    | Runs and watches changed `.test.js` files for the NextJS.                |
-| `test:frontwatchall` | Runs and watches all `.test.js` files for the NextJS.                    |
-| `test:back`          | Runs `.test.js` files for the API only.                                  |
-| `test:backcov`       | Runs `.test.js` files for the API with code coverage.                    |
-| `test:backwatch`     | Runs and watches `.test.js` files for the API.                           |
+| `yarn <command>`     | Description                                                                    |
+| -------------------- | ------------------------------------------------------------------------------ |
+| `analyze`            | Compiles NextJS/API apps and spawns webpack chunk distribution charts.         |
+| `build`              | Compiles NextJS application to a `.next/static` folder.                        |
+| `compile`            | Compiles API application to a `build` folder.                                  |
+| `checkbuild`         | Checks to see if the `.next/static` folder is ES5 compliant (for IE11).        |
+| `dev`                | Starts development server (`localhost:5000`).                                  |
+| `lint`               | Lints all `.js` files.                                                         |
+| `lint:back`          | Lints all of API's `.js` files.                                                |
+| `lint:front`         | Lints all of NextJS's `.js` files.                                             |
+| `lint:styles`        | Lints all of NextJS's `.scss` files.                                           |
+| `production`         | Executes `build` and `compile` commands in sequence.                           |
+| `start`              | Starts a production server at `localhost:8080` (must run `production` first).† |
+| `test`               | Runs `.test.js` files for the NextJS and API.                                  |
+| `test:front`         | Runs `.test.js` files for the NextJS only.                                     |
+| `test:frontcov`      | Runs `.test.js` files for the NextJS with code coverage.                       |
+| `test:frontwatch`    | Runs and watches changed `.test.js` files for the NextJS.                      |
+| `test:frontwatchall` | Runs and watches all `.test.js` files for the NextJS.                          |
+| `test:back`          | Runs `.test.js` files for the API only.                                        |
+| `test:backcov`       | Runs `.test.js` files for the API with code coverage.                          |
+| `test:backwatch`     | Runs and watches `.test.js` files for the API.                                 |
 
-† Note: Before running this command, you must edit the <a href="https://github.com/mattcarlotta/NextJS-ssr-kit/blob/master/env/.env.production#L4">env/.env.production</a> file and update the `baseURL` from `http://localhost:8080/api/` to include your remote server address!
+† Note: Before running this command, you must edit the <a href="https://github.com/mattcarlotta/NextJS-ssr-kit/blob/master/env/.env.production#L4">env/.env.production</a> file and update the `baseURL` from `http://localhost:8080/api/` to include your remote server address.
 
 <hr />
 
