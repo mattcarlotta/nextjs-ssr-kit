@@ -283,7 +283,7 @@ Click <a href="https://github.com/mattcarlotta/NextJS-ssr-kit/blob/master/packag
 
 ## NextJS and API Integrations
 
-By default, all root directories within the `src` folder, as well as within the `server` folders are aliased (`~`). This means you can refer to their child root directories by using the ~ symbol followed by the child folder name. For example, in the API (custom Express server inside `server`): `~controllers`, refers to the `server/controllers` folder; or, for example, in the `src` directory: `~components` refers to the `src/components` folder directory. This allows for rapid development when referring to reusable components or functions as it eliminates the hassle of traversing the folder tree for relative pathing!
+By default, all directories within the `src` folder, as well as within the `server` folders are aliased (`~`). This means you can refer to their child root directories by using the ~ symbol followed by the child folder name. For example, in the API: `~controllers`, refers to the `server/controllers` folder; or, for example, in the `src` directory: `~components` refers to the `src/components` folder directory. This allows for rapid development when referring to reusable components or functions as it eliminates the hassle of traversing the folder tree for relative pathing!
 
 <hr />
 
