@@ -1,6 +1,6 @@
 {
 	"name": "nextjs-ssr-kit",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"description": "A fullstack MERN SSR boilerplate.",
 	"repository": "https://github.com/mattcarlotta/nextjs-ssr-kit",
 	"author": "Matt Carlotta",
@@ -14,7 +14,7 @@
 		"dev": "cross-env NODE_ENV=development nodemon --exec babel-node ./server/app.js",
 		"lint": "npm run lint:front && npm run lint:back && npm run lint:styles",
 		"lint:back": "eslint -c ./server/.eslintrc --ignore-path ./server/.eslintignore ./server --ext .js",
-		"lint:front": "eslint ./ --ext .js,.jsx",
+		"lint:front": "eslint -c ./src/.eslintrc --ignore-path ./src/.eslintignore ./src --ext .js,.jsx",
 		"lint:styles": "stylelint **/*.scss",
 		"production": "npm run build && npm run compile",
 		"start": "cross-env NODE_ENV=production node ./build/app.js",
@@ -22,14 +22,28 @@
 		"test:back": "NODE_ENV=test jest --config ./server/jest.json",
 		"test:backcov": "NODE_ENV=test jest --config ./server/jest.json --coverage",
 		"test:backwatch": "NODE_ENV=test jest --config ./server/jest.json --passWithNoTests --watchAll",
-		"test:front": "NODE_ENV=test jest --config ./jest.json",
-		"test:frontcov": "NODE_ENV=test jest --config ./jest.json --coverage",
-		"test:frontwatch": "NODE_ENV=test jest --config ./jest.json --watch --onlyChanged",
-		"test:frontwatchall": "NODE_ENV=test jest --config ./jest.json --watchAll"
+		"test:front": "NODE_ENV=test jest --config ./src/jest.json",
+		"test:frontcov": "NODE_ENV=test jest --config ./src/jest.json --coverage",
+		"test:frontwatch": "NODE_ENV=test jest --config ./src/jest.json --watch --onlyChanged",
+		"test:frontwatchall": "NODE_ENV=test jest --config ./src/jest.json --watchAll"
+	},
+	"lint-staged": {
+		"*.{js,jsx}": [
+			"npm run lint:front",
+			"npm run lint:back",
+			"npm run test:front",
+			"npm run test:back"
+		],
+		"*.scss": [
+			"stylelint **/*.scss"
+		],
+		"*.{json,md}": [
+			"prettier --write"
+		]
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "npm run lint && npm run test"
+			"pre-commit": "lint-staged"
 		}
 	},
 	"dependencies": {
@@ -102,6 +116,7 @@
 		"jest-resolve": "^24.9.0",
 		"jest-styled-components": "^6.3.4",
 		"jsdom": "^15.2.1",
+		"lint-staged": "^9.5.0",
 		"node-sass": "^4.13.0",
 		"nodemon": "^2.0.2",
 		"postcss-flexbugs-fixes": "^4.1.0",

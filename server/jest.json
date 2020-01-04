@@ -2,11 +2,21 @@
 	"testEnvironment": "node",
 	"verbose": false,
 	"clearMocks": true,
-	"modulePaths": ["<rootDir>", "node_modules"],
+	"modulePaths": ["<rootDir>/server", "node_modules"],
 	"setupFilesAfterEnv": ["<rootDir>/helpers/setupTests.js"],
 	"transform": {
 		"^.+\\.(js)$": "babel-jest"
 	},
+	"testPathIgnorePatterns": [
+		"<rootDir>/.next",
+		"<rootDir>/config",
+		"<rootDir>/node_modules",
+		"<rootDir>/public",
+		"<rootDir>/scripts",
+		"<rootDir>/src",
+		"<rootDir>/babel.config.js",
+		"<rootDir>/next.config.js"
+	],
 	"globalSetup": "<rootDir>/helpers/globalSetup.js",
 	"globalTeardown": "<rootDir>/helpers/teardownDB.js",
 	"moduleFileExtensions": ["js", "json"]

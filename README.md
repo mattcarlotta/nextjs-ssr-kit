@@ -14,13 +14,15 @@
 
 [Example API](#example-api)
 
-[NextJS Configuration](#NextJS-configuration)
+[NextJS Configuration](#nextjs-configuration)
 
 [API Configuration](#api-configuration)
 
+[Misc Configurations](#misc-configurations)
+
 [Packages Incorporated](#packages-incorporated)
 
-[NextJS and API Integrations](#NextJS-and-api-integrations)
+[NextJS and API Integrations](#nextjs-and-api-integrations)
 
 [Known Issues](#known-issues)
 
@@ -48,21 +50,14 @@
 <summary>Click to expand project structure</summary>
 <pre><code>
 ├── .next
-├── actions
 ├── build
-├── components
 ├── config
-├── env
-├── images
-├── pages
-├── paths
 ├── public
-├── reducers
-├── sagas
 ├── scripts
 ├── server
 |   ├── controllers
 |   ├── database
+|   ├── env
 |   ├── helpers
 |   ├── middlewares
 |   ├── models
@@ -71,16 +66,27 @@
 |   ├── .eslintrc
 |   ├── app.js
 |   └── jest.json
-├── styles
-├── types
-├── utils
+|
+├── src
+|   ├── actions
+|   ├── components
+|   ├── images
+|   ├── pages
+|   ├── reducers
+|   ├── sagas
+|   ├── store
+|   ├── styles
+|   ├── types
+|   ├── utils
+|   ├── .eslintignore
+|   ├── .eslintrc
+|   ├── .stylelintrc
+|   └── jest.json
+|
 ├── .browserslistrc
-├── .eslintignore
-├── .eslintrc
 ├── .npmrc
 ├── .prettierc
 ├── babel.config.js
-├── jest.json
 ├── next.config.json
 └── nodemon.json
 </code></pre>
@@ -107,25 +113,25 @@ git clone git@github.com:mattcarlotta/nextjs-ssr-kit.git
 
 | `yarn <command>`     | Description                                                                    |
 | -------------------- | ------------------------------------------------------------------------------ |
-| `analyze`            | Compiles NextJS/API apps and spawns webpack chunk distribution charts.         |
-| `build`              | Compiles NextJS application to a `.next/static` folder.                        |
-| `compile`            | Compiles API application to a `build` folder.                                  |
+| `analyze`            | Compiles `src`/`server` apps and spawns webpack chunk distribution charts.     |
+| `build`              | Compiles `src` application to a `.next/static` folder.                         |
+| `compile`            | Compiles `server` application to a `build` folder.                             |
 | `checkbuild`         | Checks to see if the `.next/static` folder is ES5 compliant (for IE11).        |
 | `dev`                | Starts development server (`localhost:5000`).                                  |
-| `lint`               | Lints all `.js` files.                                                         |
-| `lint:back`          | Lints all of API's `.js` files.                                                |
-| `lint:front`         | Lints all of NextJS's `.js` files.                                             |
-| `lint:styles`        | Lints all of NextJS's `.scss` files.                                           |
+| `lint`               | Executes `lint:back`, `lint:front`, and `lint:styles` in sequence.             |
+| `lint:back`          | Lints all of `.js` files in `server`.                                          |
+| `lint:front`         | Lints all of NextJS's `.js` files in `src`.                                    |
+| `lint:styles`        | Lints all of NextJS's `.scss` files in `src`.                                  |
 | `production`         | Executes `build` and `compile` commands in sequence.                           |
 | `start`              | Starts a production server at `localhost:8080` (must run `production` first).† |
-| `test`               | Runs `.test.js` files for the NextJS and API.                                  |
-| `test:front`         | Runs `.test.js` files for the NextJS only.                                     |
-| `test:frontcov`      | Runs `.test.js` files for the NextJS with code coverage.                       |
-| `test:frontwatch`    | Runs and watches any changed `.js` files for the NextJS.                       |
-| `test:frontwatchall` | Runs and watches all `.test.js` files for the NextJS.                          |
-| `test:back`          | Runs `.test.js` files for the API only.                                        |
-| `test:backcov`       | Runs `.test.js` files for the API with code coverage.                          |
-| `test:backwatch`     | Runs and watches all `.test.js` files for the API.                             |
+| `test`               | Runs `.test.js` files for `src` and `server`.                                  |
+| `test:front`         | Runs `.test.js` files for `src` only.                                          |
+| `test:frontcov`      | Runs `.test.js` files for `src` with code coverage.                            |
+| `test:frontwatch`    | Runs and watches any changed `.js` files in `src`.                             |
+| `test:frontwatchall` | Runs and watches all `.test.js` files in `src`.                                |
+| `test:back`          | Runs `.test.js` files for `server` only.                                       |
+| `test:backcov`       | Runs `.test.js` files for `server` with code coverage.                         |
+| `test:backwatch`     | Runs and watches all `.test.js` files for `server`.                            |
 
 † Note: Before running this command, you must edit the <a href="https://github.com/mattcarlotta/NextJS-ssr-kit/blob/master/env/.env.production#L4">env/.env.production</a> file and update the `baseURL` from `http://localhost:8080/api/` to include your remote server address.
 
@@ -147,33 +153,27 @@ If you wish to utilize the API:
 <details>
 <summary>Click to expand NextJS configuration</summary>
 <pre><code>
-- actions: redux actions.
-- components: react components.
-- config: NextJS webpack supporting configuration files.
-- env: environment variables.
-- pages/_app.js: NextJS app configuration (redux + redux saga + global stylesheet).
-- pages/_document.js: NextJS document configuration for styled-components.
-- pages/_error.js: NextJS fallback 404 page.
-- paths: webpack paths.
-- reducers: redux reducers.
-- sagas: redux sagas.
-- scripts: custom scripts to handle building and compiling production assets.
-- server: custom Express API configuration.
-- store: redux store configuration.
-- styles: custom component/page styles.
-- types: redux constants.
-- utils/__mocks__/mockAxios.js: a mocked axios instance for testing.
-- utils/setupTest/index.js: enzyme test setup for your React components.
-- utils/axiosConfig/index.js: custom axios configuration.
-- utils/parseResponse/index.js: custom saga functions functions.
-- .browserslistrc: browsers list config (for babel transpiling).
-- .prettierc: prettier config.
-- .eslintignore: NextJS eslint config.
-- .eslintrc: NextJS eslint ignore config.
-- babel.config.js: babel config.
-- jest.json: jest config for NextJS.
-- next.config.js: NextJS webpack config (added support for CSS and Image imports).
-- nodemon.json: nodemon configuration for server restarts.
+- public: NextJS public folder.
+- src/actions: redux actions.
+- src/components: react components.
+- src/images: NextJS app images.
+- src/pages/_app.js: NextJS app configuration (redux + redux saga + global stylesheet).
+- src/pages/_document.js: NextJS document configuration for styled-components.
+- src/pages/_error.js: NextJS fallback 404 page.
+- src/reducers: redux reducers.
+- src/sagas: redux sagas.
+- src/store: redux store configuration.
+- src/styles: custom component/page styles.
+- src/types: redux constants.
+- src/utils/__mocks__/mockAxios.js: a mocked axios instance for testing.
+- src/utils/setupTest/index.js: enzyme test setup for your React components.
+- src/utils/axiosConfig/index.js: custom axios configuration.
+- src/utils/parseResponse/index.js: custom saga functions functions.
+- src/.eslintignore: NextJS eslint config.
+- src/.eslintrc: NextJS eslint ignore config.
+- src/.stylelintrc: stylelint config.
+- src/jest.json: jest config for NextJS.
+- next.config.js: custom NextJS webpack config.
 </code></pre>
 </details>
 <br />
@@ -185,6 +185,7 @@ If you wish to utilize the API:
 <pre><code>
 - server/controllers: express route controllers.
 - server/database: mongoose connection to local mongodb.
+- server/env: environment variables.
 - server/helpers: configurations for running a test environment and misc. helper functions.
 - server/middlewares: express middlewares.
 - server/models: mongoose models for a local mongodb.
@@ -194,6 +195,24 @@ If you wish to utilize the API:
 - server/.eslintrc: API eslint ignore config.
 - server/app.js: API initialization configuration (using babel-node for ES6 import/export syntax)
 - server/jest.json: API jest config.
+</code></pre>
+</details>
+<br />
+
+## Misc Configurations
+
+<details>
+<summary>Click to expand misc configurations</summary>
+<pre><code>
+- .next: NextJS (src) compiled source.
+- build: API (server) compiled source.
+- config: webpack supporting configuration files.
+- scripts: custom scripts to handle building and compiling production assets.
+- .browserslistrc: browsers list config (for babel transpiling).
+- .prettierc: prettier config.
+- .npmrc: yarn config.
+- babel.config.js: babel config.
+- nodemon.json: nodemon configuration for server restarts.
 </code></pre>
 </details>
 <br />
@@ -264,7 +283,7 @@ Click <a href="https://github.com/mattcarlotta/NextJS-ssr-kit/blob/master/packag
 
 ## NextJS and API Integrations
 
-By default, all root directories within the main application (with <a href="https://github.com/mattcarlotta/NextJS-ssr-kit/blob/master/babel.config.js#L4">exceptions</a>), as well as within the `server` folders are aliased (`~`). This means you can refer to the root directories by using the ~ symbol followed by the folder name. For example, in the API (custom Express server inside `server`): `~controllers`, refers to the `server/controllers` folder; or, for example, in the main directory: `~components` refers to the `components` folder directory. This allows for rapid development when referring to reusable components or functions as it eliminates the hassle of traversing the folder tree for relative pathing!
+By default, all root directories within the `src` folder, as well as within the `server` folders are aliased (`~`). This means you can refer to their child root directories by using the ~ symbol followed by the child folder name. For example, in the API (custom Express server inside `server`): `~controllers`, refers to the `server/controllers` folder; or, for example, in the `src` directory: `~components` refers to the `src/components` folder directory. This allows for rapid development when referring to reusable components or functions as it eliminates the hassle of traversing the folder tree for relative pathing!
 
 <hr />
 

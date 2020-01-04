@@ -2,7 +2,7 @@
 /* eslint-disable */
 const fs = require("fs-extra");
 const chalk = require("chalk");
-const execAsync = require("../utils/execAsync");
+const execAsync = require("../config/execAsync");
 
 const { log } = console;
 

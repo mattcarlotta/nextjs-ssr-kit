@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* eslint-disable */
 const chalk = require("chalk");
-const execAsync = require("../utils/execAsync");
+const execAsync = require("../config/execAsync");
 
 const { log } = console;
 
