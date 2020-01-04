@@ -1,7 +1,7 @@
 import app from "~helpers/setup";
 import * as userRoutes from "~controllers/user";
 
-jest.mock("controllers/user", () => ({
+jest.mock("~controllers/user", () => ({
 	getUsers: jest.fn((req, res, done) => done()),
 	createUser: jest.fn((req, res, done) => done()),
 	deleteUser: jest.fn((req, res, done) => done()),
