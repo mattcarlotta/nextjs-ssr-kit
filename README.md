@@ -121,11 +121,11 @@ git clone git@github.com:mattcarlotta/nextjs-ssr-kit.git
 | `test`               | Runs `.test.js` files for the NextJS and API.                                  |
 | `test:front`         | Runs `.test.js` files for the NextJS only.                                     |
 | `test:frontcov`      | Runs `.test.js` files for the NextJS with code coverage.                       |
-| `test:frontwatch`    | Runs and watches changed `.test.js` files for the NextJS.                      |
+| `test:frontwatch`    | Runs and watches any changed `.js` files for the NextJS.                       |
 | `test:frontwatchall` | Runs and watches all `.test.js` files for the NextJS.                          |
 | `test:back`          | Runs `.test.js` files for the API only.                                        |
 | `test:backcov`       | Runs `.test.js` files for the API with code coverage.                          |
-| `test:backwatch`     | Runs and watches `.test.js` files for the API.                                 |
+| `test:backwatch`     | Runs and watches all `.test.js` files for the API.                             |
 
 † Note: Before running this command, you must edit the <a href="https://github.com/mattcarlotta/NextJS-ssr-kit/blob/master/env/.env.production#L4">env/.env.production</a> file and update the `baseURL` from `http://localhost:8080/api/` to include your remote server address.
 
