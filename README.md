@@ -88,7 +88,7 @@
 1 - Clone the repository.
 
 ```
-git clone git@github.com:mattcarlotta/nextjs-ssr-kit.git
+git clone --single-branch --branch experimental git@github.com:mattcarlotta/nextjs-ssr-kit.git
 ```
 
 2 - Run `yarn install` to install dependencies.
