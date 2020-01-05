@@ -191,7 +191,7 @@ If you wish to utilize the API:
 
 ## Packages Incorporated
 
-Click <a href="https://github.com/mattcarlotta/NextJS-ssr-kit/blob/master/package.json">here</a> to see latest versions.
+Click <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/blob/experimental/package.json">here</a> to see latest versions.
 
 ### NextJS Specfic
 
