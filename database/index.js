@@ -1,7 +1,6 @@
-/* istanbul ignore file */
-import bluebird from "bluebird";
-import mongoose from "mongoose";
-import chalk from "chalk";
+const bluebird = require("bluebird");
+const mongoose = require("mongoose");
+const chalk = require("chalk");
 
 const { log } = console;
 const { NODE_ENV, DATABASE, inTesting } = process.env;
@@ -15,7 +14,7 @@ const options = {
 	useUnifiedTopology: true, // avoids DeprecationWarning: current Server Discovery and Monitoring engine is deprecated
 };
 
-export const connectDatabase = () =>
+module.exports.connectDatabase = () =>
 	mongoose.createConnection(DATABASE, options);
 
 //= ===========================================================//
@@ -69,8 +68,3 @@ if (!inTesting) {
 		});
 	});
 }
-
-module.exports = {
-	connectDatabase,
-	options,
-};

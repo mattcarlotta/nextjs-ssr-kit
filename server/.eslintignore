@@ -1,8 +1,0 @@
-.json
-node_modules
-.next
-build
-src
-**/coverage
-babel.config.js
-next.config.js
