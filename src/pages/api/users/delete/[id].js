@@ -1,14 +1,17 @@
 import { model } from "mongoose";
+import withMiddleware from "~middlewares";
 
 const User = model("user");
 
-export default async (req, res) => {
+const deleteUser = async (req, res, err) => {
 	try {
+		if (err) throw err;
+
 		const { id: _id } = req.query;
-		if (!_id) throw Error("Missing user delete id parameter.");
+		if (!_id) throw String("Missing user delete id parameter.");
 
 		const existingUser = await User.findOne({ _id });
-		if (!existingUser) throw Error("Unable to locate that user for deletion.");
+		if (!existingUser) throw String("Unable to locate that user for deletion.");
 
 		await existingUser.deleteOne();
 
@@ -19,3 +22,5 @@ export default async (req, res) => {
 		res.status(400).json({ err: err.toString() });
 	}
 };
+
+export default (req, res) => withMiddleware(req, res, deleteUser);

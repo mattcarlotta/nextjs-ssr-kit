@@ -1,9 +1,12 @@
 import { model } from "mongoose";
+import withMiddleware from "~middlewares";
 
 const User = model("user");
 
-export default async (_, res) => {
+const getUsers = async (_, res) => {
 	const users = await User.find({});
 
 	res.status(200).send({ users });
 };
+
+export default (req, res) => withMiddleware(req, res, getUsers);

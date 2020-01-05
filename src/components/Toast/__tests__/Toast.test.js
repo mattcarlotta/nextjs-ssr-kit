@@ -1,7 +1,7 @@
 import {
 	FaInfo,
 	FaCheck,
-	FaTimes,
+	FaExclamationCircle,
 	FaExclamationTriangle,
 	FaBug,
 } from "react-icons/fa";
@@ -25,7 +25,7 @@ describe("Toast Message", () => {
 	it("renders an error icon message", () => {
 		const message = displayIcon("error");
 
-		expect(message).toEqual(<FaTimes style={style} />);
+		expect(message).toEqual(<FaExclamationCircle />);
 	});
 
 	it("renders a warning icon message", () => {

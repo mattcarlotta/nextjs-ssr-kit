@@ -1,9 +1,10 @@
 import isEmpty from "lodash/isEmpty";
 import { model } from "mongoose";
+import withMiddleware from "~middlewares";
 
 const User = model("user");
 
-export default async (req, res) => {
+const createUser = async (req, res) => {
 	try {
 		const {
 			email,
@@ -22,10 +23,10 @@ export default async (req, res) => {
 			!backgroundInfo ||
 			isEmpty(address)
 		)
-			throw Error("Missing user card creation parameters.");
+			throw String("Missing user card creation parameters.");
 
 		const userNameTaken = await User.findOne({ userName });
-		if (userNameTaken) throw Error("Error: That username is already in use!");
+		if (userNameTaken) throw String("That username is already in use!");
 
 		await User.create(req.body);
 		res.status(201).json({ message: `Successfully created ${userName}.` });
@@ -33,3 +34,5 @@ export default async (req, res) => {
 		res.status(400).json({ err: err.toString() });
 	}
 };
+
+export default (req, res) => withMiddleware(req, res, createUser);
