@@ -4,7 +4,7 @@ import Container from "~components/Container";
 import FlexCenter from "~components/FlexCenter";
 
 const NoData = () => (
-	<Container>
+	<Container innerStyle={{ height: 400 }}>
 		<FlexCenter
 			direction="column"
 			style={{ textAlign: "center", userSelect: "none", height: "100%" }}

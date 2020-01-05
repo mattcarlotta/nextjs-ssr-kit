@@ -19,10 +19,10 @@
 		"production": "npm run build && npm run compile",
 		"start": "cross-env NODE_ENV=production node ./build/app.js",
 		"test": "npm run test:back && npm run test:front",
-		"test:back": "NODE_ENV=test jest --config ./server/jest.json",
+		"test:back": "NODE_ENV=test jest --config ./server/jest.json --passWithNoTests",
 		"test:backcov": "NODE_ENV=test jest --config ./server/jest.json --coverage",
 		"test:backwatch": "NODE_ENV=test jest --config ./server/jest.json --passWithNoTests --watchAll",
-		"test:front": "NODE_ENV=test jest --config ./src/jest.json",
+		"test:front": "NODE_ENV=test jest --config ./src/jest.json --passWithNoTests",
 		"test:frontcov": "NODE_ENV=test jest --config ./src/jest.json --coverage",
 		"test:frontwatch": "NODE_ENV=test jest --config ./src/jest.json --watch --onlyChanged",
 		"test:frontwatchall": "NODE_ENV=test jest --config ./src/jest.json --watchAll"
