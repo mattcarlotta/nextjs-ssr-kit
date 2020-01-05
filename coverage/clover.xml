@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1578205647793" clover="3.2.0">
+  <project timestamp="1578205647793" name="All files">
+    <metrics statements="203" coveredstatements="203" conditionals="111" coveredconditionals="111" methods="75" coveredmethods="75" elements="389" coveredelements="389" complexity="0" loc="203" ncloc="203" packages="35" files="39" classes="39"/>
+    <package name="actions.Server">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/actions/Server/index.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="7" count="30" type="stmt"/>
+        <line num="13" count="30" type="stmt"/>
+        <line num="22" count="30" type="stmt"/>
+      </file>
+    </package>
+    <package name="actions.Users">
+      <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="6"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/actions/Users/index.js">
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="6"/>
+        <line num="9" count="30" type="stmt"/>
+        <line num="19" count="30" type="stmt"/>
+        <line num="28" count="30" type="stmt"/>
+        <line num="36" count="30" type="stmt"/>
+        <line num="45" count="30" type="stmt"/>
+        <line num="55" count="30" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Button">
+      <metrics statements="15" coveredstatements="15" conditionals="16" coveredconditionals="16" methods="5" coveredmethods="5"/>
+      <file name="Button.js" path="/home/m6d/Documents/nextjs-ssr/src/components/Button/Button.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="6" count="23" type="stmt"/>
+        <line num="17" count="5" type="stmt"/>
+      </file>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/components/Button/index.js">
+        <metrics statements="12" coveredstatements="12" conditionals="16" coveredconditionals="16" methods="4" coveredmethods="4"/>
+        <line num="7" count="23" type="cond" truecount="2" falsecount="0"/>
+        <line num="8" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="9" count="5" type="stmt"/>
+        <line num="14" count="23" type="cond" truecount="2" falsecount="0"/>
+        <line num="15" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="16" count="5" type="stmt"/>
+        <line num="32" count="23" type="cond" truecount="2" falsecount="0"/>
+        <line num="33" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="34" count="5" type="stmt"/>
+        <line num="37" count="23" type="cond" truecount="2" falsecount="0"/>
+        <line num="38" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="39" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Card">
+      <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+      <file name="Card.js" path="/home/m6d/Documents/nextjs-ssr/src/components/Card/Card.js">
+        <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="59" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Card.Divider">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/components/Card/Divider/index.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="13" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Container">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/components/Container/index.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.CreateIcon">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/components/CreateIcon/index.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.DeleteButton">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="DeleteButton.js" path="/home/m6d/Documents/nextjs-ssr/src/components/DeleteButton/DeleteButton.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.DisplayUserList">
+      <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/components/DisplayUserList/index.js">
+        <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="21" count="5" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="53" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.EditButton">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="EditButton.js" path="/home/m6d/Documents/nextjs-ssr/src/components/EditButton/EditButton.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.ExampleIcon">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/components/ExampleIcon/index.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.FieldError">
+      <metrics statements="3" coveredstatements="3" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/components/FieldError/index.js">
+        <metrics statements="3" coveredstatements="3" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="4" count="6" type="stmt"/>
+        <line num="5" count="148" type="cond" truecount="4" falsecount="0"/>
+        <line num="13" count="6" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.FormError">
+      <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/components/FormError/index.js">
+        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="5" count="16" type="cond" truecount="2" falsecount="0"/>
+        <line num="16" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.HomeIcon">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/components/HomeIcon/index.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Input">
+      <metrics statements="3" coveredstatements="3" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+      <file name="Input.js" path="/home/m6d/Documents/nextjs-ssr/src/components/Input/Input.js">
+        <metrics statements="3" coveredstatements="3" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="15" count="129" type="stmt"/>
+        <line num="39" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Modal">
+      <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/components/Modal/index.js">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="67" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Modal.ClickHandler">
+      <metrics statements="9" coveredstatements="9" conditionals="5" coveredconditionals="5" methods="5" coveredmethods="5"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/components/Modal/ClickHandler/index.js">
+        <metrics statements="9" coveredstatements="9" conditionals="5" coveredconditionals="5" methods="5" coveredmethods="5"/>
+        <line num="6" count="5" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="16" count="2" type="cond" truecount="5" falsecount="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="21" count="5" type="stmt"/>
+        <line num="22" count="8" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Modal.ModalContent">
+      <metrics statements="1" coveredstatements="1" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/components/Modal/ModalContent/index.js">
+        <metrics statements="1" coveredstatements="1" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="4" count="2" type="cond" truecount="2" falsecount="0"/>
+      </file>
+    </package>
+    <package name="components.NoData">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/components/NoData/index.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.SeedIcon">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/components/SeedIcon/index.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.StyledLink">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/components/StyledLink/index.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="6" count="5" type="stmt"/>
+        <line num="7" count="5" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.SubTitle">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/components/SubTitle/index.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.TextArea">
+      <metrics statements="3" coveredstatements="3" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/components/TextArea/index.js">
+        <metrics statements="3" coveredstatements="3" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="14" count="17" type="stmt"/>
+        <line num="44" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Toast">
+      <metrics statements="11" coveredstatements="11" conditionals="5" coveredconditionals="5" methods="2" coveredmethods="2"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/components/Toast/index.js">
+        <metrics statements="11" coveredstatements="11" conditionals="5" coveredconditionals="5" methods="2" coveredmethods="2"/>
+        <line num="12" count="30" type="stmt"/>
+        <line num="16" count="30" type="stmt"/>
+        <line num="17" count="13" type="cond" truecount="5" falsecount="0"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="23" count="6" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="31" count="30" type="stmt"/>
+        <line num="32" count="8" type="stmt"/>
+        <line num="41" count="30" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.UserForm">
+      <metrics statements="21" coveredstatements="21" conditionals="43" coveredconditionals="43" methods="7" coveredmethods="7"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/components/UserForm/index.js">
+        <metrics statements="21" coveredstatements="21" conditionals="43" coveredconditionals="43" methods="7" coveredmethods="7"/>
+        <line num="14" count="9" type="stmt"/>
+        <line num="16" count="9" type="stmt"/>
+        <line num="32" count="9" type="stmt"/>
+        <line num="33" count="5" type="stmt"/>
+        <line num="35" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="38" count="9" type="stmt"/>
+        <line num="40" count="9" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="43" count="9" type="stmt"/>
+        <line num="44" count="3" type="stmt"/>
+        <line num="57" count="3" type="stmt"/>
+        <line num="59" count="3" type="stmt"/>
+        <line num="61" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="72" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="73" count="2" type="stmt"/>
+        <line num="76" count="1" type="stmt"/>
+        <line num="91" count="1" type="stmt"/>
+        <line num="94" count="9" type="stmt"/>
+        <line num="95" count="14" type="stmt"/>
+        <line num="102" count="126" type="stmt"/>
+        <line num="148" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.UserListNavigation">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="UserListNavigation.js" path="/home/m6d/Documents/nextjs-ssr/src/components/UserListNavigation/UserListNavigation.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="35" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages">
+      <metrics statements="18" coveredstatements="18" conditionals="6" coveredconditionals="6" methods="11" coveredmethods="11"/>
+      <file name="_app.js" path="/home/m6d/Documents/nextjs-ssr/src/pages/_app.js">
+        <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="30" count="4" type="stmt"/>
+        <line num="31" count="4" type="stmt"/>
+      </file>
+      <file name="_error.js" path="/home/m6d/Documents/nextjs-ssr/src/pages/_error.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+      </file>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/pages/index.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+      </file>
+      <file name="users.js" path="/home/m6d/Documents/nextjs-ssr/src/pages/users.js">
+        <metrics statements="9" coveredstatements="9" conditionals="4" coveredconditionals="4" methods="6" coveredmethods="6"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="24" count="5" type="stmt"/>
+        <line num="29" count="5" type="stmt"/>
+        <line num="31" count="5" type="stmt"/>
+        <line num="33" count="5" type="stmt"/>
+        <line num="35" count="5" type="stmt"/>
+        <line num="37" count="5" type="stmt"/>
+        <line num="38" count="10" type="stmt"/>
+        <line num="74" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="reducers">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/reducers/index.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="5" count="30" type="stmt"/>
+      </file>
+    </package>
+    <package name="reducers.Server">
+      <metrics statements="7" coveredstatements="7" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/reducers/Server/index.js">
+        <metrics statements="7" coveredstatements="7" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <line num="3" count="30" type="stmt"/>
+        <line num="14" count="30" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="76" type="cond" truecount="4" falsecount="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="19" count="6" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="23" count="67" type="stmt"/>
+      </file>
+    </package>
+    <package name="reducers.Users">
+      <metrics statements="6" coveredstatements="6" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/reducers/Users/index.js">
+        <metrics statements="6" coveredstatements="6" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="3" count="30" type="stmt"/>
+        <line num="14" count="30" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="78" type="cond" truecount="3" falsecount="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="20" count="7" type="stmt"/>
+        <line num="27" count="70" type="stmt"/>
+      </file>
+    </package>
+    <package name="sagas">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/sagas/index.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="sagas.Users">
+      <metrics statements="37" coveredstatements="37" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/sagas/Users/index.js">
+        <metrics statements="37" coveredstatements="37" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
+        <line num="20" count="6" type="stmt"/>
+        <line num="21" count="6" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
+        <line num="24" count="5" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="45" count="3" type="stmt"/>
+        <line num="46" count="3" type="stmt"/>
+        <line num="47" count="2" type="stmt"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="74" count="3" type="stmt"/>
+        <line num="75" count="3" type="stmt"/>
+        <line num="76" count="2" type="stmt"/>
+        <line num="78" count="2" type="stmt"/>
+        <line num="80" count="2" type="stmt"/>
+        <line num="82" count="2" type="stmt"/>
+        <line num="84" count="1" type="stmt"/>
+        <line num="85" count="1" type="stmt"/>
+        <line num="100" count="3" type="stmt"/>
+        <line num="101" count="3" type="stmt"/>
+        <line num="102" count="2" type="stmt"/>
+        <line num="104" count="2" type="stmt"/>
+        <line num="106" count="1" type="stmt"/>
+        <line num="107" count="1" type="stmt"/>
+        <line num="125" count="3" type="stmt"/>
+        <line num="126" count="3" type="stmt"/>
+        <line num="127" count="2" type="stmt"/>
+        <line num="129" count="2" type="stmt"/>
+        <line num="131" count="2" type="stmt"/>
+        <line num="133" count="2" type="stmt"/>
+        <line num="135" count="1" type="stmt"/>
+        <line num="136" count="1" type="stmt"/>
+        <line num="148" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="store">
+      <metrics statements="3" coveredstatements="3" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/store/index.js">
+        <metrics statements="3" coveredstatements="3" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="types">
+      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/types/index.js">
+        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="30" type="stmt"/>
+        <line num="2" count="30" type="stmt"/>
+        <line num="3" count="30" type="stmt"/>
+        <line num="5" count="30" type="stmt"/>
+        <line num="6" count="30" type="stmt"/>
+        <line num="7" count="30" type="stmt"/>
+        <line num="8" count="30" type="stmt"/>
+        <line num="9" count="30" type="stmt"/>
+        <line num="10" count="30" type="stmt"/>
+      </file>
+    </package>
+    <package name="utils.parseResponse">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="index.js" path="/home/m6d/Documents/nextjs-ssr/src/utils/parseResponse/index.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="22" count="6" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

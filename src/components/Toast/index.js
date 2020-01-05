@@ -4,9 +4,9 @@ import { toast } from "react-toastify";
 import {
 	FaInfo,
 	FaCheck,
-	FaTimes,
 	FaExclamationTriangle,
 	FaBug,
+	FaExclamationCircle,
 } from "react-icons/fa";
 
 const style = {
@@ -20,7 +20,7 @@ export const displayIcon = type => {
 		case "info":
 			return <FaInfo />;
 		case "error":
-			return <FaTimes style={style} />;
+			return <FaExclamationCircle />;
 		case "warning":
 			return <FaExclamationTriangle style={style} />;
 		default:

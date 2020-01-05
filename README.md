@@ -44,6 +44,8 @@
 
 ✔️ Custom Express server with interactive API.
 
+Don't want to use a custom Express server? No problem, checkout the <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/tree/experimental">experimental</a> branch for an all-in-one solution.
+
 ## Project Structure
 
 <details>
