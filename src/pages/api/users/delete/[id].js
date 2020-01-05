@@ -23,4 +23,4 @@ const deleteUser = async (req, res, err) => {
 	}
 };
 
-export default (req, res) => withMiddleware(req, res, deleteUser);
+export default withMiddleware(deleteUser);

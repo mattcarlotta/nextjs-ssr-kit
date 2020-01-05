@@ -7,7 +7,7 @@ import pify from "pify";
 
 const { inProduction } = process.env;
 
-export default async (req, res, cb) => {
+export default cb => async (req, res) => {
 	try {
 		morgan.token("date", () => moment().format("MMMM Do YYYY, h:mm:ss a"));
 
@@ -31,7 +31,7 @@ export default async (req, res, cb) => {
 
 		await pify(bodyParser.urlencoded({ extended: true }))(req, res);
 
-		cb(req, res);
+		return cb(req, res);
 	} catch (error) {
 		return res.status(404).json({ err: err.toString() });
 	}

@@ -9,4 +9,4 @@ const getUsers = async (_, res) => {
 	res.status(200).send({ users });
 };
 
-export default (req, res) => withMiddleware(req, res, getUsers);
+export default withMiddleware(getUsers);

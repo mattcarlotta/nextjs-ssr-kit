@@ -26,4 +26,4 @@ const updateUser = async (req, res) => {
 	}
 };
 
-export default (req, res) => withMiddleware(req, res, updateUser);
+export default withMiddleware(updateUser);

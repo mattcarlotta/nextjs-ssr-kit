@@ -16,4 +16,4 @@ const seedDB = async (_, res) => {
 	}
 };
 
-export default (req, res) => withMiddleware(req, res, seedDB);
+export default withMiddleware(seedDB);

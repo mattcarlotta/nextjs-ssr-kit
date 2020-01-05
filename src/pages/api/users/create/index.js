@@ -35,4 +35,4 @@ const createUser = async (req, res) => {
 	}
 };
 
-export default (req, res) => withMiddleware(req, res, createUser);
+export default withMiddleware(createUser);
