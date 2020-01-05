@@ -33,7 +33,7 @@ export default async (req, res, cb) => {
 
 		cb(req, res);
 	} catch (error) {
-		return res.status(404).json({ err: "Test" });
+		return res.status(404).json({ err: err.toString() });
 	}
 };
 /* eslint enable */
