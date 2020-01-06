@@ -1,10 +1,15 @@
 const { readdirSync, statSync } = require("fs");
 const { resolve } = require("path");
 
+const ignoreFolders = /(\.next)|(\.git)|(node_modules)|(public)|(server)|(src)/;
+
 const readDirectory = path =>
 	readdirSync(path).reduce((acc, folder) => {
 		const dirPath = `${path}${folder}`;
-		if (statSync(resolve(dirPath)).isDirectory()) {
+		if (
+			!folder.match(ignoreFolders) &&
+			statSync(resolve(dirPath)).isDirectory()
+		) {
 			acc[`~${folder.replace(/[^\w\s]/gi, "")}`] = dirPath;
 		}
 
@@ -12,8 +17,8 @@ const readDirectory = path =>
 	}, {});
 
 const alias = {
+	...readDirectory("./"),
 	...readDirectory("./src/"),
-	...readDirectory("./server/"),
 };
 
 module.exports = api => {

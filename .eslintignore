@@ -1,8 +1,9 @@
-.json
-node_modules
 .next
+*.json
 build
-src
+config
+node_modules
+middlewares
 **/coverage
 babel.config.js
 next.config.js

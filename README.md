@@ -28,8 +28,6 @@
 
 ## Pre-Configured Packages
 
-✔️ ES6 import/export syntax for the NextJS and API apps.
-
 ✔️ Redux + Redux + Redux Saga implementation.
 
 ✔️ Styled-components implementation.
@@ -42,9 +40,9 @@
 
 ✔️ Runs Eslint, Jest, and Stylelint before committing.
 
-✔️ Custom Express server with interactive API.
+✔️ Pre-configured interactive API.
 
-Don't want to use a custom Express server? No problem, checkout the <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/tree/experimental">experimental</a> branch for an all-in-one solution.
+Don't want to use a custom Express server? No problem, checkout the <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/tree/express">express</a> branch for an all-in-one solution.
 
 ## Project Structure
 
@@ -54,21 +52,11 @@ Don't want to use a custom Express server? No problem, checkout the <a href="htt
 ├── .next
 ├── build
 ├── config
+├── database
+├── env
+├── middlewares
+├── models
 ├── public
-├── scripts
-├── server
-|   ├── controllers
-|   ├── database
-|   ├── env
-|   ├── helpers
-|   ├── middlewares
-|   ├── models
-|   ├── routes
-|   ├── .eslintignore
-|   ├── .eslintrc
-|   ├── app.js
-|   └── jest.json
-|
 ├── src
 |   ├── actions
 |   ├── components
@@ -79,16 +67,16 @@ Don't want to use a custom Express server? No problem, checkout the <a href="htt
 |   ├── store
 |   ├── styles
 |   ├── types
-|   ├── utils
-|   ├── .eslintignore
-|   ├── .eslintrc
-|   ├── .stylelintrc
-|   └── jest.json
+|   └── utils
 |
 ├── .browserslistrc
+├── .eslintignore
+├── .eslintrc
 ├── .npmrc
 ├── .prettierc
+├── .stylelintrc
 ├── babel.config.js
+├── jest.json
 ├── next.config.json
 └── nodemon.json
 </code></pre>
@@ -102,7 +90,7 @@ Don't want to use a custom Express server? No problem, checkout the <a href="htt
 1 - Clone the repository.
 
 ```
-git clone git@github.com:mattcarlotta/nextjs-ssr-kit.git
+git clone --single-branch --branch master git@github.com:mattcarlotta/nextjs-ssr-kit.git
 ```
 
 2 - Run `yarn install` to install dependencies.
@@ -113,29 +101,21 @@ git clone git@github.com:mattcarlotta/nextjs-ssr-kit.git
 
 ## Commands
 
-| `yarn <command>`     | Description                                                                    |
-| -------------------- | ------------------------------------------------------------------------------ |
-| `analyze`            | Compiles `src`/`server` apps and spawns webpack chunk distribution charts.     |
-| `build`              | Compiles `src` application to a `.next/static` folder.                         |
-| `compile`            | Compiles `server` application to a `build` folder.                             |
-| `checkbuild`         | Checks to see if the `.next/static` folder is ES5 compliant (for IE11).        |
-| `dev`                | Starts development server (`localhost:5000`).                                  |
-| `lint`               | Executes `lint:back`, `lint:front`, and `lint:styles` in sequence.             |
-| `lint:back`          | Lints all of `.js` files in `server`.                                          |
-| `lint:front`         | Lints all of NextJS's `.js` files in `src`.                                    |
-| `lint:styles`        | Lints all of NextJS's `.scss` files in `src`.                                  |
-| `production`         | Executes `build` and `compile` commands in sequence.                           |
-| `start`              | Starts a production server at `localhost:8080` (must run `production` first).† |
-| `test`               | Runs `.test.js` files for `src` and `server`.                                  |
-| `test:front`         | Runs `.test.js` files for `src` only.                                          |
-| `test:frontcov`      | Runs `.test.js` files for `src` with code coverage.                            |
-| `test:frontwatch`    | Runs and watches any changed `.js` files in `src`.                             |
-| `test:frontwatchall` | Runs and watches all `.test.js` files in `src`.                                |
-| `test:back`          | Runs `.test.js` files for `server` only.                                       |
-| `test:backcov`       | Runs `.test.js` files for `server` with code coverage.                         |
-| `test:backwatch`     | Runs and watches all `.test.js` files for `server`.                            |
+| `yarn <command>` | Description                                                               |
+| ---------------- | ------------------------------------------------------------------------- |
+| `analyze`        | Compiles `src` app and spawns webpack chunk distribution charts.          |
+| `build`          | Compiles `src` application to a `.next/static` folder.                    |
+| `checkbuild`     | Checks to see if the `.next/static` folder is ES5 compliant (for IE11).   |
+| `dev`            | Starts development server (`localhost:3000`).                             |
+| `lint`           | Lints all `.js` files in `src`.                                           |
+| `lint:styles`    | Lints all `.scss` files in `src`.                                         |
+| `start`          | Starts a production server at `localhost:3000` (must run `build` first).† |
+| `test`           | Runs `.test.js` files for `src` only.                                     |
+| `test:cov`       | Runs `.test.js` files for `src` with code coverage.                       |
+| `test:watch`     | Runs and watches any changed `.js` files in `src`.                        |
+| `test:watchall`  | Runs and watches all `.test.js` files in `src`.                           |
 
-† Note: Before running this command, you must edit the <a href="https://github.com/mattcarlotta/NextJS-ssr-kit/blob/master/env/.env.production#L4">env/.env.production</a> file and update the `baseURL` from `http://localhost:8080/api/` to include your remote server address.
+† Note: Before running this command, you must edit the <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/env/.env.production#L2">env/.env.production</a> file and update the `baseURL` from `http://localhost:8080/api/` to include your remote server address.
 
 <hr />
 
@@ -146,7 +126,7 @@ Provided in this boilerplate is an example of how to integrate a RESTFUL API (ut
 If you wish to utilize the API:
 
 - <a href="https://docs.mongodb.com/manual/installation/#mongodb-community-edition">Install MongoDB</a> and make sure the service is up and running.
-- Navigate to `http://localhost:5000/users` to interact with the API from the NextJS-side.
+- Navigate to `http://localhost:3000/users` to interact with the API from the NextJS-side.
 
 <hr />
 
@@ -171,10 +151,10 @@ If you wish to utilize the API:
 - src/utils/setupTest/index.js: enzyme test setup for your React components.
 - src/utils/axiosConfig/index.js: custom axios configuration.
 - src/utils/parseResponse/index.js: custom saga functions functions.
-- src/.eslintignore: NextJS eslint config.
-- src/.eslintrc: NextJS eslint ignore config.
-- src/.stylelintrc: stylelint config.
-- src/jest.json: jest config for NextJS.
+- .eslintignore: NextJS eslint config.
+- .eslintrc: NextJS eslint ignore config.
+- .stylelintrc: stylelint config.
+- jest.json: jest config for NextJS.
 - next.config.js: custom NextJS webpack config.
 </code></pre>
 </details>
@@ -185,18 +165,10 @@ If you wish to utilize the API:
 <details>
 <summary>Click to expand API configuration</summary>
 <pre><code>
-- server/controllers: express route controllers.
-- server/database: mongoose connection to local mongodb.
-- server/env: environment variables.
-- server/helpers: configurations for running a test environment and misc. helper functions.
-- server/middlewares: express middlewares.
-- server/models: mongoose models for a local mongodb.
-- server/routes: express routes.
-- server/seeds: mongo seed file.
-- server/.eslintignore: API eslint config.
-- server/.eslintrc: API eslint ignore config.
-- server/app.js: API initialization configuration (using babel-node for ES6 import/export syntax)
-- server/jest.json: API jest config.
+- database: Mongo connection configuration.
+- middlewares: API middlewares.
+- models: Mongo models for Mongoose.
+- src/pages/api: API route controllers.
 </code></pre>
 </details>
 <br />
@@ -207,9 +179,7 @@ If you wish to utilize the API:
 <summary>Click to expand misc configurations</summary>
 <pre><code>
 - .next: NextJS (src) compiled source.
-- build: API (server) compiled source.
 - config: webpack supporting configuration files.
-- scripts: custom scripts to handle building and compiling production assets.
 - .browserslistrc: browsers list config (for babel transpiling).
 - .prettierc: prettier config.
 - .npmrc: yarn config.
@@ -223,7 +193,7 @@ If you wish to utilize the API:
 
 ## Packages Incorporated
 
-Click <a href="https://github.com/mattcarlotta/NextJS-ssr-kit/blob/master/package.json">here</a> to see latest versions.
+Click <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/package.json">here</a> to see latest versions.
 
 ### NextJS Specfic
 
@@ -271,8 +241,6 @@ Click <a href="https://github.com/mattcarlotta/NextJS-ssr-kit/blob/master/packag
 - <a href="https://github.com/expressjs/body-parser">Body Parser</a>
 - <a href="https://github.com/expressjs/compression">Compression</a>
 - <a href="https://github.com/motdotla/dotenv">DotENV</a>
-- <a href="https://github.com/eslint/eslint/">Eslint</a>
-- <a href="http://expressjs.com/">Express</a>
 - <a href="https://momentjs.com/timezone/">Moment Timezone</a>
 - <a href="https://mongoosejs.com/">Mongoose</a>
 - <a href="https://github.com/expressjs/morgan">Morgan</a>
@@ -285,16 +253,14 @@ Click <a href="https://github.com/mattcarlotta/NextJS-ssr-kit/blob/master/packag
 
 ## NextJS and API Integrations
 
-By default, all directories within the `src` folder, as well as within the `server` folders are aliased (`~`). This means you can refer to their child root directories by using the ~ symbol followed by the child folder name. For example, in the API: `~controllers`, refers to the `server/controllers` folder; or, for example, in the `src` directory: `~components` refers to the `src/components` folder directory. This allows for rapid development when referring to reusable components or functions as it eliminates the hassle of traversing the folder tree for relative pathing!
+By default, all directories within the root and `src` folders (with <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/babel.config.js#L4">exceptions</a>) are aliased (`~`). This means you can refer to their child root directories by using the ~ symbol followed by the child folder name. For example, `~middlewares`, refers to the root `middlewares` folder; or, for example, in the `src` directory: `~components` refers to the `src/components` folder directory. This allows for rapid development when referring to reusable components or functions as it eliminates the hassle of traversing the folder tree for relative pathing!
 
 <hr />
 
 ## Known Issues
 
-If you run into any issues, please fill out an issue report <a href="https://github.com/mattcarlotta/NextJS-ssr-kit/issues">here</a>.
+If you run into any issues, please fill out an issue report <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/issues">here</a>.
 
 ⚠️ (Status: Unresolved) - Importing a component or page that imports a `.css`, `.scss` or `.sass` file breaks `next/link` components. See <a href="https://github.com/zeit/next-plugins/issues/282">issue tracker</a>.
-
-⚠️ (Status: Unresolveable) - Saving files within the `server` folder or `next.config.js` file causes the entire process to restart (as intended); however, this causes webpack hot loading to be broken (due to the NextJS files being recompiled upon restart). That said, NextJS will automatically rebuild the `hot-loading.json` file and hot reloading will work after a few seconds.
 
 ⚠️ (Status: Unresolveable) - Adding `test.js` files within the `pages` folder causes NextJS to fail upon production compilation. Unfortunately, NextJS handles all files and folders within the `pages` file as reachable views. Instead, a workaround is to place a `__tests__` folder for `pages` at the root of the `components` folder.

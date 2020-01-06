@@ -1,4 +1,6 @@
-require("./server/env");
+require("./env");
+require("./database");
+require("./models");
 const { DefinePlugin } = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
@@ -6,7 +8,7 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 const paths = require("./config/paths");
 const { jsRule, mediaRule, styleRule } = require("./config/rules");
 
-const { baseURL, inDevelopment, analyze } = process.env;
+const { baseURL, DATABASE, inDevelopment, inTesting, analyze } = process.env;
 
 const inDev = Boolean(inDevelopment);
 
@@ -124,7 +126,9 @@ module.exports = {
 				/* envs for client */
 				new DefinePlugin({
 					"process.env": {
+						DATABASE: JSON.stringify(DATABASE),
 						inDevelopment: inDev,
+						inTesting: JSON.stringify(inTesting),
 						baseURL: JSON.stringify(baseURL),
 					},
 				}),

@@ -8,34 +8,24 @@
 	"private": false,
 	"scripts": {
 		"analyze": "rimraf .next/analyze && analyze=true npm run build",
-		"build": "NODE_ENV=production ./scripts/build.js",
-		"compile": "NODE_ENV=production ./scripts/compile.js",
+		"build": "NODE_ENV=production next build",
 		"checkbuild": "es-check es5 './.next/static/**/*.js'",
-		"dev": "cross-env NODE_ENV=development nodemon --exec babel-node ./server/app.js",
-		"lint": "npm run lint:front && npm run lint:back && npm run lint:styles",
-		"lint:back": "eslint -c ./server/.eslintrc --ignore-path ./server/.eslintignore ./server --ext .js",
-		"lint:front": "eslint -c ./src/.eslintrc --ignore-path ./src/.eslintignore ./src --ext .js,.jsx",
+		"dev": "NODE_env=development next dev",
+		"lint": "eslint -c ./.eslintrc --ignore-path ./.eslintignore ./src --ext .js,.jsx",
 		"lint:styles": "stylelint **/*.scss",
-		"production": "npm run build && npm run compile",
-		"start": "cross-env NODE_ENV=production node ./build/app.js",
-		"test": "npm run test:back && npm run test:front",
-		"test:back": "NODE_ENV=test jest --config ./server/jest.json --passWithNoTests",
-		"test:backcov": "NODE_ENV=test jest --config ./server/jest.json --coverage",
-		"test:backwatch": "NODE_ENV=test jest --config ./server/jest.json --passWithNoTests --watchAll",
-		"test:front": "NODE_ENV=test jest --config ./src/jest.json --passWithNoTests",
-		"test:frontcov": "NODE_ENV=test jest --config ./src/jest.json --coverage",
-		"test:frontwatch": "NODE_ENV=test jest --config ./src/jest.json --watch --onlyChanged",
-		"test:frontwatchall": "NODE_ENV=test jest --config ./src/jest.json --watchAll"
+		"start": "NODE_ENV=production next start -p 8080",
+		"test": "NODE_ENV=test jest --config ./jest.json --passWithNoTests",
+		"test:cov": "NODE_ENV=test jest --config ./jest.json --coverage",
+		"test:watch": "NODE_ENV=test jest --config ./jest.json --watch --onlyChanged",
+		"test:watchall": "NODE_ENV=test jest --config ./jest.json --watchAll"
 	},
 	"lint-staged": {
 		"*.{js,jsx}": [
-			"npm run lint:front",
-			"npm run lint:back",
-			"npm run test:front",
-			"npm run test:back"
+			"npm run lint",
+			"npm run test"
 		],
 		"*.scss": [
-			"stylelint **/*.scss"
+			"npm run lint:styles"
 		],
 		"*.{json,md}": [
 			"prettier --write"
@@ -53,8 +43,6 @@
 		"chalk": "^3.0.0",
 		"compression": "^1.7.4",
 		"dotenv": "^8.2.0",
-		"express": "^4.17.1",
-		"fs-extra": "^8.1.0",
 		"lodash": "^4.17.15",
 		"mini-css-extract-plugin": "^0.9.0",
 		"moment-timezone": "^0.5.27",
@@ -63,6 +51,7 @@
 		"next": "9.1.6",
 		"next-redux-saga": "^4.1.2",
 		"next-redux-wrapper": "^4.0.1",
+		"pify": "^4.0.1",
 		"react": "16.12.0",
 		"react-dom": "16.12.0",
 		"react-icons": "^3.8.0",
@@ -74,9 +63,7 @@
 		"webpack-bundle-analyzer": "^3.6.0"
 	},
 	"devDependencies": {
-		"@babel/cli": "^7.7.7",
 		"@babel/core": "^7.7.7",
-		"@babel/node": "^7.7.7",
 		"@zeit/next-css": "^1.0.1",
 		"@zeit/next-sass": "^1.0.1",
 		"autoprefixer": "^9.7.3",
@@ -131,7 +118,6 @@
 		"stylelint": "^12.0.0",
 		"stylelint-config-recommended": "^3.0.0",
 		"stylelint-scss": "^3.13.0",
-		"supertest": "^4.0.2",
 		"url-loader": "^3.0.0",
 		"webpack": "^4.41.5"
 	}
