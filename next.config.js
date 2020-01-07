@@ -20,7 +20,7 @@ module.exports = {
 		/* adds custom plugins to client and server */
 		config.plugins.push(...plugins(isServer));
 
-		/* adds custom split chunk optimatizations to client and server */
+		/* adds custom split chunk optimizations to client and server */
 		config.optimization.splitChunks.cacheGroups = optimizations(
 			isServer,
 			config,
