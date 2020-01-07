@@ -42,7 +42,7 @@
 
 ✔️ Pre-configured interactive API.
 
-Don't want to use a custom Express server? No problem, checkout the <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/tree/express">express</a> branch for an all-in-one solution.
+Want to use a custom Express server? Checkout the <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/tree/express">express</a> branch.
 
 ## Project Structure
 
