@@ -9,8 +9,6 @@ import GlobalStylesheet from "~styles/globalStylesheet";
 import toast from "~components/Toast";
 import "~styles/empty.css";
 
-const { inDevelopment } = process.env;
-
 export class MyApp extends App {
 	componentDidMount() {
 		toast({ type: "info", message: "Welcome to the NextJS SSR Kit!" });
@@ -47,6 +45,6 @@ export class MyApp extends App {
 	}
 }
 
-export default withRedux(configureStore, { debug: inDevelopment })(
+export default withRedux(configureStore, { debug: false })(
 	withReduxSaga(MyApp),
 );
