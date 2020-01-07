@@ -1,109 +1,88 @@
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const postcssNormalize = require("postcss-normalize");
-const autoprefixer = require("autoprefixer");
-const postcssFixes = require("postcss-flexbugs-fixes");
-const postcssEnv = require("postcss-preset-env")({
-	autoprefixer: {
-		flexbox: "no-2009",
-	},
-	stage: 3,
-});
+const {
+	fontsPublicPath,
+	fontsFolder,
+	imagesPublicPath,
+	imagesFolder,
+} = require("./paths");
+const { jsRule, mediaRule, styleRule } = require("./helpers");
 
 const { inDevelopment } = process.env;
 
-const inDev = Boolean(inDevelopment);
-const localIdentName = "[local]___[hash:base64:10]";
-const name = "[name]-[hash].[ext]";
+const inDev = inDevelopment === "true";
 
-/**
- * Helper function to create a Javascript webpack module rule.
- *
- * @function jsRule
- * @param {string} loader
- * @param {object} options
- * @returns {object}
- */
-const jsRule = ({ loader, options }) => ({
-	test: /\.(js|mjs|jsx|ts|tsx)$/,
-	exclude: /(node_modules)/,
-	use: [{ loader, options }],
-});
+const imagesRegex = /\.(jpe?g|png|svg|gif|ico|webp)$/;
+const fontsRegex = /\.(woff2|ttf|woff|eot)$/;
+const cssRegex = /\.css$/;
+const cssModuleRegex = /\.module\.css$/;
+const scssRegex = /\.scss$/;
+const scssModuleRegex = /\.module\.scss$/;
+const sassRegex = /\.sass$/;
+const sassModuleRegex = /\.module\.sass$/;
 
-/**
- * Helper function to create a media webpack module rule.
- *
- * @function mediaRule
- * @param {regex} test
- * @param {string} loader
- * @param {object} options
- * @returns {object}
- */
-const mediaRule = ({ test, loader, options }) => ({
-	test,
-	use: [
-		{
-			loader,
-			options: {
-				...options,
-				name,
-			},
+const styleRules = [
+	{
+		/* handles global CSS imports */
+		test: cssRegex,
+		exclude: cssModuleRegex,
+	},
+	{
+		/* handles CSS module imports */
+		test: cssRegex,
+		include: cssModuleRegex,
+		modules: true,
+	},
+	{
+		/* handles global SCSS imports */
+		test: scssRegex,
+		exclude: scssModuleRegex,
+	},
+	{
+		/* handles SCSS module imports */
+		test: scssRegex,
+		include: scssModuleRegex,
+		modules: true,
+	},
+	{
+		/* handles global SASS imports */
+		test: sassRegex,
+		exclude: sassModuleRegex,
+	},
+	{
+		/* handles SASS module imports */
+		test: sassRegex,
+		include: sassModuleRegex,
+		modules: true,
+	},
+];
+
+module.exports = isServer => [
+	/* lints js files */
+	jsRule({
+		loader: "eslint-loader",
+		options: {
+			cache: inDev,
+			emitWarning: inDev,
 		},
-	],
-});
-
-/**
- * Helper function to create a CSS/SCSS style webpack module rule.
- *
- * @function styleRule
- * @param {regex} test
- * @param {regex} include
- * @param {regex} exclude
- * @param {boolean} modules
- * @param {boolean} isServer
- * @returns {object}
- */
-const styleRule = ({
-	test,
-	include = undefined,
-	exclude = undefined,
-	modules = false,
-	isServer,
-}) => ({
-	test,
-	include,
-	exclude,
-	use: [
-		!isServer && inDev && "extracted-loader",
-		!isServer && MiniCssExtractPlugin.loader,
-		{
-			loader: isServer ? "css-loader/locals" : "css-loader",
-			options: {
-				modules,
-				minimize: !inDev,
-				sourceMap: inDev,
-				importLoaders: 1,
-				localIdentName,
-			},
+	}),
+	/* handle image assets */
+	mediaRule({
+		test: imagesRegex,
+		loader: "url-loader",
+		options: {
+			limit: 8192,
+			fallback: "file-loader",
+			publicPath: imagesPublicPath,
+			outputPath: imagesFolder,
 		},
-		{
-			loader: "postcss-loader",
-			options: {
-				ident: "postcss",
-				plugins: () => [
-					postcssFixes,
-					postcssEnv,
-					autoprefixer(),
-					postcssNormalize(),
-				],
-				sourceMap: !inDev,
-			},
+	}),
+	/* handle font assets */
+	mediaRule({
+		test: fontsRegex,
+		loader: "file-loader",
+		options: {
+			publicPath: fontsPublicPath,
+			outputPath: fontsFolder,
 		},
-		"sass-loader",
-	].filter(Boolean),
-});
-
-module.exports = {
-	jsRule,
-	mediaRule,
-	styleRule,
-};
+	}),
+	...styleRules.map(options => styleRule({ ...options, isServer })),
+];
