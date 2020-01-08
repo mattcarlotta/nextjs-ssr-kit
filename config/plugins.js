@@ -5,6 +5,7 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 const ErrorOverlayPlugin = require("error-overlay-webpack-plugin");
 const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 const WebpackBar = require("webpackbar");
+const address = require("address");
 const {
 	analyzeClientPath,
 	analyzeServerPath,
@@ -12,13 +13,17 @@ const {
 	staticCSSProdPath,
 } = require("./paths");
 
+const remoteAddress = address.ip();
+
 const {
 	analyze,
 	baseURL,
+	cookieSecret,
 	DATABASE,
 	inDevelopment,
 	inTesting,
 	LOCALHOST,
+	PORT,
 } = process.env;
 
 const inDev = inDevelopment === "true";
@@ -41,6 +46,7 @@ module.exports = isServer => {
 			new DefinePlugin({
 				"process.env": {
 					DATABASE: JSON.stringify(DATABASE),
+					cookieSecret: JSON.stringify(cookieSecret),
 					inDevelopment: inDev,
 					inTesting: JSON.stringify(inTesting),
 					baseURL: JSON.stringify(baseURL),
@@ -59,8 +65,10 @@ module.exports = isServer => {
 			new FriendlyErrorsWebpackPlugin({
 				compilationSuccessInfo: {
 					messages: [
+						inDev && `Local development build: \x1b[1m${LOCALHOST}\x1b[0m`,
 						inDev &&
-							`Your application is running on \x1b[1m${LOCALHOST}\x1b[0m`,
+							remoteAddress &&
+							`Remote development build: \x1b[1mhttp://${remoteAddress}:${PORT}\x1b[0m`,
 					].filter(Boolean),
 					notes: [
 						inDev && "Note that the development build is not optimized.",
