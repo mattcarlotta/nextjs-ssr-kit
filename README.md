@@ -109,7 +109,7 @@ git clone --single-branch --branch master git@github.com:mattcarlotta/nextjs-ssr
 | `dev`            | Starts development server (`localhost:3000`).                             |
 | `lint`           | Lints all `.js` files in `src`.                                           |
 | `lint:styles`    | Lints all `.scss` files in `src`.                                         |
-| `start`          | Starts a production server at `localhost:3000` (must run `build` first).† |
+| `start`          | Starts a production server at `localhost:8080` (must run `build` first).† |
 | `test`           | Runs `.test.js` files for `src` only.                                     |
 | `test:cov`       | Runs `.test.js` files for `src` with code coverage.                       |
 | `test:watch`     | Runs and watches any changed `.js` files in `src`.                        |
