@@ -1,5 +1,5 @@
 import { model } from "mongoose";
-import withMiddleware from "~middlewares";
+import withMiddleware from "~middlewares/index";
 import seeds from "./seeds";
 
 const User = model("user");

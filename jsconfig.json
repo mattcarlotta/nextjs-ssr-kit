@@ -1,0 +1,18 @@
+{
+	"compilerOptions": {
+		"baseUrl": "src",
+		"paths": {
+			"~actions/*": ["actions/*"],
+			"~components/*": ["components/*"],
+			"~constants/*": ["constants/*"],
+			"~images/*": ["images/*"],
+			"~middlewares/*": ["middlewares/*"],
+			"~pages/*": ["pages/*"],
+			"~reducers/*": ["reducers/*"],
+			"~sagas/*": ["sagas/*"],
+			"~store/*": ["store/*"],
+			"~styles/*": ["styles/*"],
+			"~utils/*": ["utils/*"]
+		}
+	}
+}

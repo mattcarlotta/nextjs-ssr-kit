@@ -9,10 +9,10 @@ const postcssEnv = require("postcss-preset-env")({
 	stage: 3,
 });
 
-const { inDevelopment } = process.env;
+const { NODE_ENV } = process.env;
 
-const inDev = inDevelopment === "true";
-const localIdentName = "[local]___[hash:base64:10]";
+const inDev = NODE_ENV === "development";
+const localsConvention = "[local]___[hash:base64:10]";
 const name = "[name]-[hash].[ext]";
 
 /**
@@ -82,7 +82,7 @@ const styleRule = ({
 				minimize: !inDev,
 				sourceMap: inDev,
 				importLoaders: 1,
-				localIdentName,
+				localsConvention,
 			},
 		},
 		{

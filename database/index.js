@@ -3,9 +3,7 @@ const mongoose = require("mongoose");
 const chalk = require("chalk");
 
 const { log } = console;
-const { NODE_ENV, DATABASE, inTesting } = process.env;
-
-const inProduction = NODE_ENV === "production";
+const { DATABASE, inTesting } = process.env;
 
 const options = {
 	useNewUrlParser: true, // avoids DeprecationWarning: current URL string parser is deprecated
@@ -15,12 +13,12 @@ const options = {
 };
 
 module.exports.connectDatabase = () =>
-	mongoose.createConnection(DATABASE, options);
+	mongoose.createConnection(`mongodb://localhost/${DATABASE}`, options);
 
 //= ===========================================================//
 //* MONGO DB CONFIG */
 //= ===========================================================//
-mongoose.connect(DATABASE, options); // connect to our mongodb database
+mongoose.connect(`mongodb://localhost/${DATABASE}`, options); // connect to our mongodb database
 
 mongoose.Promise = bluebird; // bluebird for mongoose promises
 
@@ -29,9 +27,9 @@ if (!inTesting) {
 		"connected",
 		() =>
 			log(
-				`${!inProduction ? "\n" : ""}${chalk.rgb(7, 54, 66).bgRgb(38, 139, 210)(
-					" I ",
-				)} ${chalk.blue(`Connected to ${DATABASE}`)}\n`,
+				`\n${chalk.rgb(7, 54, 66).bgRgb(38, 139, 210)(" INFO ")} ${chalk.blue(
+					`Connected to ${DATABASE}`,
+				)}\n`,
 			), // log mongodb connection established
 	);
 
@@ -39,7 +37,7 @@ if (!inTesting) {
 		"disconnected",
 		() =>
 			log(
-				`\n${chalk.rgb(7, 54, 66).bgRgb(38, 139, 210)(" I ")} ${chalk.rgb(
+				`\n${chalk.rgb(7, 54, 66).bgRgb(38, 139, 210)(" INFO ")} ${chalk.rgb(
 					34,
 					155,
 					127,
@@ -51,7 +49,7 @@ if (!inTesting) {
 		"error",
 		() =>
 			log(
-				`\n${chalk.rgb(7, 54, 66).bgRgb(38, 139, 210)(" I ")} ${chalk.red(
+				`\n${chalk.rgb(7, 54, 66).bgRgb(38, 139, 210)(" ERROR ")} ${chalk.red(
 					`Connection error to ${DATABASE}`,
 				)}`,
 			), // log mongodb connection error
@@ -60,7 +58,7 @@ if (!inTesting) {
 	process.on("SIGINT", () => {
 		mongoose.connection.close(() => {
 			log(
-				`${chalk.rgb(7, 54, 66).bgRgb(38, 139, 210)(" I ")} ${chalk.magenta(
+				`${chalk.rgb(7, 54, 66).bgRgb(38, 139, 210)(" INFO ")} ${chalk.magenta(
 					`Connection was manually terminated from ${DATABASE}`,
 				)}`,
 			);

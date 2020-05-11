@@ -8,7 +8,7 @@ import HomeIcon from "~components/HomeIcon";
 const NotFound = () => (
 	<FlexCenter style={{ height: "100%" }} id="notfound">
 		<Head>
-			<title>NextJS SSR Kit - Server Error</title>
+			<title>NextJS SSR Kit - Not Found</title>
 			<link rel="icon" href="/favicon.ico" />
 		</Head>
 		<div css="color: #03a9f3;background-color: #fff;padding: 100px;text-align: center;">
@@ -21,10 +21,10 @@ const NotFound = () => (
 						marginRight: 10,
 					}}
 				/>
-				<span>500</span>
+				<span>404</span>
 			</div>
 			<div css="font-size: 32px;font-weight: bold;margin-top: -5px;margin-bottom: 20px;letter-spacing: 2px;">
-				Uh Oh! The server encountered an error!
+				Uh Oh! Page not found!
 			</div>
 			<StyledLink href="/">
 				{" "}

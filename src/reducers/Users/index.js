@@ -1,4 +1,4 @@
-import * as types from "~types";
+import * as constants from "~constants/index";
 
 export const initialState = {
 	data: [],
@@ -13,10 +13,10 @@ export const initialState = {
  */
 const userReducer = (state = initialState, { payload, type }) => {
 	switch (type) {
-		case types.USERS_FETCH: {
+		case constants.USERS_FETCH: {
 			return initialState;
 		}
-		case types.USERS_SET_DATA: {
+		case constants.USERS_SET_DATA: {
 			return {
 				...state,
 				data: payload.users,

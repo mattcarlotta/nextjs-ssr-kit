@@ -1,5 +1,5 @@
 import isEmpty from "lodash/isEmpty";
-import * as types from "~types";
+import * as constants from "~constants/index";
 
 /**
  * ~function createUser - attempts to create a new user in DB.
@@ -7,7 +7,7 @@ import * as types from "~types";
  * ~returns {object}
  */
 export const createUser = ({ props }) => ({
-	type: types.USERS_CREATE,
+	type: constants.USERS_CREATE,
 	props,
 });
 
@@ -17,7 +17,7 @@ export const createUser = ({ props }) => ({
  * ~returns {object}
  */
 export const deleteUser = id => ({
-	type: types.USERS_DELETE,
+	type: constants.USERS_DELETE,
 	id,
 });
 
@@ -26,7 +26,7 @@ export const deleteUser = id => ({
  * ~returns {object}
  */
 export const fetchUsers = () => ({
-	type: types.USERS_FETCH,
+	type: constants.USERS_FETCH,
 });
 
 /**
@@ -34,7 +34,7 @@ export const fetchUsers = () => ({
  * ~returns {object}
  */
 export const seedDB = () => ({
-	type: types.USERS_SEED,
+	type: constants.USERS_SEED,
 });
 
 /**
@@ -43,7 +43,7 @@ export const seedDB = () => ({
  * ~returns {object}
  */
 export const setUsers = data => ({
-	type: types.USERS_SET_DATA,
+	type: constants.USERS_SET_DATA,
 	payload: !isEmpty(data) ? data : [],
 });
 
@@ -53,7 +53,7 @@ export const setUsers = data => ({
  * ~returns {object}
  */
 export const updateUser = ({ props, id }) => ({
-	type: types.USERS_UPDATE,
+	type: constants.USERS_UPDATE,
 	props,
 	id,
 });

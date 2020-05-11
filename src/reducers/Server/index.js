@@ -1,4 +1,4 @@
-import * as types from "~types";
+import * as constants from "~constants/index";
 
 export const initialState = {
 	error: "",
@@ -13,11 +13,11 @@ export const initialState = {
  */
 const serverReducer = (state = initialState, { payload, type }) => {
 	switch (type) {
-		case types.RESET_SERVER_MESSAGES:
+		case constants.RESET_SERVER_MESSAGES:
 			return initialState;
-		case types.SERVER_ERROR:
+		case constants.SERVER_ERROR:
 			return { ...state, error: payload };
-		case types.SERVER_MESSAGE:
+		case constants.SERVER_MESSAGE:
 			return { ...state, message: payload };
 		default:
 			return state;

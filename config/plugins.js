@@ -1,8 +1,7 @@
-const { DefinePlugin } = require("webpack");
+const { DefinePlugin, IgnorePlugin } = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 	.BundleAnalyzerPlugin;
-const ErrorOverlayPlugin = require("error-overlay-webpack-plugin");
 const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 const WebpackBar = require("webpackbar");
 const address = require("address");
@@ -20,13 +19,13 @@ const {
 	baseURL,
 	cookieSecret,
 	DATABASE,
-	inDevelopment,
 	inTesting,
 	LOCALHOST,
+	NODE_ENV,
 	PORT,
 } = process.env;
 
-const inDev = inDevelopment === "true";
+const inDev = NODE_ENV === "development";
 const filename = inDev ? staticCSSDevPath : staticCSSProdPath;
 const chunkFilename = filename;
 
@@ -35,8 +34,8 @@ module.exports = isServer => {
 
 	if (!isServer) {
 		plugins.push(
-			/* overlays browser with compilation errors */
-			new ErrorOverlayPlugin(),
+			/* strips out moment locales */
+			new IgnorePlugin(/^\.\/locale$/, /moment$/),
 			/* extracts css chunks for client */
 			new MiniCssExtractPlugin({
 				filename,
@@ -72,7 +71,8 @@ module.exports = isServer => {
 					].filter(Boolean),
 					notes: [
 						inDev && "Note that the development build is not optimized.",
-						inDev && "To create a production build, use \x1b[1m\x1b[32myarn build\x1b[0m.\n",
+						inDev &&
+							"To create a production build, use \x1b[1m\x1b[32myarn build\x1b[0m.\n",
 					].filter(Boolean),
 				},
 				clearConsole: inDev,

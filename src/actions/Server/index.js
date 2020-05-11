@@ -1,17 +1,17 @@
-import * as types from "~types";
+import * as constants from "~constants/index";
 
 /**
  * ~function resetMessage - resets all server messages.
  * ~returns {object}
  */
-export const resetMessage = () => ({ type: types.RESET_SERVER_MESSAGES });
+export const resetMessage = () => ({ type: constants.RESET_SERVER_MESSAGES });
 
 /**
  * ~function setMessage - adds a new server message.
  * ~returns {object}
  */
 export const setMessage = message => ({
-	type: types.SERVER_MESSAGE,
+	type: constants.SERVER_MESSAGE,
 	payload: message,
 });
 
@@ -20,6 +20,6 @@ export const setMessage = message => ({
  * ~returns {object}
  */
 export const setError = err => ({
-	type: types.SERVER_ERROR,
+	type: constants.SERVER_ERROR,
 	payload: err,
 });

@@ -1,4 +1,4 @@
-import * as types from "~types";
+import * as constants from "~constants/index";
 import userReducer, { initialState } from "../index";
 
 const users = [
@@ -28,7 +28,7 @@ describe("User Reducer", () => {
 
 	it("sets user data", () => {
 		const state = userReducer(undefined, {
-			type: types.USERS_SET_DATA,
+			type: constants.USERS_SET_DATA,
 			payload: { users },
 		});
 
@@ -40,12 +40,12 @@ describe("User Reducer", () => {
 
 	it("resets users data", () => {
 		let state = userReducer(undefined, {
-			type: types.USERS_SET_DATA,
+			type: constants.USERS_SET_DATA,
 			payload: { users },
 		});
 
 		state = userReducer(state, {
-			type: types.USERS_FETCH,
+			type: constants.USERS_FETCH,
 		});
 
 		expect(state).toEqual(initialState);

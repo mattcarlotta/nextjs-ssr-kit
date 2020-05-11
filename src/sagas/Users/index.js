@@ -1,7 +1,7 @@
 import { all, put, call, takeLatest } from "redux-saga/effects";
 import app from "~utils/axiosConfig";
 import { parseData, parseMessage } from "~utils/parseResponse";
-import * as types from "~types";
+import * as constants from "~constants/index";
 import { setUsers } from "~actions/Users";
 import { setError, setMessage } from "~actions/Server";
 import toast from "~components/Toast";
@@ -146,10 +146,10 @@ export function* updateUser({ props, id }) {
  */
 export default function* authSagas() {
 	yield all([
-		takeLatest(types.USERS_CREATE, createUser),
-		takeLatest(types.USERS_DELETE, deleteUser),
-		takeLatest(types.USERS_FETCH, fetchUsers),
-		takeLatest(types.USERS_SEED, seedDB),
-		takeLatest(types.USERS_UPDATE, updateUser),
+		takeLatest(constants.USERS_CREATE, createUser),
+		takeLatest(constants.USERS_DELETE, deleteUser),
+		takeLatest(constants.USERS_FETCH, fetchUsers),
+		takeLatest(constants.USERS_SEED, seedDB),
+		takeLatest(constants.USERS_UPDATE, updateUser),
 	]);
 }

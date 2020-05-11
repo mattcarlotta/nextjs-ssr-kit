@@ -1,4 +1,4 @@
-import * as types from "~types";
+import * as constants from "~constants/index";
 import serverReducer, { initialState } from "../index";
 
 const message = "Hello";
@@ -13,7 +13,7 @@ describe("Server Reducer", () => {
 
 	it("sets a message", () => {
 		const state = serverReducer(undefined, {
-			type: types.SERVER_MESSAGE,
+			type: constants.SERVER_MESSAGE,
 			payload: message,
 		});
 
@@ -25,7 +25,7 @@ describe("Server Reducer", () => {
 
 	it("sets an error", () => {
 		const state = serverReducer(undefined, {
-			type: types.SERVER_ERROR,
+			type: constants.SERVER_ERROR,
 			payload: error,
 		});
 
@@ -37,12 +37,12 @@ describe("Server Reducer", () => {
 
 	it("resets the messages", () => {
 		let state = serverReducer(undefined, {
-			type: types.SERVER_MESSAGE,
+			type: constants.SERVER_MESSAGE,
 			payload: message,
 		});
 
 		state = serverReducer(state, {
-			type: types.RESET_SERVER_MESSAGES,
+			type: constants.RESET_SERVER_MESSAGES,
 		});
 
 		expect(state).toEqual(initialState);

@@ -1,5 +1,5 @@
 import { ShowUsers } from "~pages/users";
-import * as types from "~types";
+import * as constants from "~constants/index";
 
 const data = [
 	{
@@ -56,7 +56,9 @@ describe("Show Users Container", () => {
 
 	it("initially calls a 'FetchUsers' redux action", async () => {
 		await ShowUsers.getInitialProps({ store });
-		expect(store.dispatch).toHaveBeenCalledWith({ type: types.USERS_FETCH });
+		expect(store.dispatch).toHaveBeenCalledWith({
+			type: constants.USERS_FETCH,
+		});
 	});
 
 	it("initially renders a 'LoadingUsers' component", () => {

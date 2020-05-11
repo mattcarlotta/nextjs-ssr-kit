@@ -6,10 +6,9 @@ const {
 } = require("./paths");
 const { jsRule, mediaRule, styleRule } = require("./helpers");
 
-const { inDevelopment } = process.env;
+const { NODE_ENV } = process.env;
 
-const inDev = inDevelopment === "true";
-
+const inDev = NODE_ENV === "development";
 const imagesRegex = /\.(jpe?g|png|svg|gif|ico|webp)$/;
 const fontsRegex = /\.(woff2|ttf|woff|eot)$/;
 const cssRegex = /\.css$/;

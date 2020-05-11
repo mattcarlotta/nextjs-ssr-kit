@@ -54,19 +54,19 @@ Want to use a custom Express server? Checkout the <a href="https://github.com/ma
 ├── config
 ├── database
 ├── env
-├── middlewares
 ├── models
 ├── public
 ├── src
 |   ├── actions
 |   ├── components
+|   ├── constants
 |   ├── images
+|   ├── middlewares
 |   ├── pages
 |   ├── reducers
 |   ├── sagas
 |   ├── store
 |   ├── styles
-|   ├── types
 |   └── utils
 |
 ├── .browserslistrc
@@ -77,6 +77,7 @@ Want to use a custom Express server? Checkout the <a href="https://github.com/ma
 ├── .stylelintrc
 ├── babel.config.js
 ├── jest.json
+├── jsconfig.json
 ├── next.config.json
 └── nodemon.json
 </code></pre>

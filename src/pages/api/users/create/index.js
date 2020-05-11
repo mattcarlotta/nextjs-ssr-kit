@@ -1,6 +1,6 @@
 import isEmpty from "lodash/isEmpty";
 import { model } from "mongoose";
-import withMiddleware from "~middlewares";
+import withMiddleware from "~middlewares/index";
 
 const User = model("user");
 
