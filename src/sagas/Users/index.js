@@ -3,7 +3,8 @@ import app from "~utils/axiosConfig";
 import { parseData, parseMessage } from "~utils/parseResponse";
 import * as constants from "~constants/index";
 import { setUsers } from "~actions/Users";
-import { setError, setMessage } from "~actions/Server";
+import { setMessage } from "~actions/Server";
+import showError from "~utils/showError";
 import toast from "~components/Toast";
 
 /**
@@ -14,7 +15,7 @@ import toast from "~components/Toast";
  * @yields {object} - A response from a call to the API.
  * @function parseData - returns a parsed res.data.
  * @yields {action} -  A redux action to set users to redux state.
- * @throws {action} - A redux action to display a server message by type.
+ * @throws {action} - A toast error message.
  */
 export function* fetchUsers() {
 	try {
@@ -23,8 +24,7 @@ export function* fetchUsers() {
 
 		yield put(setUsers(data));
 	} catch (e) {
-		yield put(setError(e.toString()));
-		yield call(toast, { type: "error", message: e.toString() });
+		yield call(showError, e.toString());
 	}
 }
 
@@ -52,8 +52,7 @@ export function* createUser({ props }) {
 
 		yield call(fetchUsers);
 	} catch (e) {
-		yield put(setError(e.toString()));
-		yield call(toast, { type: "error", message: e.toString() });
+		yield call(showError, e.toString());
 	}
 }
 
@@ -81,8 +80,7 @@ export function* deleteUser({ id }) {
 
 		yield call(fetchUsers);
 	} catch (e) {
-		yield put(setError(e.toString()));
-		yield call(toast, { type: "error", message: e.toString() });
+		yield call(showError, e.toString());
 	}
 }
 
@@ -103,8 +101,7 @@ export function* seedDB() {
 
 		yield put(setUsers(data));
 	} catch (e) {
-		yield put(setError(e.toString()));
-		yield call(toast, { type: "error", message: e.toString() });
+		yield call(showError, e.toString());
 	}
 }
 
@@ -132,8 +129,7 @@ export function* updateUser({ props, id }) {
 
 		yield call(fetchUsers);
 	} catch (e) {
-		yield put(setError(e.toString()));
-		yield call(toast, { type: "error", message: e.toString() });
+		yield call(showError, e.toString());
 	}
 }
 

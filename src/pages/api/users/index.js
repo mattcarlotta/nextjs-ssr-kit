@@ -1,7 +1,5 @@
-import { model } from "mongoose";
 import withMiddleware from "~middlewares/index";
-
-const User = model("user");
+import { User } from "~models/index";
 
 const getUsers = async (_, res) => {
 	const users = await User.find({});

@@ -1,12 +1,8 @@
-import { model } from "mongoose";
 import withMiddleware from "~middlewares/index";
+import { User } from "~models/index";
 
-const User = model("user");
-
-const deleteUser = async (req, res, err) => {
+const deleteUser = async (req, res) => {
 	try {
-		if (err) throw err;
-
 		const { id: _id } = req.query;
 		if (!_id) throw String("Missing user delete id parameter.");
 

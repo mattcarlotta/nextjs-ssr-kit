@@ -29,7 +29,7 @@ export const displayIcon = type => {
 };
 
 const ToastMessage = ({ type, message }) =>
-	toast[type](
+	toast[type || "default"](
 		<div css="display: flex; color: white;">
 			<div css="font-size:15px;padding-top: 8px;flex-shrink: 0;text-align: center;width: 30px;">
 				{displayIcon(type)}

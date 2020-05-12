@@ -1,18 +1,20 @@
 {
 	"compilerOptions": {
-		"baseUrl": "src",
+		"baseUrl": ".",
 		"paths": {
-			"~actions/*": ["actions/*"],
-			"~components/*": ["components/*"],
-			"~constants/*": ["constants/*"],
-			"~images/*": ["images/*"],
-			"~middlewares/*": ["middlewares/*"],
-			"~pages/*": ["pages/*"],
-			"~reducers/*": ["reducers/*"],
-			"~sagas/*": ["sagas/*"],
-			"~store/*": ["store/*"],
-			"~styles/*": ["styles/*"],
-			"~utils/*": ["utils/*"]
+			"~actions/*": ["src/actions/*"],
+			"~components/*": ["src/components/*"],
+			"~constants/*": ["src/constants/*"],
+			"~database/*": ["database/*"],
+			"~images/*": ["src/images/*"],
+			"~middlewares/*": ["src/middlewares/*"],
+			"~models/*": ["models/*"],
+			"~pages/*": ["src/pages/*"],
+			"~reducers/*": ["src/reducers/*"],
+			"~sagas/*": ["src/sagas/*"],
+			"~store/*": ["src/store/*"],
+			"~styles/*": ["src/styles/*"],
+			"~utils/*": ["src/utils/*"]
 		}
 	}
 }

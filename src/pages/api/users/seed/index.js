@@ -1,13 +1,12 @@
-import { model } from "mongoose";
 import withMiddleware from "~middlewares/index";
+import { User } from "~models/index";
 import seeds from "./seeds";
-
-const User = model("user");
 
 const seedDB = async (_, res) => {
 	try {
 		await User.deleteMany({});
 		await User.insertMany(seeds);
+
 		const users = await User.find({});
 
 		res.status(201).send({ users });

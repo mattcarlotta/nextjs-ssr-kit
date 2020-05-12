@@ -7,7 +7,7 @@ import { ToastContainer } from "react-toastify";
 import configureStore from "~store/index";
 import GlobalStylesheet from "~styles/globalStylesheet";
 import toast from "~components/Toast";
-import "~styles/empty.css";
+import "~styles/globals.scss";
 
 export class MyApp extends App {
 	componentDidMount() {

@@ -254,7 +254,7 @@ Click <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/packag
 
 ## NextJS and API Integrations
 
-By default, all directories within the root and `src` folders (with <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/babel.config.js#L4">exceptions</a>) are aliased (`~`). This means you can refer to their child root directories by using the ~ symbol followed by the child folder name. For example, `~middlewares`, refers to the root `middlewares` folder; or, for example, in the `src` directory: `~components` refers to the `src/components` folder directory. This allows for rapid development when referring to reusable components or functions as it eliminates the hassle of traversing the folder tree for relative pathing!
+By default, most directories within the root and `src` folders are [aliased](https://github.com/mattcarlotta/nextjs-ssr-kit/blob/refactored/jsconfig.json) (`~`). This means you can refer to their child root directories by using the ~ symbol followed by the child folder name. For example, `~models`, refers to the root `models` folder; or, for example, in the `src` directory: `~components` refers to the `src/components` folder directory. This allows for rapid development when referring to reusable components or functions as it eliminates the hassle of traversing the folder tree for relative pathing!
 
 <hr />
 
@@ -264,4 +264,6 @@ If you run into any issues, please fill out an issue report <a href="https://git
 
 ⚠️ (Status: Unresolved) - Importing a component or page that imports a `.css`, `.scss` or `.sass` file breaks `next/link` components. See <a href="https://github.com/zeit/next-plugins/issues/282">issue tracker</a>.
 
-⚠️ (Status: Unresolveable) - Adding `test.js` files within the `pages` folder causes NextJS to fail upon production compilation. Unfortunately, NextJS handles all files and folders within the `pages` file as reachable views. Instead, a workaround is to place a `__tests__` folder for `pages` at the root of the `components` folder.
+⚠️ (Status: Unresolveable) - Attempting to import a CSS file from `node_modules` within a component may result in incorrectly ordered stylesheets. Same holds true for UI libraries that attempt to import a CSS file when a component is imported. Instead, CSS files from `node_modules` should only be imported within the `_app.js` file -- either directly imported or imported within the `globals.scss` file which is then directly imported into the `_app.js` file. See [Adding a Global Stylesheet](https://nextjs.org/docs/basic-features/built-in-css-support#adding-a-global-stylesheet).
+
+⚠️ (Status: Unresolveable) - Adding `test.js` files within the `pages` folder causes NextJS to fail upon production compilation. Unfortunately, NextJS handles all files and folders within the `pages` file as reachable views. Instead, it's recommended to write end-to-end tests for `pages` using [cypress](https://www.npmjs.com/package/cypress).

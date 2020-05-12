@@ -39,19 +39,13 @@ describe("Card", () => {
 	});
 
 	it("clicking on the 'DeleteButton' calls 'onDeleteClick' with '_id'", () => {
-		wrapper
-			.find("DeleteButton")
-			.first()
-			.simulate("click");
+		wrapper.find("DeleteButton").first().simulate("click");
 
 		expect(onDeleteClick).toHaveBeenCalledWith(_id);
 	});
 
 	it("clicking on the 'EditButton' calls 'onEditClick' with '_id'", () => {
-		wrapper
-			.find("EditButton")
-			.first()
-			.simulate("click");
+		wrapper.find("EditButton").first().simulate("click");
 
 		expect(onEditClick).toHaveBeenCalledWith(_id);
 	});

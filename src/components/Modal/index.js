@@ -5,14 +5,13 @@ import { FaTimes } from "react-icons/fa";
 import Flex from "~components/Flex";
 import FlexEnd from "~components/FlexEnd";
 import FlexStart from "~components/FlexStart";
-import BackgroundOverlay from "./BackgroundOverlay";
+import BackgroundOverlay from "../BackgroundOverlay";
 import Center from "./Center";
 import CloseModalButton from "./CloseModalButton";
 import ClickHandler from "./ClickHandler";
 import ModalBody from "./ModalBody";
 import ModalContent from "./ModalContent";
 import ModalContainer from "./ModalContainer";
-import Title from "./Title";
 import WindowContainer from "./WindowContainer";
 
 class Modal extends PureComponent {
@@ -41,7 +40,9 @@ class Modal extends PureComponent {
 										}}
 									>
 										<FlexStart>
-											<Title>{this.props.title}</Title>
+											<div css="padding: 2px;font-weight: bold;color: #7d7d7d;">
+												{this.props.title}
+											</div>
 										</FlexStart>
 										<FlexEnd>
 											<CloseModalButton

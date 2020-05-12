@@ -2,7 +2,7 @@
 import { createElement } from "react";
 import { Provider } from "react-redux";
 import { shallow, mount } from "enzyme";
-import { store } from "~store/index";
+import { store } from "~store";
 
 //= =============================================================================//
 // CUSTOM REACT TESTING FUNCTIONS                                                 /

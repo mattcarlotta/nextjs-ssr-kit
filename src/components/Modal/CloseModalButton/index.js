@@ -9,7 +9,6 @@ export default styled.button`
 	-webkit-font-smoothing: auto;
 	transition: all 0.2s ease-in-out;
 	font-size: 20px;
-
 	&:hover {
 		color: #f5222d;
 	}

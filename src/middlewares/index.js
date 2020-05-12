@@ -31,7 +31,7 @@ export default next => async (req, res) => {
 
 			await Promise.all(promises);
 
-			return next(req, res, resolve);
+			return resolve(next(req, res));
 		} catch (error) {
 			return resolve(res.status(404).json({ err: err.toString() }));
 		}
