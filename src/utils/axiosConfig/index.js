@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import get from "lodash/get";
+import get from "lodash.get";
 import axios from "axios";
 
 const { baseURL } = process.env;

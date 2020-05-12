@@ -1,7 +1,7 @@
 /* istanbul ignore file */
+import { shallow, mount } from "enzyme";
 import { createElement } from "react";
 import { Provider } from "react-redux";
-import { shallow, mount } from "enzyme";
 import { store } from "~store";
 
 //= =============================================================================//

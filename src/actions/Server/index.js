@@ -1,4 +1,4 @@
-import * as constants from "~constants/index";
+import * as constants from "~constants";
 
 /**
  * @function resetMessage - resets all server messages.

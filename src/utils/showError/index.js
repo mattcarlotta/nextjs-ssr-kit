@@ -1,6 +1,6 @@
 import { put, call } from "redux-saga/effects";
 import { setError } from "~actions/Server";
-import toast from "~components/Toast";
+import toast from "~components/App/Toast";
 
 /**
  * Helper function to showcase an error to the UI.

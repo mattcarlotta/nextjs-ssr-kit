@@ -1,5 +1,5 @@
-import isEmpty from "lodash/isEmpty";
-import * as constants from "~constants/index";
+import isEmpty from "lodash.isempty";
+import * as constants from "~constants";
 
 /**
  * @function createUser - attempts to create a new user in DB.

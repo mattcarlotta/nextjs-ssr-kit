@@ -2,14 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Head from "next/head";
 import { connect } from "react-redux";
-import app from "~utils/axiosConfig";
-import { parseData } from "~utils/parseResponse";
-import DisplayUserList from "~components/DisplayUserList";
-import UserListNavigation from "~components/UserListNavigation";
-import Modal from "~components/Modal";
-import UserForm from "~components/UserForm";
-import LoadingUsers from "~components/LoadingUsers";
-import FadeIn from "~components/FadeIn";
+import { resetMessage, setError } from "~actions/Server";
 import {
 	createUser,
 	deleteUser,
@@ -19,9 +12,16 @@ import {
 	setUsers,
 	updateUser,
 } from "~actions/Users";
-import { resetMessage, setError } from "~actions/Server";
-import { wrapper } from "~store/index";
-import toast from "~components/Toast";
+import UserForm from "~components/Forms/UserForm";
+import DisplayUserList from "~components/Layout/DisplayUserList";
+import Modal from "~components/Layout/Modal";
+import FadeIn from "~components/Layout/FadeIn";
+import LoadingUsers from "~components/Layout/LoadingUsers";
+import UserListNavigation from "~components/Layout/UserListNavigation";
+import { wrapper } from "~store";
+import app from "~utils/axiosConfig";
+import { parseData } from "~utils/parseResponse";
+import toast from "~components/App/Toast";
 
 export class ShowUsers extends Component {
 	state = {
@@ -52,6 +52,7 @@ export class ShowUsers extends Component {
 						<UserForm
 							{...this.props}
 							submitAction={this.props.createUser}
+							cancelForm={this.handleCloseModal}
 							resetForm={this.handleCloseModal}
 						/>
 					</Modal>
@@ -63,10 +64,9 @@ export class ShowUsers extends Component {
 						<DisplayUserList
 							{...this.props}
 							{...this.state}
-							onHandleCloseModal={this.handleCloseModal}
-							onHandleDeleteClick={this.props.deleteUser}
-							onHandleEditClick={this.handleEditClick}
-							onHandleResetEditClick={this.handleResetEditClick}
+							handleCloseModal={this.handleCloseModal}
+							handleEditClick={this.handleEditClick}
+							handleResetEditClick={this.handleResetEditClick}
 						/>
 					</FadeIn>
 				)}

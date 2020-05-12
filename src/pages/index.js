@@ -1,33 +1,35 @@
 import React from "react";
 import Head from "next/head";
 import { FaCoffee } from "react-icons/fa";
-import Link from "~components/StyledLink";
-import HomeContainer from "~components/HomeContainer";
-import LandingContainer from "~components/LandingContainer";
-import SubTitle from "~components/SubTitle";
+import Link from "~components/Navigation/Link";
+import SubTitle from "~components/Layout/SubTitle";
 import NextJSSKitLogo from "~images/nextjsKit.png";
 
 const Home = () => (
-	<HomeContainer>
+	<div css="text-align: center;height: 100%;color: #007ec5;background-color: #ebebeb;">
 		<Head>
 			<title>Home - NextJS SSR Kit</title>
 		</Head>
-		<LandingContainer>
-			<img src={NextJSSKitLogo} alt="ssrLogoLight.png" />
+		<div css="max-width: 850px;width: 100%;padding-top: 25vh;margin-left: auto;	margin-right: auto;margin-bottom: 20px;">
+			<img
+				css="margin-bottom: 10px;width: 100%;"
+				src={NextJSSKitLogo}
+				alt="ssrLogoLight.png"
+			/>
 			<SubTitle>Edit files in the root directory and save to reload.</SubTitle>
 			<Link href="/users">
 				<FaCoffee
 					style={{
 						position: "relative",
-						top: 5,
+						top: 6,
 						fontSize: 23,
 						marginRight: 5,
 					}}
 				/>
 				See Example
 			</Link>
-		</LandingContainer>
-	</HomeContainer>
+		</div>
+	</div>
 );
 
 export default Home;

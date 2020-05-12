@@ -210,7 +210,6 @@ Click <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/packag
 - <a href="http://airbnb.io/enzyme/">Enzyme</a>
 - <a href="https://github.com/typicode/husky">Husky</a>
 - <a href="https://github.com/facebook/jest">Jest</a>
-- <a href="https://github.com/lodash/lodash">Lodash</a>
 - <a href="https://github.com/zeit/next.js">NextJS</a>
 - <a href="https://github.com/zeit/next-plugins">NextJS CSS</a>
 - <a href="https://github.com/zeit/next-plugins">NextJS SASS</a>

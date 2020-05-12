@@ -1,4 +1,4 @@
-import * as constants from "~constants/index";
+import * as constants from "~constants";
 import userReducer, { initialState } from "../index";
 
 const users = [

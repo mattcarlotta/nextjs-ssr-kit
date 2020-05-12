@@ -1,11 +1,11 @@
 import { all, put, call, takeLatest } from "redux-saga/effects";
+import { resetMessage, setMessage } from "~actions/Server";
+import { setUsers } from "~actions/Users";
+import * as constants from "~constants";
+import toast from "~components/App/Toast";
 import app from "~utils/axiosConfig";
 import { parseData, parseMessage } from "~utils/parseResponse";
-import * as constants from "~constants/index";
-import { resetUsers, setUsers } from "~actions/Users";
-import { resetMessage, setMessage } from "~actions/Server";
 import showError from "~utils/showError";
-import toast from "~components/Toast";
 
 /**
  * Attempts to fetch users from DB.
@@ -19,7 +19,6 @@ import toast from "~components/Toast";
  */
 export function* fetchUsers() {
 	try {
-		yield put(resetUsers());
 		yield put(resetMessage());
 
 		const res = yield call(app.get, "users");

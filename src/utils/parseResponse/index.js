@@ -1,4 +1,4 @@
-import get from "lodash/get";
+import get from "lodash.get";
 
 /**
  * Helper function to parse a message from an API response.

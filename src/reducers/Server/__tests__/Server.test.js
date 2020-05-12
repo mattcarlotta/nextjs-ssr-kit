@@ -1,4 +1,4 @@
-import * as constants from "~constants/index";
+import * as constants from "~constants";
 import serverReducer, { initialState } from "../index";
 
 const message = "Hello";

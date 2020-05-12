@@ -1,9 +1,9 @@
-import createSagaMiddleware from "redux-saga";
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
 import { createWrapper } from "next-redux-wrapper";
-import rootReducer from "~reducers/index";
-import rootSaga from "~sagas/index";
+import createSagaMiddleware from "redux-saga";
+import rootReducer from "~reducers";
+import rootSaga from "~sagas";
 
 export const makeStore = () => {
 	const saga = createSagaMiddleware();
@@ -13,14 +13,13 @@ export const makeStore = () => {
 		composeWithDevTools(applyMiddleware(saga)),
 	);
 
-	if (module.hot) {
-		module.hot.accept("../reducers", () => {
-			/* eslint-disable-next-line */
-			store.replaceReducer(require("../reducers").default);
-		});
-	}
+	// if (module.hot) {
+	// 	module.hot.accept("../reducers", () => {
+	// 		/* eslint-disable-next-line */
+	// 		store.replaceReducer(require("../reducers").default);
+	// 	});
+	// }
 
-	/* istanbul ignore next */
 	store.sagaTask = saga.run(rootSaga);
 
 	return store;

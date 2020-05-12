@@ -1,8 +1,8 @@
 import React from "react";
 import Head from "next/head";
-import StyledLink from "~components/StyledLink";
-import FlexCenter from "~components/FlexCenter";
-import HomeIcon from "~components/HomeIcon";
+import FlexCenter from "~components/Layout/FlexCenter";
+import HomeIcon from "~components/Layout/HomeIcon";
+import Link from "~components/Navigation/Link";
 
 const NotFound = () => (
 	<FlexCenter style={{ height: "90%" }} id="notfound">
@@ -14,11 +14,11 @@ const NotFound = () => (
 			<div css="font-size: 32px;font-weight: bold;margin-top: -5px;margin-bottom: 20px;letter-spacing: 2px;">
 				Uh Oh! Page not found!
 			</div>
-			<StyledLink href="/">
+			<Link href="/">
 				{" "}
 				<HomeIcon />
 				<span>Go Back</span>
-			</StyledLink>
+			</Link>
 		</div>
 	</FlexCenter>
 );

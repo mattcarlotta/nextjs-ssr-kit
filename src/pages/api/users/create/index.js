@@ -1,6 +1,6 @@
-import isEmpty from "lodash/isEmpty";
-import withMiddleware from "~middlewares/index";
-import { User } from "~models/index";
+import isEmpty from "lodash.isempty";
+import withMiddleware from "~middlewares";
+import { User } from "~models";
 
 const createUser = async (req, res) => {
 	try {
