@@ -15,13 +15,13 @@ const Input = ({
 	value,
 	style,
 }) => (
-	<div data-test="input-container" style={style} className={className}>
+	<div data-testid="input-container" style={style} className={className}>
 		<label css="margin: 0;display: block;" htmlFor={name}>
 			{label}
 		</label>
 		<input
 			aria-label={name}
-			data-test={name}
+			data-testid={name}
 			placeholder={placeholder}
 			name={name}
 			onChange={onChange}

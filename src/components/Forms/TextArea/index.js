@@ -13,13 +13,13 @@ const TextArea = ({
 	value,
 	style,
 }) => (
-	<div data-test="textarea-container" className={className} style={style}>
+	<div data-testid="textarea-container" className={className} style={style}>
 		<label css="margin: 0;display: block;" htmlFor={name}>
 			{label}
 		</label>
 		<textarea
 			aria-label={name}
-			data-test={name}
+			data-testid={name}
 			name={name}
 			onChange={onChange}
 			placeholder={placeholder}

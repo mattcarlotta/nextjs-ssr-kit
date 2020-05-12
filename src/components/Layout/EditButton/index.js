@@ -5,7 +5,7 @@ import { FaPencilAlt } from "react-icons/fa";
 
 const EditButton = ({ className, dataTest, onClick, style }) => (
 	<button
-		data-test={dataTest}
+		data-testid={dataTest}
 		type="button"
 		style={style}
 		className={className}

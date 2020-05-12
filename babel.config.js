@@ -1,4 +1,5 @@
 module.exports = api => {
+	const inProd = api.env("production");
 	api.cache(() => process.env.NODE_ENV);
 
 	return {
@@ -12,6 +13,7 @@ module.exports = api => {
 					preprocess: false,
 				},
 			],
-		],
+			inProd && "react-remove-properties",
+		].filter(Boolean),
 	};
 };

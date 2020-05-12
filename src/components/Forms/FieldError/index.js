@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const FieldError = ({ errors }) =>
 	errors ? (
-		<span id="error" css="color: #d03916;margin: 0;font-size: 18px;">
+		<span data-testid="errors" css="color: #d03916;margin: 0;font-size: 18px;">
 			{errors}
 		</span>
 	) : (

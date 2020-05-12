@@ -11,7 +11,7 @@ import FlexStart from "~components/Layout/FlexStart";
 import Link from "~components/Navigation/Link";
 
 const UserListNavigation = ({ className, openModal, seedDB }) => (
-	<div data-test="userlist" className={className}>
+	<div data-testid="userlist" className={className}>
 		<Link href="/">
 			<HomeIcon />
 			<span>Go Back</span>

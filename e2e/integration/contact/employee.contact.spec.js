@@ -22,7 +22,7 @@ context("Employee Contact Us Page", () => {
 
 	it("displays form errors if fields are empty", () => {
 		cy.get("form").submit();
-		cy.get("[data-test=errors]").should("have.length", 3);
+		cy.get("[data-testid=errors]").should("have.length", 3);
 	});
 
 	it("sends an email", () => {
@@ -36,7 +36,7 @@ context("Employee Contact Us Page", () => {
 
 		cy.get("form").submit();
 
-		cy.get("[data-test=toast-message]")
+		cy.get("[data-testid=toast-message]")
 			.should("have.length", 1)
 			.and(
 				"have.text",

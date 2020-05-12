@@ -24,9 +24,8 @@ class UserForm extends Component {
 		serverError ? { isSubmitting: false } : null;
 
 	componentDidUpdate = prevProps => {
-		const { serverMessage } = this.props;
-
-		if (serverMessage !== prevProps.serverMessage) this.props.resetForm();
+		if (this.props.serverMessage !== prevProps.serverMessage)
+			this.props.resetForm();
 	};
 
 	componentWillUnmount = () => this.props.resetMessage();

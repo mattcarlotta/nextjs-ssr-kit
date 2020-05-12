@@ -25,7 +25,7 @@ class Modal extends PureComponent {
 
 	render = () =>
 		createPortal(
-			<div data-test="modal">
+			<div data-testid="modal">
 				<BackgroundOverlay />
 				<WindowContainer>
 					<ModalContainer>

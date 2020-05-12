@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const Button = ({ dataTest, className, children, onClick, style, type }) => (
 	<button
-		data-test={dataTest}
+		data-testid={dataTest}
 		type={type}
 		className={className}
 		onClick={onClick}
