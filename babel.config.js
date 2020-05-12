@@ -13,7 +13,7 @@ module.exports = api => {
 					preprocess: false,
 				},
 			],
-			inProd && "react-remove-properties",
+			inProd && ["react-remove-properties", { properties: ["data-testid"] }],
 		].filter(Boolean),
 	};
 };
