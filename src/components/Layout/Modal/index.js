@@ -8,7 +8,6 @@ import FlexStart from "~components/Layout/FlexStart";
 import BackgroundOverlay from "./BackgroundOverlay";
 import Center from "./Center";
 import CloseModalButton from "./CloseModalButton";
-import ClickHandler from "./ClickHandler";
 import ModalBody from "./ModalBody";
 import ModalContent from "./ModalContent";
 import ModalContainer from "./ModalContainer";
@@ -31,32 +30,30 @@ class Modal extends PureComponent {
 				<WindowContainer>
 					<ModalContainer>
 						<Center maxWidth={this.props.maxWidth}>
-							<ClickHandler closeModal={this.props.onClick}>
-								<ModalContent maxWidth={this.props.maxWidth}>
-									<Flex
-										style={{
-											borderBottom: "1px solid #d3d3d3",
-											padding: "2px 0",
-										}}
-									>
-										<FlexStart>
-											<div css="padding: 2px;font-weight: bold;color: #7d7d7d;">
-												{this.props.title}
-											</div>
-										</FlexStart>
-										<FlexEnd>
-											<CloseModalButton
-												id="close-modal"
-												aria-label="close modal"
-												onClick={this.props.onClick || null}
-											>
-												<FaTimes />
-											</CloseModalButton>
-										</FlexEnd>
-									</Flex>
-									<ModalBody>{this.props.children}</ModalBody>
-								</ModalContent>
-							</ClickHandler>
+							<ModalContent maxWidth={this.props.maxWidth}>
+								<Flex
+									style={{
+										borderBottom: "1px solid #d3d3d3",
+										padding: "2px 0",
+									}}
+								>
+									<FlexStart>
+										<div css="padding: 2px;font-weight: bold;color: #7d7d7d;">
+											{this.props.title}
+										</div>
+									</FlexStart>
+									<FlexEnd>
+										<CloseModalButton
+											id="close-modal"
+											aria-label="close modal"
+											onClick={this.props.onClick || null}
+										>
+											<FaTimes />
+										</CloseModalButton>
+									</FlexEnd>
+								</Flex>
+								<ModalBody>{this.props.children}</ModalBody>
+							</ModalContent>
 						</Center>
 					</ModalContainer>
 				</WindowContainer>

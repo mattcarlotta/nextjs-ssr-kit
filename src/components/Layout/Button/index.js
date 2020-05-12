@@ -33,7 +33,7 @@ export default styled(Button)`
 		if (props.danger) return "#f0506e";
 		return "#828282";
 	}};
-	background-color: transparent;
+	background: transparent;
 	border: 1px solid
 		${props => {
 			if (props.primary) return "#03a9f3";
@@ -42,7 +42,6 @@ export default styled(Button)`
 		}};
 	font-size: 16px;
 	line-height: 38px;
-	padding: 10px;
 	padding: 8px 16px;
 	text-align: center;
 	transition: all 0.2s ease-in-out;

@@ -1,32 +1,27 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Input from "~components/Forms/Input";
-import TextArea from "~components/Forms/TextArea";
 import Button from "~components/Layout/Button";
+import FieldGenerator from "~components/Forms/FieldGenerator";
 import Flex from "~components/Layout/Flex";
 import FlexEnd from "~components/Layout/FlexEnd";
 import FlexStart from "~components/Layout/FlexStart";
-import fields from "./formFields";
+import fieldValidator from "~utils/fieldValidator";
+import fieldUpdater from "~utils/fieldUpdater";
+import parseFields from "~utils/parseFields";
+import fields from "./Fields";
 
 class UserForm extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			error: "",
-			email: props.email || "",
-			firstName: props.firstName || "",
-			lastName: props.lastName || "",
-			userName: props.userName || "",
-			backgroundInfo: props.backgroundInfo || "",
-			street: props.address ? props.address.street : "",
-			state: props.address ? props.address.state : "",
-			suite: props.address ? props.address.suite : "",
-			city: props.address ? props.address.city : "",
-			zipCode: props.address ? props.address.zipCode : "",
-			submitted: false,
+			fields: fields(props),
+			isSubmitting: false,
 		};
 	}
+
+	static getDerivedStateFromProps = ({ serverError }) =>
+		serverError ? { isSubmitting: false } : null;
 
 	componentDidUpdate = prevProps => {
 		const { serverMessage } = this.props;
@@ -36,58 +31,28 @@ class UserForm extends Component {
 
 	componentWillUnmount = () => this.props.resetMessage();
 
-	handleChange = ({ target: { name, value } }) =>
-		this.setState({ [name]: value });
+	handleChange = ({ target: { name, value } }) => {
+		this.setState(prevState => ({
+			...prevState,
+			fields: fieldUpdater(prevState.fields, name, value),
+		}));
+	};
 
 	handleSubmit = e => {
 		e.preventDefault();
-		const {
-			email,
-			firstName,
-			lastName,
-			userName,
-			backgroundInfo,
-			street,
-			state,
-			suite,
-			city,
-			zipCode,
-			submitted,
-		} = this.state;
+		const { validatedFields, errors } = fieldValidator(this.state.fields);
 
-		const { _id: id } = this.props;
-
-		if (
-			!email ||
-			!firstName ||
-			!lastName ||
-			!userName ||
-			!backgroundInfo ||
-			!street ||
-			!state ||
-			!city ||
-			!zipCode
-		) {
-			if (!submitted) this.setState({ submitted: true });
-			return null;
-		}
-
-		const props = {
-			email,
-			firstName,
-			lastName,
-			userName,
-			backgroundInfo,
-			address: {
-				street,
-				state,
-				suite,
-				city,
-				zipCode,
+		this.setState(
+			prevState => ({
+				fields: !errors ? prevState.fields : validatedFields,
+				isSubmitting: !errors,
+			}),
+			() => {
+				const { _id: id } = this.props;
+				if (!errors)
+					this.props.submitAction({ props: parseFields(validatedFields), id });
 			},
-		};
-
-		this.props.submitAction({ props, id });
+		);
 	};
 
 	render = () => (
@@ -95,27 +60,7 @@ class UserForm extends Component {
 			css="margin: 0 auto;text-align: left; padding: 5px;"
 			onSubmit={this.handleSubmit}
 		>
-			{fields.map(({ fieldName, ...props }) => (
-				<Input
-					{...props}
-					key={fieldName}
-					hasError={this.state.submitted && !this.state[fieldName]}
-					name={fieldName}
-					onHandleChange={this.handleChange}
-					value={this.state[fieldName]}
-					submitted={this.state.submitted}
-				/>
-			))}
-			<TextArea
-				data-test="background-info"
-				name="backgroundInfo"
-				hasError={this.state.submitted && !this.state.backgroundInfo}
-				label="Background"
-				onHandleChange={this.handleChange}
-				value={this.state.backgroundInfo}
-				submitted={this.state.submitted}
-				isRequired
-			/>
+			<FieldGenerator fields={this.state.fields} onChange={this.handleChange} />
 			<Flex style={{ padding: "0 10px" }}>
 				<FlexStart>
 					<Button
@@ -128,7 +73,12 @@ class UserForm extends Component {
 					</Button>
 				</FlexStart>
 				<FlexEnd>
-					<Button dataTest="submit" primary type="submit">
+					<Button
+						dataTest="submit"
+						primary
+						disabled={this.state.isSubmitting}
+						type="submit"
+					>
 						Submit
 					</Button>
 				</FlexEnd>
@@ -139,18 +89,6 @@ class UserForm extends Component {
 
 UserForm.propTypes = {
 	_id: PropTypes.string,
-	email: PropTypes.string,
-	backgroundInfo: PropTypes.string,
-	firstName: PropTypes.string,
-	lastName: PropTypes.string,
-	userName: PropTypes.string,
-	address: PropTypes.shape({
-		street: PropTypes.string,
-		suite: PropTypes.string,
-		city: PropTypes.string,
-		state: PropTypes.string,
-		zipCode: PropTypes.string,
-	}),
 	resetMessage: PropTypes.func.isRequired,
 	serverError: PropTypes.string,
 	serverMessage: PropTypes.string,

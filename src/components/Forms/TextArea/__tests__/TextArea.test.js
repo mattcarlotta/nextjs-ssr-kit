@@ -1,13 +1,13 @@
 import TextArea from "../index";
 
-const onHandleChange = jest.fn();
+const handleChange = jest.fn();
 
 const initProps = {
 	hasError: false,
 	isRequired: true,
 	name: "test",
 	label: "test",
-	onHandleChange,
+	handleChange,
 	value: "",
 };
 

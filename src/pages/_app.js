@@ -22,7 +22,7 @@ export class MyApp extends App {
 				<GlobalStylesheet />
 				<ToastContainer
 					position="top-right"
-					autoClose={2500}
+					autoClose={7500}
 					hideProgressBar={false}
 					newestOnTop={false}
 					pauseOnVisibilityChange
