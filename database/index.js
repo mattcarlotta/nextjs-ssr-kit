@@ -2,8 +2,8 @@ const bluebird = require("bluebird");
 const mongoose = require("mongoose");
 const chalk = require("chalk");
 
-const { log } = console;
-const { DATABASE, inTesting } = process.env;
+const { DATABASE, NODE_ENV } = process.env;
+const inTesting = NODE_ENV === "testing";
 
 const options = {
 	useNewUrlParser: true, // avoids DeprecationWarning: current URL string parser is deprecated
@@ -15,9 +15,6 @@ const options = {
 module.exports.connectDatabase = () =>
 	mongoose.createConnection(`mongodb://localhost/${DATABASE}`, options);
 
-//= ===========================================================//
-//* MONGO DB CONFIG */
-//= ===========================================================//
 mongoose.connect(`mongodb://localhost/${DATABASE}`, options); // connect to our mongodb database
 
 mongoose.Promise = bluebird; // bluebird for mongoose promises
@@ -26,7 +23,7 @@ if (!inTesting) {
 	mongoose.connection.on(
 		"connected",
 		() =>
-			log(
+			console.log(
 				`\n${chalk.rgb(7, 54, 66).bgRgb(38, 139, 210)(" INFO ")} ${chalk.blue(
 					`Connected to ${DATABASE}`,
 				)}\n`,
@@ -36,7 +33,7 @@ if (!inTesting) {
 	mongoose.connection.on(
 		"disconnected",
 		() =>
-			log(
+			console.log(
 				`\n${chalk.rgb(7, 54, 66).bgRgb(38, 139, 210)(" INFO ")} ${chalk.rgb(
 					34,
 					155,
@@ -48,7 +45,7 @@ if (!inTesting) {
 	mongoose.connection.on(
 		"error",
 		() =>
-			log(
+			console.log(
 				`\n${chalk.rgb(7, 54, 66).bgRgb(38, 139, 210)(" ERROR ")} ${chalk.red(
 					`Connection error to ${DATABASE}`,
 				)}`,
@@ -57,7 +54,7 @@ if (!inTesting) {
 
 	process.on("SIGINT", () => {
 		mongoose.connection.close(() => {
-			log(
+			console.log(
 				`${chalk.rgb(7, 54, 66).bgRgb(38, 139, 210)(" INFO ")} ${chalk.magenta(
 					`Connection was manually terminated from ${DATABASE}`,
 				)}`,

@@ -1,6 +1,6 @@
 import withMiddleware from "~middlewares/index";
 import { User } from "~models/index";
-import seeds from "./seeds";
+import seeds from "~database/seedDB/seeds";
 
 const seedDB = async (_, res) => {
 	try {

@@ -19,7 +19,6 @@ const {
 	baseURL,
 	cookieSecret,
 	DATABASE,
-	inTesting,
 	LOCALHOST,
 	NODE_ENV,
 	PORT,
@@ -44,11 +43,10 @@ module.exports = isServer => {
 			/* envs for client */
 			new DefinePlugin({
 				"process.env": {
-					DATABASE: JSON.stringify(DATABASE),
-					cookieSecret: JSON.stringify(cookieSecret),
-					inDevelopment: inDev,
-					inTesting: JSON.stringify(inTesting),
 					baseURL: JSON.stringify(baseURL),
+					cookieSecret: JSON.stringify(cookieSecret),
+					DATABASE: JSON.stringify(DATABASE),
+					inDevelopment: inDev,
 				},
 			}),
 		);
@@ -61,22 +59,21 @@ module.exports = isServer => {
 				compiledIn: false,
 			}),
 			/* in console error */
-			new FriendlyErrorsWebpackPlugin({
-				compilationSuccessInfo: {
-					messages: [
-						inDev && `Local development build: \x1b[1m${LOCALHOST}\x1b[0m`,
-						inDev &&
+			inDev &&
+				new FriendlyErrorsWebpackPlugin({
+					compilationSuccessInfo: {
+						messages: [
+							`Local development build: \x1b[1m${LOCALHOST}\x1b[0m`,
 							remoteAddress &&
-							`Remote development build: \x1b[1mhttp://${remoteAddress}:${PORT}\x1b[0m`,
-					].filter(Boolean),
-					notes: [
-						inDev && "Note that the development build is not optimized.",
-						inDev &&
+								`Remote development build: \x1b[1mhttp://${remoteAddress}:${PORT}\x1b[0m`,
+						].filter(Boolean),
+						notes: [
+							"Note that the development build is not optimized.",
 							"To create a production build, use \x1b[1m\x1b[32myarn build\x1b[0m.\n",
-					].filter(Boolean),
-				},
-				clearConsole: inDev,
-			}),
+						],
+					},
+					clearConsole: false,
+				}),
 		);
 	}
 
@@ -90,5 +87,5 @@ module.exports = isServer => {
 		);
 	}
 
-	return plugins;
+	return plugins.filter(Boolean);
 };

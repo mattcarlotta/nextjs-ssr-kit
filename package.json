@@ -11,7 +11,6 @@
 		"analyze:stage": "rimraf .next/analyze && analyze=true npm run build:stage",
 		"build": "next build",
 		"build:stage": "NODE_ENV=staging next build",
-		"checkbuild": "es-check es5 './dist/static/**/*.js'",
 		"dev": "NODE_OPTIONS='--max_old_space_size=4096 --inspect' NODE_ENV=development next dev",
 		"drop:stage": "NODE_ENV=staging EXIT=true node ./database/teardownDB/index.js",
 		"lint": "eslint -c ./.eslintrc --ignore-path ./.eslintignore ./src --ext .js,.jsx",

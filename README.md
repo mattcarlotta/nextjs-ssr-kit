@@ -106,7 +106,6 @@ git clone --single-branch --branch master git@github.com:mattcarlotta/nextjs-ssr
 | ---------------- | ------------------------------------------------------------------------- |
 | `analyze`        | Compiles `src` app and spawns webpack chunk distribution charts.          |
 | `build`          | Compiles `src` application to a `.next/static` folder.                    |
-| `checkbuild`     | Checks to see if the `.next/static` folder is ES5 compliant (for IE11).   |
 | `dev`            | Starts development server (`localhost:3000`).                             |
 | `lint`           | Lints all `.js` files in `src`.                                           |
 | `lint:styles`    | Lints all `.scss` files in `src`.                                         |
@@ -185,6 +184,7 @@ If you wish to utilize the API:
 - .prettierc: prettier config.
 - .npmrc: yarn config.
 - babel.config.js: babel config.
+- jsconfig.js: Compilation options (aliases)
 - nodemon.json: nodemon configuration for server restarts.
 </code></pre>
 </details>
@@ -240,7 +240,6 @@ Click <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/packag
 <pre><code>
 - <a href="https://github.com/petkaantonov/bluebird">Bluebird</a>
 - <a href="https://github.com/expressjs/body-parser">Body Parser</a>
-- <a href="https://github.com/expressjs/compression">Compression</a>
 - <a href="https://github.com/motdotla/dotenv">DotENV</a>
 - <a href="https://momentjs.com/timezone/">Moment Timezone</a>
 - <a href="https://mongoosejs.com/">Mongoose</a>
