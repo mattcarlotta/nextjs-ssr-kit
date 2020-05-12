@@ -1,3 +1,4 @@
+import { HYDRATE } from "next-redux-wrapper";
 import * as constants from "~constants/index";
 
 export const initialState = {
@@ -13,6 +14,10 @@ export const initialState = {
  */
 const userReducer = (state = initialState, { payload, type }) => {
 	switch (type) {
+		case HYDRATE: {
+			return { ...state, ...payload.users };
+		}
+		case constants.USERS_RESET:
 		case constants.USERS_FETCH: {
 			return initialState;
 		}

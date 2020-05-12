@@ -20,12 +20,13 @@ const DisplayUserList = ({
 }) => (
 	<>
 		{!isEmpty(data) ? (
-			data.map(props => (
+			data.map((props, idx) => (
 				<Container key={props._id}>
 					{isEditingID !== props._id ? (
 						<Card
 							{...props}
 							key={props._id}
+							idx={idx}
 							onEditClick={onHandleEditClick}
 							onDeleteClick={onHandleDeleteClick}
 						/>

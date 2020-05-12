@@ -2,25 +2,28 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Head from "next/head";
 import { connect } from "react-redux";
+import app from "~utils/axiosConfig";
+import { parseData } from "~utils/parseResponse";
 import DisplayUserList from "~components/DisplayUserList";
 import UserListNavigation from "~components/UserListNavigation";
 import Modal from "~components/Modal";
 import UserForm from "~components/UserForm";
 import LoadingUsers from "~components/LoadingUsers";
+import FadeIn from "~components/FadeIn";
 import {
 	createUser,
 	deleteUser,
 	fetchUsers,
+	resetUsers,
 	seedDB,
+	setUsers,
 	updateUser,
 } from "~actions/Users";
-import { resetMessage } from "~actions/Server";
+import { resetMessage, setError } from "~actions/Server";
+import { wrapper } from "~store/index";
+import toast from "~components/Toast";
 
 export class ShowUsers extends Component {
-	static getInitialProps({ store }) {
-		store.dispatch(fetchUsers());
-	}
-
 	state = {
 		isEditingID: "",
 		openModal: false,
@@ -37,8 +40,7 @@ export class ShowUsers extends Component {
 	render = () => (
 		<div css="padding: 10px 0 40px;">
 			<Head>
-				<title>NextJS SSR Kit - Users</title>
-				<link rel="icon" href="/favicon.ico" />
+				<title>Users - NextJS SSR Kit</title>
 			</Head>
 			<div css="text-align: center;">
 				<UserListNavigation
@@ -57,19 +59,38 @@ export class ShowUsers extends Component {
 				{this.props.isLoading ? (
 					<LoadingUsers height={398} width={780} opacity="1" />
 				) : (
-					<DisplayUserList
-						{...this.props}
-						{...this.state}
-						onHandleCloseModal={this.handleCloseModal}
-						onHandleDeleteClick={this.props.deleteUser}
-						onHandleEditClick={this.handleEditClick}
-						onHandleResetEditClick={this.handleResetEditClick}
-					/>
+					<FadeIn timing="0.3s">
+						<DisplayUserList
+							{...this.props}
+							{...this.state}
+							onHandleCloseModal={this.handleCloseModal}
+							onHandleDeleteClick={this.props.deleteUser}
+							onHandleEditClick={this.handleEditClick}
+							onHandleResetEditClick={this.handleResetEditClick}
+						/>
+					</FadeIn>
 				)}
 			</div>
 		</div>
 	);
 }
+
+export const getStaticProps = wrapper.getStaticProps(
+	async ({ store: { dispatch } }) => {
+		try {
+			dispatch(resetUsers());
+
+			const res = await app.get("users");
+			const data = parseData(res);
+
+			dispatch(setUsers(data));
+		} catch (e) {
+			const message = e.toString();
+			dispatch(setError(message));
+			toast({ type: "error", message });
+		}
+	},
+);
 
 ShowUsers.propTypes = {
 	createUser: PropTypes.func.isRequired,
@@ -118,4 +139,6 @@ const mapDispatchToProps = {
 	updateUser,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ShowUsers);
+export default wrapper.withRedux(
+	connect(mapStateToProps, mapDispatchToProps)(ShowUsers),
+);

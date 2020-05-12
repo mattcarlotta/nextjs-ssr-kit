@@ -1,3 +1,4 @@
+import { HYDRATE } from "next-redux-wrapper";
 import * as constants from "~constants/index";
 
 export const initialState = {
@@ -13,6 +14,8 @@ export const initialState = {
  */
 const serverReducer = (state = initialState, { payload, type }) => {
 	switch (type) {
+		case HYDRATE:
+			return { ...state, ...payload.server };
 		case constants.RESET_SERVER_MESSAGES:
 			return initialState;
 		case constants.SERVER_ERROR:

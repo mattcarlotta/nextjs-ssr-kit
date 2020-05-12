@@ -2,8 +2,8 @@ import { all, put, call, takeLatest } from "redux-saga/effects";
 import app from "~utils/axiosConfig";
 import { parseData, parseMessage } from "~utils/parseResponse";
 import * as constants from "~constants/index";
-import { setUsers } from "~actions/Users";
-import { setMessage } from "~actions/Server";
+import { resetUsers, setUsers } from "~actions/Users";
+import { resetMessage, setMessage } from "~actions/Server";
 import showError from "~utils/showError";
 import toast from "~components/Toast";
 
@@ -19,6 +19,9 @@ import toast from "~components/Toast";
  */
 export function* fetchUsers() {
 	try {
+		yield put(resetUsers());
+		yield put(resetMessage());
+
 		const res = yield call(app.get, "users");
 		const data = yield call(parseData, res);
 
@@ -43,6 +46,8 @@ export function* fetchUsers() {
  */
 export function* createUser({ props }) {
 	try {
+		yield put(resetMessage());
+
 		const res = yield call(app.post, "users/create", props);
 		const message = yield call(parseMessage, res);
 
@@ -71,6 +76,8 @@ export function* createUser({ props }) {
  */
 export function* deleteUser({ id }) {
 	try {
+		yield put(resetMessage());
+
 		const res = yield call(app.delete, `users/delete/${id}`);
 		const message = yield call(parseMessage, res);
 
@@ -96,6 +103,8 @@ export function* deleteUser({ id }) {
  */
 export function* seedDB() {
 	try {
+		yield put(resetMessage());
+
 		const res = yield call(app.post, "users/seed");
 		const data = yield call(parseData, res);
 
@@ -120,6 +129,8 @@ export function* seedDB() {
  */
 export function* updateUser({ props, id }) {
 	try {
+		yield put(resetMessage());
+
 		const res = yield call(app.put, `users/update/${id}`, { ...props });
 		const message = yield call(parseMessage, res);
 

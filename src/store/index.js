@@ -1,31 +1,29 @@
 import createSagaMiddleware from "redux-saga";
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
+import { createWrapper } from "next-redux-wrapper";
 import rootReducer from "~reducers/index";
 import rootSaga from "~sagas/index";
 
-export default (initialState, { isServer, req = null }) => {
+export const makeStore = () => {
 	const saga = createSagaMiddleware();
 
 	const store = createStore(
 		rootReducer,
-		initialState,
 		composeWithDevTools(applyMiddleware(saga)),
 	);
 
 	if (module.hot) {
 		module.hot.accept("../reducers", () => {
 			/* eslint-disable-next-line */
-			const createNextReducer = require("../reducers/index").default;
-
-			store.replaceReducer(createNextReducer(initialState));
+			store.replaceReducer(require("../reducers").default);
 		});
 	}
 
 	/* istanbul ignore next */
-	if (req || !isServer) {
-		store.sagaTask = saga.run(rootSaga);
-	}
+	store.sagaTask = saga.run(rootSaga);
 
 	return store;
 };
+
+export const wrapper = createWrapper(makeStore, { debug: false });
