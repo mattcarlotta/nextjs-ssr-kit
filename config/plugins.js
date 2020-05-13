@@ -14,14 +14,7 @@ const {
 
 const remoteAddress = address.ip();
 
-const {
-  analyze,
-  baseURL,
-  cookieSecret,
-  LOCALHOST,
-  NODE_ENV,
-  PORT,
-} = process.env;
+const { analyze, baseURL, LOCALHOST, NODE_ENV, PORT } = process.env;
 
 const inDev = NODE_ENV === "development";
 const filename = inDev ? staticCSSDevPath : staticCSSProdPath;
@@ -43,8 +36,6 @@ module.exports = isServer => {
       new DefinePlugin({
         "process.env": {
           baseURL: JSON.stringify(baseURL),
-          cookieSecret: JSON.stringify(cookieSecret),
-          inDevelopment: inDev,
           NODE_ENV: JSON.stringify(NODE_ENV),
         },
       }),
