@@ -18,7 +18,6 @@ const {
   analyze,
   baseURL,
   cookieSecret,
-  DATABASE,
   LOCALHOST,
   NODE_ENV,
   PORT,
@@ -45,8 +44,8 @@ module.exports = isServer => {
         "process.env": {
           baseURL: JSON.stringify(baseURL),
           cookieSecret: JSON.stringify(cookieSecret),
-          DATABASE: JSON.stringify(DATABASE),
           inDevelopment: inDev,
+          NODE_ENV: JSON.stringify(NODE_ENV),
         },
       }),
     );
