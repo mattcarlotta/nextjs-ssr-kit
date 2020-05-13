@@ -6,14 +6,13 @@ import Flex from "~components/Layout/Flex";
 import FlexEnd from "~components/Layout/FlexEnd";
 import FlexStart from "~components/Layout/FlexStart";
 import BackgroundOverlay from "./BackgroundOverlay";
-import Center from "./Center";
 import CloseModalButton from "./CloseModalButton";
-import ModalBody from "./ModalBody";
 import ModalContent from "./ModalContent";
 import ModalContainer from "./ModalContainer";
+import ModalRoot from "./ModalRoot";
 import WindowContainer from "./WindowContainer";
 
-class Modal extends PureComponent {
+export class Modal extends PureComponent {
 	componentDidMount() {
 		document.body.style.overflow = "hidden";
 	}
@@ -24,20 +23,18 @@ class Modal extends PureComponent {
 
 	render = () =>
 		createPortal(
-			<div data-testid="modal">
+			<div data-testid="modal-overlay">
 				<BackgroundOverlay />
 				<WindowContainer>
-					<ModalContainer>
-						<Center maxWidth={this.props.maxWidth}>
-							<ModalContent maxWidth={this.props.maxWidth}>
+					<ModalRoot>
+						<ModalContainer maxWidth={this.props.maxWidth}>
+							<ModalContent data-test="modal" maxWidth={this.props.maxWidth}>
 								<Flex
-									style={{
-										borderBottom: "1px solid #d3d3d3",
-										padding: "2px 0",
-									}}
+									data-testid="modal-header"
+									style={{ padding: 15, width: "auto" }}
 								>
 									<FlexStart>
-										<div css="padding: 2px;font-weight: bold;color: #7d7d7d;">
+										<div css="padding: 2px;font-weight: bold;color: #7d7d7d;font-size: 16px;">
 											{this.props.title}
 										</div>
 									</FlexStart>
@@ -51,10 +48,12 @@ class Modal extends PureComponent {
 										</CloseModalButton>
 									</FlexEnd>
 								</Flex>
-								<ModalBody>{this.props.children}</ModalBody>
+								<div data-testid="modal-body" css="padding: 10px 20px 20px;">
+									{this.props.children}
+								</div>
 							</ModalContent>
-						</Center>
-					</ModalContainer>
+						</ModalContainer>
+					</ModalRoot>
 				</WindowContainer>
 			</div>,
 			document.body,

@@ -1,4 +1,3 @@
-/* istanbul ignore file */
 import styled from "styled-components";
 
 export default styled.div`
@@ -7,4 +6,6 @@ export default styled.div`
 	justify-content: center;
 	align-items: center;
 	width: 100%;
+	flex-wrap: ${({ wrap }) => (wrap ? "wrap" : "nowrap")};
+	justify-content: ${({ justify }) => justify || "start"};
 `;

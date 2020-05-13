@@ -10,6 +10,7 @@ const TextArea = ({
 	name,
 	placeholder,
 	onChange,
+	rows,
 	value,
 	style,
 }) => (
@@ -23,6 +24,7 @@ const TextArea = ({
 			name={name}
 			onChange={onChange}
 			placeholder={placeholder}
+			rows={rows || 10}
 			tabIndex={0}
 			value={value}
 		/>
@@ -37,6 +39,7 @@ TextArea.propTypes = {
 	name: PropTypes.string.isRequired,
 	placeholder: PropTypes.string,
 	label: PropTypes.string.isRequired,
+	rows: PropTypes.number,
 	value: PropTypes.string,
 	style: PropTypes.objectOf(
 		PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -49,8 +52,11 @@ export default styled(TextArea)`
 		width: 100% !important;
 	}
 
-	min-height: 225px;
+	min-height: 230px;
 	padding: 0 10px;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 15px;
 
 	textarea {
 		box-sizing: border-box;
@@ -58,11 +64,13 @@ export default styled(TextArea)`
 		height: 173px;
 		overflow-y: auto;
 		width: 100%;
-		background-color: #fff;
+		background: #fff;
 		color: #3a3a3a;
 		border: 1px solid ${({ errors }) => (errors ? "#d03916" : "#d3d3d3")};
+		border-radius: 4px;
 		transition: 0.2s ease-in-out;
-		transition-property: color, background-color, border;
+		transition-property: color, border;
+		resize: none;
 
 		&::placeholder {
 			color: #bbb;

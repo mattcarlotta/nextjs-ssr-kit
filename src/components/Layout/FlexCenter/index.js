@@ -1,4 +1,3 @@
-/* istanbul ignore file */
 import styled from "styled-components";
 
 export default styled.div`
@@ -6,5 +5,5 @@ export default styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 50vh;
+	height: ${({ height }) => height || "50vh"};
 `;

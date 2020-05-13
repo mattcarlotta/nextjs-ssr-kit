@@ -1,4 +1,3 @@
-/* istanbul ignore file */
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
@@ -53,18 +52,25 @@ export default styled(Input)`
 		width: 100% !important;
 	}
 
-	height: 92px;
+	height: 105px;
 	padding: 0 10px;
+	display: flex;
+	flex-direction: column;
+
+	label {
+		width: 100%;
+	}
 
 	input {
 		text-indent: 10px;
 		height: 40px;
 		width: 100%;
-		background-color: #fff;
+		background: #fff;
 		color: #3a3a3a;
 		border: 1px solid ${({ errors }) => (errors ? "#d03916" : "#d3d3d3")};
+		border-radius: 4px;
 		transition: 0.2s ease-in-out;
-		transition-property: color, background-color, border;
+		transition-property: color, border;
 
 		&::placeholder {
 			color: #bbb;

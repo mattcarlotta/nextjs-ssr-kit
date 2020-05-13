@@ -5,7 +5,7 @@ export default props => [
 		label: "Username",
 		value: props.userName || "",
 		errors: "",
-		style: { width: "46%", display: "inline-block", marginRight: 10 },
+		style: { width: "50%" },
 		required: true,
 	},
 	{
@@ -14,7 +14,7 @@ export default props => [
 		label: "Email",
 		value: props.email || "",
 		errors: "",
-		style: { width: "46%", display: "inline-block" },
+		style: { width: "50%" },
 		required: true,
 	},
 	{
@@ -23,7 +23,7 @@ export default props => [
 		label: "First Name",
 		value: props.firstName || "",
 		errors: "",
-		style: { width: "46%", display: "inline-block", marginRight: 10 },
+		style: { width: "50%" },
 		required: true,
 	},
 	{
@@ -32,7 +32,7 @@ export default props => [
 		label: "Last Name",
 		value: props.lastName || "",
 		errors: "",
-		style: { width: "46%", display: "inline-block" },
+		style: { width: "50%" },
 		required: true,
 	},
 	{
@@ -41,7 +41,7 @@ export default props => [
 		label: "Street",
 		value: props.address ? props.address.street : "",
 		errors: "",
-		style: { width: "65%", display: "inline-block", marginRight: 10 },
+		style: { width: "75%" },
 		required: true,
 	},
 	{
@@ -50,7 +50,7 @@ export default props => [
 		label: "Suite",
 		value: props.address ? props.address.suite : "",
 		errors: "",
-		style: { width: "27%", display: "inline-block" },
+		style: { width: "25%" },
 	},
 	{
 		name: "city",
@@ -58,7 +58,7 @@ export default props => [
 		label: "City",
 		value: props.address ? props.address.city : "",
 		errors: "",
-		style: { width: "35%", display: "inline-block", marginRight: 10 },
+		style: { width: "40%" },
 		required: true,
 	},
 	{
@@ -67,7 +67,7 @@ export default props => [
 		label: "State",
 		value: props.address ? props.address.state : "",
 		errors: "",
-		style: { width: "35%", display: "inline-block", marginRight: 10 },
+		style: { width: "40%" },
 		required: true,
 	},
 	{
@@ -76,7 +76,7 @@ export default props => [
 		label: "Zip Code",
 		value: props.address ? props.address.zipCode : "",
 		errors: "",
-		style: { width: "18%", display: "inline-block" },
+		style: { width: "20%" },
 		required: true,
 	},
 	{
@@ -85,6 +85,7 @@ export default props => [
 		label: "Background Infomation",
 		value: props.backgroundInfo || "",
 		errors: "",
+		style: { width: "100%" },
 		required: true,
 	},
 ];

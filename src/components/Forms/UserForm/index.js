@@ -4,7 +4,7 @@ import Button from "~components/Layout/Button";
 import FieldGenerator from "~components/Forms/FieldGenerator";
 import Flex from "~components/Layout/Flex";
 import FlexEnd from "~components/Layout/FlexEnd";
-import FlexStart from "~components/Layout/FlexStart";
+// import FlexStart from "~components/Layout/FlexStart";
 import fieldValidator from "~utils/fieldValidator";
 import fieldUpdater from "~utils/fieldUpdater";
 import parseFields from "~utils/parseFields";
@@ -60,29 +60,31 @@ class UserForm extends Component {
 			css="margin: 0 auto;text-align: left; padding: 5px;"
 			onSubmit={this.handleSubmit}
 		>
-			<FieldGenerator fields={this.state.fields} onChange={this.handleChange} />
-			<Flex style={{ padding: "0 10px" }}>
-				<FlexStart>
-					<Button
-						dataTest="cancel"
-						danger
-						type="button"
-						onClick={this.props.cancelForm}
-					>
-						Cancel
-					</Button>
-				</FlexStart>
-				<FlexEnd>
-					<Button
-						dataTest="submit"
-						primary
-						disabled={this.state.isSubmitting}
-						type="submit"
-					>
-						Submit
-					</Button>
-				</FlexEnd>
+			<Flex direction="row" wrap="true" justify="space-between">
+				<FieldGenerator
+					fields={this.state.fields}
+					onChange={this.handleChange}
+				/>
 			</Flex>
+			<FlexEnd>
+				<Button
+					dataTest="cancel"
+					danger
+					type="button"
+					onClick={this.props.cancelForm}
+					style={{ marginRight: 10 }}
+				>
+					Cancel
+				</Button>
+				<Button
+					dataTest="submit"
+					primary
+					disabled={this.state.isSubmitting}
+					type="submit"
+				>
+					Submit
+				</Button>
+			</FlexEnd>
 		</form>
 	);
 }

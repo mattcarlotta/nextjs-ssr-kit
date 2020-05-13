@@ -41,7 +41,6 @@ export default styled(Button)`
 			return "#828282";
 		}};
 	font-size: 16px;
-	line-height: 38px;
 	padding: 8px 16px;
 	text-align: center;
 	transition: all 0.2s ease-in-out;

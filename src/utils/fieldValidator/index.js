@@ -18,12 +18,11 @@ export default fields => {
 			const { name, value, required } = field;
 			if ((!value && required) || (isEmpty(value) && required)) {
 				errors = "Required.";
-			} else {
-				if (
-					(name === "email" || name === "authorizedEmail") &&
-					!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(field.value)
-				)
-					errors = "Invalid email.";
+			} else if (
+				name === "email" &&
+				!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(field.value)
+			) {
+				errors = "Invalid email.";
 			}
 
 			if (errors) errorCount += 1;

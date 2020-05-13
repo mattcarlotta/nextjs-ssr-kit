@@ -10,6 +10,13 @@ import FlexEnd from "~components/Layout/FlexEnd";
 import FlexStart from "~components/Layout/FlexStart";
 import Link from "~components/Navigation/Link";
 
+const iconStyle = {
+	position: "relative",
+	top: 2,
+	fontSize: 18,
+	marginRight: 5,
+};
+
 const UserListNavigation = ({ className, openModal, seedDB }) => (
 	<div data-testid="user-list-navigation" className={className}>
 		<Link href="/">
@@ -19,17 +26,13 @@ const UserListNavigation = ({ className, openModal, seedDB }) => (
 		<Flex style={{ width: 780, margin: "10px auto" }}>
 			<FlexStart>
 				<Button dataTest="seed-database" type="button" onClick={seedDB}>
-					<span css="margin-right: 5px;font-size: 26px;">
-						<FaFileAlt style={{ position: "relative", top: "5px" }} />
-					</span>
+					<FaFileAlt style={iconStyle} />
 					<span>Seed Database</span>
 				</Button>
 			</FlexStart>
 			<FlexEnd>
 				<Button dataTest="open-modal" primary type="button" onClick={openModal}>
-					<span css="margin-right: 5px;font-size: 26px;">
-						<FaUserPlus style={{ position: "relative", top: "5px" }} />
-					</span>
+					<FaUserPlus style={iconStyle} />
 					<span>Create New User</span>
 				</Button>
 			</FlexEnd>

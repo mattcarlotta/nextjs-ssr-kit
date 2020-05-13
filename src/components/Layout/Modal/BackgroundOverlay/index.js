@@ -11,6 +11,5 @@ export default styled.div`
 	z-index: 3;
 	position: fixed;
 	touch-action: none;
-	background-color: rgba(0, 0, 0, 0.65);
-	-webkit-tap-highlight-color: transparent;
+	background-color: rgba(0, 0, 0, 0.5);
 `;

@@ -48,7 +48,12 @@ export class ShowUsers extends Component {
 					seedDB={this.props.seedDB}
 				/>
 				{this.state.openModal && (
-					<Modal onClick={this.handleCloseModal} title="Create New User">
+					<Modal
+						onClick={this.handleCloseModal}
+						title="Create New User Form"
+						disableClickHandler
+						maxWidth="750px"
+					>
 						<UserForm
 							{...this.props}
 							submitAction={this.props.createUser}
@@ -75,7 +80,7 @@ export class ShowUsers extends Component {
 	);
 }
 
-export const getStaticProps = wrapper.getStaticProps(
+export const getServerSideProps = wrapper.getServerSideProps(
 	async ({ store: { dispatch } }) => {
 		try {
 			dispatch(resetUsers());
