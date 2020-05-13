@@ -97,7 +97,7 @@ git clone git@github.com:mattcarlotta/nextjs-ssr-kit.git
 
 3 - Run `yarn dev` to run a development server.
 
-Provided in this boilerplate is an example of how to integrate a RESTFUL API (utilizing MongoDB).
+Provided in this boilerplate is an example of how to integrate a RESTful API (utilizing MongoDB).
 
 In order to interact with the API, you'll need to:
 
