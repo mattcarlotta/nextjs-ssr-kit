@@ -2,8 +2,8 @@ import React from "react";
 import App from "next/app";
 import Head from "next/head";
 import { ToastContainer } from "react-toastify";
-import GlobalStylesheet from "~styles/globalStylesheet";
 import toast from "~components/App/Toast";
+import GlobalStylesheet from "~styles/globalStylesheet";
 import "~styles/globals.scss";
 
 export class MyApp extends App {
