@@ -259,7 +259,7 @@ Click [here](package.json) to see latest versions.
 
 ## NextJS and API Integrations
 
-By default, most directories within the root and `src` directories are [aliased](jsconfig.json) (`~`). This means that you can refer to their child files or child directories by using the `~` symbol followed by the child file name or directory name (root-level `index.js` files [require their own aliases](https://github.com/zeit/next.js/issues/12743), as such this project has been set up to handle predefined directories -- you'll be responsible for any additional directories). For example, `~models`, refers to the root [models/index.js](models/index.js) file, while `~models/users` refers to the [model/user.js](models/user.js) file. This allows for rapid development when referring to root-level directories as it eliminates the hassle of specifiying relative paths (like `../../../../../../../models`) to the directory from anywhere within the project!
+By default, most directories within the root and `src` directories are [aliased](jsconfig.json#L4-L21) (`~`). This means that you can refer to root files or directories by using the `~` symbol followed by a child file or directory name (root-level `index.js` files [require their own aliases](https://github.com/zeit/next.js/issues/12743), as such this project has been set up to handle predefined directories -- you'll be responsible for any additional directories). For example, `~models`, refers to the root [models/index.js](models/index.js) file, while `~models/users` refers to the [model/user.js](models/user.js) file. This allows for rapid development when referring to root-level directories as it eliminates the hassle of specifiying relative paths (like `../../../../../../../models`) to the directory!
 
 <hr />
 
