@@ -269,7 +269,7 @@ By default, this project attempts to import `.env` files placed within the `env`
 
 - `baseURL` (used [here](src/utils/axiosConfig/index.js#L5))
 - `DATABASE` (used [here](database/index.js#L5))
-- `LOCALHOST` (required for development only, used [here](next.config.js#L5) and [here](config/plugins.js#L17))
+- `LOCALHOST` (required for development only, used [here](next.config.js#L7) and [here](config/plugins.js#L17))
 - `PORT` (required for development only, used [here](config/plugins.js#L17))
 
 <hr />
