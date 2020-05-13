@@ -133,7 +133,7 @@ In order to interact with the API, you'll need to:
 | `test:watch`     | Runs and watches `.js` files in `src` that have changed since last commit.      |
 | `test:watchall`  | Runs and watches all `.test.js` files in `src`.                                 |
 
-† Note: Before running this command, you must edit the <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/env/.env.production#L2">env/.env.production</a> file and update the `baseURL` from `http://localhost:8080/api/` to include your remote server address.
+† Note: Before running this command, you must edit the [.env.production](env/.env.production#L1) file and update the `baseURL` from `http://localhost:8080/api/` to include your remote server address.
 
 <hr />
 
