@@ -1,10 +1,11 @@
+/* eslint-disable */
 import { render, fireEvent, screen } from "@testing-library/react";
 import {
-	getByLabelText,
-	getByText,
-	getByTestId,
-	queryByTestId,
-	waitFor,
+  getByLabelText,
+  getByText,
+  getByTestId,
+  queryByTestId,
+  waitFor,
 } from "@testing-library/dom";
 import "@testing-library/jest-dom";
 import mockApp from "~utils/__mocks__/mockAxios.js";
@@ -32,3 +33,4 @@ global.render = render;
 global.screen = screen;
 global.waitFor = waitFor;
 global.withRouterContext = withRouterContext;
+/* eslint-enable */

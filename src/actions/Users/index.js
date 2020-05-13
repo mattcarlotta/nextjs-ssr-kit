@@ -7,8 +7,8 @@ import * as constants from "~constants";
  * @returns {object}
  */
 export const createUser = ({ props }) => ({
-	type: constants.USERS_CREATE,
-	props,
+  type: constants.USERS_CREATE,
+  props,
 });
 
 /**
@@ -17,8 +17,8 @@ export const createUser = ({ props }) => ({
  * @returns {object}
  */
 export const deleteUser = id => ({
-	type: constants.USERS_DELETE,
-	id,
+  type: constants.USERS_DELETE,
+  id,
 });
 
 /**
@@ -26,7 +26,7 @@ export const deleteUser = id => ({
  * @returns {object}
  */
 export const fetchUsers = () => ({
-	type: constants.USERS_FETCH,
+  type: constants.USERS_FETCH,
 });
 
 /**
@@ -34,7 +34,7 @@ export const fetchUsers = () => ({
  * @returns {object}
  */
 export const resetUsers = () => ({
-	type: constants.USERS_RESET,
+  type: constants.USERS_RESET,
 });
 
 /**
@@ -42,7 +42,7 @@ export const resetUsers = () => ({
  * @returns {object}
  */
 export const seedDB = () => ({
-	type: constants.USERS_SEED,
+  type: constants.USERS_SEED,
 });
 
 /**
@@ -51,8 +51,8 @@ export const seedDB = () => ({
  * @returns {object}
  */
 export const setUsers = data => ({
-	type: constants.USERS_SET_DATA,
-	payload: !isEmpty(data) ? data : [],
+  type: constants.USERS_SET_DATA,
+  payload: !isEmpty(data) ? data : [],
 });
 
 /**
@@ -62,7 +62,7 @@ export const setUsers = data => ({
  * @returns {object}
  */
 export const updateUser = ({ props, id }) => ({
-	type: constants.USERS_UPDATE,
-	props,
-	id,
+  type: constants.USERS_UPDATE,
+  props,
+  id,
 });

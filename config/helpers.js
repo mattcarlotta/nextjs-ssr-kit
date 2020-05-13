@@ -3,10 +3,10 @@ const postcssNormalize = require("postcss-normalize");
 const autoprefixer = require("autoprefixer");
 const postcssFixes = require("postcss-flexbugs-fixes");
 const postcssEnv = require("postcss-preset-env")({
-	autoprefixer: {
-		flexbox: "no-2009",
-	},
-	stage: 3,
+  autoprefixer: {
+    flexbox: "no-2009",
+  },
+  stage: 3,
 });
 
 const { NODE_ENV } = process.env;
@@ -24,9 +24,9 @@ const name = "[name]-[hash].[ext]";
  * @returns {object}
  */
 const jsRule = ({ loader, options }) => ({
-	test: /\.(js|mjs|jsx|ts|tsx)$/,
-	exclude: /(node_modules)/,
-	use: [{ loader, options }],
+  test: /\.(js|mjs|jsx|ts|tsx)$/,
+  exclude: /(node_modules)/,
+  use: [{ loader, options }],
 });
 
 /**
@@ -39,16 +39,16 @@ const jsRule = ({ loader, options }) => ({
  * @returns {object}
  */
 const mediaRule = ({ test, loader, options }) => ({
-	test,
-	use: [
-		{
-			loader,
-			options: {
-				...options,
-				name,
-			},
-		},
-	],
+  test,
+  use: [
+    {
+      loader,
+      options: {
+        ...options,
+        name,
+      },
+    },
+  ],
 });
 
 /**
@@ -63,47 +63,47 @@ const mediaRule = ({ test, loader, options }) => ({
  * @returns {object}
  */
 const styleRule = ({
-	test,
-	include = undefined,
-	exclude = undefined,
-	modules = false,
-	isServer,
+  test,
+  include = undefined,
+  exclude = undefined,
+  modules = false,
+  isServer,
 }) => ({
-	test,
-	include,
-	exclude,
-	use: [
-		!isServer && inDev && "extracted-loader",
-		!isServer && MiniCssExtractPlugin.loader,
-		{
-			loader: isServer ? "css-loader/locals" : "css-loader",
-			options: {
-				modules,
-				minimize: !inDev,
-				sourceMap: inDev,
-				importLoaders: 1,
-				localsConvention,
-			},
-		},
-		{
-			loader: "postcss-loader",
-			options: {
-				ident: "postcss",
-				plugins: () => [
-					postcssFixes,
-					postcssEnv,
-					autoprefixer(),
-					postcssNormalize(),
-				],
-				sourceMap: !inDev,
-			},
-		},
-		"sass-loader",
-	].filter(Boolean),
+  test,
+  include,
+  exclude,
+  use: [
+    !isServer && inDev && "extracted-loader",
+    !isServer && MiniCssExtractPlugin.loader,
+    {
+      loader: isServer ? "css-loader/locals" : "css-loader",
+      options: {
+        modules,
+        minimize: !inDev,
+        sourceMap: inDev,
+        importLoaders: 1,
+        localsConvention,
+      },
+    },
+    {
+      loader: "postcss-loader",
+      options: {
+        ident: "postcss",
+        plugins: () => [
+          postcssFixes,
+          postcssEnv,
+          autoprefixer(),
+          postcssNormalize(),
+        ],
+        sourceMap: !inDev,
+      },
+    },
+    "sass-loader",
+  ].filter(Boolean),
 });
 
 module.exports = {
-	jsRule,
-	mediaRule,
-	styleRule,
+  jsRule,
+  mediaRule,
+  styleRule,
 };

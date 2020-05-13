@@ -6,23 +6,23 @@ import rootReducer from "~reducers";
 import rootSaga from "~sagas";
 
 export const makeStore = () => {
-	const saga = createSagaMiddleware();
+  const saga = createSagaMiddleware();
 
-	const store = createStore(
-		rootReducer,
-		composeWithDevTools(applyMiddleware(saga)),
-	);
+  const store = createStore(
+    rootReducer,
+    composeWithDevTools(applyMiddleware(saga)),
+  );
 
-	// if (module.hot) {
-	// 	module.hot.accept("../reducers", () => {
-	// 		/* eslint-disable-next-line */
-	// 		store.replaceReducer(require("../reducers").default);
-	// 	});
-	// }
+  // if (module.hot) {
+  // 	module.hot.accept("../reducers", () => {
+  // 		/* eslint-disable-next-line */
+  // 		store.replaceReducer(require("../reducers").default);
+  // 	});
+  // }
 
-	store.sagaTask = saga.run(rootSaga);
+  store.sagaTask = saga.run(rootSaga);
 
-	return store;
+  return store;
 };
 
 export const wrapper = createWrapper(makeStore, { debug: false });

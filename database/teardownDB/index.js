@@ -17,28 +17,28 @@ const { DATABASE, DROP, EXIT } = process.env;
  */
 
 const teardownDB = () => {
-	return new Promise(async (resolve, reject) => {
-		const db = connectDatabase();
-		try {
-			await db.dropDatabase();
-			await db.close();
+  return new Promise(async (resolve, reject) => {
+    const db = connectDatabase();
+    try {
+      await db.dropDatabase();
+      await db.close();
 
-			console.log(
-				`\n${chalk.rgb(7, 54, 66).bgRgb(38, 139, 210)(" PASS ")} ${chalk.blue(
-					`\x1b[2mutils/\x1b[0m\x1b[1mteardownDB.js\x1b[0m (${DATABASE})`,
-				)}\n`,
-			);
+      console.log(
+        `\n${chalk.rgb(7, 54, 66).bgRgb(38, 139, 210)(" PASS ")} ${chalk.blue(
+          `\x1b[2mutils/\x1b[0m\x1b[1mteardownDB.js\x1b[0m (${DATABASE})`,
+        )}\n`,
+      );
 
-			if (EXIT) process.exit(0);
+      if (EXIT) process.exit(0);
 
-			return resolve();
-		} catch (err) {
-			console.log(
-				`\n\x1b[7m\x1b[31;1m FAIL \x1b[0m \x1b[2mutils/\x1b[0m\x1b[31;1mteardownDB.js\x1b[0m\x1b[31m\n${err.toString()}\x1b[0m`,
-			);
-			return reject(process.exit(0));
-		}
-	});
+      return resolve();
+    } catch (err) {
+      console.log(
+        `\n\x1b[7m\x1b[31;1m FAIL \x1b[0m \x1b[2mutils/\x1b[0m\x1b[31;1mteardownDB.js\x1b[0m\x1b[31m\n${err.toString()}\x1b[0m`,
+      );
+      return reject(process.exit(0));
+    }
+  });
 };
 
 if (DROP) teardownDB();

@@ -18,21 +18,21 @@ import { store } from "~store";
  * @returns {MountedRouterWrapper}
  */
 export const withRouterContext = (
-	Component,
-	initialProps = {},
-	router = {
-		pathname: "/",
-		route: "/",
-		query: {},
-		asPath: "/",
-	},
+  Component,
+  initialProps = {},
+  router = {
+    pathname: "/",
+    route: "/",
+    query: {},
+    asPath: "/",
+  },
 ) => {
-	const wrapper = render(
-		<Provider store={store}>
-			<RouterContext.Provider value={router}>
-				<Component {...initialProps} />
-			</RouterContext.Provider>
-		</Provider>,
-	);
-	return wrapper;
+  const wrapper = render(
+    <Provider store={store}>
+      <RouterContext.Provider value={router}>
+        <Component {...initialProps} />
+      </RouterContext.Provider>
+    </Provider>,
+  );
+  return wrapper;
 };

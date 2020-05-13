@@ -11,8 +11,8 @@ export const resetMessage = () => ({ type: constants.RESET_SERVER_MESSAGES });
  * @returns {object}
  */
 export const setMessage = message => ({
-	type: constants.SERVER_MESSAGE,
-	payload: message,
+  type: constants.SERVER_MESSAGE,
+  payload: message,
 });
 
 /**
@@ -20,6 +20,6 @@ export const setMessage = message => ({
  * @returns {object}
  */
 export const setError = err => ({
-	type: constants.SERVER_ERROR,
-	payload: err,
+  type: constants.SERVER_ERROR,
+  payload: err,
 });

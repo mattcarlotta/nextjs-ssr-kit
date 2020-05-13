@@ -2,5 +2,5 @@
 const { model } = require("mongoose");
 
 module.exports = {
-	User: model("User"),
+  User: model("User"),
 };

@@ -1,133 +1,133 @@
 {
-	"parser": "babel-eslint",
-	"plugins": ["react", "jest", "prettier"],
-	"extends": ["airbnb", "plugin:prettier/recommended", "prettier/react"],
-	"globals": {
-		"React": true,
-		"document": true,
-		"window": true,
-		"localStorage": true,
-		"fetch": true
-	},
-	"root": true,
-	"overrides": [
-		{
-			"files": ["*.test.js"],
-			"rules": {
-				"no-undef": 0,
-				"react/react-in-jsx-scope": 0,
-				"react/jsx-no-undef": 0
-			}
-		}
-	],
-	"rules": {
-		"quotes": [
-			"error",
-			"double",
-			{
-				"avoidEscape": true,
-				"allowTemplateLiterals": true
-			}
-		],
-		"arrow-parens": ["warn", "as-needed"],
-		"indent": 0,
-		"class-methods-use-this": 0,
-		"import/no-named-as-default": 0,
-		"no-param-reassign": 0,
-		"no-return-assign": 0,
-		"no-shadow": 0,
-		"react/no-string-refs": 0,
-		"react/prefer-stateless-function": "warn",
-		"react/self-closing-comp": [
-			"warn",
-			{
-				"component": true,
-				"html": false
-			}
-		],
-		"react/sort-comp": [
-			1,
-			{
-				"order": [
-					"static-methods",
-					"lifecycle",
-					"everything-else",
-					"rendering"
-				],
-				"groups": {
-					"rendering": ["/^render.+$/", "render"]
-				}
-			}
-		],
-		"jest/no-disabled-tests": "warn",
-		"jest/no-focused-tests": "error",
-		"jest/no-identical-title": "error",
-		"jest/prefer-to-have-length": "warn",
-		"jest/valid-expect": "error",
-		"react/destructuring-assignment": 0,
-		"react/require-default-props": 0,
-		"jsx-a11y/href-no-hash": "off",
-		"jsx-a11y/anchor-is-valid": [
-			"warn",
-			{
-				"aspects": ["invalidHref"]
-			}
-		],
-		"react/jsx-boolean-value": ["warn", "never"],
-		"react/jsx-closing-bracket-location": 0,
-		"react/jsx-curly-spacing": ["warn", "never"],
-		"react/jsx-filename-extension": [
-			1,
-			{
-				"extensions": [".js", ".jsx"]
-			}
-		],
-		"react/jsx-first-prop-new-line": ["warn", "multiline"],
-		"jsx-a11y/interactive-supports-focus": 0,
-		"jsx-a11y/click-events-have-key-events": 0,
-		"jsx-a11y/no-static-element-interactions": 0,
-		"jsx-a11y/no-noninteractive-tabindex": 0,
-		"array-callback-return": 0,
-		"no-nested-ternary": 0,
-		"react/state-in-constructor": 0,
-		"react/no-did-update-set-state": 0,
-		"consistent-return": 0,
-		"default-case": 0,
-		"react/jsx-fragments": 0,
-		"no-underscore-dangle": 0,
-		"dot-notation": 0,
-		"react/jsx-props-no-spreading": 0,
-		"react/jsx-indent": ["warn", 0],
-		"react/jsx-key": "error",
-		"react/jsx-wrap-multilines": 0,
-		"react/jsx-indent-props": 0,
-		"no-trailing-spaces": [
-			2,
-			{
-				"skipBlankLines": true
-			}
-		],
-		"prefer-template": 0,
-		"prefer-promise-reject-errors": 0,
-		"import/prefer-default-export": 0,
-		"import/no-unresolved": 0,
-		"import/no-extraneous-dependencies": 0,
-		"import/extensions": 0,
-		"babel/object-curly-spacing": 0,
-		"prefer-destructuring": [
-			"error",
-			{
-				"AssignmentExpression": {
-					"array": false,
-					"object": false
-				}
-			}
-		]
-	},
-	"env": {
-		"es6": true,
-		"jest": true,
-		"browser": true,
-		"node": true
-	}
+  "parser": "babel-eslint",
+  "plugins": ["react", "jest", "prettier"],
+  "extends": ["airbnb", "plugin:prettier/recommended", "prettier/react"],
+  "globals": {
+    "React": true,
+    "document": true,
+    "window": true,
+    "localStorage": true,
+    "fetch": true
+  },
+  "root": true,
+  "overrides": [
+    {
+      "files": ["*.test.js"],
+      "rules": {
+        "no-undef": 0,
+        "react/react-in-jsx-scope": 0,
+        "react/jsx-no-undef": 0
+      }
+    }
+  ],
+  "rules": {
+    "quotes": [
+      "error",
+      "double",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
+    "arrow-parens": ["warn", "as-needed"],
+    "indent": 0,
+    "react/jsx-indent": 0,
+    "react/jsx-indent-props": 0,
+    "class-methods-use-this": 0,
+    "import/no-named-as-default": 0,
+    "no-param-reassign": 0,
+    "no-return-assign": 0,
+    "no-shadow": 0,
+    "react/no-string-refs": 0,
+    "react/prefer-stateless-function": "warn",
+    "react/self-closing-comp": [
+      "warn",
+      {
+        "component": true,
+        "html": false
+      }
+    ],
+    "react/sort-comp": [
+      1,
+      {
+        "order": [
+          "static-methods",
+          "lifecycle",
+          "everything-else",
+          "rendering"
+        ],
+        "groups": {
+          "rendering": ["/^render.+$/", "render"]
+        }
+      }
+    ],
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error",
+    "react/destructuring-assignment": 0,
+    "react/require-default-props": 0,
+    "jsx-a11y/href-no-hash": "off",
+    "jsx-a11y/anchor-is-valid": [
+      "warn",
+      {
+        "aspects": ["invalidHref"]
+      }
+    ],
+    "react/jsx-boolean-value": ["warn", "never"],
+    "react/jsx-closing-bracket-location": 0,
+    "react/jsx-curly-spacing": ["warn", "never"],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "react/jsx-first-prop-new-line": ["warn", "multiline"],
+    "jsx-a11y/interactive-supports-focus": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "jsx-a11y/no-noninteractive-tabindex": 0,
+    "array-callback-return": 0,
+    "no-nested-ternary": 0,
+    "react/state-in-constructor": 0,
+    "react/no-did-update-set-state": 0,
+    "consistent-return": 0,
+    "default-case": 0,
+    "react/jsx-fragments": 0,
+    "no-underscore-dangle": 0,
+    "dot-notation": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react/jsx-key": "error",
+    "react/jsx-wrap-multilines": 0,
+    "no-trailing-spaces": [
+      2,
+      {
+        "skipBlankLines": true
+      }
+    ],
+    "prefer-template": 0,
+    "prefer-promise-reject-errors": 0,
+    "import/prefer-default-export": 0,
+    "import/no-unresolved": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/extensions": 0,
+    "babel/object-curly-spacing": 0,
+    "prefer-destructuring": [
+      "error",
+      {
+        "AssignmentExpression": {
+          "array": false,
+          "object": false
+        }
+      }
+    ]
+  },
+  "env": {
+    "es6": true,
+    "jest": true,
+    "browser": true,
+    "node": true
+  }
 }

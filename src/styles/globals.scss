@@ -1,71 +1,77 @@
 @import "~react-toastify/dist/ReactToastify.css";
 
 @keyframes wave {
-	0% {
-		left: -60%;
-	}
-	100% {
-		left: 125%;
-	}
+  0% {
+    left: -60%;
+  }
+
+  100% {
+    left: 125%;
+  }
 }
 
 @keyframes pulse {
-	0% {
-		background-color: #eee;
-	}
-	50% {
-		background-color: #e4e4e4;
-	}
-	100% {
-		background-color: #eee;
-	}
+  0% {
+    background-color: #eee;
+  }
+
+  50% {
+    background-color: #e4e4e4;
+  }
+
+  100% {
+    background-color: #eee;
+  }
 }
 
 @keyframes pop {
-	0% {
-		top: 6px;
-		height: 46px;
-	}
-	50%,
-	100% {
-		top: 19px;
-		height: 21px;
-	}
+  0% {
+    top: 6px;
+    height: 46px;
+  }
+
+  50%,
+  100% {
+    top: 19px;
+    height: 21px;
+  }
 }
 
 @keyframes delay {
-	0%,
-	40%,
-	100% {
-		transform: scaleY(0.05);
-		-webkit-transform: scaleY(0.05);
-	}
-	20% {
-		transform: scaleY(1);
-		-webkit-transform: scaleY(1);
-	}
+  0%,
+  40%,
+  100% {
+    transform: scaleY(0.05);
+    -webkit-transform: scaleY(0.05);
+  }
+
+  20% {
+    transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+  }
 }
 
 @keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .link {
-	cursor: pointer;
-	display: block;
-	color: #03a9f3;
-	font-size: 16px;
-	text-align: center;
-	transition: all 0.2s ease-in-out;
-	text-decoration: none;
-	text-transform: uppercase;
+  cursor: pointer;
+  display: block;
+  color: #03a9f3;
+  font-size: 16px;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
 .link:hover {
-	text-decoration: underline;
+  text-decoration: underline;
 }
