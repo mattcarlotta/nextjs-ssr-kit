@@ -267,10 +267,10 @@ By default, most directories within the root and `src` directories are [aliased]
 
 By default, this project attempts to import `.env` files placed within the `env` directory according to the `process.env.NODE_ENV` variable (`development`, `staging` and `production`, ...etc). However, this has been set up to be flexible so that if you don't wish to utilize any `.env` files, then as long the following `process.env` variables are defined, then the `.env` files and/or directory can be discarded:
 
-- `baseURL` (used [here](src/utils/axiosConfig/index.js))
-- `DATABASE` (used [here](database/index.js))
-- `LOCALHOST` (required for develpment only, used [here](next.config.js) and [here](config/plugins.js))
-- `PORT` (required for develpment only, used [here](config/plugins.js))
+- `baseURL` (used [here](src/utils/axiosConfig/index.js#L5))
+- `DATABASE` (used [here](database/index.js#L5))
+- `LOCALHOST` (required for development only, used [here](next.config.js#L7) and [here](config/plugins.js#L17))
+- `PORT` (required for development only, used [here](config/plugins.js#L17))
 
 <hr />
 
