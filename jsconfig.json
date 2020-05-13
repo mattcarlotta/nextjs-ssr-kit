@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~actions/*": ["src/actions/*"],
+      "~components/*": ["src/components/*"],
+      "~constants": ["src/constants/index"],
+      "~database/*": ["database/*"],
+      "~database": ["database/index"],
+      "~images/*": ["src/images/*"],
+      "~middlewares": ["src/middlewares/index"],
+      "~models": ["models/index"],
+      "~pages/*": ["src/pages/*"],
+      "~reducers/*": ["src/reducers/*"],
+      "~reducers": ["src/reducers/index"],
+      "~sagas/*": ["src/sagas/*"],
+      "~sagas": ["src/sagas/index"],
+      "~store": ["src/store/index"],
+      "~styles/*": ["src/styles/*"],
+      "~utils/*": ["src/utils/*"]
+    }
+  }
+}

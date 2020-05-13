@@ -1,8 +1,9 @@
-import * as types from "~types";
+import { HYDRATE } from "next-redux-wrapper";
+import * as constants from "~constants";
 
 export const initialState = {
-	error: "",
-	message: "",
+  error: "",
+  message: "",
 };
 
 /**
@@ -12,16 +13,18 @@ export const initialState = {
  * @returns {object} - new server state.
  */
 const serverReducer = (state = initialState, { payload, type }) => {
-	switch (type) {
-		case types.RESET_SERVER_MESSAGES:
-			return initialState;
-		case types.SERVER_ERROR:
-			return { ...state, error: payload };
-		case types.SERVER_MESSAGE:
-			return { ...state, message: payload };
-		default:
-			return state;
-	}
+  switch (type) {
+    case HYDRATE:
+      return { ...state, ...payload.server };
+    case constants.RESET_SERVER_MESSAGES:
+      return initialState;
+    case constants.SERVER_ERROR:
+      return { ...state, error: payload };
+    case constants.SERVER_MESSAGE:
+      return { ...state, message: payload };
+    default:
+      return state;
+  }
 };
 
 export default serverReducer;

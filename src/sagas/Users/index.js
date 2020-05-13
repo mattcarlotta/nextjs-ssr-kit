@@ -1,10 +1,11 @@
 import { all, put, call, takeLatest } from "redux-saga/effects";
+import { resetMessage, setMessage } from "~actions/Server";
+import { setUsers } from "~actions/Users";
+import * as constants from "~constants";
+import toast from "~components/App/Toast";
 import app from "~utils/axiosConfig";
 import { parseData, parseMessage } from "~utils/parseResponse";
-import * as types from "~types";
-import { setUsers } from "~actions/Users";
-import { setError, setMessage } from "~actions/Server";
-import toast from "~components/Toast";
+import showError from "~utils/showError";
 
 /**
  * Attempts to fetch users from DB.
@@ -14,18 +15,19 @@ import toast from "~components/Toast";
  * @yields {object} - A response from a call to the API.
  * @function parseData - returns a parsed res.data.
  * @yields {action} -  A redux action to set users to redux state.
- * @throws {action} - A redux action to display a server message by type.
+ * @throws {action} - A toast error message.
  */
 export function* fetchUsers() {
-	try {
-		const res = yield call(app.get, "users");
-		const data = yield call(parseData, res);
+  try {
+    yield put(resetMessage());
 
-		yield put(setUsers(data));
-	} catch (e) {
-		yield put(setError(e.toString()));
-		yield call(toast, { type: "error", message: e.toString() });
-	}
+    const res = yield call(app.get, "users");
+    const data = yield call(parseData, res);
+
+    yield put(setUsers(data));
+  } catch (e) {
+    yield call(showError, e.toString());
+  }
 }
 
 /**
@@ -42,19 +44,20 @@ export function* fetchUsers() {
  * @throws {action} - A toast error message.
  */
 export function* createUser({ props }) {
-	try {
-		const res = yield call(app.post, "users/create", props);
-		const message = yield call(parseMessage, res);
+  try {
+    yield put(resetMessage());
 
-		yield call(toast, { type: "success", message });
+    const res = yield call(app.post, "users/create", props);
+    const message = yield call(parseMessage, res);
 
-		yield put(setMessage(message));
+    yield call(toast, { type: "success", message });
 
-		yield call(fetchUsers);
-	} catch (e) {
-		yield put(setError(e.toString()));
-		yield call(toast, { type: "error", message: e.toString() });
-	}
+    yield put(setMessage(message));
+
+    yield call(fetchUsers);
+  } catch (e) {
+    yield call(showError, e.toString());
+  }
 }
 
 /**
@@ -71,19 +74,20 @@ export function* createUser({ props }) {
  * @throws {action} - A toast error message.
  */
 export function* deleteUser({ id }) {
-	try {
-		const res = yield call(app.delete, `users/delete/${id}`);
-		const message = yield call(parseMessage, res);
+  try {
+    yield put(resetMessage());
 
-		yield call(toast, { type: "success", message });
+    const res = yield call(app.delete, `users/delete/${id}`);
+    const message = yield call(parseMessage, res);
 
-		yield put(setMessage(message));
+    yield call(toast, { type: "success", message });
 
-		yield call(fetchUsers);
-	} catch (e) {
-		yield put(setError(e.toString()));
-		yield call(toast, { type: "error", message: e.toString() });
-	}
+    yield put(setMessage(message));
+
+    yield call(fetchUsers);
+  } catch (e) {
+    yield call(showError, e.toString());
+  }
 }
 
 /**
@@ -97,15 +101,16 @@ export function* deleteUser({ id }) {
  * @throws {action} - A toast error message.
  */
 export function* seedDB() {
-	try {
-		const res = yield call(app.post, "users/seed");
-		const data = yield call(parseData, res);
+  try {
+    yield put(resetMessage());
 
-		yield put(setUsers(data));
-	} catch (e) {
-		yield put(setError(e.toString()));
-		yield call(toast, { type: "error", message: e.toString() });
-	}
+    const res = yield call(app.post, "users/seed");
+    const data = yield call(parseData, res);
+
+    yield put(setUsers(data));
+  } catch (e) {
+    yield call(showError, e.toString());
+  }
 }
 
 /**
@@ -122,19 +127,20 @@ export function* seedDB() {
  * @throws {action} - A redux action to display a server message by type.
  */
 export function* updateUser({ props, id }) {
-	try {
-		const res = yield call(app.put, `users/update/${id}`, { ...props });
-		const message = yield call(parseMessage, res);
+  try {
+    yield put(resetMessage());
 
-		yield call(toast, { type: "info", message });
+    const res = yield call(app.put, `users/update/${id}`, { ...props });
+    const message = yield call(parseMessage, res);
 
-		yield put(setMessage(message));
+    yield call(toast, { type: "info", message });
 
-		yield call(fetchUsers);
-	} catch (e) {
-		yield put(setError(e.toString()));
-		yield call(toast, { type: "error", message: e.toString() });
-	}
+    yield put(setMessage(message));
+
+    yield call(fetchUsers);
+  } catch (e) {
+    yield call(showError, e.toString());
+  }
 }
 
 /**
@@ -145,11 +151,11 @@ export function* updateUser({ props, id }) {
  * @yields {watchers}
  */
 export default function* authSagas() {
-	yield all([
-		takeLatest(types.USERS_CREATE, createUser),
-		takeLatest(types.USERS_DELETE, deleteUser),
-		takeLatest(types.USERS_FETCH, fetchUsers),
-		takeLatest(types.USERS_SEED, seedDB),
-		takeLatest(types.USERS_UPDATE, updateUser),
-	]);
+  yield all([
+    takeLatest(constants.USERS_CREATE, createUser),
+    takeLatest(constants.USERS_DELETE, deleteUser),
+    takeLatest(constants.USERS_FETCH, fetchUsers),
+    takeLatest(constants.USERS_SEED, seedDB),
+    takeLatest(constants.USERS_UPDATE, updateUser),
+  ]);
 }

@@ -1,4 +1,4 @@
-import get from "lodash/get";
+import get from "lodash.get";
 
 /**
  * Helper function to parse a message from an API response.
@@ -8,7 +8,7 @@ import get from "lodash/get";
  * @returns {string} - a parsed message string from res.data.message.
  */
 export function parseMessage(res) {
-	return get(res, ["data", "message"]);
+  return get(res, ["data", "message"]);
 }
 
 /**
@@ -19,5 +19,5 @@ export function parseMessage(res) {
  * @returns {object} - a parsed data object from res.data.
  */
 export function parseData(res) {
-	return get(res, ["data"]);
+  return get(res, ["data"]);
 }

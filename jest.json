@@ -1,23 +1,27 @@
 {
-	"testEnvironment": "jsdom",
-	"moduleDirectories": ["<rootDir>/src", "node_modules"],
-	"moduleNameMapper": {
-		".*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/utils/__mocks__/fileMock.js",
-		"\\.(css|scss)$": "identity-obj-proxy"
-	},
-	"transform": {
-		"^.+\\.(js|jsx)$": "babel-jest",
-		".+\\.(css|styl|less|sass|scss)$": "./node_modules/jest-css-modules-transform"
-	},
-	"testPathIgnorePatterns": [
-		"<rootDir>/.next",
-		"<rootDir>/config",
-		"<rootDir>/middlewares",
-		"<rootDir>/node_modules",
-		"<rootDir>/public",
-		"<rootDir>/babel.config.js",
-		"<rootDir>/next.config.js"
-	],
-	"setupFilesAfterEnv": ["<rootDir>/src/utils/setupTests/index.js"],
-	"moduleFileExtensions": ["css", "scss", "js", "json", "jsx"]
+  "testEnvironment": "jsdom",
+  "clearMocks": true,
+  "moduleDirectories": ["<rootDir>/src", "node_modules"],
+  "moduleNameMapper": {
+    "~(.*)$": "<rootDir>/src/$1",
+    ".*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/utils/__mocks__/fileMock.js",
+    "\\.(css|scss)$": "identity-obj-proxy"
+  },
+  "transform": {
+    "^.+\\.(js|jsx)$": "babel-jest",
+    ".+\\.(css|styl|less|sass|scss)$": "./node_modules/jest-css-modules-transform"
+  },
+  "testPathIgnorePatterns": [
+    "<rootDir>/.next",
+    "<rootDir>/config",
+    "<rootDir>/e2e",
+    "<rootDir>/node_modules",
+    "<rootDir>/public",
+    "<rootDir>/src/middlewares",
+    "<rootDir>/src/services",
+    "<rootDir>/babel.config.js",
+    "<rootDir>/next.config.js"
+  ],
+  "setupFilesAfterEnv": ["<rootDir>/src/utils/setupTests/index.js"],
+  "moduleFileExtensions": ["css", "scss", "js", "json", "jsx"]
 }

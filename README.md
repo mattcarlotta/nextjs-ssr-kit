@@ -24,6 +24,8 @@
 
 [NextJS and API Integrations](#nextjs-and-api-integrations)
 
+[ENV Setup](#env-setup)
+
 [Known Issues](#known-issues)
 
 ## Pre-Configured Packages
@@ -32,7 +34,7 @@
 
 ✔️ Styled-components implementation.
 
-✔️ CSS/SASS/SCSS module and global imports.
+✔️ CSS/SASS/SCSS module and global imports (includes `node_module` imports; see [Known Issues](#known-issues) regarding import hierarchy).
 
 ✔️ Eslint JS/JSX files.
 
@@ -41,8 +43,6 @@
 ✔️ Runs Eslint, Jest, and Stylelint before committing.
 
 ✔️ Pre-configured interactive API.
-
-Want to use a custom Express server? Checkout the <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/tree/express">express</a> branch.
 
 ## Project Structure
 
@@ -53,20 +53,21 @@ Want to use a custom Express server? Checkout the <a href="https://github.com/ma
 ├── build
 ├── config
 ├── database
+├── e2e
 ├── env
-├── middlewares
 ├── models
 ├── public
 ├── src
 |   ├── actions
 |   ├── components
+|   ├── constants
 |   ├── images
+|   ├── middlewares
 |   ├── pages
 |   ├── reducers
 |   ├── sagas
 |   ├── store
 |   ├── styles
-|   ├── types
 |   └── utils
 |
 ├── .browserslistrc
@@ -77,6 +78,7 @@ Want to use a custom Express server? Checkout the <a href="https://github.com/ma
 ├── .stylelintrc
 ├── babel.config.js
 ├── jest.json
+├── jsconfig.json
 ├── next.config.json
 └── nodemon.json
 </code></pre>
@@ -90,30 +92,41 @@ Want to use a custom Express server? Checkout the <a href="https://github.com/ma
 1 - Clone the repository.
 
 ```
-git clone --single-branch --branch master git@github.com:mattcarlotta/nextjs-ssr-kit.git
+git clone git@github.com:mattcarlotta/nextjs-ssr-kit.git
 ```
 
 2 - Run `yarn install` to install dependencies.
 
-3 - While at the application's root directory, start a dev server by running `yarn dev`.
+3 - Run `yarn dev` to run a development server.
 
 <hr />
 
 ## Commands
 
-| `yarn <command>` | Description                                                               |
-| ---------------- | ------------------------------------------------------------------------- |
-| `analyze`        | Compiles `src` app and spawns webpack chunk distribution charts.          |
-| `build`          | Compiles `src` application to a `.next/static` folder.                    |
-| `checkbuild`     | Checks to see if the `.next/static` folder is ES5 compliant (for IE11).   |
-| `dev`            | Starts development server (`localhost:3000`).                             |
-| `lint`           | Lints all `.js` files in `src`.                                           |
-| `lint:styles`    | Lints all `.scss` files in `src`.                                         |
-| `start`          | Starts a production server at `localhost:8080` (must run `build` first).† |
-| `test`           | Runs `.test.js` files for `src` only.                                     |
-| `test:cov`       | Runs `.test.js` files for `src` with code coverage.                       |
-| `test:watch`     | Runs and watches any changed `.js` files in `src`.                        |
-| `test:watchall`  | Runs and watches all `.test.js` files in `src`.                           |
+| `yarn <command>` | Description                                                                     |
+| ---------------- | ------------------------------------------------------------------------------- |
+| `analyze:prod`   | Compiles `src` app and spawns webpack chunk distribution charts for production. |
+| `analyze:stage`  | Compiles `src` app and spawns webpack chunk distribution charts for staging.    |
+| `build`          | Compiles `src` application to a `.next/static` folder for production.           |
+| `build:stage`    | Compiles `src` application to a `.next/static` folder for staging.              |
+| `dev`            | Starts development server (`localhost:3000`).                                   |
+| `drop:prod`      | Drops production database from Mongo.                                           |
+| `drop:stage`     | Drops staging database from Mongo.                                              |
+| `lint`           | Lints all `.js` files in `src`.                                                 |
+| `lint:styles`    | Lints all `.scss` files in `src`.                                               |
+| `seed:prod`      | Seeds production database for Mongo.                                            |
+| `seed:stage`     | Seeds staging database for Mongo.                                               |
+| `start`          | Starts a production server at `localhost:8080` (must run `build` first).†       |
+| `staging`        | Starts a staging server at `localhost:8080` (must run `build` first).           |
+| `test`           | Runs `.test.js` files in `src` once.                                            |
+| `test:cov`       | Runs `.test.js` files in `src` with code coverage.                              |
+| `test:e2e`       | Runs cypress `.spec.js` files in `e2e` in a browser.                            |
+| `test:e2erun`    | Runs cypress `.spec.js` files in `e2e` headlessly.                              |
+| `test:failed`    | Runs and watches `.test.js` files that failed in `src`.                         |
+| `test:prod`      | Compiles `src` app for production and runs `start` command after compilation.   |
+| `test:stage`     | Compiles `src` app for staging and runs `staging` command after compilation.    |
+| `test:watch`     | Runs and watches `.js` files in `src` that have changed since last commit.      |
+| `test:watchall`  | Runs and watches all `.test.js` files in `src`.                                 |
 
 † Note: Before running this command, you must edit the <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/env/.env.production#L2">env/.env.production</a> file and update the `baseURL` from `http://localhost:8080/api/` to include your remote server address.
 
@@ -138,6 +151,7 @@ If you wish to utilize the API:
 - public: NextJS public folder.
 - src/actions: redux actions.
 - src/components: react components.
+- src/constants: redux constants.
 - src/images: NextJS app images.
 - src/pages/_app.js: NextJS app configuration (redux + redux saga + global stylesheet).
 - src/pages/_document.js: NextJS document configuration for styled-components.
@@ -146,7 +160,6 @@ If you wish to utilize the API:
 - src/sagas: redux sagas.
 - src/store: redux store configuration.
 - src/styles: custom component/page styles.
-- src/types: redux constants.
 - src/utils/__mocks__/mockAxios.js: a mocked axios instance for testing.
 - src/utils/setupTest/index.js: enzyme test setup for your React components.
 - src/utils/axiosConfig/index.js: custom axios configuration.
@@ -166,9 +179,9 @@ If you wish to utilize the API:
 <summary>Click to expand API configuration</summary>
 <pre><code>
 - database: Mongo connection configuration.
-- middlewares: API middlewares.
 - models: Mongo models for Mongoose.
-- src/pages/api: API route controllers.
+- src/middlewares: API middlewares.
+- src/pages/api/*: API route controllers.
 </code></pre>
 </details>
 <br />
@@ -178,12 +191,14 @@ If you wish to utilize the API:
 <details>
 <summary>Click to expand misc configurations</summary>
 <pre><code>
-- .next: NextJS (src) compiled source.
+- .next: NextJS development/production compiled source.
+- e2e: cypress test suites.
 - config: webpack supporting configuration files.
 - .browserslistrc: browsers list config (for babel transpiling).
 - .prettierc: prettier config.
 - .npmrc: yarn config.
 - babel.config.js: babel config.
+- jsconfig.js: compiler options (aliases)
 - nodemon.json: nodemon configuration for server restarts.
 </code></pre>
 </details>
@@ -193,7 +208,7 @@ If you wish to utilize the API:
 
 ## Packages Incorporated
 
-Click <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/package.json">here</a> to see latest versions.
+Click [here](package.json) to see latest versions.
 
 ### NextJS Specfic
 
@@ -209,12 +224,10 @@ Click <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/packag
 - <a href="http://airbnb.io/enzyme/">Enzyme</a>
 - <a href="https://github.com/typicode/husky">Husky</a>
 - <a href="https://github.com/facebook/jest">Jest</a>
-- <a href="https://github.com/lodash/lodash">Lodash</a>
 - <a href="https://github.com/zeit/next.js">NextJS</a>
 - <a href="https://github.com/zeit/next-plugins">NextJS CSS</a>
 - <a href="https://github.com/zeit/next-plugins">NextJS SASS</a>
-- <a href="https://github.com/kirill-konshin/next-redux-wrapper">NextJS Redux</a> 
-- <a href="https://github.com/bmealhouse/next-redux-saga">NextJS Redux-Saga</a>
+- <a href="https://github.com/kirill-konshin/next-redux-wrapper">NextJS Redux Wrapper</a> 
 - <a href="https://github.com/prettier/prettier">Prettier</a>
 - <a href="https://github.com/facebook/prop-types">PropTypes</a>
 - <a href="https://github.com/facebook/react">React</a>
@@ -239,7 +252,6 @@ Click <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/packag
 <pre><code>
 - <a href="https://github.com/petkaantonov/bluebird">Bluebird</a>
 - <a href="https://github.com/expressjs/body-parser">Body Parser</a>
-- <a href="https://github.com/expressjs/compression">Compression</a>
 - <a href="https://github.com/motdotla/dotenv">DotENV</a>
 - <a href="https://momentjs.com/timezone/">Moment Timezone</a>
 - <a href="https://mongoosejs.com/">Mongoose</a>
@@ -253,7 +265,18 @@ Click <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/packag
 
 ## NextJS and API Integrations
 
-By default, all directories within the root and `src` folders (with <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/babel.config.js#L4">exceptions</a>) are aliased (`~`). This means you can refer to their child root directories by using the ~ symbol followed by the child folder name. For example, `~middlewares`, refers to the root `middlewares` folder; or, for example, in the `src` directory: `~components` refers to the `src/components` folder directory. This allows for rapid development when referring to reusable components or functions as it eliminates the hassle of traversing the folder tree for relative pathing!
+By default, most directories within the root and `src` folders are [aliased](jsconfig.json) (`~`). This means that you can refer to their child files or child directories by using the `~` symbol followed by the child name or folder name (root-level `index.js` files [require their own aliases](https://github.com/zeit/next.js/issues/12743), as such this project has been set up to handle predefined directories -- you'll be responsible for any additional directories). For example, `~models`, refers to the root [models/index.js](models/index.js) file, while `~models/users` refers to the [model/user.js](models/user.js) file. This allows for rapid development when referring to root-level folders as it eliminates the hassle of specifiying relative paths (like `../../../../../../../models`) to the folder from anywhere within the project!
+
+<hr />
+
+## ENV Setup
+
+By default, this project attempts to import `.env` files placed within the `env` directory according to the `process.env.NODE_ENV` variable (`development`, `staging` and `production`, ...etc). However, this has been set up to be flexible so that if you don't wish to utilize any `.env` files, then as long the following `process.env` variables are defined, then the `env` directory can be discarded:
+
+- `baseURL` (used [here](src/utils/axiosConfig/index.js))
+- `DATABASE` (used [here](database/index.js))
+- `LOCALHOST` (required for develpment only, used [here](next.config.js) and [here](config/plugins.js))
+- `PORT` (required for develpment only, used [here](config/plugins.js))
 
 <hr />
 
@@ -263,4 +286,6 @@ If you run into any issues, please fill out an issue report <a href="https://git
 
 ⚠️ (Status: Unresolved) - Importing a component or page that imports a `.css`, `.scss` or `.sass` file breaks `next/link` components. See <a href="https://github.com/zeit/next-plugins/issues/282">issue tracker</a>.
 
-⚠️ (Status: Unresolveable) - Adding `test.js` files within the `pages` folder causes NextJS to fail upon production compilation. Unfortunately, NextJS handles all files and folders within the `pages` file as reachable views. Instead, a workaround is to place a `__tests__` folder for `pages` at the root of the `components` folder.
+⚠️ (Status: Unresolveable) - Attempting to import a CSS file from `node_modules` within a component may result in incorrectly ordered stylesheets. Same holds true for UI libraries that attempt to import a CSS file when a component is imported. Instead, CSS files from `node_modules` should only be imported within the [\_app.js](src/pages/_app.js) file -- either directly imported or imported within the [globals.scss](src/styles/globals.scss) file which is then directly imported into the `_app.js` file. See [Adding a Global Stylesheet](https://nextjs.org/docs/basic-features/built-in-css-support#adding-a-global-stylesheet).
+
+⚠️ (Status: Unresolveable) - Adding `.test.js` files within the `pages` folder causes NextJS to fail upon production compilation. Unfortunately, NextJS handles all files and folders within the `pages` file as reachable views. Instead, it's recommended to write end-to-end tests for `pages` using [cypress](https://www.npmjs.com/package/cypress).
