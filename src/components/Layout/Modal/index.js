@@ -18,7 +18,6 @@ class Modal extends PureComponent {
 		document.body.style.overflow = "hidden";
 	}
 
-	/* istanbul ignore next */
 	componentWillUnmount() {
 		document.body.style.overflow = null;
 	}
@@ -44,7 +43,7 @@ class Modal extends PureComponent {
 									</FlexStart>
 									<FlexEnd>
 										<CloseModalButton
-											id="close-modal"
+											data-testid="close-modal"
 											aria-label="close modal"
 											onClick={this.props.onClick || null}
 										>

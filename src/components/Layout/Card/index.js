@@ -26,8 +26,8 @@ const Card = ({
 	lastName,
 	userName,
 }) => (
-	<FadeIn timing={`${0.5 + idx / 10}s`}>
-		<div id="card-container" className={className}>
+	<FadeIn data-testid="card-container" timing={`${0.5 + idx / 10}s`}>
+		<div className={className}>
 			<Flex>
 				<FlexStart>
 					<h1 css="margin: 0;font-size: 30px;line-height: 1.4;color: #03a9f3;">

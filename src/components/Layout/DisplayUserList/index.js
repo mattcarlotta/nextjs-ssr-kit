@@ -17,7 +17,7 @@ const DisplayUserList = ({
 	<>
 		{!isEmpty(data) ? (
 			data.map((props, idx) => (
-				<Container key={props._id}>
+				<Container data-testid="user-card" key={props._id}>
 					{isEditingID !== props._id ? (
 						<Card {...props} {...rest} key={props._id} idx={idx} />
 					) : (

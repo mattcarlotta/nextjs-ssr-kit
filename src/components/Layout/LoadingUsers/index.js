@@ -5,7 +5,7 @@ import styled from "styled-components";
 import FadeIn from "~components/Layout/FadeIn";
 
 const LoadingUsers = ({ className }) => (
-	<FadeIn timing="0.6s">
+	<FadeIn data-testid="loading-users" timing="0.6s">
 		<div className={className} />
 	</FadeIn>
 );

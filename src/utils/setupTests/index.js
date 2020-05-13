@@ -1,4 +1,3 @@
-import mockApp from "~utils/__mocks__/mockAxios.js";
 import { render, fireEvent, screen } from "@testing-library/react";
 import {
 	getByLabelText,
@@ -8,24 +7,28 @@ import {
 	waitFor,
 } from "@testing-library/dom";
 import "@testing-library/jest-dom";
+import mockApp from "~utils/__mocks__/mockAxios.js";
+import { withRouterContext } from "~utils/testingUtils";
 
 /*
-THE BELOW ARE ACCESSIBLE AND PREDEFINED FOR ALL *.TEST.JS FILES
-WARNING: Due to the below being accessible to the global DOM,
-         all *.test.js files will have custom rules for ESLint.
-         Otherwise, ESLint will throw errors that the functions/
-         modules are undefined because they are not explictly
-         imported! See "overrides" in ".eslintrc" for more
-         information.
+  THE BELOW ARE ACCESSIBLE AND PREDEFINED FOR ALL *.TEST.JS FILES
+
+  WARNING: Due to the below being accessible to the global DOM,
+  all *.test.js files will have custom rules for ESLint.
+  Otherwise, ESLint will throw errors that the functions/
+  modules are undefined because they are not explictly
+  imported! See "overrides" in ".eslintrc" for more
+  information.
 */
-global.mockApp = mockApp;
-global.render = render;
 global.fireEvent = fireEvent;
-global.screen = screen;
 global.getByLabelText = getByLabelText;
 global.getByText = getByText;
 global.getByTestId = getByTestId;
-global.queryByTestId = queryByTestId;
-global.waitFor = waitFor;
-global.React = require("react");
+global.mockApp = mockApp;
 global.Provider = require("react-redux").Provider;
+global.queryByTestId = queryByTestId;
+global.React = require("react");
+global.render = render;
+global.screen = screen;
+global.waitFor = waitFor;
+global.withRouterContext = withRouterContext;

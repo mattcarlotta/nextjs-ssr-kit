@@ -6,7 +6,10 @@ import SubTitle from "~components/Layout/SubTitle";
 import NextJSSKitLogo from "~images/nextjsKit.png";
 
 const Home = () => (
-	<div css="text-align: center;height: 100%;color: #007ec5;background-color: #ebebeb;">
+	<div
+		data-testid="home-page"
+		css="text-align: center;height: 100%;color: #007ec5;background-color: #ebebeb;"
+	>
 		<Head>
 			<title>Home - NextJS SSR Kit</title>
 		</Head>

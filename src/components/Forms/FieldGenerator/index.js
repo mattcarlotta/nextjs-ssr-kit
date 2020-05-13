@@ -26,20 +26,13 @@ FieldGenerator.propTypes = {
 			label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 			placeholder: PropTypes.string,
 			props: PropTypes.any,
-			icon: PropTypes.string,
 			value: PropTypes.any,
 			errors: PropTypes.string,
 			required: PropTypes.bool,
 			disabled: PropTypes.bool,
 			readOnly: PropTypes.bool,
-			tooltip: PropTypes.string,
-			selectOptions: PropTypes.arrayOf(PropTypes.string),
 		}),
 	),
-};
-
-FieldGenerator.defaultProps = {
-	fields: [],
 };
 
 export default FieldGenerator;
