@@ -12,8 +12,6 @@
 
 [Commands](#commands)
 
-[Example API](#example-api)
-
 [NextJS Configuration](#nextjs-configuration)
 
 [API Configuration](#api-configuration)
@@ -99,6 +97,13 @@ git clone git@github.com:mattcarlotta/nextjs-ssr-kit.git
 
 3 - Run `yarn dev` to run a development server.
 
+Provided in this boilerplate is an example of how to integrate a RESTFUL API (utilizing MongoDB).
+
+In order to interact with the API, you'll need to:
+
+- <a href="https://docs.mongodb.com/manual/installation/#mongodb-community-edition">Install MongoDB</a> and make sure the service is up and running.
+- While the development server is running, open your browser and navigate to <a href="http://localhost:3000/users">http://localhost:3000/users</a>.
+
 <hr />
 
 ## Commands
@@ -129,17 +134,6 @@ git clone git@github.com:mattcarlotta/nextjs-ssr-kit.git
 | `test:watchall`  | Runs and watches all `.test.js` files in `src`.                                 |
 
 † Note: Before running this command, you must edit the <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/env/.env.production#L2">env/.env.production</a> file and update the `baseURL` from `http://localhost:8080/api/` to include your remote server address.
-
-<hr />
-
-## Example API
-
-Provided in this boilerplate is an example of how to integrate a RESTFUL API (utilizing MongoDB).
-
-If you wish to utilize the API:
-
-- <a href="https://docs.mongodb.com/manual/installation/#mongodb-community-edition">Install MongoDB</a> and make sure the service is up and running.
-- Navigate to `http://localhost:3000/users` to interact with the API from the NextJS-side.
 
 <hr />
 
