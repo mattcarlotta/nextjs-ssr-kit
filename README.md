@@ -97,7 +97,7 @@ git clone git@github.com:mattcarlotta/nextjs-ssr-kit.git
 
 3 - Run `yarn dev` to run a development server.
 
-Provided in this boilerplate is an example of how to integrate a RESTFUL API (utilizing MongoDB).
+Provided in this boilerplate is an example of how to integrate a RESTful API (utilizing MongoDB).
 
 In order to interact with the API, you'll need to:
 
@@ -265,7 +265,7 @@ By default, most directories within the root and `src` directories are [aliased]
 
 ## ENV Setup
 
-By default, this project attempts to import `.env` files placed within the `env` directory according to the `process.env.NODE_ENV` variable (`development`, `staging` and `production`, ...etc). However, this has been set up to be flexible so that if you don't wish to utilize any `.env` files, then as long the following `process.env` variables are defined, then the `env` directory can be discarded:
+By default, this project attempts to import `.env` files placed within the `env` directory according to the `process.env.NODE_ENV` variable (`development`, `staging` and `production`, ...etc). However, this has been set up to be flexible so that if you don't wish to utilize any `.env` files, then as long the following `process.env` variables are defined, then the `.env` files and/or directory can be discarded:
 
 - `baseURL` (used [here](src/utils/axiosConfig/index.js))
 - `DATABASE` (used [here](database/index.js))
