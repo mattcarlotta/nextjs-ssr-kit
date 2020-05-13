@@ -18,9 +18,23 @@
     "<rootDir>/node_modules",
     "<rootDir>/public",
     "<rootDir>/src/middlewares",
-    "<rootDir>/src/services",
     "<rootDir>/babel.config.js",
     "<rootDir>/next.config.js"
+  ],
+  "collectCoverageFrom": [
+    "**/*.{js,jsx}",
+    "!**/.next/**",
+    "!**/config/**",
+    "!**/coverage/**",
+    "!**/database/**",
+    "!**/e2e/**",
+    "!**/env/**",
+    "!**/models/**",
+    "!**/node_modules/**",
+    "!**/src/middlewares/**",
+    "!**/src/pages/**",
+    "!**/babel.config.js/**",
+    "!**/next.config.js/**"
   ],
   "setupFilesAfterEnv": ["<rootDir>/src/utils/setupTests/index.js"],
   "moduleFileExtensions": ["css", "scss", "js", "json", "jsx"]
