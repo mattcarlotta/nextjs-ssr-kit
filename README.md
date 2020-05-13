@@ -107,8 +107,8 @@ git clone git@github.com:mattcarlotta/nextjs-ssr-kit.git
 | ---------------- | ------------------------------------------------------------------------------- |
 | `analyze:prod`   | Compiles `src` app and spawns webpack chunk distribution charts for production. |
 | `analyze:stage`  | Compiles `src` app and spawns webpack chunk distribution charts for staging.    |
-| `build`          | Compiles `src` application to a `.next/static` folder for production.           |
-| `build:stage`    | Compiles `src` application to a `.next/static` folder for staging.              |
+| `build`          | Compiles `src` application to a `.next/static` directory for production.        |
+| `build:stage`    | Compiles `src` application to a `.next/static` directory for staging.           |
 | `dev`            | Starts development server (`localhost:3000`).                                   |
 | `drop:prod`      | Drops production database from Mongo.                                           |
 | `drop:stage`     | Drops staging database from Mongo.                                              |
@@ -148,7 +148,7 @@ If you wish to utilize the API:
 <details>
 <summary>Click to expand NextJS configuration</summary>
 <pre><code>
-- public: NextJS public folder.
+- public: NextJS public assets.
 - src/actions: redux actions.
 - src/components: react components.
 - src/constants: redux constants.
@@ -265,7 +265,7 @@ Click [here](package.json) to see latest versions.
 
 ## NextJS and API Integrations
 
-By default, most directories within the root and `src` folders are [aliased](jsconfig.json) (`~`). This means that you can refer to their child files or child directories by using the `~` symbol followed by the child name or folder name (root-level `index.js` files [require their own aliases](https://github.com/zeit/next.js/issues/12743), as such this project has been set up to handle predefined directories -- you'll be responsible for any additional directories). For example, `~models`, refers to the root [models/index.js](models/index.js) file, while `~models/users` refers to the [model/user.js](models/user.js) file. This allows for rapid development when referring to root-level folders as it eliminates the hassle of specifiying relative paths (like `../../../../../../../models`) to the folder from anywhere within the project!
+By default, most directories within the root and `src` directories are [aliased](jsconfig.json) (`~`). This means that you can refer to their child files or child directories by using the `~` symbol followed by the child file name or directory name (root-level `index.js` files [require their own aliases](https://github.com/zeit/next.js/issues/12743), as such this project has been set up to handle predefined directories -- you'll be responsible for any additional directories). For example, `~models`, refers to the root [models/index.js](models/index.js) file, while `~models/users` refers to the [model/user.js](models/user.js) file. This allows for rapid development when referring to root-level directories as it eliminates the hassle of specifiying relative paths (like `../../../../../../../models`) to the directory from anywhere within the project!
 
 <hr />
 
@@ -286,6 +286,6 @@ If you run into any issues, please fill out an issue report <a href="https://git
 
 ⚠️ (Status: Unresolved) - Importing a component or page that imports a `.css`, `.scss` or `.sass` file breaks `next/link` components. See <a href="https://github.com/zeit/next-plugins/issues/282">issue tracker</a>.
 
-⚠️ (Status: Unresolveable) - Attempting to import a CSS file from `node_modules` within a component may result in incorrectly ordered stylesheets. Same holds true for UI libraries that attempt to import a CSS file when a component is imported. Instead, CSS files from `node_modules` should only be imported within the [\_app.js](src/pages/_app.js) file -- either directly imported or imported within the [globals.scss](src/styles/globals.scss) file which is then directly imported into the `_app.js` file. See [Adding a Global Stylesheet](https://nextjs.org/docs/basic-features/built-in-css-support#adding-a-global-stylesheet).
+⚠️ (Status: Unresolveable) - Attempting to import a CSS file from `node_modules` within a component may result in incorrectly ordered stylesheets. Same holds true for UI libraries that attempt to import a CSS file when a component is imported. Instead, CSS files from `node_modules` should only be imported within the [\_app.js](src/pages/_app.js) file -- either directly imported or imported within the [globals.scss](src/styles/globals.scss) file which is then directly imported into the `_app.js` file as a global stylesheet. See [Adding a Global Stylesheet](https://nextjs.org/docs/basic-features/built-in-css-support#adding-a-global-stylesheet) for more information.
 
-⚠️ (Status: Unresolveable) - Adding `.test.js` files within the `pages` folder causes NextJS to fail upon production compilation. Unfortunately, NextJS handles all files and folders within the `pages` file as reachable views. Instead, it's recommended to write end-to-end tests for `pages` using [cypress](https://www.npmjs.com/package/cypress).
+⚠️ (Status: Unresolveable) - Adding `.test.js` files within the `pages` directory causes NextJS to fail upon production compilation. Unfortunately, NextJS handles all files and folders within the `pages` directory as reachable views. Instead, it's recommended to write end-to-end tests for `pages` using [cypress](https://www.npmjs.com/package/cypress).
