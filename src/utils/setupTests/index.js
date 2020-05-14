@@ -8,9 +8,9 @@ import {
   waitFor,
 } from "@testing-library/dom";
 import "@testing-library/jest-dom";
+import "jest-styled-components";
 import mockApp from "~utils/__mocks__/mockAxios.js";
 import { mount, withRouterContext } from "~utils/testingUtils";
-import "jest-styled-components";
 
 /*
   THE BELOW ARE ACCESSIBLE AND PREDEFINED FOR ALL *.TEST.JS FILES
