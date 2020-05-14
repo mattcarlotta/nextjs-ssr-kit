@@ -1,4 +1,5 @@
 /* istanbul ignore file */
+import { cloneElement } from "react";
 import { render } from "@testing-library/react";
 import { RouterContext } from "next/dist/next-server/lib/router-context";
 import { Provider } from "react-redux";
@@ -7,6 +8,31 @@ import { store } from "~store";
 //= =============================================================================//
 // CUSTOM REACT TESTING FUNCTIONS                                                 /
 //= =============================================================================//
+
+/**
+ * Factory function to initialize a rendered React component with Enzyme-like queries
+ * @function mount
+ * @param {node} Component - Component to be mounted
+ * @function assignProps - Merges incoming props with a Component
+ * @function find - Queries the mounted container by a string
+ * @function setProps - Rerenders the mounted Component with incoming props
+ * @returns {object}
+ */
+export const mount = Component => {
+  const assignProps = (props = {}) => cloneElement(Component, props);
+
+  const wrapper = render(Component);
+
+  const find = byString => wrapper.container.querySelector(byString);
+
+  const setProps = props => wrapper.rerender(assignProps(props));
+
+  return {
+    find,
+    setProps,
+    ...wrapper,
+  };
+};
 
 /**
  * Factory function to create a mounted RouterContext wrapper for a React component

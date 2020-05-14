@@ -9,7 +9,7 @@ import {
 } from "@testing-library/dom";
 import "@testing-library/jest-dom";
 import mockApp from "~utils/__mocks__/mockAxios.js";
-import { withRouterContext } from "~utils/testingUtils";
+import { mount, withRouterContext } from "~utils/testingUtils";
 
 /*
   THE BELOW ARE ACCESSIBLE AND PREDEFINED FOR ALL *.TEST.JS FILES
@@ -26,6 +26,7 @@ global.getByLabelText = getByLabelText;
 global.getByText = getByText;
 global.getByTestId = getByTestId;
 global.mockApp = mockApp;
+global.mount = mount;
 global.Provider = require("react-redux").Provider;
 global.queryByTestId = queryByTestId;
 global.React = require("react");
