@@ -13,19 +13,16 @@ import { store } from "~store";
  * Factory function to initialize a rendered React component with Enzyme-like queries
  * @function mount
  * @param {node} Component - Component to be mounted
- * @function mergeProps - Merges incoming props with a Component
  * @function find - Queries the mounted container by a string
  * @function setProps - Rerenders the mounted Component with incoming props
  * @returns {object}
  */
 export const mount = Component => {
-  const mergeProps = (props = {}) => cloneElement(Component, props);
-
   const wrapper = render(Component);
 
   const find = byString => wrapper.container.querySelector(byString);
 
-  const setProps = props => wrapper.rerender(mergeProps(props));
+  const setProps = props => wrapper.rerender(cloneElement(Component, props));
 
   return {
     find,
