@@ -15,7 +15,7 @@ describe("Flex", () => {
     expect(component).toHaveStyle("justify-content: start");
   });
 
-  it("sets 'flex-direction' to a 'column' was passed a 'direction' prop", () => {
+  it("sets 'flex-direction' to a 'column' when passed a 'direction' prop", () => {
     wrapper.setProps({ direction: "column" });
     expect(component).toHaveStyle("flex-direction: column");
   });
