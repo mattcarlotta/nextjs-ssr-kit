@@ -10,6 +10,7 @@ import {
 import "@testing-library/jest-dom";
 import mockApp from "~utils/__mocks__/mockAxios.js";
 import { mount, withRouterContext } from "~utils/testingUtils";
+import "jest-styled-components";
 
 /*
   THE BELOW ARE ACCESSIBLE AND PREDEFINED FOR ALL *.TEST.JS FILES
