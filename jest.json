@@ -13,6 +13,7 @@
   },
   "testPathIgnorePatterns": [
     "<rootDir>/.next",
+    "<rootDir>/coverage",
     "<rootDir>/config",
     "<rootDir>/e2e",
     "<rootDir>/node_modules",
@@ -21,20 +22,10 @@
     "<rootDir>/babel.config.js",
     "<rootDir>/next.config.js"
   ],
-  "collectCoverageFrom": [
-    "**/*.{js,jsx}",
-    "!**/.next/**",
-    "!**/config/**",
-    "!**/coverage/**",
-    "!**/database/**",
-    "!**/e2e/**",
-    "!**/env/**",
-    "!**/models/**",
-    "!**/node_modules/**",
-    "!**/src/middlewares/**",
-    "!**/src/pages/**",
-    "!**/babel.config.js/**",
-    "!**/next.config.js/**"
+  "collectCoverageFrom": ["src/**/*.{js,jsx}"],
+  "coveragePathIgnorePatterns": [
+    "<rootDir>/src/middlewares",
+    "<rootDir>/src/pages"
   ],
   "setupFilesAfterEnv": ["<rootDir>/src/utils/setupTests/index.js"],
   "moduleFileExtensions": ["css", "scss", "js", "json", "jsx"]
