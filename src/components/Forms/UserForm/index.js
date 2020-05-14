@@ -56,7 +56,7 @@ class UserForm extends Component {
 
   render = () => (
     <form
-      data-tesid="user-form"
+      data-testid="user-form"
       css="margin: 0 auto;text-align: left; padding: 5px;"
       onSubmit={this.handleSubmit}
     >
