@@ -3,9 +3,18 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-const Button = ({ dataTest, className, children, onClick, style, type }) => (
+const Button = ({
+  dataTestId,
+  disabled,
+  className,
+  children,
+  onClick,
+  style,
+  type,
+}) => (
   <button
-    data-testid={dataTest}
+    data-testid={dataTestId}
+    disabled={disabled}
     type={type}
     className={className}
     onClick={onClick}
@@ -17,8 +26,9 @@ const Button = ({ dataTest, className, children, onClick, style, type }) => (
 
 Button.propTypes = {
   className: PropTypes.string.isRequired,
+  disabled: PropTypes.bool,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  dataTest: PropTypes.string,
+  dataTestId: PropTypes.string,
   onClick: PropTypes.func,
   type: PropTypes.string.isRequired,
   style: PropTypes.objectOf(

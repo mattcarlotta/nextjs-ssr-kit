@@ -28,8 +28,6 @@ export default fields => {
           break;
         }
       }
-
-      acc[name] = value;
       return acc;
     }, {});
 
