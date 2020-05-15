@@ -9,7 +9,7 @@ describe("Styled Button", () => {
   let wrapper;
   let buttonNode;
   beforeEach(() => {
-    wrapper = mount(<Button dataTest="test-button" {...initProps} />);
+    wrapper = mount(<Button dataTestId="test-button" {...initProps} />);
     buttonNode = () => wrapper.queryByTestId("test-button");
     // buttonNode = () => wrapper.find("[data-testid=test-button]");
   });
