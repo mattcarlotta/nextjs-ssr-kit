@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Container = ({ children, innerStyle, style }) => (
+const Container = ({ children, dataTestId, innerStyle, style }) => (
   <div
+    data-testid={dataTestId}
     style={style}
     css="width: 100%;max-width: 800px; margin: 0 auto;padding: 10px;text-align: left;"
   >
@@ -17,6 +18,7 @@ const Container = ({ children, innerStyle, style }) => (
 
 Container.propTypes = {
   children: PropTypes.node.isRequired,
+  dataTestId: PropTypes.string,
   innerStyle: PropTypes.objectOf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   ),

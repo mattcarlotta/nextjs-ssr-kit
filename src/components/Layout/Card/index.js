@@ -1,4 +1,3 @@
-/* istanbul ignore file */
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
@@ -35,8 +34,8 @@ const Card = ({
           </h1>
         </FlexStart>
         <FlexEnd>
-          <EditButton id="edit" onClick={() => handleEditClick(_id)} />
-          <DeleteButton id="delete" onClick={() => deleteUser(_id)} />
+          <EditButton dataTestId="edit" onClick={() => handleEditClick(_id)} />
+          <DeleteButton dataTestId="delete" onClick={() => deleteUser(_id)} />
         </FlexEnd>
       </Flex>
       <p css="color: #666;margin: 0;">
