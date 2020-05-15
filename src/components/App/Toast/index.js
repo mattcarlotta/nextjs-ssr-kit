@@ -29,12 +29,20 @@ export const displayIcon = type => {
 };
 
 const ToastMessage = ({ type, message }) =>
-  toast[type || "default"](
-    <div css="display: flex; color: white;">
-      <div css="font-size:15px;padding-top: 8px;flex-shrink: 0;text-align: center;width: 30px;">
+  toast[type](
+    <div data-testid="modal-alert" css="display: flex; color: white;">
+      <div
+        data-testid="modal-alert-type"
+        css="font-size:15px;padding-top: 8px;flex-shrink: 0;text-align: center;width: 30px;"
+      >
         {displayIcon(type)}
       </div>
-      <div css="flex-grow: 1;font-size: 15px;padding: 8px 12px;">{message}</div>
+      <div
+        data-testid="modal-message"
+        css="flex-grow: 1;font-size: 15px;padding: 8px 12px;"
+      >
+        {message}
+      </div>
     </div>,
   );
 
