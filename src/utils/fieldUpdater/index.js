@@ -8,7 +8,7 @@ import isEmpty from "lodash.isempty";
  * @param {array} fields - an array containing fields.
  * @param {string} name - name of field to update.
  * @param {string} value - value of field to update.
- * @returns {object} - updated fields.
+ * @returns {array} - updated fields.
  * @throws {error}
  */
 export default (fields, name, value) => {
