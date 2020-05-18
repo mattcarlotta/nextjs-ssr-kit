@@ -38,7 +38,7 @@ export class ShowUsers extends Component {
   handleCloseModal = () => this.setState({ openModal: false, isEditingID: "" });
 
   render = () => (
-    <div data-testid="home-page" css="padding: 10px 0 40px;">
+    <div data-testid="users-page" css="padding: 10px 0 40px;">
       <Head>
         <title>Users - NextJS SSR Kit</title>
       </Head>

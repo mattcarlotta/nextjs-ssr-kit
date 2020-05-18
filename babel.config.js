@@ -1,3 +1,5 @@
+const { inStaging } = process.env;
+
 module.exports = api => {
   const inProd = api.env("production");
   api.cache(() => process.env.NODE_ENV);
@@ -13,7 +15,10 @@ module.exports = api => {
           preprocess: false,
         },
       ],
-      inProd && ["react-remove-properties", { properties: ["data-testid"] }],
+      inProd &&
+        !inStaging && [
+          ("react-remove-properties", { properties: ["data-testid"] }),
+        ],
     ].filter(Boolean),
   };
 };
