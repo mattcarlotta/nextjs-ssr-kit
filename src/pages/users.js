@@ -144,6 +144,4 @@ const mapDispatchToProps = {
   updateUser,
 };
 
-export default wrapper.withRedux(
-  connect(mapStateToProps, mapDispatchToProps)(ShowUsers),
-);
+export default connect(mapStateToProps, mapDispatchToProps)(ShowUsers);
