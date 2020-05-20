@@ -51,6 +51,6 @@ jobs:
           PORT: 3001
 
       - name: Run E2E Tests
-      - if: steps.build.tests == 0
+        if: steps.build.tests == 0
         id: build
         run: yarn test:e2erun
