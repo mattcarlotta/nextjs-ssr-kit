@@ -9,20 +9,6 @@ import { store } from "~store";
  * A class that wraps RTL's render and supplies it with Enzyme-like methods
  * @class EnzymeWrapper
  * @param {node} Component - Component to be mounted
- * @method find - finds an node by string using querySelector
- * @method setProps - merges old props with new props and rerenders the Component
- * @method simulate - simulates a fireEvent by type with passed in options
- * @returns {object} - an Enzyme-like wrapper
- */
-
-//= =============================================================================//
-// CUSTOM REACT TESTING FUNCTIONS                                                 /
-//= =============================================================================//
-
-/**
- * A class that wraps RTL's render and supplies it with Enzyme-like methods
- * @class EnzymeWrapper
- * @param {node} Component - Component to be mounted
  * @method find - finds a node by string using querySelector
  * @method setProps - merges old props with new props and rerenders the Component
  * @method simulate - simulates a fireEvent by type with passed in options
@@ -32,16 +18,13 @@ import { store } from "~store";
     this.Component = Component;
     this.props = Component.props;
     this.wrapper = render(Component);
-    this.selection = this.wrapper;
     this.find = this.find.bind(this);
     this.setProps = this.setProps.bind(this);
-    this.simulate = this.simulate.bind(this);
 
     return {
       ...this.wrapper,
       find: this.find,
       setProps: this.setProps,
-      simulate: this.simulate,
     };
   }
 
@@ -50,12 +33,10 @@ import { store } from "~store";
     const selection = this.wrapper.container.querySelector(byString);
 
     if (!isEmpty(selection)) {
-      selection.simulate = (type, opts) => this.simulate(type, opts);
+      selection.simulate = (type, opts) => this.simulate(selection, type, opts);
       selection.length = nodes.length || 0;
       selection.exists = nodes.length >= 1;
     }
-
-    this.selection = selection;
 
     return selection;
   }
@@ -66,9 +47,7 @@ import { store } from "~store";
     this.wrapper.rerender(cloneElement(this.Component, this.props));
   }
 
-  simulate(type, opts) {
-    const node = this.selection;
-
+  simulate(node, type, opts) {
     if (isEmpty(node)) {
       throw Error(
         `wrapper::simulate(): unable to locate any nodes to simulate an event.`,
@@ -92,7 +71,7 @@ import { store } from "~store";
         break;
     }
 
-    return this.selection;
+    return node;
   }
 }
 
