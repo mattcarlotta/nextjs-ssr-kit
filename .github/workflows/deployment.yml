@@ -3,7 +3,7 @@ name: Deployment
 "on":
   push:
     branches:
-      - master
+      - ["master", "canary"]
 
 jobs:
   deploy:
