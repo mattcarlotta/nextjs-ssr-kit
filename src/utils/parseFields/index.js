@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import isEmpty from "lodash.isempty";
 
 /**
@@ -28,13 +29,12 @@ export default fields => {
           break;
         }
       }
-
-      acc[name] = value;
       return acc;
     }, {});
 
     return parsedFields;
   } catch (err) {
-    return err.toString();
+    console.error(err.toString());
+    return [];
   }
 };

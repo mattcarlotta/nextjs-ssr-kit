@@ -56,7 +56,7 @@ class UserForm extends Component {
 
   render = () => (
     <form
-      data-tesid="user-form"
+      data-testid="user-form"
       css="margin: 0 auto;text-align: left; padding: 5px;"
       onSubmit={this.handleSubmit}
     >
@@ -68,7 +68,7 @@ class UserForm extends Component {
       </Flex>
       <FlexEnd>
         <Button
-          dataTest="cancel"
+          dataTestId="cancel"
           danger
           type="button"
           onClick={this.props.cancelForm}
@@ -77,7 +77,7 @@ class UserForm extends Component {
           Cancel
         </Button>
         <Button
-          dataTest="submit"
+          dataTestId="submit"
           primary
           disabled={this.state.isSubmitting}
           type="submit"

@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { FaTrashAlt } from "react-icons/fa";
 
-const DeleteButton = ({ className, dataTest, onClick, style }) => (
+const DeleteButton = ({ className, dataTestId, onClick, style }) => (
   <button
-    data-testid={dataTest}
+    data-testid={dataTestId}
     type="button"
     style={style}
     className={className}
@@ -18,7 +18,7 @@ const DeleteButton = ({ className, dataTest, onClick, style }) => (
 
 DeleteButton.propTypes = {
   className: PropTypes.string.isRequired,
-  dataTest: PropTypes.string,
+  dataTestId: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   style: PropTypes.objectOf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

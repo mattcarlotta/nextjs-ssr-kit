@@ -7,7 +7,7 @@ import Link from "~components/Navigation/Link";
 const NotFound = () => (
   <FlexCenter
     data-testid="not-found-page"
-    style={{ height: "90%" }}
+    style={{ height: "90vh" }}
     id="notfound"
   >
     <Head>

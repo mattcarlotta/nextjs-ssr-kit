@@ -26,6 +26,8 @@
 
 [Known Issues](#known-issues)
 
+[Contributers](#contributors)
+
 ## Pre-Configured Packages
 
 ✔️ Redux + Redux + Redux Saga implementation.
@@ -283,3 +285,11 @@ If you run into any issues, please fill out an issue report <a href="https://git
 ⚠️ (Status: Unresolveable) - Attempting to import a CSS file from `node_modules` within a component may result in incorrectly ordered stylesheets. Same holds true for UI libraries that attempt to import a CSS file when a component is imported. Instead, CSS files from `node_modules` should only be imported within the [\_app.js](src/pages/_app.js) file -- either directly imported or imported within the [globals.scss](src/styles/globals.scss) file which is then directly imported into the `_app.js` file as a global stylesheet. See [Adding a Global Stylesheet](https://nextjs.org/docs/basic-features/built-in-css-support#adding-a-global-stylesheet) for more information.
 
 ⚠️ (Status: Unresolveable) - Adding `.test.js` files within the `pages` directory causes NextJS to fail upon production compilation. Unfortunately, NextJS handles all files and folders within the `pages` directory as reachable views. Instead, it's recommended to write end-to-end tests for `pages` using [cypress](https://www.npmjs.com/package/cypress).
+
+<hr />
+
+## Contributors
+
+Support this boilerplate by becoming a contributor. Your github logo will show up here with a link to your profile.
+
+<a href="https://github.com/kimberleykelly" target="_blank"><img src="https://avatars0.githubusercontent.com/u/32412752?s=120&v=4" height="30px"><span style="margin-left: 5px">kimberleykelly</span></a>

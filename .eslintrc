@@ -29,6 +29,7 @@
         "allowTemplateLiterals": true
       }
     ],
+    "no-async-promise-executor": 0,
     "arrow-parens": ["warn", "as-needed"],
     "indent": 0,
     "react/jsx-indent": 0,

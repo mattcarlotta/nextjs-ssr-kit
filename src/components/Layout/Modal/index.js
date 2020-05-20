@@ -27,14 +27,20 @@ export class Modal extends PureComponent {
         <BackgroundOverlay />
         <WindowContainer>
           <ModalRoot>
-            <ModalContainer maxWidth={this.props.maxWidth}>
-              <ModalContent data-test="modal" maxWidth={this.props.maxWidth}>
+            <ModalContainer
+              data-testid="modal-container"
+              maxWidth={this.props.maxWidth}
+            >
+              <ModalContent data-testid="modal-content">
                 <Flex
                   data-testid="modal-header"
                   style={{ padding: 15, width: "auto" }}
                 >
                   <FlexStart>
-                    <div css="padding: 2px;font-weight: bold;color: #7d7d7d;font-size: 16px;">
+                    <div
+                      data-testid="modal-title"
+                      css="padding: 2px;font-weight: bold;color: #7d7d7d;font-size: 16px;"
+                    >
                       {this.props.title}
                     </div>
                   </FlexStart>

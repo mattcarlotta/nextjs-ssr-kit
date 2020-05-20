@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { FaPencilAlt } from "react-icons/fa";
 
-const EditButton = ({ className, dataTest, onClick, style }) => (
+const EditButton = ({ className, dataTestId, onClick, style }) => (
   <button
-    data-testid={dataTest}
+    data-testid={dataTestId}
     type="button"
     style={style}
     className={className}
@@ -17,7 +17,7 @@ const EditButton = ({ className, dataTest, onClick, style }) => (
 
 EditButton.propTypes = {
   className: PropTypes.string.isRequired,
-  dataTest: PropTypes.string,
+  dataTestId: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   style: PropTypes.objectOf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

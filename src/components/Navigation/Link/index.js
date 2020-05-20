@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const StyledLink = ({ children, href, ...rest }) => (
   <Link href={href} prefetch={false} passHref>
-    <a {...rest} className="link">
+    <a data-testid="link" {...rest} className="link">
       {children}
     </a>
   </Link>

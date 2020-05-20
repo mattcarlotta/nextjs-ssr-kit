@@ -25,13 +25,18 @@ const UserListNavigation = ({ className, openModal, seedDB }) => (
     </Link>
     <Flex style={{ width: 780, margin: "10px auto" }}>
       <FlexStart>
-        <Button dataTest="seed-database" type="button" onClick={seedDB}>
+        <Button dataTestId="seed-database" type="button" onClick={seedDB}>
           <FaFileAlt style={iconStyle} />
           <span>Seed Database</span>
         </Button>
       </FlexStart>
       <FlexEnd>
-        <Button dataTest="open-modal" primary type="button" onClick={openModal}>
+        <Button
+          dataTestId="open-modal"
+          primary
+          type="button"
+          onClick={openModal}
+        >
           <FaUserPlus style={iconStyle} />
           <span>Create New User</span>
         </Button>

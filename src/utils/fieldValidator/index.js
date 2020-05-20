@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import isEmpty from "lodash.isempty";
 
 /**
@@ -15,11 +16,11 @@ export default fields => {
 
     const validatedFields = fields.map(field => {
       let errors = "";
-      const { name, value, required } = field;
+      const { type, value, required } = field;
       if ((!value && required) || (isEmpty(value) && required)) {
         errors = "Required.";
       } else if (
-        name === "email" &&
+        type === "email" &&
         !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(field.value)
       ) {
         errors = "Invalid email.";
@@ -32,6 +33,7 @@ export default fields => {
 
     return { validatedFields, errors: errorCount };
   } catch (err) {
-    return err.toString();
+    console.error(err.toString());
+    return { validatedFields: [], errors: 1 };
   }
 };

@@ -4,6 +4,7 @@ import Head from "next/head";
 import { ToastContainer } from "react-toastify";
 import toast from "~components/App/Toast";
 import GlobalStylesheet from "~styles/globalStylesheet";
+import { wrapper } from "~store";
 import "~styles/globals.scss";
 
 export class MyApp extends App {
@@ -34,4 +35,4 @@ export class MyApp extends App {
   }
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);
