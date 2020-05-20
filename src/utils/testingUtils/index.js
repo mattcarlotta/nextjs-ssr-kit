@@ -1,35 +1,108 @@
 /* istanbul ignore file */
+import isEmpty from "lodash.isempty";
 import { cloneElement } from "react";
-import { render } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import { RouterContext } from "next/dist/next-server/lib/router-context";
 import { Provider } from "react-redux";
 import { store } from "~store";
+/**
+ * A class that wraps RTL's render and supplies it with Enzyme-like methods
+ * @class EnzymeWrapper
+ * @param {node} Component - Component to be mounted
+ * @method find - finds an node by string using querySelector
+ * @method setProps - merges old props with new props and rerenders the Component
+ * @method simulate - simulates a fireEvent by type with passed in options
+ * @returns {object} - an Enzyme-like wrapper
+ */
 
 //= =============================================================================//
 // CUSTOM REACT TESTING FUNCTIONS                                                 /
 //= =============================================================================//
 
 /**
- * Factory function to initialize a rendered React component with Enzyme-like queries
+ * A class that wraps RTL's render and supplies it with Enzyme-like methods
+ * @class EnzymeWrapper
+ * @param {node} Component - Component to be mounted
+ * @method find - finds a node by string using querySelector
+ * @method setProps - merges old props with new props and rerenders the Component
+ * @method simulate - simulates a fireEvent by type with passed in options
+ * @returns {object} - an Enzyme-like wrapper
+ */ class EnzymeWrapper {
+  constructor(Component) {
+    this.Component = Component;
+    this.props = Component.props;
+    this.wrapper = render(Component);
+    this.selection = this.wrapper;
+    this.find = this.find.bind(this);
+    this.setProps = this.setProps.bind(this);
+    this.simulate = this.simulate.bind(this);
+
+    return {
+      ...this.wrapper,
+      find: this.find,
+      setProps: this.setProps,
+      simulate: this.simulate,
+    };
+  }
+
+  find(byString) {
+    const nodes = document.querySelectorAll(byString);
+    const selection = this.wrapper.container.querySelector(byString);
+
+    if (!isEmpty(selection)) {
+      selection.simulate = (type, opts) => this.simulate(type, opts);
+      selection.length = nodes.length || 0;
+      selection.exists = nodes.length >= 1;
+    }
+
+    this.selection = selection;
+
+    return selection;
+  }
+
+  setProps(props) {
+    this.props = { ...this.props, ...props };
+
+    this.wrapper.rerender(cloneElement(this.Component, this.props));
+  }
+
+  simulate(type, opts) {
+    const node = this.selection;
+
+    if (isEmpty(node)) {
+      throw Error(
+        `wrapper::simulate(): unable to locate any nodes to simulate an event.`,
+      );
+    }
+
+    switch (type) {
+      case "click": {
+        fireEvent.click(node);
+        break;
+      }
+      case "change": {
+        fireEvent.change(node, opts);
+        break;
+      }
+      case "submit": {
+        fireEvent.submit(node);
+        break;
+      }
+      default:
+        break;
+    }
+
+    return this.selection;
+  }
+}
+
+/**
+ * Factory function to initialize a RTL rendered React component with an Enzyme-like class
  * @function mount
  * @param {node} Component - Component to be mounted
- * @function find - Queries the mounted container by a string
- * @function setProps - Rerenders the mounted Component with incoming props
- * @returns {object}
+ * @returns {object} - an Enzyme-like wrapper
  */
-export const mount = Component => {
-  const wrapper = render(Component);
-
-  const find = byString => wrapper.container.querySelector(byString);
-
-  const setProps = props => wrapper.rerender(cloneElement(Component, props));
-
-  return {
-    find,
-    setProps,
-    ...wrapper,
-  };
-};
+export const mount = Component => new EnzymeWrapper(Component);
 
 /**
  * Factory function to create a mounted RouterContext wrapper for a React component

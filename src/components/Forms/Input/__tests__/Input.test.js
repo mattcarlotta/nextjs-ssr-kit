@@ -4,7 +4,7 @@ const onChange = jest.fn();
 
 const initialProps = {
   errors: "",
-  name: "Test",
+  name: "input",
   placeholder: "Test Placeholder",
   label: "Test",
   onChange,
@@ -12,18 +12,13 @@ const initialProps = {
   value: "",
 };
 
-const nextProps = {
-  ...initialProps,
-  errors: "Required",
-};
-
 describe("Input", () => {
   let wrapper;
   let inputNode;
   beforeEach(() => {
     wrapper = mount(<Input {...initialProps} />);
-    inputNode = wrapper.queryByTestId("Test");
-    // inputNode = wrapper.find([data-testid=Test])
+    inputNode = wrapper.queryByTestId("input");
+    // inputNode = wrapper.find("[data-testid=input]")
   });
 
   afterEach(() => {
@@ -36,9 +31,9 @@ describe("Input", () => {
   });
 
   it("renders an error", () => {
-    wrapper.setProps(nextProps);
+    wrapper.setProps({ errors: "Required" });
     const errorsNode = wrapper.queryByTestId("errors");
-    // errorsNode = wrapper.find([data-testid=errors])
+    // errorsNode = wrapper.find("[data-testid=errors]"")
     expect(errorsNode).toBeInTheDocument();
     // expect(errorsNode.exists()).toBeTruthy()
     expect(errorsNode).toHaveTextContent("Required");
@@ -48,7 +43,7 @@ describe("Input", () => {
   it("calls onChange when the input is updated", () => {
     const value = "called!";
     fireEvent.change(inputNode, { target: { value } });
-    // wrapper.simulate("change", {target: {value}})
+    // wrapper.find("[data-testid=input]").simulate("change", {target: {value}})
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 });

@@ -39,7 +39,7 @@ describe("Modal", () => {
   });
 
   it("closes the modal when the close button is clicked", () => {
-    wrapper.setProps({ ...initialProps, onClick });
+    wrapper.setProps({ onClick });
     fireEvent.click(wrapper.queryByTestId("close-modal"));
     // wrapper.find("[data-testid=close-modal]").simulate("click");
 
@@ -63,7 +63,7 @@ describe("Modal", () => {
   });
 
   it("initially sets the max-width to 'this.props.maxWidth'", () => {
-    wrapper.setProps({ ...initialProps, maxWidth: "700px" });
+    wrapper.setProps({ maxWidth: "700px" });
 
     expect(wrapper.queryByTestId("modal-container")).toHaveStyleRule(
       "max-width",

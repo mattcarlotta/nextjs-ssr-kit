@@ -15,11 +15,6 @@ const initialProps = {
   submitAction,
 };
 
-const nextProps = {
-  ...initialProps,
-  serverMessage: "message",
-};
-
 describe("UserForm", () => {
   let wrapper;
 
@@ -51,7 +46,7 @@ describe("UserForm", () => {
   });
 
   it("calls resetForm when the serverMessage", () => {
-    wrapper.setProps(nextProps);
+    wrapper.setProps({ serverMessage: "message" });
     expect(resetForm).toHaveBeenCalledTimes(1);
   });
 
@@ -118,7 +113,7 @@ describe("UserForm", () => {
       // submitButton.simulate("click")
       expect(submitButton().disabled).toBeTruthy();
       // expect(inputNode().props().disabled).toBeTruthy()
-      wrapper.setProps({ ...initialProps, serverError: "server" });
+      wrapper.setProps({ serverError: "server" });
       expect(submitButton.disabled).toBeFalsy();
       // expect(inputNode().props().disabled).toBeFalsy()
     });

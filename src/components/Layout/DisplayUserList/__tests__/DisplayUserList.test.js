@@ -18,37 +18,6 @@ const initialProps = {
   updateUser,
 };
 
-const nextProps = {
-  ...initialProps,
-  data: [
-    {
-      _id: "1",
-      email: "123@gmail.com",
-      backgroundInfo: "123",
-      firstName: "123",
-      lastName: "456",
-      userName: "123",
-      address: {
-        street: "19 Mosspark",
-        suite: "20",
-        city: "Glasgow",
-        state: "CA",
-        zipCode: "1",
-      },
-      isEditingID: "",
-      handleCloseModal,
-      handleResetEditClick,
-      resetMessage,
-      updateUser,
-    },
-  ],
-};
-
-const nextNextProps = {
-  ...nextProps,
-  isEditingID: "1",
-};
-
 describe("DisplayUserList", () => {
   let wrapper;
   let cardNode;
@@ -76,7 +45,30 @@ describe("DisplayUserList", () => {
 
   describe("when data is present", () => {
     beforeEach(() => {
-      wrapper.setProps(nextProps);
+      wrapper.setProps({
+        data: [
+          {
+            _id: "1",
+            email: "123@gmail.com",
+            backgroundInfo: "123",
+            firstName: "123",
+            lastName: "456",
+            userName: "123",
+            address: {
+              street: "19 Mosspark",
+              suite: "20",
+              city: "Glasgow",
+              state: "CA",
+              zipCode: "1",
+            },
+            isEditingID: "",
+            handleCloseModal,
+            handleResetEditClick,
+            resetMessage,
+            updateUser,
+          },
+        ],
+      });
     });
     it("renders the card when there is no editing ID", () => {
       expect(cardNode()).toBeInTheDocument();
@@ -93,14 +85,14 @@ describe("DisplayUserList", () => {
 
     it("calls handleEditClick when the edit button is clicked", () => {
       const editButton = wrapper.queryByTestId("edit");
-      // const editButton =  wrapper.find([data-testid=edit])
+      // const editButton = wrapper.find([data-testid=edit])
       fireEvent.click(editButton);
       // editButton.simulate("click")
       expect(handleEditClick).toHaveBeenCalledWith("1");
     });
 
     it("renders the userForm when there is an editing ID", () => {
-      wrapper.setProps(nextNextProps);
+      wrapper.setProps({ isEditingID: "1" });
       const userForm = wrapper.queryByTestId("user-form");
       // const userForm =  wrapper.find([data-testid=user-form])
       expect(userForm).toBeInTheDocument();
