@@ -5,7 +5,7 @@ import HomeIcon from "~components/Layout/HomeIcon";
 import Link from "~components/Navigation/Link";
 
 const NotFound = () => (
-  <FlexCenter style={{ height: "90%" }} id="notfound">
+  <FlexCenter style={{ height: "90vh" }} id="notfound">
     <Head>
       <title>Server Error - NextJS SSR Kit</title>
     </Head>

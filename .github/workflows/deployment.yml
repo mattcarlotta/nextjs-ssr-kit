@@ -46,9 +46,6 @@ jobs:
       - name: Run Tests
         id: tests
         run: yarn test
-        env:
-          DATABASE: mongodb://localhost/nextssrkit-test-db
-          PORT: 3001
 
       - name: Run E2E Tests
         if: steps.build.tests == 0
