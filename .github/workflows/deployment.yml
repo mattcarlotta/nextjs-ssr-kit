@@ -3,6 +3,7 @@ name: Deployment
 "on":
   push:
     branches:
+      - master
       - canary
 
 jobs:
@@ -49,7 +50,7 @@ jobs:
           DATABASE: mongodb://localhost/nextssrkit-test-db
           PORT: 3001
 
-      - name: Create Local Build
-        if: steps.tests.exit_code == 0
+      - name: Run E2E Tests
+      - if: steps.build.tests == 0
         id: build
-        run: yarn build
+        run: yarn test:e2erun
