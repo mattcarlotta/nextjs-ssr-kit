@@ -9,11 +9,12 @@ import { store } from "~store";
  * A class that wraps RTL's render and supplies it with Enzyme-like methods
  * @class EnzymeWrapper
  * @param {node} Component - Component to be mounted
- * @method find - finds a node by string using querySelector
+ * @method find - finds an element by string using querySelector
  * @method setProps - merges old props with new props and rerenders the Component
  * @method simulate - simulates a fireEvent by type with passed in options
  * @returns {object} - an Enzyme-like wrapper
- */ class EnzymeWrapper {
+ */
+class EnzymeWrapper {
   constructor(Component) {
     this.Component = Component;
     this.props = Component.props;
@@ -29,13 +30,14 @@ import { store } from "~store";
   }
 
   find(byString) {
-    const nodes = document.querySelectorAll(byString);
+    const elements = document.querySelectorAll(byString);
     const selection = this.wrapper.container.querySelector(byString);
 
     if (!isEmpty(selection)) {
-      selection.simulate = (type, opts) => this.simulate(selection, type, opts);
-      selection.length = nodes.length || 0;
-      selection.exists = nodes.length >= 1;
+      selection.simulate = (eventType, opts) =>
+        this.simulate(selection, eventType, opts);
+      selection.length = !isEmpty(elements) ? elements.length : 0;
+      selection.exists = selection.length >= 1;
     }
 
     return selection;
@@ -47,31 +49,21 @@ import { store } from "~store";
     this.wrapper.rerender(cloneElement(this.Component, this.props));
   }
 
-  simulate(node, type, opts) {
-    if (isEmpty(node)) {
+  simulate(element, eventType, opts) {
+    if (isEmpty(element)) {
       throw Error(
-        `wrapper::simulate(): unable to locate any nodes to simulate an event.`,
+        `wrapper::simulate(): unable to locate any elements to simulate an event.`,
+      );
+    }
+    if (!eventType) {
+      throw Error(
+        `wrapper::simulate(): unable to call simulate without an event type.`,
       );
     }
 
-    switch (type) {
-      case "click": {
-        fireEvent.click(node);
-        break;
-      }
-      case "change": {
-        fireEvent.change(node, opts);
-        break;
-      }
-      case "submit": {
-        fireEvent.submit(node);
-        break;
-      }
-      default:
-        break;
-    }
+    fireEvent[eventType](element, opts);
 
-    return node;
+    return element;
   }
 }
 
