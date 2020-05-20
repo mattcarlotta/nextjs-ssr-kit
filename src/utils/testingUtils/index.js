@@ -30,15 +30,10 @@ class EnzymeWrapper {
   }
 
   find(byString) {
-    const elements = document.querySelectorAll(byString);
-    const selection = this.wrapper.container.querySelector(byString);
+    const elements = this.wrapper.container.querySelectorAll(byString);
+    let selection = this.wrapper.container.querySelector(byString);
 
-    if (!isEmpty(selection)) {
-      selection.simulate = (eventType, opts) =>
-        this.simulate(selection, eventType, opts);
-      selection.length = !isEmpty(elements) ? elements.length : 0;
-      selection.exists = selection.length >= 1;
-    }
+    selection = this.setSelection(elements, selection);
 
     return selection;
   }
@@ -47,6 +42,26 @@ class EnzymeWrapper {
     this.props = { ...this.props, ...props };
 
     this.wrapper.rerender(cloneElement(this.Component, this.props));
+  }
+
+  setSelection(elements, selection) {
+    selection.simulate = (eventType, opts) =>
+      this.simulate(selection, eventType, opts);
+    selection.length = !isEmpty(elements) ? elements.length : 0;
+    selection.exists = selection.length >= 1;
+    selection.at = pos => {
+      if (!elements || elements[pos] === undefined)
+        throw Error(
+          "wrapper::at(): Unable to locate an element at that position.",
+        );
+
+      let nextSelection = elements[pos];
+      nextSelection = this.setSelection(nextSelection, nextSelection);
+
+      return nextSelection;
+    };
+
+    return selection;
   }
 
   simulate(element, eventType, opts) {

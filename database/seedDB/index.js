@@ -4,14 +4,15 @@ require("../../env");
 require("../../models/all");
 const { connectDatabase } = require("../index");
 const { User } = require("../../models");
+const seeds = require("./seeds");
 
 const { DATABASE, EXIT, SEED } = process.env;
 
 /**
  * Function to seed the testing Mongo database.
  *
- * @function
  * @async
+ * @function seedDB
  * @returns {string} - displays a:  PASS  utils/seedDB.js message to console.
  * @throws {error} - displays a:  FAIL  utils/seedDB.js message to console with the error.
  */
