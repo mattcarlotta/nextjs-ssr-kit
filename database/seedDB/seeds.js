@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-export default [
+module.exports = [
   {
     email: "example1@example.com",
     firstName: "Bob",

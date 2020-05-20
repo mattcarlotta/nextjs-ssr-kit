@@ -3332,6 +3332,21 @@ concat-stream@^1.5.0, concat-stream@^1.6.2:
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
 
+concurrently@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/concurrently/-/concurrently-5.2.0.tgz#ead55121d08a0fc817085584c123cedec2e08975"
+  integrity sha512-XxcDbQ4/43d6CxR7+iV8IZXhur4KbmEJk1CetVMUqCy34z9l0DkszbY+/9wvmSnToTej0SYomc2WSRH+L0zVJw==
+  dependencies:
+    chalk "^2.4.2"
+    date-fns "^2.0.1"
+    lodash "^4.17.15"
+    read-pkg "^4.0.1"
+    rxjs "^6.5.2"
+    spawn-command "^0.0.2-1"
+    supports-color "^6.1.0"
+    tree-kill "^1.2.2"
+    yargs "^13.3.0"
+
 confusing-browser-globals@^1.0.9:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/confusing-browser-globals/-/confusing-browser-globals-1.0.9.tgz#72bc13b483c0276801681871d4898516f8f54fdd"
@@ -3917,6 +3932,11 @@ date-fns@^1.27.2:
   version "1.30.1"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
   integrity sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==
+
+date-fns@^2.0.1:
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.14.0.tgz#359a87a265bb34ef2e38f93ecf63ac453f9bc7ba"
+  integrity sha512-1zD+68jhFgDIM0rF05rcwYO8cExdNqxjq4xP1QKM60Q45mnO6zaMWB4tOzrIr4M4GSLntsKeE4c9Bdl2jhL/yw==
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
   version "2.6.9"
@@ -10042,6 +10062,15 @@ read-pkg@^2.0.0:
     normalize-package-data "^2.3.2"
     path-type "^2.0.0"
 
+read-pkg@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/read-pkg/-/read-pkg-4.0.1.tgz#963625378f3e1c4d48c85872b5a6ec7d5d093237"
+  integrity sha1-ljYlN48+HE1IyFhytabsfV0JMjc=
+  dependencies:
+    normalize-package-data "^2.3.2"
+    parse-json "^4.0.0"
+    pify "^3.0.0"
+
 read-pkg@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/read-pkg/-/read-pkg-5.2.0.tgz#7bf295438ca5a33e56cd30e053b34ee7250c93cc"
@@ -10538,7 +10567,7 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
-rxjs@^6.3.3, rxjs@^6.5.3, rxjs@^6.5.5:
+rxjs@^6.3.3, rxjs@^6.5.2, rxjs@^6.5.3, rxjs@^6.5.5:
   version "6.5.5"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.5.5.tgz#c5c884e3094c8cfee31bf27eb87e54ccfc87f9ec"
   integrity sha512-WfQI+1gohdf0Dai/Bbmk5L5ItH5tYqm3ki2c5GdWhKjalzjg93N3avFjVStyZZz+A2Em+ZxKH5bNghw9UeylGQ==
@@ -11007,6 +11036,11 @@ sparse-bitfield@^3.0.3:
   integrity sha1-/0rm5oZWBWuks+eSqzM004JzyhE=
   dependencies:
     memory-pager "^1.0.2"
+
+spawn-command@^0.0.2-1:
+  version "0.0.2-1"
+  resolved "https://registry.yarnpkg.com/spawn-command/-/spawn-command-0.0.2-1.tgz#62f5e9466981c1b796dc5929937e11c9c6921bd0"
+  integrity sha1-YvXpRmmBwbeW3Fkpk34RycaSG9A=
 
 spdx-correct@^3.0.0:
   version "3.1.0"
@@ -11808,6 +11842,11 @@ traverse@0.6.6:
   version "0.6.6"
   resolved "https://registry.yarnpkg.com/traverse/-/traverse-0.6.6.tgz#cbdf560fd7b9af632502fed40f918c157ea97137"
   integrity sha1-y99WD9e5r2MlAv7UD5GMFX6pcTc=
+
+tree-kill@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/tree-kill/-/tree-kill-1.2.2.tgz#4ca09a9092c88b73a7cdc5e8a01b507b0790a0cc"
+  integrity sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==
 
 trim-newlines@^1.0.0:
   version "1.0.0"
@@ -12646,7 +12685,7 @@ yargs-parser@^18.1.1, yargs-parser@^18.1.3:
     camelcase "^5.0.0"
     decamelize "^1.2.0"
 
-yargs@^13.3.2:
+yargs@^13.3.0, yargs@^13.3.2:
   version "13.3.2"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-13.3.2.tgz#ad7ffefec1aa59565ac915f82dccb38a9c31a2dd"
   integrity sha512-AX3Zw5iPruN5ie6xGRIDgqkT+ZhnRlZMLMHAs8tg7nRruy2Nb+i5o9bwghAogtM08q1dpr2LVoS8KSTMYpWXUw==

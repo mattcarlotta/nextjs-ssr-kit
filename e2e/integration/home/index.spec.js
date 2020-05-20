@@ -18,7 +18,7 @@ context("Home Page", () => {
       .and("have.attr", "href", "/users");
   });
 
-  it("allows a user to navigate to the example plage", () => {
+  it("allows a user to navigate to the example page", () => {
     cy.get("[data-testid=link]").click();
 
     cy.url().should("contain", "/users");
