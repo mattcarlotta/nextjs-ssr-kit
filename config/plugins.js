@@ -1,5 +1,4 @@
 const { DefinePlugin, IgnorePlugin } = require("webpack");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
 const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
@@ -27,11 +26,6 @@ module.exports = isServer => {
     plugins.push(
       /* strips out moment locales */
       new IgnorePlugin(/^\.\/locale$/, /moment$/),
-      /* extracts css chunks for client */
-      new MiniCssExtractPlugin({
-        filename,
-        chunkFilename,
-      }),
       /* envs for client */
       new DefinePlugin({
         "process.env": {

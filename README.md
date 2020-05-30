@@ -211,18 +211,14 @@ Click [here](package.json) to see latest versions.
 <details>
 <summary>Click to expand brief overview of NextJS packages</summary>
 <pre><code>
-- <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> 
 - <a href="https://github.com/axios/axios">Axios</a>
 - <a href="https://github.com/babel/babel">Babel</a>
 - <a href="https://github.com/motdotla/dotenv">DotENV</a>
-- <a href="https://github.com/webpack-contrib/css-loader">CSS Loader</a>
 - <a href="https://github.com/eslint/eslint/">Eslint</a>
 - <a href="http://airbnb.io/enzyme/">Enzyme</a>
 - <a href="https://github.com/typicode/husky">Husky</a>
 - <a href="https://github.com/facebook/jest">Jest</a>
 - <a href="https://github.com/zeit/next.js">NextJS</a>
-- <a href="https://github.com/zeit/next-plugins">NextJS CSS</a>
-- <a href="https://github.com/zeit/next-plugins">NextJS SASS</a>
 - <a href="https://github.com/kirill-konshin/next-redux-wrapper">NextJS Redux Wrapper</a> 
 - <a href="https://github.com/prettier/prettier">Prettier</a>
 - <a href="https://github.com/facebook/prop-types">PropTypes</a>
