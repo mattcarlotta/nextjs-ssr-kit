@@ -7,14 +7,10 @@ const publicPath = "/_next/static";
 module.exports = {
   /* project publicPath */
   publicPath,
-  /* public static images */
-  imagesPublicPath: `${publicPath}/media/`,
-  /* compiled images next path (next/static/media) */
-  imagesFolder: "static/media/",
-  /* public static images */
-  fontsPublicPath: `${publicPath}/assets/`,
-  /* compiled fonts next path (next/static/assets) */
-  fontsFolder: "static/assets/",
+  /* public assets */
+  assetsPublicPath: `${publicPath}/media/`,
+  /* compiled assets next path (next/static/media) */
+  assetsFolder: "static/media/",
   /* public css */
   cssPublicPath: `${publicPath}/css/`,
   /* compiled CSS next path (next/static/css) */
