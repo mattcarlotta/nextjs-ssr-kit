@@ -231,7 +231,7 @@ Click [here](package.json) to see latest versions.
 - <a href="https://stylelint.io/">Stylelint</a>
 - <a href="https://github.com/kristerkari/stylelint-scss">Stylelint-SCSS</a>
 - <a href="https://github.com/stylelint/stylelint-config-recommended">Stylelint-Config-Recommended</a>
-- <a href="https://github.com/styled-components/styled-components">Stylized Components</a>
+- <a href="https://github.com/styled-components/styled-components">Styled Components</a>
 - <a href="https://github.com/webpack/webpack">Webpack</a>
 </code></pre>
 </details>
@@ -245,7 +245,6 @@ Click [here](package.json) to see latest versions.
 - <a href="https://github.com/petkaantonov/bluebird">Bluebird</a>
 - <a href="https://github.com/expressjs/body-parser">Body Parser</a>
 - <a href="https://github.com/motdotla/dotenv">DotENV</a>
-- <a href="https://momentjs.com/timezone/">Moment Timezone</a>
 - <a href="https://mongoosejs.com/">Mongoose</a>
 - <a href="https://github.com/expressjs/morgan">Morgan</a>
 - <a href="https://github.com/prettier/prettier">Prettier</a>
