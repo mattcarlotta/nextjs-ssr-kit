@@ -1,31 +1,20 @@
-const { DefinePlugin, IgnorePlugin } = require("webpack");
+const { DefinePlugin } = require("webpack");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
 const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 const WebpackBar = require("webpackbar");
 const address = require("address");
-const {
-  analyzeClientPath,
-  analyzeServerPath,
-  staticCSSDevPath,
-  staticCSSProdPath,
-} = require("./paths");
-
-const remoteAddress = address.ip();
+const { analyzeClientPath, analyzeServerPath } = require("./paths");
 
 const { analyze, baseURL, LOCALHOST, NODE_ENV, PORT } = process.env;
-
+const remoteAddress = address.ip();
 const inDev = NODE_ENV === "development";
-const filename = inDev ? staticCSSDevPath : staticCSSProdPath;
-const chunkFilename = filename;
 
 module.exports = isServer => {
   const plugins = [];
 
   if (!isServer) {
     plugins.push(
-      /* strips out moment locales */
-      new IgnorePlugin(/^\.\/locale$/, /moment$/),
       /* envs for client */
       new DefinePlugin({
         "process.env": {

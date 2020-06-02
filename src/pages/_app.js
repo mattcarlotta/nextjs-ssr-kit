@@ -1,13 +1,14 @@
-import React from "react";
-import App from "next/app";
+/* eslint-disable react/forbid-prop-types */
+import { PureComponent } from "react";
 import Head from "next/head";
+import PropTypes from "prop-types";
 import { ToastContainer } from "react-toastify";
 import toast from "~components/App/Toast";
 import GlobalStylesheet from "~styles/globalStylesheet";
 import { wrapper } from "~store";
 import "~styles/globals.scss";
 
-export class MyApp extends App {
+export class MyApp extends PureComponent {
   componentDidMount() {
     toast({ type: "info", message: "Welcome to the NextJS SSR Kit!" });
   }
@@ -35,4 +36,10 @@ export class MyApp extends App {
   }
 }
 
-export default wrapper.withRedux(MyApp);
+MyApp.propTypes = {
+  Component: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
+  pageProps: PropTypes.any,
+};
+
+export default wrapper.withRedux(MyApp, { wrapDefaultGetInitialProps: true });
+/* eslint-enable react/forbid-prop-types */

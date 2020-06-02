@@ -5,7 +5,7 @@ const { NODE_ENV } = process.env;
 const inDev = NODE_ENV === "development";
 const staticAssetsRegex = /\.(jpe?g|png|svg|gif|ico|webp|woff2|ttf|woff|eot)$/;
 
-module.exports = isServer => [
+module.exports = () => [
   /* lints js files */
   jsRule({
     loader: "eslint-loader",
