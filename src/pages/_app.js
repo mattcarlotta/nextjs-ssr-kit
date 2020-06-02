@@ -1,4 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
 import { PureComponent } from "react";
 import Head from "next/head";
 import PropTypes from "prop-types";
@@ -38,8 +37,7 @@ export class MyApp extends PureComponent {
 
 MyApp.propTypes = {
   Component: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
-  pageProps: PropTypes.any,
+  pageProps: PropTypes.any /* eslint-disable-line react/forbid-prop-types */,
 };
 
-export default wrapper.withRedux(MyApp, { wrapDefaultGetInitialProps: true });
-/* eslint-enable react/forbid-prop-types */
+export default wrapper.withRedux(MyApp);
