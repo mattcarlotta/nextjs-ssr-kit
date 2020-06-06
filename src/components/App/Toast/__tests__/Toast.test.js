@@ -37,35 +37,32 @@ describe("ShowMemberDetails", () => {
   });
 
   it("renders without errors", () => {
-    expect(
-      wrapper.container.firstChild.classList.contains("Toastify"),
-    ).toBeTruthy();
-    // expect(wrapper.find("ToastMessage").props().message).toEqual(initialProps.message);
-    // expect(wrapper.find("ToastMessage").props().type).toEqual(initialProps.type);
+    expect(wrapper.find("ToastMessage")).toHaveProp(
+      "message",
+      initialProps.message,
+    );
+    expect(wrapper.find("ToastMessage")).toHaveProp("type", initialProps.type);
   });
 
   it("renders an success icon", () => {
-    const icon = displayIcon("success");
-    expect(icon).toEqual(<FaCheck style={style} />);
+    expect(displayIcon("success")).toEqual(<FaCheck style={style} />);
   });
 
   it("renders an info icon", () => {
-    const icon = displayIcon("info");
-    expect(icon).toEqual(<FaInfo />);
+    expect(displayIcon("info")).toEqual(<FaInfo />);
   });
 
   it("renders an error icon", () => {
-    const icon = displayIcon("error");
-    expect(icon).toEqual(<FaExclamationCircle />);
+    expect(displayIcon("error")).toEqual(<FaExclamationCircle />);
   });
 
   it("renders a warning icon", () => {
-    const icon = displayIcon("warning");
-    expect(icon).toEqual(<FaExclamationTriangle style={style} />);
+    expect(displayIcon("warning")).toEqual(
+      <FaExclamationTriangle style={style} />,
+    );
   });
 
   it("renders a bug icon if missing type", () => {
-    const icon = displayIcon("");
-    expect(icon).toEqual(<FaBug style={style} />);
+    expect(displayIcon("")).toEqual(<FaBug style={style} />);
   });
 });

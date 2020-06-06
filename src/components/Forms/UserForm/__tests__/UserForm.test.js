@@ -30,19 +30,17 @@ describe("UserForm", () => {
   });
 
   it("renders without error ", () => {
-    expect(wrapper.queryByTestId("user-form")).toBeInTheDocument();
-    // expect(wrapper.exists()).toBeTruthy()
+    expect(wrapper.find("form")).toExist();
   });
 
   it("calls the handleChange which updates a field", () => {
     const value = "updated!";
     const name = "userName";
-    const inputNode = () => wrapper.queryByTestId(name);
-    // inputNode = () => wrapper.find([data-testid=name])
+    const inputNode = () => wrapper.find("[data-testid='userName']");
 
-    fireEvent.change(inputNode(), { target: { name, value } });
-    expect(inputNode().value).toEqual(value);
-    // expect(inputNode().props().value).toEqual(value)
+    inputNode().simulate("change", { target: { name, value } });
+
+    expect(inputNode()).toHaveProp("value", value);
   });
 
   it("calls resetForm when the serverMessage", () => {
@@ -50,12 +48,15 @@ describe("UserForm", () => {
     expect(resetForm).toHaveBeenCalledTimes(1);
   });
 
+  it("calls resetMessage when the form is unmounted", () => {
+    wrapper.unmount();
+    expect(resetMessage).toHaveBeenCalledTimes(1);
+  });
+
   it("when a user submits an empty form, the form displays errors", () => {
-    fireEvent.click(wrapper.queryByTestId("submit"));
-    // wrapper.find("[data-testid=submit]").simulate("click")
-    expect(wrapper.getAllByText(/Required/)).toHaveLength(9);
-    // expect(wrapper.find("[data-testid=errors]).length).toEqual(9)
-    // expect(wrapper.find("[data-testid=errors]")).toHaveLength(9)
+    wrapper.find("form").simulate("submit");
+
+    expect(wrapper.find("[data-testid='errors']")).toHaveLength(9);
   });
 
   describe("with form data", () => {
@@ -72,8 +73,7 @@ describe("UserForm", () => {
         "zipCode",
         "backgroundInfo",
       ].forEach(name => {
-        fireEvent.change(wrapper.queryByTestId(name), {
-          // wrapper.find(`[data-testid="${name}"]`)
+        wrapper.find(`[data-testid="${name}"]`).simulate("change", {
           target: { name, value: "email@123.com" },
         });
       });
@@ -81,10 +81,7 @@ describe("UserForm", () => {
     it("when the form is submitted, it calls submitAction with form values and an id when there is no errors", () => {
       const value = "email@123.com";
       const id = "";
-      const submitButton = wrapper.queryByTestId("submit");
-      // const submitButton = wrapper.find([data-testid=submit])
-      fireEvent.click(submitButton);
-      // submitButton.simulate("click")
+      wrapper.find("form").simulate("submit");
       expect(submitAction).toHaveBeenCalledWith({
         props: {
           address: {
@@ -104,18 +101,14 @@ describe("UserForm", () => {
       });
     });
 
-    // wrapper.find("form").submit()
-
     it("when the form is submitted but a server error is thrown, then the form will not be submitting", () => {
-      const submitButton = () => wrapper.queryByTestId("submit");
-      // const submitButton = () =>  wrapper.find([data-testid=submit])
-      fireEvent.click(submitButton());
-      // submitButton.simulate("click")
-      expect(submitButton().disabled).toBeTruthy();
-      // expect(inputNode().props().disabled).toBeTruthy()
+      const submitButton = () => wrapper.find("[data-testid='submit']");
+      wrapper.find("form").simulate("submit");
+
+      expect(submitButton()).toHaveProp("disabled", true);
+
       wrapper.setProps({ serverError: "server" });
-      expect(submitButton.disabled).toBeFalsy();
-      // expect(inputNode().props().disabled).toBeFalsy()
+      expect(submitButton()).toHaveProp("disabled", false);
     });
   });
 });

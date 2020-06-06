@@ -1,16 +1,13 @@
 /* eslint-disable */
-import { render, fireEvent, screen } from "@testing-library/react";
-import {
-  getByLabelText,
-  getByText,
-  getByTestId,
-  queryByTestId,
-  waitFor,
-} from "@testing-library/dom";
-import "@testing-library/jest-dom";
+import { JSDOM } from "jsdom";
+import { configure, mount, shallow } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
 import "jest-styled-components";
+import "jest-enzyme";
 import mockApp from "~utils/__mocks__/mockAxios.js";
-import { mount, withRouterContext } from "~utils/testingUtils";
+import { withRouterContext } from "~utils/testingUtils";
+
+configure({ adapter: new Adapter() });
 
 /*
   THE BELOW ARE ACCESSIBLE AND PREDEFINED FOR ALL *.TEST.JS FILES
@@ -22,17 +19,29 @@ import { mount, withRouterContext } from "~utils/testingUtils";
   imported! See "overrides" in ".eslintrc" for more
   information.
 */
-global.fireEvent = fireEvent;
-global.getByLabelText = getByLabelText;
-global.getByText = getByText;
-global.getByTestId = getByTestId;
+/* THE BELOW ARE ACCESSIBLE AND PREDEFINED FOR ALL *.TEST.JS FILES */
+const exposedProperties = ["window", "navigator", "document"];
+const { document } = new JSDOM(
+  "<!DOCTYPE html><body><div id='root'></div></body>",
+).window;
+global.document = document;
+global.window = document.defaultView;
+global.HTMLElement = window.HTMLElement;
+global.HTMLAnchorElement = window.HTMLAnchorElement;
 global.mockApp = mockApp;
 global.mount = mount;
-global.Provider = require("react-redux").Provider;
-global.queryByTestId = queryByTestId;
+global.shallow = shallow;
 global.React = require("react");
-global.render = render;
-global.screen = screen;
-global.waitFor = waitFor;
 global.withRouterContext = withRouterContext;
+
+Object.keys(document.defaultView).forEach(property => {
+  if (typeof global[property] === "undefined") {
+    exposedProperties.push(property);
+    global[property] = document.defaultView[property];
+  }
+});
+
+global.navigator = {
+  userAgent: "node.js",
+};
 /* eslint-enable */

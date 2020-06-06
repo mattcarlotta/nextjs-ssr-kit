@@ -23,8 +23,7 @@ describe("DisplayUserList", () => {
   let cardNode;
   beforeEach(() => {
     wrapper = mount(<DisplayUserList {...initialProps} />);
-    cardNode = () => wrapper.queryByTestId("card-container");
-    // cardNode = () => wrapper.find([data-testid=card-container])
+    cardNode = () => wrapper.find("[data-testid='card-container']");
   });
 
   afterEach(() => {
@@ -37,10 +36,7 @@ describe("DisplayUserList", () => {
   });
 
   it("initially renders no data", () => {
-    const nodata = wrapper.queryByTestId("no-data");
-    // const nodata =  wrapper.find([data-testid=no-data])
-    expect(nodata).toBeInTheDocument();
-    // expect(nodata.exists()).toBeTruthy()
+    expect(wrapper.find("[data-testid='no-data']")).toExist();
   });
 
   describe("when data is present", () => {
@@ -71,32 +67,24 @@ describe("DisplayUserList", () => {
       });
     });
     it("renders the card when there is no editing ID", () => {
-      expect(cardNode()).toBeInTheDocument();
-      // expect(cardNode().exists()).toBeTruthy()
+      expect(cardNode()).toExist();
     });
 
     it("calls deleteUser when the delete button is clicked", () => {
-      const deleteButton = wrapper.queryByTestId("delete");
-      // const deleteButton =  wrapper.find([data-testid=delete])
-      fireEvent.click(deleteButton);
-      // deleteButton.simulate("click")
+      wrapper.find("[data-testid='delete']").simulate("click");
+
       expect(deleteUser).toHaveBeenCalledWith("1");
     });
 
     it("calls handleEditClick when the edit button is clicked", () => {
-      const editButton = wrapper.queryByTestId("edit");
-      // const editButton = wrapper.find([data-testid=edit])
-      fireEvent.click(editButton);
-      // editButton.simulate("click")
+      wrapper.find("[data-testid='edit']").simulate("click");
       expect(handleEditClick).toHaveBeenCalledWith("1");
     });
 
     it("renders the userForm when there is an editing ID", () => {
       wrapper.setProps({ isEditingID: "1" });
-      const userForm = wrapper.queryByTestId("user-form");
-      // const userForm =  wrapper.find([data-testid=user-form])
-      expect(userForm).toBeInTheDocument();
-      // expect(userForm.exists()).toBeTruthy()
+
+      expect(wrapper.find("[data-testid='user-form']")).toExist();
     });
   });
 });

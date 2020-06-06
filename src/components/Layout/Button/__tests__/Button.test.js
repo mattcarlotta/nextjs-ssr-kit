@@ -10,13 +10,11 @@ describe("Styled Button", () => {
   let buttonNode;
   beforeEach(() => {
     wrapper = mount(<Button dataTestId="test-button" {...initProps} />);
-    buttonNode = () => wrapper.queryByTestId("test-button");
-    // buttonNode = () => wrapper.find("[data-testid=test-button]");
+    buttonNode = () => wrapper.find("[data-testid='test-button']");
   });
 
   it("renders without errors", () => {
-    expect(buttonNode()).toBeInTheDocument();
-    // expect(buttonNode().exists()).toBeTruthy();
+    expect(buttonNode()).toExist();
   });
 
   it("initially displays a default button", () => {

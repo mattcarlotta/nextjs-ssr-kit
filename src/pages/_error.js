@@ -1,11 +1,11 @@
 import React from "react";
 import Head from "next/head";
-import FlexCenter from "~components/Layout/FlexCenter";
+import Flex from "~components/Layout/Flex";
 import HomeIcon from "~components/Layout/HomeIcon";
 import Link from "~components/Navigation/Link";
 
 const NotFound = () => (
-  <FlexCenter style={{ height: "90vh" }} id="notfound">
+  <Flex justify="center" style={{ height: "90vh" }} id="notfound">
     <Head>
       <title>Server Error - NextJS SSR Kit</title>
     </Head>
@@ -22,7 +22,7 @@ const NotFound = () => (
         <span>Go Back</span>
       </Link>
     </div>
-  </FlexCenter>
+  </Flex>
 );
 
 export default NotFound;

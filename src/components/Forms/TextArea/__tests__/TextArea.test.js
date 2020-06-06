@@ -12,37 +12,32 @@ const initProps = {
   value: "",
 };
 
-const nextProps = {
-  ...initProps,
-  errors: "Required!",
-};
-
 describe("TextArea", () => {
   let wrapper;
   let textAreaNode;
   beforeEach(() => {
-    wrapper = render(<Input {...initProps} />);
-    textAreaNode = wrapper.queryByTestId("firstName");
+    wrapper = mount(<Input {...initProps} />);
+    textAreaNode = wrapper.find("[data-testid='firstName']");
   });
 
   it("renders without errors", () => {
-    expect(textAreaNode).toBeTruthy();
-    expect(textAreaNode).toHaveStyle("border: 1px solid #d3d3d3");
+    expect(textAreaNode).toExist();
+    expect(wrapper).toHaveStyleRule("border", "1px solid #d3d3d3", {
+      modifier: `textarea`,
+    });
   });
 
   it("adds a red border and displays an error message", () => {
-    wrapper.rerender(<Input {...nextProps} />);
+    wrapper.setProps({ errors: "Required!" });
 
-    expect(textAreaNode).toHaveStyle("border: 1px solid #d03916");
-    expect(wrapper.getByTestId("errors")).toHaveTextContent("Required!");
+    expect(wrapper).toHaveStyleRule("border", "1px solid #d03916", {
+      modifier: `textarea`,
+    });
+    expect(wrapper.find("[data-testid='errors']")).toHaveText("Required!");
   });
 
   it("calls onChange when the input is updated", () => {
-    const value = "Bob";
-    fireEvent.change(textAreaNode, {
-      target: { value },
-    });
-
+    textAreaNode.simulate("change", { target: { value: "called" } });
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 });

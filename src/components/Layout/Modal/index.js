@@ -13,10 +13,12 @@ import ModalRoot from "./ModalRoot";
 import WindowContainer from "./WindowContainer";
 
 export class Modal extends PureComponent {
+  /* istanbul ignore next */
   componentDidMount() {
     document.body.style.overflow = "hidden";
   }
 
+  /* istanbul ignore next */
   componentWillUnmount() {
     document.body.style.overflow = null;
   }
