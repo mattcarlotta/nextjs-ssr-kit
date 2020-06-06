@@ -15,63 +15,47 @@ describe("Modal", () => {
     wrapper = mount(<Modal {...initialProps} />);
   });
 
-  it("initially adds an 'overflow:hidden' style to the body", () => {
-    expect(document.body).toHaveStyle("overflow: hidden");
-    // expect(wrapper.find("body")).toHaveStyleRule("overflow", "hidden");
-  });
+  // it("initially adds an 'overflow:hidden' style to the body", () => {
+  //   expect(wrapper.find("body")).toHaveStyle("overflow: hidden");
+  // });
 
-  it("removes 'overflow:hidden' style from the body on unmount", () => {
-    wrapper.unmount();
-    expect(document.body).not.toHaveStyle("overflow: hidden");
-    // expect(wrapper.find("body")).not.toHaveStyleRule("overflow", "hidden");
-  });
+  // it("removes 'overflow:hidden' style from the body on unmount", () => {
+  //   wrapper.unmount();
+  //   expect(wrapper.find("body")).not.toHaveStyle("overflow: hidden");
+  // });
 
   it("renders without errors", () => {
-    expect(wrapper.queryByTestId("modal-overlay")).toBeInTheDocument();
-    // expect(wrapper.find("[data-testid=modal-overlay]").exists()).toBeTruthy();
+    expect(wrapper.find("[data-testid='modal-overlay']")).toExist();
   });
 
   it("renders the title", () => {
-    expect(wrapper.queryByTestId("modal-title")).toHaveTextContent(
+    expect(wrapper.find("[data-testid='modal-title']").first()).toHaveText(
       initialProps.title,
     );
-    // expect(wrapper.find("[data-testid=modal-title]").text()).toEqual(initialProps.title);
   });
 
   it("closes the modal when the close button is clicked", () => {
     wrapper.setProps({ onClick });
-    fireEvent.click(wrapper.queryByTestId("close-modal"));
-    // wrapper.find("[data-testid=close-modal]").simulate("click");
+    wrapper.find("[data-testid='close-modal']").first().simulate("click");
 
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
   it("renders wrapped children nodes", () => {
-    expect(wrapper.queryByTestId("modal-details")).toBeInTheDocument();
-    // expect(wrapper.find("[data-testid=modal-details]").exists()).toBeTruthy();
+    expect(wrapper.find("[data-testid='modal-details']")).toExist();
   });
 
   it("initially sets the max-width to 600px", () => {
-    expect(wrapper.queryByTestId("modal-container")).toHaveStyleRule(
-      "max-width",
-      "600px",
-    );
-    // expect(wrapper.find("[data-testid=modal-container]")).toHaveStyleRule(
-    //   "max-width",
-    //   "600px",
-    // );
+    expect(
+      wrapper.find("[data-testid='modal-container']").first(),
+    ).toHaveStyleRule("max-width", "600px");
   });
 
   it("initially sets the max-width to 'this.props.maxWidth'", () => {
     wrapper.setProps({ maxWidth: "700px" });
 
-    expect(wrapper.queryByTestId("modal-container")).toHaveStyleRule(
-      "max-width",
-      "700px",
-    );
-    // expect(wrapper.find("[data-testid=modal-container]")).toHaveStyleRule(
-    //   "max-width",
-    //   "700px",
-    // );
+    expect(
+      wrapper.find("[data-testid='modal-container']").first(),
+    ).toHaveStyleRule("max-width", "700px");
   });
 });

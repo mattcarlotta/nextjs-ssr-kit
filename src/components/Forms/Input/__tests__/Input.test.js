@@ -17,8 +17,7 @@ describe("Input", () => {
   let inputNode;
   beforeEach(() => {
     wrapper = mount(<Input {...initialProps} />);
-    inputNode = wrapper.queryByTestId("input");
-    // inputNode = wrapper.find("[data-testid=input]")
+    inputNode = wrapper.find("[data-testid='input']");
   });
 
   afterEach(() => {
@@ -26,24 +25,18 @@ describe("Input", () => {
   });
 
   it("renders without errors", () => {
-    expect(inputNode).toBeInTheDocument();
-    // expect(inputNode.exists()).toBeTruthy()
+    expect(inputNode).toExist();
   });
 
   it("renders an error", () => {
     wrapper.setProps({ errors: "Required" });
-    const errorsNode = wrapper.queryByTestId("errors");
-    // errorsNode = wrapper.find("[data-testid=errors]"")
-    expect(errorsNode).toBeInTheDocument();
-    // expect(errorsNode.exists()).toBeTruthy()
-    expect(errorsNode).toHaveTextContent("Required");
-    // expect(errorsNode.text()).toEqual("Required")
+    const errorsNode = wrapper.find("[data-testid='errors']");
+    expect(errorsNode).toExist();
+    expect(errorsNode).toHaveText("Required");
   });
 
   it("calls onChange when the input is updated", () => {
-    const value = "called!";
-    fireEvent.change(inputNode, { target: { value } });
-    // wrapper.find("[data-testid=input]").simulate("change", {target: {value}})
+    inputNode.simulate("change", { target: { value: "called" } });
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 });
