@@ -1,4 +1,4 @@
-export default props => [
+const fields = props => [
   {
     name: "userName",
     type: "text",
@@ -89,3 +89,5 @@ export default props => [
     required: true,
   },
 ];
+
+export default fields;

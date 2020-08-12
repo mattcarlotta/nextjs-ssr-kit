@@ -11,7 +11,7 @@ import isEmpty from "lodash.isempty";
  * @returns {array} - updated fields.
  * @throws {error}
  */
-export default (fields, name, value) => {
+const fieldUpdater = (fields, name, value) => {
   try {
     if (isEmpty(fields) || !name) {
       throw new Error(
@@ -27,4 +27,6 @@ export default (fields, name, value) => {
     return [];
   }
 };
+
+export default fieldUpdater;
 /* eslint-enable no-console */
