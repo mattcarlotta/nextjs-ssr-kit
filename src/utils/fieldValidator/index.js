@@ -9,7 +9,7 @@ import isEmpty from "lodash.isempty";
  * @returns {object} - validated fields and number of errors.
  * @throws {error}
  */
-export default fields => {
+const fieldValidator = fields => {
   try {
     if (isEmpty(fields)) throw new Error("You must supply an array of fields!");
     let errorCount = null;
@@ -37,3 +37,5 @@ export default fields => {
     return { validatedFields: [], errors: 1 };
   }
 };
+
+export default fieldValidator;

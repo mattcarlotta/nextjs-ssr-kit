@@ -9,7 +9,7 @@ import isEmpty from "lodash.isempty";
  * @returns {object} - parsed fields with [name]: value.
  * @throws {error}
  */
-export default fields => {
+const parseFields = fields => {
   try {
     if (isEmpty(fields)) throw new Error("You must supply an array of fields!");
 
@@ -38,3 +38,5 @@ export default fields => {
     return [];
   }
 };
+
+export default parseFields;
