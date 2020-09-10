@@ -22,7 +22,7 @@ export type UserData = {
   address: {
     street: string;
     state: string;
-    suite: string | undefined;
+    suite: string;
     city: string;
     zipCode: string;
   };
@@ -38,6 +38,16 @@ export interface UpdatedUserProps extends UserProps {
 
 /// COMPONENTS ///
 
+export type BaseFieldProps = {
+  name: string;
+  type: string;
+  label: string;
+  value: string;
+  required: boolean;
+  onChange?: (e: React.ChangeEvent<any>) => void;
+  style?: CSSProperties;
+};
+
 type ComponentProps = {
   className?: string;
   children?: string | ReactNode;
@@ -45,7 +55,7 @@ type ComponentProps = {
   name?: string;
   placeholder?: string;
   label?: string;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: ChangeEvent<any>) => void;
   type?: string;
   value?: string;
   style?: CSSProperties;
@@ -70,13 +80,12 @@ export type FieldErrorProps = {
   errors?: string;
 };
 
-export interface FieldProps extends ComponentProps {
+interface UserFormFields extends BaseFieldProps {
   disabled?: boolean;
   readOnly?: boolean;
-  required?: boolean;
 }
 
-type InputProps = ComponentProps;
+export type InputProps = ComponentProps;
 
 export type LinkProps = {
   children: ReactNode;
@@ -94,19 +103,20 @@ export type ToastProps = {
 
 export interface UserFormProps extends UserData {
   _id: string;
+  userName?: string;
   resetMessage: () => void;
   serverError?: string;
   serverMessage?: string;
   resetForm: () => void;
   cancelForm?: () => void;
   submitAction: ({
-    props: object,
+    props: { [keys in BaseProps]: string },
     id: string,
   }) => ReturnType<typeof actions.createUser | typeof actions.updateUser>;
 }
 
 export interface UserFormState {
-  fields: FieldProps[];
+  fields: UserFormFields[];
   isSubmitting: boolean;
 }
 

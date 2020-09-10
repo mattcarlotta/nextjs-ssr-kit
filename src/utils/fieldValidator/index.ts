@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import isEmpty from "lodash.isempty";
+import { BaseFieldProps } from "~types";
 
 /**
  * Helper function to validate form fields.
@@ -9,16 +10,21 @@ import isEmpty from "lodash.isempty";
  * @returns {object} validated fields and number of errors.
  * @throws {error}
  */
-const fieldValidator = (
-  fields: any[],
-): { validatedFields: any[]; errors: number } => {
+
+const fieldValidator = <T extends any[]>(
+  fields: T,
+): { validatedFields: T; errors: number } => {
   try {
     if (isEmpty(fields)) throw new Error("You must supply an array of fields!");
     let errorCount: number = 0;
 
     const validatedFields = fields.map(field => {
       let errors = "";
-      const { type, value, required } = field;
+      const {
+        type,
+        value,
+        required,
+      }: Pick<BaseFieldProps, "type" | "value" | "required"> = field;
       if ((!value && required) || (isEmpty(value) && required)) {
         errors = "Required.";
       } else if (
@@ -31,12 +37,11 @@ const fieldValidator = (
       if (errors) errorCount += 1;
 
       return { ...field, errors };
-    });
+    }) as T;
 
     return { validatedFields, errors: errorCount };
   } catch (err) {
-    console.error(err.toString());
-    return { validatedFields: [], errors: 1 };
+    throw String(err);
   }
 };
 

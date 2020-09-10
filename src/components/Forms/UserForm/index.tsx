@@ -29,9 +29,7 @@ class UserForm extends Component<UserFormProps, UserFormState> {
 
   componentWillUnmount = () => this.props.resetMessage();
 
-  handleChange = ({
-    target: { name, value },
-  }: ChangeEvent<HTMLInputElement>) => {
+  handleChange = ({ target: { name, value } }: ChangeEvent<any>) => {
     this.setState(prevState => ({
       ...prevState,
       fields: fieldUpdater(prevState.fields, name, value),

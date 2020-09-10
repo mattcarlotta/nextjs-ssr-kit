@@ -11,7 +11,7 @@ import isEmpty from "lodash.isempty";
  * @returns {array} - updated fields.
  * @throws {error}
  */
-const fieldUpdater = (fields, name, value) => {
+const fieldUpdater = (fields: any[], name: string, value?: string): any[] => {
   try {
     if (isEmpty(fields) || !name) {
       throw new Error(

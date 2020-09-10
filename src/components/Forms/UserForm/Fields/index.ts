@@ -53,6 +53,7 @@ const fields = (props: UserFormProps) => [
     value: props.address ? props.address.suite : "",
     errors: "",
     style: { width: "25%" },
+    required: false,
   },
   {
     name: "city",
