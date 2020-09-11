@@ -60,10 +60,10 @@ class UserForm extends Component<UserFormProps, UserFormState> {
       onSubmit={this.handleSubmit}
     >
       <Flex direction="row" wrap justify="space-between">
-        {FieldGenerator({
-          fields: this.state.fields,
-          onChange: this.handleChange,
-        })}
+        <FieldGenerator
+          fields={this.state.fields}
+          onChange={this.handleChange}
+        />
       </Flex>
       <FlexEnd>
         <Button

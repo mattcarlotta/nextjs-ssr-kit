@@ -1,7 +1,6 @@
-import React from "react";
 import Input from "~components/Forms/Input";
 import TextArea from "~components/Forms/TextArea";
-import { ChangeEvent, BaseProps } from "~types";
+import { ChangeEvent, BaseFieldProps } from "~types";
 
 /**
  * Reusable function that converts an object of properties into a React form components.
@@ -16,11 +15,11 @@ import { ChangeEvent, BaseProps } from "~types";
  *   required: true
  *  }]
  * @param {function} onChange - a function to update component state.
- * @returns - a React component
+ * @returns {JSX.Element} a React component
  */
 
 const FieldGenerator = <
-  T extends BaseProps[],
+  T extends BaseFieldProps[],
   K extends (e: ChangeEvent<HTMLInputElement>) => void
 >({
   fields,
@@ -28,18 +27,23 @@ const FieldGenerator = <
 }: {
   fields: T;
   onChange: K;
-}) =>
-  fields.map(props => {
-    switch (props.type) {
-      case "text":
-      case "email":
-      case "password": {
-        return <Input {...props} key={props.name} onChange={onChange} />;
+}): JSX.Element => (
+  <>
+    {fields.map(props => {
+      switch (props.type) {
+        case "text":
+        case "email":
+        case "password": {
+          return <Input {...props} key={props.name} onChange={onChange} />;
+        }
+        case "textarea": {
+          return <TextArea {...props} key={props.name} onChange={onChange} />;
+        }
+        default:
+          return null;
       }
-      case "textarea": {
-        return <TextArea {...props} key={props.name} onChange={onChange} />;
-      }
-    }
-  }) as T;
+    })}
+  </>
+);
 
 export default FieldGenerator;

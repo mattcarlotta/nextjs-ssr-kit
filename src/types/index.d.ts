@@ -42,7 +42,7 @@ export type BaseFieldProps = {
   name: string;
   type: string;
   label: string;
-  value: string;
+  value?: string;
   required: boolean;
   onChange?: (e: React.ChangeEvent<any>) => void;
   style?: CSSProperties;
@@ -50,7 +50,7 @@ export type BaseFieldProps = {
 
 type ComponentProps = {
   className?: string;
-  children?: string | ReactNode;
+  children?: any;
   errors?: string;
   name?: string;
   placeholder?: string;
@@ -72,7 +72,7 @@ export interface ButtonProps extends ComponentProps {
   danger?: boolean;
   primary?: boolean;
   onClick?: () => void;
-  type: string;
+  type: "button" | "submit" | "reset" | undefined;
 }
 
 export type FieldErrorProps = {
@@ -104,6 +104,17 @@ export type ToastProps = {
 export interface UserFormProps extends UserData {
   _id: string;
   userName?: string;
+  email?: string;
+  firstName?: string;
+  lastName?: string;
+  address: {
+    street?: string;
+    suite?: string;
+    city?: string;
+    state?: string;
+    zipCode?: string;
+  };
+  backgroundInfo?: string;
   resetMessage: () => void;
   serverError?: string;
   serverMessage?: string;

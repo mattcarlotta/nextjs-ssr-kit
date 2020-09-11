@@ -10,7 +10,7 @@ import isEmpty from "lodash.isempty";
  * @throws {error}
  */
 
-const parseFields = <K extends object = {}>(fields: any[]): K => {
+const parseFields = (fields: any[]): object => {
   try {
     if (isEmpty(fields)) throw new Error("You must supply an array of fields!");
 
@@ -34,7 +34,7 @@ const parseFields = <K extends object = {}>(fields: any[]): K => {
         return acc;
       },
       {},
-    ) as K;
+    );
 
     return parsedFields;
   } catch (err) {
