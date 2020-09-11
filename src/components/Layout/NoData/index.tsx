@@ -1,9 +1,9 @@
-import React from "react";
 import { FaChartArea } from "react-icons/fa";
 import Container from "~components/Layout/Container";
 import Flex from "~components/Layout/Flex";
+import { FC } from "~types";
 
-const NoData = () => (
+const NoData: FC = () => (
   <Container dataTestId="no-data" innerStyle={{ height: 400 }}>
     <Flex
       direction="column"

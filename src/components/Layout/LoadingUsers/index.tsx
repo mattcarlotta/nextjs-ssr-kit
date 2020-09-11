@@ -1,19 +1,13 @@
 /* istanbul ignore file */
-import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 import FadeIn from "~components/Layout/FadeIn";
+import { LoadingUsers } from "~types";
 
-const LoadingUsers = ({ className }) => (
+const LoadingUsers = ({ className }: LoadingUsers) => (
   <FadeIn data-testid="loading-users" timing="0.6s">
     <div className={className} />
   </FadeIn>
 );
-
-LoadingUsers.propTypes = {
-  className: PropTypes.string.isRequired,
-};
-
 export default styled(LoadingUsers)`
   display: inline-block;
   height: ${({ height }) => (height ? `${height}px` : "50px")};

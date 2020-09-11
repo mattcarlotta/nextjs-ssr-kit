@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest, NextApiResponse, NextPage } from "next";
 import { AppProps } from "next/app";
 import {
   ComponentType,
@@ -38,13 +38,19 @@ export interface UpdatedUserProps extends UserProps {
 
 /// COMPONENTS ///
 
+export type ActionButtonProps = {
+  className: string;
+  dataTestId?: string;
+  style: CSSProperties;
+};
+
 export type BaseFieldProps = {
   name: string;
   type: string;
   label: string;
   value?: string;
   required: boolean;
-  onChange?: (e: React.ChangeEvent<any>) => void;
+  onChange?: (event: ChangeEvent<any>) => void;
   style?: CSSProperties;
 };
 
@@ -55,24 +61,34 @@ type ComponentProps = {
   name?: string;
   placeholder?: string;
   label?: string;
-  onChange?: (e: ChangeEvent<any>) => void;
+  onChange?: (event: ChangeEvent<any>) => void;
   type?: string;
   value?: string;
   style?: CSSProperties;
 };
 
-export interface APIProps {
-  req: NextApiRequest;
-  res: NextApiResponse;
-}
+export type ContainerProps = {
+  children: ReactNode;
+  dataTestId?: string;
+  innerStyle: CSSProperties;
+  style: CSSProperties;
+};
 
 export interface ButtonProps extends ComponentProps {
   dataTestId?: string;
   disabled?: boolean;
   danger?: boolean;
   primary?: boolean;
-  onClick?: () => void;
+  onClick?: (event: any) => void;
   type: "button" | "submit" | "reset" | undefined;
+}
+
+export interface DeleteButtonProps extends ActionButtonProps {
+  onClick: () => ReturnType<typeof actions.deleteUser>;
+}
+
+export interface EditButtonProps extends ActionButtonProps {
+  onClick: (event: any) => void;
 }
 
 export type FieldErrorProps = {
@@ -80,16 +96,27 @@ export type FieldErrorProps = {
   errors?: string;
 };
 
-interface UserFormFields extends BaseFieldProps {
-  disabled?: boolean;
-  readOnly?: boolean;
-}
-
 export type InputProps = ComponentProps;
 
 export type LinkProps = {
   children: ReactNode;
+  className?: string;
   href: string;
+};
+
+export type LoadingUsers = {
+  className?: string;
+  duration?: string;
+  height?: number;
+  opacity?: number;
+  width?: number;
+};
+
+export type ModalProps = {
+  children: ReactNode;
+  maxWidth?: string;
+  onClick: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  title?: string;
 };
 
 export interface TextAreaProps extends ComponentProps {
@@ -100,6 +127,11 @@ export type ToastProps = {
   type: "success" | "info" | "error" | "warning";
   message: string;
 };
+
+interface UserFormFields extends BaseFieldProps {
+  disabled?: boolean;
+  readOnly?: boolean;
+}
 
 export interface UserFormProps extends UserData {
   _id: string;
@@ -115,11 +147,11 @@ export interface UserFormProps extends UserData {
     zipCode?: string;
   };
   backgroundInfo?: string;
-  resetMessage: () => void;
+  resetMessage: (event: any) => void;
   serverError?: string;
   serverMessage?: string;
-  resetForm: () => void;
-  cancelForm?: () => void;
+  resetForm: (event: any) => void;
+  cancelForm?: (event: any) => void;
   submitAction: ({
     props: { [keys in BaseProps]: string },
     id: string,
@@ -130,6 +162,12 @@ export interface UserFormState {
   fields: UserFormFields[];
   isSubmitting: boolean;
 }
+
+export type UserListNavigationProps = {
+  className?: string;
+  openModal: (event: any) => void;
+  seedDB: (type: string) => ReturnType<typeof actions.seedDB>;
+};
 
 /// REDUX + SAGAS ///
 
@@ -156,9 +194,11 @@ export {
   AppProps,
   ChangeEvent,
   ComponentType,
+  CSSProperties,
   FC,
   FormEvent,
   ReactNode,
   NextApiRequest,
   NextApiResponse,
+  NextPage,
 };

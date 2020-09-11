@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import FieldError from "~components/Forms/FieldError";
 import { TextAreaProps } from "~types";

@@ -15,7 +15,7 @@ export const initialState: ServerReducerState = {
  * @returns new server state.
  */
 const serverReducer = (
-  state: ServerReducerState,
+  state: ServerReducerState = initialState,
   { payload, type }: AnyAction,
 ) => {
   switch (type) {

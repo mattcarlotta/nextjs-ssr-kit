@@ -2,9 +2,9 @@ import Head from "next/head";
 import Flex from "~components/Layout/Flex";
 import HomeIcon from "~components/Layout/HomeIcon";
 import Link from "~components/Navigation/Link";
-import { FC } from "~types";
+import { NextPage } from "~types";
 
-const NotFound: FC = () => (
+const NotFound: NextPage = () => (
   <Flex
     data-testid="not-found-page"
     justify="center"

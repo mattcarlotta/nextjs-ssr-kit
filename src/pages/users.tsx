@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import Head from "next/head";
 import { connect } from "react-redux";
@@ -23,7 +23,7 @@ import app from "~utils/axiosConfig";
 import { parseData } from "~utils/parseResponse";
 import toast from "~components/App/Toast";
 
-export class ShowUsers extends Component {
+export class ShowUsers extends React.Component {
   state = {
     isEditingID: "",
     openModal: false,

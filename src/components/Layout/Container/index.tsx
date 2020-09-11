@@ -1,7 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
+import { ContainerProps } from "~types";
 
-const Container = ({ children, dataTestId, innerStyle, style }) => (
+const Container = ({
+  children,
+  dataTestId,
+  innerStyle,
+  style,
+}: ContainerProps): JSX.Element => (
   <div
     data-testid={dataTestId}
     style={style}
@@ -15,16 +19,5 @@ const Container = ({ children, dataTestId, innerStyle, style }) => (
     </div>
   </div>
 );
-
-Container.propTypes = {
-  children: PropTypes.node.isRequired,
-  dataTestId: PropTypes.string,
-  innerStyle: PropTypes.objectOf(
-    PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  ),
-  style: PropTypes.objectOf(
-    PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  ),
-};
 
 export default Container;

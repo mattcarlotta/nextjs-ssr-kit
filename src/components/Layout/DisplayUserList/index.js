@@ -1,5 +1,4 @@
 import isEmpty from "lodash.isempty";
-import React from "react";
 import PropTypes from "prop-types";
 import UserForm from "~components/Forms/UserForm";
 import Card from "~components/Layout/Card";

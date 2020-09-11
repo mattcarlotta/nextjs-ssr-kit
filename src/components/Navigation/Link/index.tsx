@@ -1,11 +1,10 @@
-import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import { LinkProps } from "~types";
 
-const LinkComponent = ({ children, href, ...rest }: LinkProps) => (
+const LinkComponent = ({ children, className, href, ...rest }: LinkProps) => (
   <Link href={href} prefetch={false} passHref>
-    <a data-testid="link" {...rest} className="link">
+    <a data-testid="link" {...rest} className={className}>
       {children}
     </a>
   </Link>
@@ -14,7 +13,7 @@ const LinkComponent = ({ children, href, ...rest }: LinkProps) => (
 const StyledLink = styled(LinkComponent)`
   cursor: pointer;
   display: block;
-  color: #03a9f3;
+  color: #007ec5;
   font-size: 16px;
   text-align: center;
   transition: all 0.2s ease-in-out;
@@ -22,7 +21,12 @@ const StyledLink = styled(LinkComponent)`
   text-transform: uppercase;
 
   :hover {
+    color: #0f7ae5;
     text-decoration: underline;
+  }
+
+  :focus {
+    outline: 0;
   }
 `;
 

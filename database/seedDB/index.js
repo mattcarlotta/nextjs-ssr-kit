@@ -1,10 +1,9 @@
-/* eslint-disable no-console */
-const chalk = require("chalk");
 require("../../env");
 require("../../models/all");
 const { connectDatabase } = require("../index");
 const { User } = require("../../models");
 const seeds = require("./seeds");
+const { logErrorMessage, logInfoMessage } = require("../../logger");
 
 const { DATABASE, EXIT, SEED } = process.env;
 
@@ -27,19 +26,15 @@ const seedDB = () => {
 
       await db.close();
 
-      console.log(
-        `\n${chalk.rgb(7, 54, 66).bgRgb(38, 139, 210)(" SEED ")} ${chalk.blue(
-          `\x1b[2mutils/\x1b[0m\x1b[1mseedDB.js\x1b[0m (${DATABASE})`,
-        )}\n`,
+      logInfoMessage(
+        `\x1b[2mutils/\x1b[0m\x1b[1mseedDB.js\x1b[0m (${DATABASE})`,
       );
 
       if (EXIT) process.exit(0);
 
       return resolve();
     } catch (err) {
-      console.log(
-        `\n\x1b[7m\x1b[31;1m FAIL \x1b[0m \x1b[2mutils/\x1b[0m\x1b[31;1mseedDB.js\x1b[0m\x1b[31m\n${err.toString()}\x1b[0m`,
-      );
+      logErrorMessage(`seedDB.js\x1b[0m\x1b[31m\n${err.toString()}\x1b[0m`);
 
       if (EXIT) process.exit(0);
 
@@ -51,4 +46,3 @@ const seedDB = () => {
 if (SEED) seedDB();
 
 module.exports = seedDB;
-/* eslint-enable no-console */

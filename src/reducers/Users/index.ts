@@ -13,7 +13,10 @@ export const initialState: UserReducerState = {
  * @param {object} action - type and payload to be reduced.
  * @returns USERS state.
  */
-const userReducer = (state: UserReducerState, { payload, type }: AnyAction) => {
+const userReducer = (
+  state: UserReducerState = initialState,
+  { payload, type }: AnyAction,
+) => {
   switch (type) {
     case HYDRATE: {
       return { ...state, ...payload.users };

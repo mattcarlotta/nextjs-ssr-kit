@@ -2,9 +2,9 @@ import Head from "next/head";
 import { FaCoffee } from "react-icons/fa";
 import Link from "~components/Navigation/Link";
 import SubTitle from "~components/Layout/SubTitle";
-import { FC } from "~types";
+import { NextPage } from "~types";
 
-const Home: FC = () => (
+const Home: NextPage = () => (
   <div
     data-testid="home-page"
     css="text-align: center;height: 100%;color: #007ec5;background-color: #ebebeb;"

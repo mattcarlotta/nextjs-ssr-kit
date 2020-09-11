@@ -1,9 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 import { FaPencilAlt } from "react-icons/fa";
+import { EditButtonProps } from "~types";
 
-const EditButton = ({ className, dataTestId, onClick, style }) => (
+const EditButton = ({
+  className,
+  dataTestId,
+  onClick,
+  style,
+}: EditButtonProps): JSX.Element => (
   <button
     data-testid={dataTestId}
     type="button"
@@ -14,15 +18,6 @@ const EditButton = ({ className, dataTestId, onClick, style }) => (
     <FaPencilAlt />
   </button>
 );
-
-EditButton.propTypes = {
-  className: PropTypes.string.isRequired,
-  dataTestId: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
-  style: PropTypes.objectOf(
-    PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  ),
-};
 
 export default styled(EditButton)`
   cursor: pointer;
@@ -35,8 +30,8 @@ export default styled(EditButton)`
   transition-property: color;
   opacity: 0.4;
 
-  &:hover,
-  &:focus {
+  :hover,
+  :focus {
     color: #4691f6;
     outline: none;
     opacity: 0.8;

@@ -4,11 +4,10 @@ import { ToastContainer } from "react-toastify";
 import toast from "~components/App/Toast";
 import GlobalStylesheet from "~styles/globalStylesheet";
 import { wrapper } from "~store";
-import "~styles/globals.scss";
-import "~react-toastify/dist/ReactToastify.css";
-import { AppProps } from "~types";
+import "react-toastify/dist/ReactToastify.css";
+import { AppProps, FC } from "~types";
 
-const App: React.FC<AppProps> = ({ Component, pageProps }) => {
+const App: FC<AppProps> = ({ Component, pageProps }) => {
   React.useEffect(() => {
     toast({ type: "info", message: "Welcome to the NextJS SSR Kit!" });
   }, []);

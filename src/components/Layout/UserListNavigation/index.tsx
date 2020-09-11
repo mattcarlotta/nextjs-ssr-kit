@@ -1,5 +1,4 @@
 /* istanbul ignore file */
-import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { FaFileAlt, FaUserPlus } from "react-icons/fa";
@@ -9,21 +8,26 @@ import Flex from "~components/Layout/Flex";
 import FlexEnd from "~components/Layout/FlexEnd";
 import FlexStart from "~components/Layout/FlexStart";
 import Link from "~components/Navigation/Link";
+import { CSSProperties, UserListNavigationProps } from "~types";
 
 const iconStyle = {
   position: "relative",
   top: 2,
   fontSize: 18,
   marginRight: 5,
-};
+} as CSSProperties;
 
-const UserListNavigation = ({ className, openModal, seedDB }) => (
+const UserListNavigation = ({
+  className,
+  openModal,
+  seedDB,
+}: UserListNavigationProps) => (
   <div data-testid="user-list-navigation" className={className}>
     <Link href="/">
       <HomeIcon />
       <span>Go Back</span>
     </Link>
-    <Flex style={{ width: 780, margin: "10px auto" }}>
+    <Flex width="780px" style={{ margin: "10px auto" }}>
       <FlexStart>
         <Button dataTestId="seed-database" type="button" onClick={seedDB}>
           <FaFileAlt style={iconStyle} />

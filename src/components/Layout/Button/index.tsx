@@ -9,7 +9,7 @@ const StyledButton = ({
   onClick,
   style,
   type,
-}: ButtonProps) => (
+}: ButtonProps): JSX.Element => (
   <button
     data-testid={dataTestId}
     disabled={disabled}

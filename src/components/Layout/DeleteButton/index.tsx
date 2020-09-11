@@ -1,10 +1,14 @@
 /* istanbul ignore file */
-import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 import { FaTrashAlt } from "react-icons/fa";
+import { DeleteButtonProps } from "~types";
 
-const DeleteButton = ({ className, dataTestId, onClick, style }) => (
+const DeleteButton = ({
+  className,
+  dataTestId,
+  onClick,
+  style,
+}: DeleteButtonProps): JSX.Element => (
   <button
     data-testid={dataTestId}
     type="button"
@@ -15,15 +19,6 @@ const DeleteButton = ({ className, dataTestId, onClick, style }) => (
     <FaTrashAlt />
   </button>
 );
-
-DeleteButton.propTypes = {
-  className: PropTypes.string.isRequired,
-  dataTestId: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
-  style: PropTypes.objectOf(
-    PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  ),
-};
 
 export default styled(DeleteButton)`
   cursor: pointer;

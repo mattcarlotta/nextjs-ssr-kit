@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import * as React from "react";
 import Button from "~components/Layout/Button";
 import FieldGenerator from "~components/Forms/FieldGenerator";
 import Flex from "~components/Layout/Flex";
@@ -9,7 +9,7 @@ import parseFields from "~utils/parseFields";
 import fields from "./Fields";
 import { ChangeEvent, FormEvent, UserFormProps, UserFormState } from "~types";
 
-class UserForm extends Component<UserFormProps, UserFormState> {
+class UserForm extends React.Component<UserFormProps, UserFormState> {
   constructor(props: UserFormProps) {
     super(props);
 
