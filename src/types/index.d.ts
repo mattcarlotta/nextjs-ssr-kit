@@ -127,7 +127,7 @@ export type LinkProps = {
   href: string;
 };
 
-export type LoadingUsersProps = {
+export type LoadingUsers = {
   className?: string;
   duration?: string;
   height?: number;

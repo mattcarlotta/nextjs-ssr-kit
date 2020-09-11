@@ -3,15 +3,7 @@ import PropTypes from "prop-types";
 import Head from "next/head";
 import { connect } from "react-redux";
 import { resetMessage, setError } from "~actions/Server";
-import {
-  createUser,
-  deleteUser,
-  fetchUsers,
-  resetUsers,
-  seedDB,
-  setUsers,
-  updateUser,
-} from "~actions/Users";
+import * as actions from "~actions/Users";
 import UserForm from "~components/Forms/UserForm";
 import DisplayUserList from "~components/Layout/DisplayUserList";
 import Modal from "~components/Layout/Modal";
@@ -80,6 +72,8 @@ export class ShowUsers extends React.Component {
   );
 }
 
+// TODO - Move into client-side request (useSWR?)
+
 export const getServerSideProps = wrapper.getServerSideProps(
   async ({ store: { dispatch } }) => {
     try {
@@ -142,12 +136,8 @@ const mapStateToProps = ({
 
 /* istanbul ignore next */
 const mapDispatchToProps = {
-  createUser,
-  deleteUser,
-  fetchUsers,
+  ...actions,
   resetMessage,
-  seedDB,
-  updateUser,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShowUsers);

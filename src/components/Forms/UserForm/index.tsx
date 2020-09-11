@@ -6,17 +6,25 @@ import FlexEnd from "~components/Layout/FlexEnd";
 import fieldValidator from "~utils/fieldValidator";
 import fieldUpdater from "~utils/fieldUpdater";
 import parseFields from "~utils/parseFields";
-import fields from "./Fields";
+import generateFields from "./Fields";
 import { ChangeEvent, FormEvent, UserFormProps, UserFormState } from "~types";
-
-// TODO - FIX ERROR HANDLING
 
 const UserForm = (props: UserFormProps) => {
   const [state, setState] = React.useState<UserFormState>({
-    fields: fields(props),
+    fields: generateFields(props),
     errors: 0,
     isSubmitting: false,
   });
+  const { fields, errors, isSubmitting } = state;
+  const {
+    cancelForm,
+    _id: id,
+    resetForm,
+    resetMessage,
+    serverError,
+    serverMessage,
+    submitAction,
+  } = props;
 
   const handleChange = React.useCallback(
     ({ target: { name, value } }: ChangeEvent<any>) => {
@@ -31,7 +39,7 @@ const UserForm = (props: UserFormProps) => {
   const handleSubmit = React.useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      const { validatedFields, errors } = fieldValidator(state.fields);
+      const { validatedFields, errors } = fieldValidator(fields);
 
       setState(prevState => ({
         fields: !errors ? prevState.fields : validatedFields,
@@ -39,35 +47,27 @@ const UserForm = (props: UserFormProps) => {
         isSubmitting: !errors,
       }));
     },
-    [state.fields, fieldValidator],
+    [fields, fieldValidator],
   );
 
   React.useEffect(() => {
-    if (props.serverError && state.isSubmitting)
+    if (serverError && isSubmitting)
       setState(prevState => ({ ...prevState, isSubmitting: false }));
-    if (props.serverMessage) props.resetForm();
-  }, [
-    state.isSubmitting,
-    props.serverError,
-    props.serverMessage,
-    props.resetForm,
-    props.resetMessage,
-  ]);
+
+    if (serverMessage && isSubmitting) resetForm();
+  }, [isSubmitting, serverError, serverMessage, resetForm, resetMessage]);
 
   React.useEffect(() => {
-    if (!state.errors) {
-      const { _id: id } = props;
-
-      props.submitAction({
-        props: parseFields(state.fields),
+    if (!errors && isSubmitting)
+      submitAction({
+        props: parseFields(fields),
         id,
       });
-    }
 
     return () => {
-      props.resetMessage();
+      resetMessage();
     };
-  }, [state.errors, state.fields, parseFields, props._id]);
+  }, [errors, fields, isSubmitting, id, parseFields, resetMessage]);
 
   return (
     <form
@@ -75,15 +75,15 @@ const UserForm = (props: UserFormProps) => {
       css="margin: 0 auto;text-align: left; padding: 5px;"
       onSubmit={handleSubmit}
     >
-      <Flex direction="row" wrap justify="space-between">
-        <FieldGenerator fields={state.fields} onChange={handleChange} />
+      <Flex direction="row" flexwrap justify="space-between">
+        <FieldGenerator fields={fields} onChange={handleChange} />
       </Flex>
       <FlexEnd>
         <Button
           dataTestId="cancel"
           danger
           type="button"
-          onClick={props.cancelForm}
+          onClick={cancelForm}
           style={{ marginRight: 10 }}
         >
           Cancel
@@ -91,7 +91,7 @@ const UserForm = (props: UserFormProps) => {
         <Button
           dataTestId="submit"
           primary
-          disabled={state.isSubmitting}
+          disabled={isSubmitting}
           type="submit"
         >
           Submit
