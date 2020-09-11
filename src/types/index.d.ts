@@ -14,6 +14,7 @@ import * as actions from "../actions/Users";
 /// ACTIONS ///
 
 export type UserData = {
+  _id: string;
   email: string;
   firstName: string;
   lastName: string;
@@ -39,9 +40,9 @@ export interface UpdatedUserProps extends UserProps {
 /// COMPONENTS ///
 
 export type ActionButtonProps = {
-  className: string;
+  className?: string;
   dataTestId?: string;
-  style: CSSProperties;
+  style?: CSSProperties;
 };
 
 export type BaseFieldProps = {
@@ -53,6 +54,14 @@ export type BaseFieldProps = {
   onChange?: (event: ChangeEvent<any>) => void;
   style?: CSSProperties;
 };
+
+export interface CardProps extends UserData {
+  key: any;
+  className?: string;
+  idx: number;
+  handleEditClick: (id: string) => void;
+  deleteUser: (id: string) => ReturnType<typeof actions.deleteUser>;
+}
 
 type ComponentProps = {
   className?: string;
@@ -70,8 +79,8 @@ type ComponentProps = {
 export type ContainerProps = {
   children: ReactNode;
   dataTestId?: string;
-  innerStyle: CSSProperties;
-  style: CSSProperties;
+  innerStyle?: CSSProperties;
+  style?: CSSProperties;
 };
 
 export interface ButtonProps extends ComponentProps {
@@ -85,6 +94,20 @@ export interface ButtonProps extends ComponentProps {
 
 export interface DeleteButtonProps extends ActionButtonProps {
   onClick: () => ReturnType<typeof actions.deleteUser>;
+}
+export interface DisplayUserListProps {
+  _id: string;
+  data: UserData[];
+  isEditingID?: string;
+  deleteUser: (id: string) => ReturnType<typeof actions.deleteUser>;
+  handleCloseModal: (event: any) => void;
+  handleEditClick: (id: string) => void;
+  handleResetEditClick: (event: any) => void;
+  resetMessage: () => void;
+  updateUser: ({
+    props: UserData,
+    id: string,
+  }) => ReturnType<typeof actions.updateUser>;
 }
 
 export interface EditButtonProps extends ActionButtonProps {
@@ -104,11 +127,11 @@ export type LinkProps = {
   href: string;
 };
 
-export type LoadingUsers = {
+export type LoadingUsersProps = {
   className?: string;
   duration?: string;
   height?: number;
-  opacity?: number;
+  opacity?: string;
   width?: number;
 };
 
@@ -128,38 +151,27 @@ export type ToastProps = {
   message: string;
 };
 
-interface UserFormFields extends BaseFieldProps {
+export interface UserFormFields extends BaseFieldProps {
   disabled?: boolean;
   readOnly?: boolean;
 }
 
 export interface UserFormProps extends UserData {
   _id: string;
-  userName?: string;
-  email?: string;
-  firstName?: string;
-  lastName?: string;
-  address: {
-    street?: string;
-    suite?: string;
-    city?: string;
-    state?: string;
-    zipCode?: string;
-  };
-  backgroundInfo?: string;
-  resetMessage: (event: any) => void;
+  resetMessage: () => void;
   serverError?: string;
   serverMessage?: string;
-  resetForm: (event: any) => void;
+  resetForm: (event?: any) => void;
   cancelForm?: (event: any) => void;
   submitAction: ({
-    props: { [keys in BaseProps]: string },
+    props: UserData,
     id: string,
   }) => ReturnType<typeof actions.createUser | typeof actions.updateUser>;
 }
 
 export interface UserFormState {
   fields: UserFormFields[];
+  errors: number;
   isSubmitting: boolean;
 }
 
@@ -188,6 +200,22 @@ export type UserReducerState = {
 export type ReducerState = {
   server: ServerReducerState;
   users: UserReducerState;
+};
+
+/// UTILS ///
+
+export type FieldKeys = "city" | "street" | "state" | "suite" | "zipCode";
+
+export type ParseKeys<T> = {
+  [K in keyof T]: T[K] extends { name: string } ? T[K]["name"] : never;
+}[Exclude<keyof T, keyof []>];
+
+export type ParseFields<T> = {
+  address: {
+    [N in Extract<ParseKeys<T>, FieldKeys>]: string;
+  };
+} & {
+  [N in Exclude<ParseKeys<T>, FieldKeys>]: string;
 };
 
 export {

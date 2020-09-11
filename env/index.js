@@ -13,7 +13,7 @@ try {
 
     logInfoMessage(`Using ${NODE_ENV} environment variables.`);
   }
-} catch (error) {
+} catch (e) {
   if (!DATABASE) {
     logErrorMessage(`Missing ${NODE_ENV} environment variables!`);
     process.exit(1);

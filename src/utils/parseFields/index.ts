@@ -6,7 +6,7 @@ import isEmpty from "lodash.isempty";
  *
  * @function
  * @param {array} fields - an array containing fields.
- * @returns {object} parsed fields with [name]: value.
+ * @returns {object} an object of parsed fields with [name]: value.
  * @throws {error}
  */
 

@@ -1,9 +1,9 @@
 /* istanbul ignore file */
 import styled from "styled-components";
 import FadeIn from "~components/Layout/FadeIn";
-import { LoadingUsers } from "~types";
+import { LoadingUsersProps } from "~types";
 
-const LoadingUsers = ({ className }: LoadingUsers) => (
+const LoadingUsers = ({ className }: LoadingUsersProps) => (
   <FadeIn data-testid="loading-users" timing="0.6s">
     <div className={className} />
   </FadeIn>

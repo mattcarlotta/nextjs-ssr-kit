@@ -11,7 +11,11 @@ import isEmpty from "lodash.isempty";
  * @returns {array} - updated fields.
  * @throws {error}
  */
-const fieldUpdater = (fields: any[], name: string, value?: string): any[] => {
+const fieldUpdater = <T extends any[]>(
+  fields: T,
+  name: string,
+  value?: string,
+): T => {
   try {
     if (isEmpty(fields) || !name) {
       throw new Error(
@@ -20,11 +24,11 @@ const fieldUpdater = (fields: any[], name: string, value?: string): any[] => {
     }
     const updatedFields = fields.map(field =>
       field.name === name ? { ...field, value, errors: "" } : field,
-    );
+    ) as T;
+
     return updatedFields;
   } catch (err) {
-    console.error(err.toString());
-    return [];
+    throw String(err);
   }
 };
 

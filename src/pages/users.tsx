@@ -22,6 +22,7 @@ import { wrapper } from "~store";
 import app from "~utils/axiosConfig";
 import { parseData } from "~utils/parseResponse";
 import toast from "~components/App/Toast";
+import { ServerReducerState, UserReducerState } from "~types";
 
 export class ShowUsers extends React.Component {
   state = {
@@ -29,7 +30,7 @@ export class ShowUsers extends React.Component {
     openModal: false,
   };
 
-  handleEditClick = id => this.setState({ isEditingID: id });
+  handleEditClick = (id: string) => this.setState({ isEditingID: id });
 
   handleResetEditClick = () => this.setState({ isEditingID: "" });
 
@@ -51,7 +52,6 @@ export class ShowUsers extends React.Component {
           <Modal
             onClick={this.handleCloseModal}
             title="Create New User Form"
-            disableClickHandler
             maxWidth="750px"
           >
             <UserForm
@@ -127,7 +127,13 @@ ShowUsers.propTypes = {
 };
 
 /* istanbul ignore next */
-const mapStateToProps = ({ users, server }) => ({
+const mapStateToProps = ({
+  users,
+  server,
+}: {
+  users: UserReducerState;
+  server: ServerReducerState;
+}) => ({
   data: users.data,
   isLoading: users.isLoading,
   serverError: server.error,

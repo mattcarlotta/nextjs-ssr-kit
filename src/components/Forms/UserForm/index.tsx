@@ -9,68 +9,81 @@ import parseFields from "~utils/parseFields";
 import fields from "./Fields";
 import { ChangeEvent, FormEvent, UserFormProps, UserFormState } from "~types";
 
-class UserForm extends React.Component<UserFormProps, UserFormState> {
-  constructor(props: UserFormProps) {
-    super(props);
+// TODO - FIX ERROR HANDLING
 
-    this.state = {
-      fields: fields(props),
-      isSubmitting: false,
-    };
-  }
+const UserForm = (props: UserFormProps) => {
+  const [state, setState] = React.useState<UserFormState>({
+    fields: fields(props),
+    errors: 0,
+    isSubmitting: false,
+  });
 
-  static getDerivedStateFromProps = ({ serverError }: UserFormProps) =>
-    serverError ? { isSubmitting: false } : null;
+  const handleChange = React.useCallback(
+    ({ target: { name, value } }: ChangeEvent<any>) => {
+      setState(prevState => ({
+        ...prevState,
+        fields: fieldUpdater(prevState.fields, name, value),
+      }));
+    },
+    [fieldUpdater],
+  );
 
-  componentDidUpdate = (prevProps: UserFormProps) => {
-    if (this.props.serverMessage !== prevProps.serverMessage)
-      this.props.resetForm();
-  };
+  const handleSubmit = React.useCallback(
+    (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      const { validatedFields, errors } = fieldValidator(state.fields);
 
-  componentWillUnmount = () => this.props.resetMessage();
-
-  handleChange = ({ target: { name, value } }: ChangeEvent<any>) => {
-    this.setState(prevState => ({
-      ...prevState,
-      fields: fieldUpdater(prevState.fields, name, value),
-    }));
-  };
-
-  handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const { validatedFields, errors } = fieldValidator(this.state.fields);
-
-    this.setState(
-      prevState => ({
+      setState(prevState => ({
         fields: !errors ? prevState.fields : validatedFields,
+        errors,
         isSubmitting: !errors,
-      }),
-      () => {
-        const { _id: id } = this.props;
-        if (!errors)
-          this.props.submitAction({ props: parseFields(validatedFields), id });
-      },
-    );
-  };
+      }));
+    },
+    [state.fields, fieldValidator],
+  );
 
-  render = () => (
+  React.useEffect(() => {
+    if (props.serverError && state.isSubmitting)
+      setState(prevState => ({ ...prevState, isSubmitting: false }));
+    if (props.serverMessage) props.resetForm();
+  }, [
+    state.isSubmitting,
+    props.serverError,
+    props.serverMessage,
+    props.resetForm,
+    props.resetMessage,
+  ]);
+
+  React.useEffect(() => {
+    if (!state.errors) {
+      const { _id: id } = props;
+
+      props.submitAction({
+        props: parseFields(state.fields),
+        id,
+      });
+    }
+
+    return () => {
+      props.resetMessage();
+    };
+  }, [state.errors, state.fields, parseFields, props._id]);
+
+  return (
     <form
       data-testid="user-form"
       css="margin: 0 auto;text-align: left; padding: 5px;"
-      onSubmit={this.handleSubmit}
+      onSubmit={handleSubmit}
     >
       <Flex direction="row" wrap justify="space-between">
-        <FieldGenerator
-          fields={this.state.fields}
-          onChange={this.handleChange}
-        />
+        <FieldGenerator fields={state.fields} onChange={handleChange} />
       </Flex>
       <FlexEnd>
         <Button
           dataTestId="cancel"
           danger
           type="button"
-          onClick={this.props.cancelForm}
+          onClick={props.cancelForm}
           style={{ marginRight: 10 }}
         >
           Cancel
@@ -78,7 +91,7 @@ class UserForm extends React.Component<UserFormProps, UserFormState> {
         <Button
           dataTestId="submit"
           primary
-          disabled={this.state.isSubmitting}
+          disabled={state.isSubmitting}
           type="submit"
         >
           Submit
@@ -86,6 +99,6 @@ class UserForm extends React.Component<UserFormProps, UserFormState> {
       </FlexEnd>
     </form>
   );
-}
+};
 
 export default UserForm;

@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import PropTypes from "prop-types";
 import EditButton from "~components/Layout/EditButton";
 import DeleteButton from "~components/Layout/DeleteButton";
 import Flex from "~components/Layout/Flex";
 import FlexEnd from "~components/Layout/FlexEnd";
 import FlexStart from "~components/Layout/FlexStart";
 import FadeIn from "~components/Layout/FadeIn";
+import { CardProps } from "~types";
 
 const Divider = () => (
   <li css="display:inline-block;content: '';height: 10px;margin: 0 10px;border-left: 1px solid #d3d3d3;" />
@@ -23,7 +23,7 @@ const Card = ({
   handleEditClick,
   lastName,
   userName,
-}) => (
+}: CardProps): JSX.Element => (
   <FadeIn data-testid="card-container" timing={`${0.5 + idx / 10}s`}>
     <div className={className}>
       <Flex>
@@ -62,26 +62,6 @@ const Card = ({
     </div>
   </FadeIn>
 );
-
-Card.propTypes = {
-  className: PropTypes.string.isRequired,
-  idx: PropTypes.number,
-  _id: PropTypes.string,
-  email: PropTypes.string,
-  backgroundInfo: PropTypes.string,
-  firstName: PropTypes.string,
-  lastName: PropTypes.string,
-  deleteUser: PropTypes.func,
-  handleEditClick: PropTypes.func,
-  userName: PropTypes.string,
-  address: PropTypes.shape({
-    street: PropTypes.string,
-    suite: PropTypes.string,
-    city: PropTypes.string,
-    state: PropTypes.string,
-    zipCode: PropTypes.string,
-  }),
-};
 
 export default styled(Card)`
   @media (max-width: 500px) {
