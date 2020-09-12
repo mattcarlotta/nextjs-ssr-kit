@@ -7,7 +7,7 @@ const initProps = {
 
 describe("Styled Button", () => {
   let wrapper: ReactWrapper;
-  let buttonNode: ReactWrapper;
+  let buttonNode: () => ReactWrapper;
   beforeEach(() => {
     wrapper = mount(
       <Button type="button" dataTestId="test-button" {...initProps} />,
