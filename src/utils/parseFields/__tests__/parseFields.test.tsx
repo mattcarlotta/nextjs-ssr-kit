@@ -41,13 +41,13 @@ const initialFields = [
 
 describe("ParseFields", () => {
   it("displays an error if fields are empty", () => {
-    global.console.error = jest.fn();
-    const returnedValues = ParseFields([]);
-    expect(returnedValues).toEqual([]);
-    expect(global.console.error).toHaveBeenCalledWith(
-      "Error: You must supply an array of fields!",
-    );
-    global.console.error = global.console.error.mockRestore();
+    try {
+      expect(ParseFields([]));
+    } catch (e) {
+      expect(e.toString()).toEqual(
+        "Error: You must supply an array of fields!",
+      );
+    }
   });
 
   it("has a name of zipCode then it creates an address object", () => {

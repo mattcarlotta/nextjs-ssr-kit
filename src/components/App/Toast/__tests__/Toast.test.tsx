@@ -12,36 +12,27 @@ const style = {
   marginTop: 9,
 };
 
-const initialProps = {
-  message: "Hello",
-  type: "success",
-};
-
 describe("ShowMemberDetails", () => {
-  let wrapper;
+  let wrapper: any;
   beforeEach(() => {
-    wrapper = mount(
+    wrapper = global.mount(
       <>
         <ToastContainer
           position="top-right"
           autoClose={7500}
           hideProgressBar={false}
           newestOnTop={false}
-          pauseOnVisibilityChange
           draggable
           pauseOnHover
         />
-        <Toast {...initialProps} />
+        <Toast type="success" message="Hello" />
       </>,
     );
   });
 
   it("renders without errors", () => {
-    expect(wrapper.find("ToastMessage")).toHaveProp(
-      "message",
-      initialProps.message,
-    );
-    expect(wrapper.find("ToastMessage")).toHaveProp("type", initialProps.type);
+    expect(wrapper.find("ToastMessage")).toHaveProp("message", "Hello");
+    expect(wrapper.find("ToastMessage")).toHaveProp("type", "success");
   });
 
   it("renders an success icon", () => {

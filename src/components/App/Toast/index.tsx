@@ -27,7 +27,7 @@ export const displayIcon = (type: string | undefined) => {
   }
 };
 
-const ToastMessage = ({ type, message }: ToastProps) =>
+const ToastMessage = ({ type, message }: ToastProps): any =>
   toast[type](
     <div data-testid="modal-alert" css="display: flex; color: white;">
       <div

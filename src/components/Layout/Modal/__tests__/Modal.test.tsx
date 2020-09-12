@@ -5,18 +5,18 @@ const onClick = jest.fn();
 const initialProps = {
   children: <p data-testid="modal-details">Test</p>,
   maxWidth: "",
-  onClick: undefined,
+  onClick: () => {},
   title: "Test Title",
 };
 
 describe("Modal", () => {
-  let wrapper;
+  let wrapper: any;
   beforeEach(() => {
-    wrapper = mount(<Modal {...initialProps} />);
+    wrapper = global.mount(<Modal {...initialProps} />);
   });
 
   // it("initially adds an 'overflow:hidden' style to the body", () => {
-  //   expect(wrapper.find("body")).toHaveStyle("overflow: hidden");
+  // expect(document.body).toHaveStyle("overflow: hidden");
   // });
 
   // it("removes 'overflow:hidden' style from the body on unmount", () => {

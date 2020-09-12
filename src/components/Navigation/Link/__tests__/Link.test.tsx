@@ -6,7 +6,7 @@ const initProps = {
   href: "/test",
 };
 
-const wrapper = mount(<Link {...initProps} />);
+const wrapper = global.mount(<Link {...initProps} />);
 
 describe("Styled Link", () => {
   it("renders without errors", () => {

@@ -7,6 +7,7 @@ import { resetMessage, setMessage } from "~actions/Server";
 import serverReducer from "~reducers/Server";
 import { parseData, parseMessage } from "~utils/parseResponse";
 import toast from "~components/App/Toast";
+import mockApp from "~utils/__mocks__/mockAxios.ts";
 
 const id = "123456789";
 

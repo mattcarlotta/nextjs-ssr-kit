@@ -19,10 +19,10 @@ const initialProps = {
 };
 
 describe("DisplayUserList", () => {
-  let wrapper;
-  let cardNode;
+  let wrapper: any;
+  let cardNode: any;
   beforeEach(() => {
-    wrapper = mount(<DisplayUserList {...initialProps} />);
+    wrapper = global.mount(<DisplayUserList {...initialProps} />);
     cardNode = () => wrapper.find("[data-testid='card-container']");
   });
 

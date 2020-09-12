@@ -16,10 +16,10 @@ const initialProps = {
 };
 
 describe("UserForm", () => {
-  let wrapper;
+  let wrapper: any;
 
   beforeEach(() => {
-    wrapper = mount(<UserForm {...initialProps} />);
+    wrapper = global.mount(<UserForm {...initialProps} />);
   });
 
   afterEach(() => {
@@ -41,11 +41,6 @@ describe("UserForm", () => {
     inputNode().simulate("change", { target: { name, value } });
 
     expect(inputNode()).toHaveProp("value", value);
-  });
-
-  it("calls resetForm when the serverMessage", () => {
-    wrapper.setProps({ serverMessage: "message" });
-    expect(resetForm).toHaveBeenCalledTimes(1);
   });
 
   it("calls resetMessage when the form is unmounted", () => {
@@ -78,6 +73,7 @@ describe("UserForm", () => {
         });
       });
     });
+
     it("when the form is submitted, it calls submitAction with form values and an id when there is no errors", () => {
       const value = "email@123.com";
       const id = "";
@@ -101,6 +97,13 @@ describe("UserForm", () => {
       });
     });
 
+    it("calls resetForm when the serverMessage", () => {
+      wrapper.find("form").simulate("submit");
+      wrapper.setProps({ serverMessage: "message" });
+
+      expect(resetForm).toHaveBeenCalledTimes(1);
+    });
+
     it("when the form is submitted but a server error is thrown, then the form will not be submitting", () => {
       const submitButton = () => wrapper.find("[data-testid='submit']");
       wrapper.find("form").simulate("submit");
@@ -108,6 +111,7 @@ describe("UserForm", () => {
       expect(submitButton()).toHaveProp("disabled", true);
 
       wrapper.setProps({ serverError: "server" });
+      wrapper.update();
       expect(submitButton()).toHaveProp("disabled", false);
     });
   });

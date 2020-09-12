@@ -1,8 +1,7 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import Head from "next/head";
-import { connect } from "react-redux";
-import { resetMessage, setError } from "~actions/Server";
+import { useDispatch, useSelector } from "react-redux";
+import { resetMessage } from "~actions/Server";
 import * as actions from "~actions/Users";
 import UserForm from "~components/Forms/UserForm";
 import DisplayUserList from "~components/Layout/DisplayUserList";
@@ -10,134 +9,131 @@ import Modal from "~components/Layout/Modal";
 import FadeIn from "~components/Layout/FadeIn";
 import LoadingUsers from "~components/Layout/LoadingUsers";
 import UserListNavigation from "~components/Layout/UserListNavigation";
-import { wrapper } from "~store";
-import app from "~utils/axiosConfig";
-import { parseData } from "~utils/parseResponse";
-import toast from "~components/App/Toast";
-import { ServerReducerState, UserReducerState } from "~types";
+import {
+  NextPage,
+  ServerReducerState,
+  UserReducerState,
+  UserData,
+} from "~types";
 
-export class ShowUsers extends React.Component {
-  state = {
+const ShowUsers: NextPage = () => {
+  const [state, setState] = React.useState({
     isEditingID: "",
     openModal: false,
-  };
+  });
+  const dispatch = useDispatch();
+  const createUserAction = React.useCallback(
+    ({ props }: { props: UserData }) => dispatch(actions.createUser({ props })),
+    [actions.createUser, dispatch],
+  );
+  const deleteUserAction = React.useCallback(
+    (id: string) => dispatch(actions.deleteUser(id)),
+    [actions.deleteUser, dispatch],
+  );
+  const seedDBAction = React.useCallback(() => dispatch(actions.seedDB()), [
+    actions.seedDB,
+    dispatch,
+  ]);
+  const updateUserAction = React.useCallback(
+    ({ props, id }: { props: UserData; id: string }) =>
+      dispatch(actions.updateUser({ props, id })),
+    [actions.updateUser, dispatch],
+  );
+  const resetMessageAction = React.useCallback(() => dispatch(resetMessage()), [
+    resetMessage,
+    dispatch,
+  ]);
 
-  handleEditClick = (id: string) => this.setState({ isEditingID: id });
+  const reduxProps = useSelector(
+    ({
+      users,
+      server,
+    }: {
+      users: UserReducerState;
+      server: ServerReducerState;
+    }) => ({
+      data: users.data,
+      isLoading: users.isLoading,
+      serverError: server.error,
+      serverMessage: server.message,
+    }),
+  );
 
-  handleResetEditClick = () => this.setState({ isEditingID: "" });
+  const handleEditClick = React.useCallback(
+    (id: string) => setState(prevState => ({ ...prevState, isEditingID: id })),
+    [],
+  );
 
-  handleOpenModal = () => this.setState({ openModal: true, isEditingID: "" });
+  const handleResetEditClick = React.useCallback(
+    () => setState(prevState => ({ ...prevState, isEditingID: "" })),
+    [],
+  );
 
-  handleCloseModal = () => this.setState({ openModal: false, isEditingID: "" });
+  const handleOpenModal = React.useCallback(
+    () =>
+      setState(prevState => ({
+        ...prevState,
+        openModal: true,
+        isEditingID: "",
+      })),
+    [],
+  );
 
-  render = () => (
+  const handleCloseModal = React.useCallback(
+    () =>
+      setState(prevState => ({
+        ...prevState,
+        openModal: false,
+        isEditingID: "",
+      })),
+    [],
+  );
+
+  React.useEffect(() => {
+    if (reduxProps.isLoading) dispatch(actions.fetchUsers());
+  }, [dispatch, reduxProps.isLoading]);
+
+  return (
     <div data-testid="users-page" css="padding: 10px 0 40px;">
       <Head>
         <title>Users - NextJS SSR Kit</title>
       </Head>
       <div css="text-align: center;">
-        <UserListNavigation
-          openModal={this.handleOpenModal}
-          seedDB={this.props.seedDB}
-        />
-        {this.state.openModal && (
+        <UserListNavigation openModal={handleOpenModal} seedDB={seedDBAction} />
+        {state.openModal && (
           <Modal
-            onClick={this.handleCloseModal}
+            onClick={handleCloseModal}
             title="Create New User Form"
             maxWidth="750px"
           >
             <UserForm
-              {...this.props}
-              submitAction={this.props.createUser}
-              cancelForm={this.handleCloseModal}
-              resetForm={this.handleCloseModal}
+              {...reduxProps}
+              submitAction={createUserAction}
+              resetMessage={resetMessageAction}
+              cancelForm={handleCloseModal}
+              resetForm={handleCloseModal}
             />
           </Modal>
         )}
-        {this.props.isLoading ? (
+        {reduxProps.isLoading ? (
           <LoadingUsers height={398} width={780} opacity="1" />
         ) : (
           <FadeIn timing="0.3s">
             <DisplayUserList
-              {...this.props}
-              {...this.state}
-              handleCloseModal={this.handleCloseModal}
-              handleEditClick={this.handleEditClick}
-              handleResetEditClick={this.handleResetEditClick}
+              {...state}
+              {...reduxProps}
+              deleteUser={deleteUserAction}
+              handleCloseModal={handleCloseModal}
+              handleEditClick={handleEditClick}
+              handleResetEditClick={handleResetEditClick}
+              resetMessage={resetMessageAction}
+              updateUser={updateUserAction}
             />
           </FadeIn>
         )}
       </div>
     </div>
   );
-}
-
-// TODO - Move into client-side request (useSWR?)
-
-export const getServerSideProps = wrapper.getServerSideProps(
-  async ({ store: { dispatch } }) => {
-    try {
-      dispatch(resetUsers());
-
-      const res = await app.get("users");
-      const data = parseData(res);
-
-      dispatch(setUsers(data));
-    } catch (e) {
-      const message = e.toString();
-      dispatch(setError(message));
-      toast({ type: "error", message });
-    }
-  },
-);
-
-ShowUsers.propTypes = {
-  createUser: PropTypes.func.isRequired,
-  deleteUser: PropTypes.func.isRequired,
-  fetchUsers: PropTypes.func.isRequired,
-  seedDB: PropTypes.func.isRequired,
-  resetMessage: PropTypes.func.isRequired,
-  updateUser: PropTypes.func.isRequired,
-  serverError: PropTypes.string,
-  serverMessage: PropTypes.string,
-  isLoading: PropTypes.bool.isRequired,
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      address: PropTypes.shape({
-        street: PropTypes.string,
-        suite: PropTypes.string,
-        city: PropTypes.string,
-        state: PropTypes.string,
-        zipCode: PropTypes.string,
-      }),
-      _id: PropTypes.string,
-      email: PropTypes.string,
-      firstName: PropTypes.string,
-      lastName: PropTypes.string,
-      userName: PropTypes.string,
-      backgroundInfo: PropTypes.string,
-    }),
-  ),
 };
 
-/* istanbul ignore next */
-const mapStateToProps = ({
-  users,
-  server,
-}: {
-  users: UserReducerState;
-  server: ServerReducerState;
-}) => ({
-  data: users.data,
-  isLoading: users.isLoading,
-  serverError: server.error,
-  serverMessage: server.message,
-});
-
-/* istanbul ignore next */
-const mapDispatchToProps = {
-  ...actions,
-  resetMessage,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ShowUsers);
+export default ShowUsers;

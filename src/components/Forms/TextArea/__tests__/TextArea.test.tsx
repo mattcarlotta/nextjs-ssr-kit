@@ -13,10 +13,10 @@ const initProps = {
 };
 
 describe("TextArea", () => {
-  let wrapper;
-  let textAreaNode;
+  let wrapper: any;
+  let textAreaNode: any;
   beforeEach(() => {
-    wrapper = mount(<Input {...initProps} />);
+    wrapper = global.mount(<Input {...initProps} />);
     textAreaNode = wrapper.find("[data-testid='firstName']");
   });
 

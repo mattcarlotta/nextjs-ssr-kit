@@ -71,12 +71,12 @@ describe("FieldValidator", () => {
   });
 
   it("throws an error if there are no fields", () => {
-    global.console.error = jest.fn();
-    const noFields = FieldValidator();
-    expect(noFields).toEqual({ validatedFields: [], errors: 1 });
-    expect(global.console.error).toHaveBeenCalledWith(
-      "Error: You must supply an array of fields!",
-    );
-    global.console.error = global.console.error.mockRestore();
+    try {
+      expect(FieldValidator([]));
+    } catch (e) {
+      expect(e.toString()).toEqual(
+        "Error: You must supply an array of fields!",
+      );
+    }
   });
 });

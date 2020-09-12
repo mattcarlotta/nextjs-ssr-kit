@@ -2,7 +2,7 @@ import { makeStore, wrapper } from "../index";
 
 describe("Store", () => {
   it("creates a store", () => {
-    const store = makeStore();
+    const store = makeStore({});
     expect(store).toEqual(
       expect.objectContaining({
         dispatch: expect.any(Function),

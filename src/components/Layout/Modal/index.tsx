@@ -13,6 +13,7 @@ import WindowContainer from "./WindowContainer";
 import { ModalProps } from "~types";
 
 const Modal = ({ children, maxWidth, onClick, title }: ModalProps) => {
+  /* istanbul ignore next */
   React.useEffect(() => {
     document.body.style.overflow = "hidden";
 

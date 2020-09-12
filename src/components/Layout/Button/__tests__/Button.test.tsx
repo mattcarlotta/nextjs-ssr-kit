@@ -2,14 +2,15 @@ import Button from "../index";
 
 const initProps = {
   children: "Test",
-  type: "button",
 };
 
 describe("Styled Button", () => {
-  let wrapper;
-  let buttonNode;
+  let wrapper: any;
+  let buttonNode: any;
   beforeEach(() => {
-    wrapper = mount(<Button dataTestId="test-button" {...initProps} />);
+    wrapper = global.mount(
+      <Button type="button" dataTestId="test-button" {...initProps} />,
+    );
     buttonNode = () => wrapper.find("[data-testid='test-button']");
   });
 

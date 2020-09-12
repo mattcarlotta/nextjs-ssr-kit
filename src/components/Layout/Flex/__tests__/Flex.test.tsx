@@ -1,9 +1,9 @@
 import Flex from "../index";
 
 describe("Flex", () => {
-  let wrapper;
+  let wrapper: any;
   beforeEach(() => {
-    wrapper = mount(<Flex data-testid="flex" />);
+    wrapper = global.mount(<Flex data-testid="flex" />);
   });
 
   it("renders without errors", () => {
@@ -19,7 +19,7 @@ describe("Flex", () => {
   });
 
   it("sets 'flex-wrap' as a 'wrap' when passed a 'wrap' prop", () => {
-    wrapper.setProps({ wrap: "true" });
+    wrapper.setProps({ flexwrap: "true" });
     expect(wrapper).toHaveStyleRule("flex-wrap", "wrap");
   });
 

@@ -13,10 +13,10 @@ const initialProps = {
 };
 
 describe("Input", () => {
-  let wrapper;
-  let inputNode;
+  let wrapper: any;
+  let inputNode: any;
   beforeEach(() => {
-    wrapper = mount(<Input {...initialProps} />);
+    wrapper = global.mount(<Input {...initialProps} />);
     inputNode = wrapper.find("[data-testid='input']");
   });
 

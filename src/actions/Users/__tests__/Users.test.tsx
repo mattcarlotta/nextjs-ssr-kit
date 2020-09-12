@@ -1,4 +1,4 @@
-import * as constants from "~constants/index";
+import * as constants from "~constants";
 import * as actions from "../index";
 
 const props = {
@@ -57,7 +57,7 @@ describe("User Actions", () => {
   });
 
   it("returns USERS_SET_DATA with empty data", () => {
-    const value = actions.setUsers();
+    const value = actions.setUsers([]);
 
     expect(value).toEqual({ type: constants.USERS_SET_DATA, payload: [] });
   });

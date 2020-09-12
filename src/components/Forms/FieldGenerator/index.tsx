@@ -39,8 +39,6 @@ const FieldGenerator = <
         case "textarea": {
           return <TextArea {...props} key={props.name} onChange={onChange} />;
         }
-        default:
-          return null;
       }
     })}
   </>

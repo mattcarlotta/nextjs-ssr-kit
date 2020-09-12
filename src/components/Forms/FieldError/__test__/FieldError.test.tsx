@@ -5,10 +5,10 @@ const initialProps = {
 };
 
 describe("Field Error", () => {
-  let wrapper;
-  let errorNode;
+  let wrapper: any;
+  let errorNode: any;
   beforeEach(() => {
-    wrapper = mount(<FieldError {...initialProps} />);
+    wrapper = global.mount(<FieldError {...initialProps} />);
     errorNode = () => wrapper.find("[data-testid='errors']");
   });
 

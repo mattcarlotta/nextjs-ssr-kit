@@ -39,12 +39,12 @@ describe("FieldUpdater", () => {
     );
   });
   it("displays an error if fields are empty", () => {
-    global.console.error = jest.fn();
-    const returnedValues = FieldUpdater([], "zipCode", "1");
-    expect(returnedValues).toEqual([]);
-    expect(global.console.error).toHaveBeenCalledWith(
-      "Error: You must supply a field array with a name of the field to update!",
-    );
-    global.console.error = global.console.error.mockRestore();
+    try {
+      expect(FieldUpdater([], "zipCode", "1"));
+    } catch (e) {
+      expect(e.toString()).toEqual(
+        "Error: You must supply a field array with a name of the field to update!",
+      );
+    }
   });
 });

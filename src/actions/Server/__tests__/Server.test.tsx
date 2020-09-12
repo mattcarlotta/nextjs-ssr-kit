@@ -1,4 +1,4 @@
-import * as constants from "~constants/index";
+import * as constants from "~constants";
 import * as actions from "../index";
 
 describe("Server Actions", () => {
@@ -9,9 +9,9 @@ describe("Server Actions", () => {
   });
 
   it("returns SERVER_MESSAGE", () => {
-    const value = actions.setMessage();
+    const value = actions.setMessage("hello");
 
-    expect(value).toEqual({ type: constants.SERVER_MESSAGE });
+    expect(value).toEqual({ type: constants.SERVER_MESSAGE, payload: "hello" });
   });
 
   it("returns SERVER_ERROR with a message", () => {

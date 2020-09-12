@@ -1,6 +1,6 @@
 import HomeIcon from "../index";
 
-const wrapper = mount(<HomeIcon />);
+const wrapper = global.mount(<HomeIcon />);
 
 describe("HomeIcon", () => {
   it("renders without errors", () => {

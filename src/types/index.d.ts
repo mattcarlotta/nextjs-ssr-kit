@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { NextApiRequest, NextApiResponse, NextPage } from "next";
 import { AppProps } from "next/app";
 import {
@@ -14,18 +15,18 @@ import * as actions from "../actions/Users";
 /// ACTIONS ///
 
 export type UserData = {
-  _id: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-  userName: string;
-  backgroundInfo: string;
-  address: {
-    street: string;
-    state: string;
-    suite: string;
-    city: string;
-    zipCode: string;
+  _id?: string;
+  email?: string;
+  firstName?: string;
+  lastName?: string;
+  userName?: string;
+  backgroundInfo?: string;
+  address?: {
+    street?: string;
+    state?: string;
+    suite?: string;
+    city?: string;
+    zipCode?: string;
   };
 };
 
@@ -96,7 +97,7 @@ export interface DeleteButtonProps extends ActionButtonProps {
   onClick: () => ReturnType<typeof actions.deleteUser>;
 }
 export interface DisplayUserListProps {
-  _id: string;
+  _id?: string;
   data: UserData[];
   isEditingID?: string;
   deleteUser: (id: string) => ReturnType<typeof actions.deleteUser>;
@@ -157,7 +158,7 @@ export interface UserFormFields extends BaseFieldProps {
 }
 
 export interface UserFormProps extends UserData {
-  _id: string;
+  _id?: string;
   resetMessage: () => void;
   serverError?: string;
   serverMessage?: string;
