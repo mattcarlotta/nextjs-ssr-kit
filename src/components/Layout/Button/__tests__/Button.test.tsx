@@ -1,3 +1,4 @@
+import { mount, ReactWrapper } from "enzyme";
 import Button from "../index";
 
 const initProps = {
@@ -5,10 +6,10 @@ const initProps = {
 };
 
 describe("Styled Button", () => {
-  let wrapper: any;
-  let buttonNode: any;
+  let wrapper: ReactWrapper;
+  let buttonNode: ReactWrapper;
   beforeEach(() => {
-    wrapper = global.mount(
+    wrapper = mount(
       <Button type="button" dataTestId="test-button" {...initProps} />,
     );
     buttonNode = () => wrapper.find("[data-testid='test-button']");

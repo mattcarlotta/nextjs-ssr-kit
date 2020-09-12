@@ -1,3 +1,4 @@
+import { mount, ReactWrapper } from "enzyme";
 import DisplayUserList from "../index";
 
 const deleteUser = jest.fn();
@@ -19,10 +20,10 @@ const initialProps = {
 };
 
 describe("DisplayUserList", () => {
-  let wrapper: any;
-  let cardNode: any;
+  let wrapper: ReactWrapper;
+  let cardNode: () => ReactWrapper;
   beforeEach(() => {
-    wrapper = global.mount(<DisplayUserList {...initialProps} />);
+    wrapper = mount(<DisplayUserList {...initialProps} />);
     cardNode = () => wrapper.find("[data-testid='card-container']");
   });
 

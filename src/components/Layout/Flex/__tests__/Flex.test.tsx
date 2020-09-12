@@ -1,9 +1,10 @@
+import { mount, ReactWrapper } from "enzyme";
 import Flex from "../index";
 
 describe("Flex", () => {
-  let wrapper: any;
+  let wrapper: ReactWrapper;
   beforeEach(() => {
-    wrapper = global.mount(<Flex data-testid="flex" />);
+    wrapper = mount(<Flex data-testid="flex" />);
   });
 
   it("renders without errors", () => {

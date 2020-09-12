@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { JSDOM } from "jsdom";
-import { configure, mount } from "enzyme";
+import { configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import "jest-enzyme";
 import "../toHaveStyleRule";
@@ -26,7 +26,6 @@ global.document = document;
 global.window = document.defaultView;
 global.HTMLElement = window.HTMLElement;
 global.HTMLAnchorElement = window.HTMLAnchorElement;
-global.mount = mount;
 
 // Object.keys(document.defaultView).forEach(property => {
 //   if (typeof global[property] === "undefined") {

@@ -1,3 +1,4 @@
+import { mount, ReactWrapper } from "enzyme";
 import Modal from "../index";
 
 const onClick = jest.fn();
@@ -10,9 +11,9 @@ const initialProps = {
 };
 
 describe("Modal", () => {
-  let wrapper: any;
+  let wrapper: ReactWrapper;
   beforeEach(() => {
-    wrapper = global.mount(<Modal {...initialProps} />);
+    wrapper = mount(<Modal {...initialProps} />);
   });
 
   // it("initially adds an 'overflow:hidden' style to the body", () => {

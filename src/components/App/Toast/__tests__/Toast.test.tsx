@@ -1,3 +1,4 @@
+import { mount, ReactWrapper } from "enzyme";
 import {
   FaInfo,
   FaCheck,
@@ -13,9 +14,9 @@ const style = {
 };
 
 describe("ShowMemberDetails", () => {
-  let wrapper: any;
+  let wrapper: ReactWrapper;
   beforeEach(() => {
-    wrapper = global.mount(
+    wrapper = mount(
       <>
         <ToastContainer
           position="top-right"

@@ -1,3 +1,4 @@
+import { mount, ReactWrapper } from "enzyme";
 import FieldError from "../index";
 
 const initialProps = {
@@ -5,10 +6,10 @@ const initialProps = {
 };
 
 describe("Field Error", () => {
-  let wrapper: any;
-  let errorNode: any;
+  let wrapper: ReactWrapper;
+  let errorNode: () => ReactWrapper;
   beforeEach(() => {
-    wrapper = global.mount(<FieldError {...initialProps} />);
+    wrapper = mount(<FieldError {...initialProps} />);
     errorNode = () => wrapper.find("[data-testid='errors']");
   });
 

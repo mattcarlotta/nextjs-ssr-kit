@@ -1,3 +1,4 @@
+import { mount, ReactWrapper } from "enzyme";
 import UserForm from "../index";
 
 const resetMessage = jest.fn();
@@ -16,10 +17,9 @@ const initialProps = {
 };
 
 describe("UserForm", () => {
-  let wrapper: any;
-
+  let wrapper: ReactWrapper;
   beforeEach(() => {
-    wrapper = global.mount(<UserForm {...initialProps} />);
+    wrapper = mount(<UserForm {...initialProps} />);
   });
 
   afterEach(() => {

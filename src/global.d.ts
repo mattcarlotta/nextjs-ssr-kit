@@ -1,6 +1,5 @@
 /* istanbul ignore file */
 import * as React from "react";
-import { mount } from "enzyme";
 export {};
 
 declare global {
@@ -9,7 +8,6 @@ declare global {
       document: Document;
       window: any;
       navigator: any;
-      mount: typeof mount;
       React: React;
     }
   }

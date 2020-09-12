@@ -1,3 +1,4 @@
+import { mount } from "enzyme";
 import Link from "../index";
 
 const initProps = {
@@ -6,7 +7,7 @@ const initProps = {
   href: "/test",
 };
 
-const wrapper = global.mount(<Link {...initProps} />);
+const wrapper = mount(<Link {...initProps} />);
 
 describe("Styled Link", () => {
   it("renders without errors", () => {

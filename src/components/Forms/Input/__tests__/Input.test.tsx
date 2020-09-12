@@ -1,3 +1,4 @@
+import { mount, ReactWrapper } from "enzyme";
 import Input from "../index";
 
 const onChange = jest.fn();
@@ -13,10 +14,10 @@ const initialProps = {
 };
 
 describe("Input", () => {
-  let wrapper: any;
-  let inputNode: any;
+  let wrapper: ReactWrapper;
+  let inputNode: ReactWrapper;
   beforeEach(() => {
-    wrapper = global.mount(<Input {...initialProps} />);
+    wrapper = mount(<Input {...initialProps} />);
     inputNode = wrapper.find("[data-testid='input']");
   });
 
