@@ -3,7 +3,7 @@ import UserForm from "~components/Forms/UserForm";
 import Card from "~components/Layout/Card";
 import Container from "~components/Layout/Container";
 import NoData from "~components/Layout/NoData";
-import { DisplayUserListProps } from "~types";
+import { DisplayUserListProps, UserData } from "~types";
 
 const DisplayUserList = ({
   data,
@@ -17,13 +17,15 @@ const DisplayUserList = ({
 }: DisplayUserListProps) => (
   <>
     {!isEmpty(data) ? (
-      data.map((props, idx) => (
+      data.map((props: UserData, idx) => (
         <Container data-testid="user-card" key={props._id}>
           {isEditingID !== props._id ? (
             <Card
               {...props}
               {...rest}
               key={props._id}
+              _id={props._id}
+              address={props.address}
               idx={idx}
               handleEditClick={handleEditClick}
               deleteUser={deleteUser}

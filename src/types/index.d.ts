@@ -63,13 +63,7 @@ export interface CardProps {
   lastName?: string;
   userName?: string;
   backgroundInfo?: string;
-  address: {
-    street: string;
-    state: string;
-    suite: string;
-    city: string;
-    zipCode: string;
-  };
+  address: any;
   key: any;
   className?: string;
   idx: number;
