@@ -7,7 +7,8 @@ const cancelForm = jest.fn();
 const submitAction = jest.fn();
 
 const initialProps = {
-  _id: "",
+  _id: "123",
+  address: {},
   resetMessage,
   serverError: "",
   serverMessage: "",

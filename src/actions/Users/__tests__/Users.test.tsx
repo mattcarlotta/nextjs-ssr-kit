@@ -2,6 +2,7 @@ import * as constants from "~constants";
 import * as actions from "../index";
 
 const props = {
+  _id: "23i8243j438j34218j8",
   email: "test~test.com",
   firstName: "Bob",
   lastName: "Dole",

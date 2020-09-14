@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { ServerStyleSheet, __PRIVATE__ } from "styled-components";
 
 export const { masterSheet } = __PRIVATE__;

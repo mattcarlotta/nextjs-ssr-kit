@@ -1,3 +1,4 @@
+//@ts-nocheck
 const shouldDive = node =>
   typeof node.dive === "function" && typeof node.type() !== "string";
 

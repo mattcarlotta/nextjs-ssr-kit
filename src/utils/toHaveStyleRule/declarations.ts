@@ -1,8 +1,9 @@
+//@ts-nocheck
 const getDeclaration = (rule, property) =>
   rule.declarations
     .filter(
       declaration =>
-        declaration.type === "declaration" && declaration.property === property
+        declaration.type === "declaration" && declaration.property === property,
     )
     .pop();
 

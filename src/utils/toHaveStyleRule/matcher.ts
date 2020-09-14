@@ -1,3 +1,4 @@
+//@ts-nocheck
 const matcherTest = (received, expected) => {
   try {
     const matcher =

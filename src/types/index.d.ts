@@ -15,7 +15,7 @@ import * as actions from "../actions/Users";
 /// ACTIONS ///
 
 export type UserData = {
-  _id?: string;
+  _id: string;
   email?: string;
   firstName?: string;
   lastName?: string;
@@ -56,7 +56,20 @@ export type BaseFieldProps = {
   style?: CSSProperties;
 };
 
-export interface CardProps extends UserData {
+export interface CardProps {
+  _id: string;
+  email?: string;
+  firstName?: string;
+  lastName?: string;
+  userName?: string;
+  backgroundInfo?: string;
+  address: {
+    street: string;
+    state: string;
+    suite: string;
+    city: string;
+    zipCode: string;
+  };
   key: any;
   className?: string;
   idx: number;
@@ -97,8 +110,7 @@ export interface DeleteButtonProps extends ActionButtonProps {
   onClick: () => ReturnType<typeof actions.deleteUser>;
 }
 export interface DisplayUserListProps {
-  _id?: string;
-  data: UserData[];
+  data: any[];
   isEditingID?: string;
   deleteUser: (id: string) => ReturnType<typeof actions.deleteUser>;
   handleCloseModal: (event: any) => void;
@@ -128,7 +140,7 @@ export type LinkProps = {
   href: string;
 };
 
-export type LoadingUsers = {
+export type LoadingUsersProps = {
   className?: string;
   duration?: string;
   height?: number;

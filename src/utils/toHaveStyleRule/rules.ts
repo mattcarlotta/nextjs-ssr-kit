@@ -1,3 +1,4 @@
+//@ts-nocheck
 const getModifiedClassName = (className, modifier = "") => {
   const classNameSelector = `.${className}`;
   let prefix = "";
@@ -21,8 +22,8 @@ const getModifiedClassName = (className, modifier = "") => {
 const hasClassNames = (classNames, selectors, options) =>
   classNames.some(className =>
     selectors.includes(
-      getModifiedClassName(className, options.modifier).replace(/['"]/g, '"')
-    )
+      getModifiedClassName(className, options.modifier).replace(/['"]/g, '"'),
+    ),
   );
 
 const mediaRegex = /(\([a-z-]+:)\s?([a-z0-9.]+\))/g;
@@ -33,10 +34,10 @@ const getAtRules = (ast, options) =>
         .filter(
           rule =>
             rule.type === option &&
-            rule[option] === options[option].replace(mediaRegex, "$1$2")
+            rule[option] === options[option].replace(mediaRegex, "$1$2"),
         )
         .map(rule => rule.rules)
-        .reduce((acc, rules) => acc.concat(rules), [])
+        .reduce((acc, rules) => acc.concat(rules), []),
     )
     .reduce((acc, rules) => acc.concat(rules), []);
 
@@ -47,19 +48,20 @@ const handleMissingRules = options => ({
       Object.keys(options).length
         ? ` using options:\n${JSON.stringify(options)}`
         : ""
-    }`
+    }`,
 });
 
 const getRules = (ast, classNames, options) => {
   const rules = Object.keys(options).some(option =>
-    ["media", "supports"].includes(option)
+    ["media", "supports"].includes(option),
   )
     ? getAtRules(ast, options)
     : ast.stylesheet.rules;
 
   return rules.filter(
     rule =>
-      rule.type === "rule" && hasClassNames(classNames, rule.selectors, options)
+      rule.type === "rule" &&
+      hasClassNames(classNames, rule.selectors, options),
   );
 };
 

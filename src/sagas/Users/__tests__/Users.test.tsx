@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { expectSaga, testSaga } from "redux-saga-test-plan";
 import app from "~utils/axiosConfig";
 import * as actions from "~actions/Users";

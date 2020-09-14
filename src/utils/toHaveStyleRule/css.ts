@@ -1,3 +1,4 @@
+//@ts-nocheck
 import css from "css";
 import getServerStyleSheet from "./stylesheet";
 

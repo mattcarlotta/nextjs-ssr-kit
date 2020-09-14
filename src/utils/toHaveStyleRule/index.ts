@@ -1,3 +1,4 @@
+//@ts-nocheck
 import getCSS from "./css";
 import getClassNames from "./classnames";
 import getDeclarations from "./declarations";
@@ -25,7 +26,7 @@ function toHaveStyleRule(component, property, expected, options = {}) {
 
   return {
     pass,
-    message: buildReturnMessage(this.utils, pass, property, received, expected)
+    message: buildReturnMessage(this.utils, pass, property, received, expected),
   };
 }
 
