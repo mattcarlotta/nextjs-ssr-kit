@@ -1,5 +1,4 @@
 /* istanbul ignore file */
-import * as React from "react";
 export {};
 
 declare global {
@@ -8,7 +7,7 @@ declare global {
       document: Document;
       window: any;
       navigator: any;
-      React: React;
+      React: any;
     }
   }
 }

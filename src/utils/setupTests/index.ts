@@ -1,4 +1,5 @@
 /* eslint-disable */
+import * as React from "react";
 import { JSDOM } from "jsdom";
 import { configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
@@ -26,6 +27,7 @@ global.document = document;
 global.window = document.defaultView;
 global.HTMLElement = window.HTMLElement;
 global.HTMLAnchorElement = window.HTMLAnchorElement;
+global.React = React;
 
 // Object.keys(document.defaultView).forEach(property => {
 //   if (typeof global[property] === "undefined") {
