@@ -16,7 +16,7 @@ const fieldValidator = <T extends any[]>(
 ): { validatedFields: T; errors: number } => {
   try {
     if (isEmpty(fields)) throw new Error("You must supply an array of fields!");
-    let errorCount: number = 0;
+    let errorCount = 0;
 
     const validatedFields = fields.map(field => {
       let errors = "";

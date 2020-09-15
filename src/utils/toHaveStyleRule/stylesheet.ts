@@ -1,4 +1,5 @@
-//@ts-nocheck
+/* eslint-disable */
+// @ts-nocheck
 import { ServerStyleSheet, __PRIVATE__ } from "styled-components";
 
 export const { masterSheet } = __PRIVATE__;
@@ -14,3 +15,4 @@ const getServerStyleSheet = () =>
     : masterSheet.toString();
 
 export default getServerStyleSheet;
+/* eslint-enable */

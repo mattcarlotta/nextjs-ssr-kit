@@ -1,13 +1,13 @@
 import isEmpty from "lodash.isempty";
 import * as constants from "~constants";
-import { UserData, UserProps, UpdatedUserProps } from "~types";
+import { AnyAction, UserData, UserProps, UpdatedUserProps } from "~types";
 /**
  * Attempts to create a new user in DB.
  *
  * @param {object} props - contains user's email, firstName, lastName, userName, backgroundInfo street, state, suite, city, zipCode.
- * @returns a redux action
+ * @returns {AnyAction} a redux action
  */
-export const createUser = ({ props }: UserProps) => ({
+export const createUser = ({ props }: UserProps): AnyAction => ({
   type: constants.USERS_CREATE,
   props,
 });
@@ -16,9 +16,9 @@ export const createUser = ({ props }: UserProps) => ({
  * Attempts to delete a user from DB.
  *
  * @param {string} id - user id
- * @returns a redux action
+ * @returns {AnyAction} a redux action
  */
-export const deleteUser = (id: string) => ({
+export const deleteUser = (id: string): AnyAction => ({
   type: constants.USERS_DELETE,
   id,
 });
@@ -26,26 +26,26 @@ export const deleteUser = (id: string) => ({
 /**
  * Attempts to fetchUsers users from DB.
  *
- * @returns a redux action
+ * @returns {AnyAction} a redux action
  */
-export const fetchUsers = () => ({
+export const fetchUsers = (): AnyAction => ({
   type: constants.USERS_FETCH,
 });
 
 /**
  * Resets redux users state.
- * @returns a redux action
+ * @returns {AnyAction} a redux action
  */
-export const resetUsers = () => ({
+export const resetUsers = (): AnyAction => ({
   type: constants.USERS_RESET,
 });
 
 /**
  * Attempts to seed the DB with data.
  *
- * @returns a redux action
+ * @returns {AnyAction} a redux action
  */
-export const seedDB = () => ({
+export const seedDB = (): AnyAction => ({
   type: constants.USERS_SEED,
 });
 
@@ -53,9 +53,9 @@ export const seedDB = () => ({
  * Sets user data to state.
  *
  * @param {array} data - contains user data: [{ address: { street, suite, city, state, zipCode }, _id, email, firstName, lastName, userName, backgroundInfo }]
- * @returns a redux action
+ * @returns {AnyAction} a redux action
  */
-export const setUsers = (data: UserData[]) => ({
+export const setUsers = (data: UserData[]): AnyAction => ({
   type: constants.USERS_SET_DATA,
   payload: !isEmpty(data) ? data : [],
 });
@@ -65,9 +65,9 @@ export const setUsers = (data: UserData[]) => ({
  *
  * @param {object} props - props contain user data.
  * @param {string} id - user id
- * @returns a redux action
+ * @returns {AnyAction} a redux action
  */
-export const updateUser = ({ props, id }: UpdatedUserProps) => ({
+export const updateUser = ({ props, id }: UpdatedUserProps): AnyAction => ({
   type: constants.USERS_UPDATE,
   props,
   id,

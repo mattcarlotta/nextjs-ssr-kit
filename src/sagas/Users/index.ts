@@ -7,6 +7,7 @@ import * as actions from "~actions/Users";
 import app from "~utils/axiosConfig";
 import { parseData, parseMessage } from "~utils/parseResponse";
 import showError from "~utils/showError";
+import { SagaIterator } from "~types";
 
 /**
  * Attempts to fetch users from DB.
@@ -18,7 +19,7 @@ import showError from "~utils/showError";
  * @yields {action} -  A redux action to set users to redux state.
  * @throws {action} - A toast error message.
  */
-export function* fetchUsers() {
+export function* fetchUsers(): SagaIterator {
   try {
     yield put(resetMessage());
 
@@ -43,7 +44,9 @@ export function* fetchUsers() {
  * @yields {action} - A redux action to refetch users.
  * @throws {action} - A toast error message.
  */
-export function* createUser({ props }: ReturnType<typeof actions.createUser>) {
+export function* createUser({
+  props,
+}: ReturnType<typeof actions.createUser>): SagaIterator {
   try {
     yield put(resetMessage());
 
@@ -72,7 +75,9 @@ export function* createUser({ props }: ReturnType<typeof actions.createUser>) {
  * @yields {action} - A redux action to refetch users.
  * @throws {action} - A toast error message.
  */
-export function* deleteUser({ id }: ReturnType<typeof actions.deleteUser>) {
+export function* deleteUser({
+  id,
+}: ReturnType<typeof actions.deleteUser>): SagaIterator {
   try {
     yield put(resetMessage());
 
@@ -98,7 +103,7 @@ export function* deleteUser({ id }: ReturnType<typeof actions.deleteUser>) {
  * @yields {action} -  A redux action to set users to redux state.
  * @throws {action} - A toast error message.
  */
-export function* seedDB() {
+export function* seedDB(): SagaIterator {
   try {
     yield put(resetMessage());
 
@@ -126,7 +131,7 @@ export function* seedDB() {
 export function* updateUser({
   props,
   id,
-}: ReturnType<typeof actions.updateUser>) {
+}: ReturnType<typeof actions.updateUser>): SagaIterator {
   try {
     yield put(resetMessage());
 
@@ -150,7 +155,7 @@ export function* updateUser({
  * @function authSagas
  * @yields {watchers}
  */
-export default function* authSagas() {
+export default function* authSagas(): SagaIterator {
   yield all([
     takeLatest(constants.USERS_CREATE, createUser),
     takeLatest(constants.USERS_DELETE, deleteUser),

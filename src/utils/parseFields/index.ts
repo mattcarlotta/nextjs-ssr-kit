@@ -6,11 +6,11 @@ import isEmpty from "lodash.isempty";
  *
  * @function
  * @param {array} fields - an array containing fields.
- * @returns {object} an object of parsed fields with [name]: value.
+ * @returns {Record<string, unknown>} an object of parsed fields with [name]: value.
  * @throws {error}
  */
 
-const parseFields = (fields: any[]): object => {
+const parseFields = (fields: any[]): Record<string, unknown> => {
   try {
     if (isEmpty(fields)) throw new Error("You must supply an array of fields!");
 

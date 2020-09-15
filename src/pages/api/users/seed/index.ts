@@ -2,7 +2,10 @@ import { User } from "~models";
 import seeds from "~database/seedDB/seeds";
 import { NextApiRequest, NextApiResponse } from "~types";
 
-const seedDB = async (_: NextApiRequest, res: NextApiResponse) => {
+const seedDB = async (
+  _: NextApiRequest,
+  res: NextApiResponse,
+): Promise<any> => {
   try {
     await User.deleteMany({});
     await User.insertMany(seeds);

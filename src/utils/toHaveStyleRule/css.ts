@@ -1,4 +1,5 @@
-//@ts-nocheck
+/* eslint-disable */
+// @ts-nocheck
 import css from "css";
 import getServerStyleSheet from "./stylesheet";
 
@@ -18,3 +19,4 @@ const extractFromStylesheet = () => {
 const getCSS = () => css.parse(extractFromStylesheet());
 
 export default getCSS;
+/* eslint-enable */

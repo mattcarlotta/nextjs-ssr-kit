@@ -1,7 +1,6 @@
-import { AnyAction } from "redux";
 import { HYDRATE } from "next-redux-wrapper";
 import * as constants from "~constants";
-import { UserReducerState } from "~types";
+import { AnyAction, UserReducerState } from "~types";
 
 export const initialState: UserReducerState = {
   data: [],
@@ -11,12 +10,12 @@ export const initialState: UserReducerState = {
 /**
  * @param {object} state - an object containing data and isLoading state.
  * @param {object} action - type and payload to be reduced.
- * @returns USERS state.
+ * @returns {UserReducerState} USERS state.
  */
 const userReducer = (
   state: UserReducerState = initialState,
   { payload, type }: AnyAction,
-) => {
+): UserReducerState => {
   switch (type) {
     case HYDRATE: {
       return { ...state, ...payload.users };

@@ -1,4 +1,5 @@
-//@ts-nocheck
+/* eslint-disable */
+// @ts-nocheck
 const normalizeOptions = options =>
   options.modifier
     ? Object.assign({}, options, {
@@ -9,3 +10,4 @@ const normalizeOptions = options =>
     : options;
 
 export default normalizeOptions;
+/* eslint-enable */

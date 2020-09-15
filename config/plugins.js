@@ -18,6 +18,8 @@ module.exports = isServer => {
       new DefinePlugin({
         "process.env": {
           baseURL: JSON.stringify(baseURL),
+          LOCALHOST: JSON.stringify(LOCALHOST),
+          PORT: JSON.stringify(PORT),
           NODE_ENV: JSON.stringify(NODE_ENV),
         },
       }),

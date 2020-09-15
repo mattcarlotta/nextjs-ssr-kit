@@ -9,7 +9,7 @@ import { ServerStyleSheet } from "styled-components";
 import { version } from "../../package.json";
 
 class CustomDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
+  static async getInitialProps(ctx: DocumentContext): Promise<any> {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
 
@@ -34,17 +34,17 @@ class CustomDocument extends Document {
     }
   }
 
-  render() {
+  render(): JSX.Element {
     return (
       <Html lang="en">
         <Head>
           <meta property="og:locale" content="en_US" />
           <meta property="og:site_name" content="NextJS SSR Kit" />
-          {/* <link
+          <link
             rel="apple-touch-icon"
             sizes="192x192"
-            href="/ITLogo_192x192.png"
-          /> */}
+            href="/logo_192x192.png"
+          />
           <meta name="theme-color" content="#000000" />
           <meta name="msapplication-TileColor" content="#000000" />
           <meta name="msapplication-navbutton-color" content="#000000" />

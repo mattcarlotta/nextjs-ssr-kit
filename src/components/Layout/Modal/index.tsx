@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { FaTimes } from "react-icons/fa";
 import Flex from "~components/Layout/Flex";
@@ -12,9 +12,14 @@ import ModalRoot from "./ModalRoot";
 import WindowContainer from "./WindowContainer";
 import { ModalProps } from "~types";
 
-const Modal = ({ children, maxWidth, onClick, title }: ModalProps) => {
+const Modal = ({
+  children,
+  maxWidth,
+  onClick,
+  title,
+}: ModalProps): JSX.Element => {
   /* istanbul ignore next */
-  React.useEffect(() => {
+  useEffect(() => {
     document.body.style.overflow = "hidden";
 
     return () => {

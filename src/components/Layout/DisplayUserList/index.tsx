@@ -14,7 +14,7 @@ const DisplayUserList = ({
   updateUser,
   deleteUser,
   ...rest
-}: DisplayUserListProps) => (
+}: DisplayUserListProps): JSX.Element => (
   <>
     {!isEmpty(data) ? (
       data.map((props: UserData, idx) => (

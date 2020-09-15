@@ -1,4 +1,5 @@
 /* istanbul ignore file */
+/* eslint-disable */
 export {};
 
 declare global {
@@ -11,3 +12,4 @@ declare global {
     }
   }
 }
+/* eslint-enable */

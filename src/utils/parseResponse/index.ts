@@ -15,8 +15,8 @@ export function parseMessage(res: NextApiResponse): string | undefined {
  * Helper function to parse data from an API response.
  *
  * @param {array} res - an API response.
- * @returns {object} a parsed data object from res.data.
+ * @returns {Record<string, unknown>} a parsed data object from res.data.
  */
-export function parseData(res: NextApiResponse): object {
+export function parseData(res: NextApiResponse): Record<string, unknown> {
   return get(res, ["data"]);
 }

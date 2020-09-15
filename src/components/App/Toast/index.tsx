@@ -12,7 +12,7 @@ const style = {
   marginTop: 9,
 };
 
-export const displayIcon = (type: string | undefined) => {
+export const displayIcon = (type: string | undefined): JSX.Element => {
   switch (type) {
     case "success":
       return <FaCheck style={style} />;
@@ -27,7 +27,7 @@ export const displayIcon = (type: string | undefined) => {
   }
 };
 
-const ToastMessage = ({ type, message }: ToastProps): any =>
+const ToastMessage = ({ type, message }: ToastProps): null => {
   toast[type](
     <div data-testid="modal-alert" css="display: flex; color: white;">
       <div
@@ -44,5 +44,8 @@ const ToastMessage = ({ type, message }: ToastProps): any =>
       </div>
     </div>,
   );
+
+  return null;
+};
 
 export default ToastMessage;

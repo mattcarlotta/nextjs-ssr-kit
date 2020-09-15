@@ -6,7 +6,7 @@ const onClick = jest.fn();
 const initialProps = {
   children: <p data-testid="modal-details">Test</p>,
   maxWidth: "",
-  onClick: () => {},
+  onClick,
   title: "Test Title",
 };
 

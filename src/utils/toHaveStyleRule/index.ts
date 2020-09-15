@@ -1,4 +1,5 @@
-//@ts-nocheck
+/* eslint-disable */
+// @ts-nocheck
 import getCSS from "./css";
 import getClassNames from "./classnames";
 import getDeclarations from "./declarations";
@@ -33,3 +34,4 @@ function toHaveStyleRule(component, property, expected, options = {}) {
 global.beforeEach(resetStyleSheet);
 
 expect.extend({ toHaveStyleRule });
+/* eslint-enable */

@@ -1,7 +1,7 @@
-import Head from "next/head";
 import { FaCoffee } from "react-icons/fa";
 import Link from "~components/Navigation/Link";
 import SubTitle from "~components/Layout/SubTitle";
+import Header from "~components/Navigation/Header";
 import { NextPage } from "~types";
 
 const Home: NextPage = () => (
@@ -9,9 +9,7 @@ const Home: NextPage = () => (
     data-testid="home-page"
     css="text-align: center;height: 100%;color: #007ec5;background-color: #ebebeb;"
   >
-    <Head>
-      <title>Home - NextJS SSR Kit</title>
-    </Head>
+    <Header title="Home" url="/" />
     <div css="max-width: 850px;width: 100%;padding-top: 25vh;margin-left: auto;	margin-right: auto;margin-bottom: 20px;">
       <img
         css="margin-bottom: 10px;width: 100%;"

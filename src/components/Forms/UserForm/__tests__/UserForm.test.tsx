@@ -97,22 +97,22 @@ describe("UserForm", () => {
       });
     });
 
-    //   it("calls resetForm when the serverMessage", () => {
-    //     wrapper.find("form").simulate("submit");
-    //     wrapper.setProps({ serverMessage: "message" });
+    it("calls resetForm when the serverMessage", () => {
+      wrapper.find("form").simulate("submit");
+      wrapper.setProps({ serverMessage: "message" });
 
-    //     expect(resetForm).toHaveBeenCalledTimes(1);
-    //   });
+      expect(resetForm).toHaveBeenCalledTimes(1);
+    });
 
-    //   it("when the form is submitted but a server error is thrown, then the form will not be submitting", () => {
-    //     const submitButton = () => wrapper.find("[data-testid='submit']");
-    //     wrapper.find("form").simulate("submit");
+    it("when the form is submitted but a server error is thrown, then the form will not be submitting", () => {
+      const submitButton = () => wrapper.find("[data-testid='submit']");
+      wrapper.find("form").simulate("submit");
 
-    //     expect(submitButton()).toHaveProp("disabled", true);
+      expect(submitButton()).toHaveProp("disabled", true);
 
-    //     wrapper.setProps({ serverError: "server" });
-    //     wrapper.update();
-    //     expect(submitButton()).toHaveProp("disabled", false);
-    //   });
+      wrapper.setProps({ serverError: "server" });
+      wrapper.update();
+      expect(submitButton()).toHaveProp("disabled", false);
+    });
   });
 });

@@ -9,7 +9,8 @@ import {
   FormEvent,
   ReactNode,
 } from "react";
-import { Store } from "redux";
+import { AnyAction, Store } from "redux";
+import { SagaIterator } from "redux-saga";
 import * as actions from "../actions/Users";
 
 /// ACTIONS ///
@@ -52,6 +53,7 @@ export type BaseFieldProps = {
   label: string;
   value?: string;
   required: boolean;
+  errors?: string;
   onChange?: (event: ChangeEvent<any>) => void;
   style?: CSSProperties;
 };
@@ -126,6 +128,13 @@ export type FieldErrorProps = {
   errors?: string;
 };
 
+export type HeaderProps = {
+  description: string;
+  title: string;
+  type: string;
+  url: string;
+};
+
 export type InputProps = ComponentProps;
 
 export type LinkProps = {
@@ -147,6 +156,11 @@ export type ModalProps = {
   maxWidth?: string;
   onClick: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   title?: string;
+};
+
+export type ShowUsersState = {
+  isEditingID: string;
+  openModal: boolean;
 };
 
 export interface TextAreaProps extends ComponentProps {
@@ -226,14 +240,16 @@ export type ParseFields<T> = {
 };
 
 export {
+  AnyAction,
   AppProps,
   ChangeEvent,
   ComponentType,
   CSSProperties,
   FC,
   FormEvent,
-  ReactNode,
   NextApiRequest,
   NextApiResponse,
   NextPage,
+  ReactNode,
+  SagaIterator,
 };

@@ -2,7 +2,10 @@ import isEmpty from "lodash.isempty";
 import { User } from "~models";
 import { NextApiRequest, NextApiResponse } from "~types";
 
-const createUser = async (req: NextApiRequest, res: NextApiResponse) => {
+const createUser = async (
+  req: NextApiRequest,
+  res: NextApiResponse,
+): Promise<any> => {
   try {
     const {
       email,

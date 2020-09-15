@@ -1,6 +1,9 @@
-import { all } from "redux-saga/effects";
+import { all, call } from "redux-saga/effects";
 import userSagas from "./Users";
+import { SagaIterator } from "~types";
 
-export default function* rootSaga() {
-  yield all([userSagas()]);
+function* rootSaga(): SagaIterator {
+  yield all([call(userSagas)]);
 }
+
+export default rootSaga;

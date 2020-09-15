@@ -1,7 +1,10 @@
 import { User } from "~models";
 import { NextApiRequest, NextApiResponse } from "~types";
 
-const deleteUser = async (req: NextApiRequest, res: NextApiResponse) => {
+const deleteUser = async (
+  req: NextApiRequest,
+  res: NextApiResponse,
+): Promise<any> => {
   try {
     const { id: _id } = req.query;
     if (!_id) throw String("Missing user delete id parameter.");

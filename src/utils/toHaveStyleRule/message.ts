@@ -1,4 +1,5 @@
-//@ts-nocheck
+/* eslint-disable */
+// @ts-nocheck
 const buildReturnMessage = (utils, pass, property, received, expected) => () =>
   `${utils.printReceived(
     !received && !pass
@@ -11,3 +12,4 @@ const buildReturnMessage = (utils, pass, property, received, expected) => () =>
   `  ${utils.printReceived(`${property}: ${received}`)}`;
 
 export default buildReturnMessage;
+/* eslint-enable */

@@ -1,6 +1,6 @@
-import { UserFormProps } from "~types";
+import { BaseFieldProps, UserFormProps } from "~types";
 
-const fields = (props: UserFormProps) => [
+const fields = (props: UserFormProps): BaseFieldProps[] => [
   {
     name: "userName",
     type: "text",

@@ -22,7 +22,7 @@
     "<rootDir>/babel.config.js",
     "<rootDir>/next.config.js"
   ],
-  "collectCoverageFrom": ["src/**/*.{ts,tsx}"],
+  "collectCoverageFrom": ["src/**/*.{ts,tsx}", "!src/**/*d.ts"],
   "coveragePathIgnorePatterns": [
     "<rootDir>/src/middlewares",
     "<rootDir>/src/pages",

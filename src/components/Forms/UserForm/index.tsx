@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useCallback, useEffect, useState } from "react";
 import Button from "~components/Layout/Button";
 import FieldGenerator from "~components/Forms/FieldGenerator";
 import Flex from "~components/Layout/Flex";
@@ -7,10 +7,10 @@ import fieldValidator from "~utils/fieldValidator";
 import fieldUpdater from "~utils/fieldUpdater";
 import parseFields from "~utils/parseFields";
 import generateFields from "./Fields";
-import { ChangeEvent, FormEvent, UserFormProps, UserFormState } from "~types";
+import { FormEvent, UserFormProps, UserFormState } from "~types";
 
-const UserForm = (props: UserFormProps) => {
-  const [state, setState] = React.useState<UserFormState>({
+const UserForm = (props: UserFormProps): JSX.Element => {
+  const [state, setState] = useState<UserFormState>({
     fields: generateFields(props),
     errors: 0,
     isSubmitting: false,
@@ -26,8 +26,12 @@ const UserForm = (props: UserFormProps) => {
     submitAction,
   } = props;
 
-  const handleChange = React.useCallback(
-    ({ target: { name, value } }: ChangeEvent<any>) => {
+  const handleChange = useCallback(
+    ({
+      target: { name, value },
+    }: {
+      target: { name: string; value: string };
+    }) => {
       setState(prevState => ({
         ...prevState,
         fields: fieldUpdater(prevState.fields, name, value),
@@ -36,7 +40,7 @@ const UserForm = (props: UserFormProps) => {
     [fieldUpdater],
   );
 
-  const handleSubmit = React.useCallback(
+  const handleSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       const { validatedFields, errors } = fieldValidator(fields);
@@ -50,14 +54,14 @@ const UserForm = (props: UserFormProps) => {
     [fields, fieldValidator],
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (serverError && isSubmitting)
       setState(prevState => ({ ...prevState, isSubmitting: false }));
 
     if (serverMessage && isSubmitting) resetForm();
   }, [isSubmitting, serverError, serverMessage, resetForm, resetMessage]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!errors && isSubmitting)
       submitAction({
         props: parseFields(fields),

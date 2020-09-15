@@ -1,4 +1,5 @@
-//@ts-nocheck
+/* eslint-disable */
+// @ts-nocheck
 const getModifiedClassName = (className, modifier = "") => {
   const classNameSelector = `.${className}`;
   let prefix = "";
@@ -67,3 +68,4 @@ const getRules = (ast, classNames, options) => {
 
 export { handleMissingRules };
 export default getRules;
+/* eslint-enable */

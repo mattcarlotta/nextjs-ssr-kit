@@ -1,4 +1,5 @@
-//@ts-nocheck
+/* eslint-disable */
+// @ts-nocheck
 const shouldDive = node =>
   typeof node.dive === "function" && typeof node.type() !== "string";
 
@@ -36,3 +37,4 @@ const getClassNames = received => {
 };
 
 export default getClassNames;
+/* eslint-enable */

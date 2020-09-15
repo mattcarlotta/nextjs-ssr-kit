@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 import styled from "styled-components";
 import { ButtonProps } from "~types";
 
@@ -61,3 +62,4 @@ const Button = styled(StyledButton)`
 `;
 
 export default Button;
+/* eslint-enable react/button-has-type */

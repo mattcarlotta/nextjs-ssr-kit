@@ -1,7 +1,10 @@
 import { User } from "~models";
 import { NextApiRequest, NextApiResponse } from "~types";
 
-const updateUser = async (req: NextApiRequest, res: NextApiResponse) => {
+const updateUser = async (
+  req: NextApiRequest,
+  res: NextApiResponse,
+): Promise<any> => {
   try {
     const { id: _id } = req.query;
     const { userName } = req.body;

@@ -1,4 +1,5 @@
-//@ts-nocheck
+/* eslint-disable */
+// @ts-nocheck
 const getDeclaration = (rule, property) =>
   rule.declarations
     .filter(
@@ -11,3 +12,4 @@ const getDeclarations = (rules, property) =>
   rules.map(rule => getDeclaration(rule, property)).filter(Boolean);
 
 export default getDeclarations;
+/* eslint-enable */

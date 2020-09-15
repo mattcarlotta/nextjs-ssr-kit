@@ -1,4 +1,5 @@
-//@ts-nocheck
+/* eslint-disable */
+// @ts-nocheck
 const matcherTest = (received, expected) => {
   try {
     const matcher =
@@ -12,3 +13,4 @@ const matcherTest = (received, expected) => {
 };
 
 export default matcherTest;
+/* eslint-enable */
