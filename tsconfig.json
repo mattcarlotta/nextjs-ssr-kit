@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "allowJs": true,
+    "alwaysStrict": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "esnext",
+    "paths": {
+      "~actions/*": ["src/actions/*"],
+      "~components/*": ["src/components/*"],
+      "~constants": ["src/constants/index"],
+      "~database/*": ["database/*"],
+      "~database": ["database/index"],
+      "~middlewares": ["src/middlewares/index"],
+      "~models": ["models/index"],
+      "~pages/*": ["src/pages/*"],
+      "~reducers/*": ["src/reducers/*"],
+      "~reducers": ["src/reducers/index"],
+      "~sagas/*": ["src/sagas/*"],
+      "~sagas": ["src/sagas/index"],
+      "~store": ["src/store/index"],
+      "~styles/*": ["src/styles/*"],
+      "~types": ["src/types/index"],
+      "~utils/*": ["src/utils/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", ".next", "out"]
+}

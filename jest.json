@@ -4,11 +4,11 @@
   "moduleDirectories": ["<rootDir>/src", "node_modules"],
   "moduleNameMapper": {
     "~(.*)$": "<rootDir>/src/$1",
-    ".*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/utils/__mocks__/fileMock.js",
+    ".*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/utils/__mocks__/fileMock.ts",
     "\\.(css|scss)$": "identity-obj-proxy"
   },
   "transform": {
-    "^.+\\.(js|jsx)$": "babel-jest",
+    "^.+\\.(ts|tsx)$": "babel-jest",
     ".+\\.(css|styl|less|sass|scss)$": "./node_modules/jest-css-modules-transform"
   },
   "testPathIgnorePatterns": [
@@ -22,11 +22,11 @@
     "<rootDir>/babel.config.js",
     "<rootDir>/next.config.js"
   ],
-  "collectCoverageFrom": ["src/**/*.{js,jsx}"],
+  "collectCoverageFrom": ["src/**/*.{ts,tsx}", "!src/**/*d.ts"],
   "coveragePathIgnorePatterns": [
     "<rootDir>/src/middlewares",
-    "<rootDir>/src/pages"
+    "<rootDir>/src/pages",
+    "<rootDir>/src/utils/toHaveStyleRule"
   ],
-  "setupFilesAfterEnv": ["<rootDir>/src/utils/setupTests/index.js"],
-  "moduleFileExtensions": ["css", "scss", "js", "json", "jsx"]
+  "setupFilesAfterEnv": ["<rootDir>/src/utils/setupTests/index.ts"]
 }

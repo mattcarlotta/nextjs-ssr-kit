@@ -38,7 +38,6 @@ Cypress.Commands.add(
 
         dataTransfer.items.add(testFile);
 
-        console.log("dataTransfer", dataTransfer);
         input[0].files = dataTransfer.files;
         return input;
       });

@@ -4,7 +4,6 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 const WebpackBar = require("webpackbar");
 const address = require("address");
-const { analyzeClientPath, analyzeServerPath } = require("./paths");
 
 const { analyze, baseURL, LOCALHOST, NODE_ENV, PORT } = process.env;
 const remoteAddress = address.ip();
@@ -19,6 +18,8 @@ module.exports = isServer => {
       new DefinePlugin({
         "process.env": {
           baseURL: JSON.stringify(baseURL),
+          LOCALHOST: JSON.stringify(LOCALHOST),
+          PORT: JSON.stringify(PORT),
           NODE_ENV: JSON.stringify(NODE_ENV),
         },
       }),
@@ -55,7 +56,9 @@ module.exports = isServer => {
     plugins.push(
       new BundleAnalyzerPlugin({
         analyzerMode: "static",
-        reportFilename: isServer ? analyzeServerPath : analyzeClientPath,
+        reportFilename: isServer
+          ? "../analyze/server.html"
+          : "./analyze/client.html",
       }),
     );
   }

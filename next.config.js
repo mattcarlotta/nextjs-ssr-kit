@@ -2,7 +2,7 @@ require("./env");
 require("./database");
 require("./models/all");
 const openBrowser = require("react-dev-utils/openBrowser");
-const { plugins, rules } = require("./config");
+const plugins = require("./config/plugins");
 
 const { NODE_ENV, LOCALHOST } = process.env;
 
@@ -11,9 +11,6 @@ if (NODE_ENV === "development") openBrowser(LOCALHOST);
 
 module.exports = {
   webpack(config, { isServer }) {
-    /* adds custom rules to client and server */
-    config.module.rules.push(...rules());
-
     /* adds custom plugins to client and server */
     config.plugins.push(...plugins(isServer));
 

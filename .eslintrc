@@ -1,25 +1,17 @@
 {
-  "parser": "babel-eslint",
-  "plugins": ["react", "jest", "prettier"],
-  "extends": ["airbnb", "plugin:prettier/recommended", "prettier/react"],
-  "globals": {
-    "React": true,
-    "document": true,
-    "window": true,
-    "localStorage": true,
-    "fetch": true
-  },
-  "root": true,
-  "overrides": [
-    {
-      "files": ["*.test.js"],
-      "rules": {
-        "no-undef": 0,
-        "react/react-in-jsx-scope": 0,
-        "react/jsx-no-undef": 0
-      }
-    }
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "airbnb",
+    "plugin:prettier/recommended",
+    "prettier/react",
+    "plugin:@typescript-eslint/recommended"
   ],
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
   "rules": {
     "quotes": [
       "error",
@@ -29,6 +21,12 @@
         "allowTemplateLiterals": true
       }
     ],
+    "react/react-in-jsx-scope": 0,
+    "react/prop-types": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/no-var-requires": 0,
+    "@typescript-eslint/ban-ts-comment": 0,
+    "@typescript-eslint/no-explicit-any": 0,
     "no-async-promise-executor": 0,
     "arrow-parens": ["warn", "as-needed"],
     "indent": 0,
@@ -62,11 +60,6 @@
         }
       }
     ],
-    "jest/no-disabled-tests": "warn",
-    "jest/no-focused-tests": "error",
-    "jest/no-identical-title": "error",
-    "jest/prefer-to-have-length": "warn",
-    "jest/valid-expect": "error",
     "react/destructuring-assignment": 0,
     "react/require-default-props": 0,
     "jsx-a11y/href-no-hash": "off",
@@ -82,7 +75,7 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [".js", ".jsx"]
+        "extensions": [".js", ".jsx", ".tsx"]
       }
     ],
     "react/jsx-first-prop-new-line": ["warn", "multiline"],
@@ -124,11 +117,5 @@
         }
       }
     ]
-  },
-  "env": {
-    "es6": true,
-    "jest": true,
-    "browser": true,
-    "node": true
   }
 }

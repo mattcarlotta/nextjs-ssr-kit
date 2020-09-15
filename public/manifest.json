@@ -6,6 +6,24 @@
       "src": "favicon.ico",
       "sizes": "256x256 128x128 64x64 48x48 32x32 16x16",
       "type": "image/x-icon"
+    },
+    {
+      "src": "logo_192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo_256x256.png",
+      "type": "image/png",
+      "sizes": "256x256",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo_512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
   "start_url": ".",
