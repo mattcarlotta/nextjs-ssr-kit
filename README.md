@@ -289,8 +289,6 @@ If you run into any issues, please fill out an issue report <a href="https://git
 
 ⚠️ Ideally testing against styled-components would be handled by [jest-styled-components](https://github.com/styled-components/jest-styled-components), however there's a bug where the package attempts to collect styles from `-sc` classNames. Since v5.0, `-sc` classNames don't contain styles and therefore `toHaveStyleRule` won't work unless styled-components is downgraded to v4. As a result, the package has been temporary inlined until the issue has been fixed. See <a href="https://github.com/styled-components/jest-styled-components/issues/338">issue tracker</a>.
 
-⚠️ Changing tests within the `e2e` folder from `.js` to `.ts` interferes with tests in `src` by overriding global `expect` types. In other words, `expect.method` becomes undefined.
-
 ### Unresolvable
 
 ⚠️ Attempting to import a CSS file from `node_modules` within a component may result in incorrectly ordered stylesheets. Same holds true for UI libraries that attempt to import a CSS file when a component is imported. Instead, CSS files from `node_modules` should only be imported within the [\_app.js](src/pages/_app.js) file -- either directly imported or imported within the [globals.scss](src/styles/globals.scss) file which is then directly imported into the `_app.js` file as a global stylesheet. See [Adding a Global Stylesheet](https://nextjs.org/docs/basic-features/built-in-css-support#adding-a-global-stylesheet) for more information.
