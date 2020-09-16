@@ -3,9 +3,9 @@
   "baseUrl": "http://localhost:8080",
   "fixturesFolder": "./fixtures",
   "integrationFolder": "./integration",
-  "pluginsFile": "./plugins/index.js",
+  "pluginsFile": "./plugins/index.ts",
   "screenshotsFolder": "./screenshots",
-  "supportFile": "./support/index.js",
+  "supportFile": "./support/index.ts",
   "videosFolder": "./videos",
   "viewportHeight": 1200,
   "viewportWidth": 1800

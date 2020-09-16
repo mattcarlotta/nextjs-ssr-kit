@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "rootDir": "./e2e",
+    "target": "es5",
+    "lib": ["es5", "dom"],
+    "strict": true,
+    "types": ["cypress"],
+    "noEmit": true
+  },
+  "include": ["../node_modules/cypress", "**/*.spec.ts"]
+}
