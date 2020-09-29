@@ -55,10 +55,7 @@ const Modal = ({
                   </CloseModalButton>
                 </FlexEnd>
               </Flex>
-              <div
-                data-testid="modal-body"
-                style={{ padding: "10px 20px 20px" }}
-              >
+              <div data-testid="modal-body" style={{ padding: "20px" }}>
                 {children}
               </div>
             </ModalContent>

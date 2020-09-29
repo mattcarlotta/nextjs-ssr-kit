@@ -121,6 +121,25 @@ export interface DisplayUserListProps {
   }) => ReturnType<typeof actions.updateUser>;
 }
 
+export type DropdownProps = {
+  children: ReactNode;
+  menu: ReactNode;
+};
+
+export type DropdownClickHandlerProps = {
+  children: ({
+    isVisible,
+    handleMenuClick,
+  }: {
+    isVisible: boolean;
+    handleMenuClick: () => void;
+  }) => JSX.Element;
+};
+
+export type DropdownClickHandlerState = {
+  isVisible: boolean;
+};
+
 export interface EditButtonProps extends ActionButtonProps {
   onClick: (event: any) => void;
 }

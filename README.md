@@ -36,7 +36,7 @@
 
 ✔️ Redux + Redux + Redux Saga implementation.
 
-✔️ Styled-components implementation.
+✔️ Emotion implementation.
 
 ✔️ Eslint JS/JSX files.
 
@@ -156,7 +156,7 @@ In order to interact with the API, you'll need to:
 - src/components: react components.
 - src/constants: redux constants.
 - src/pages/_app.tsx: NextJS app configuration (redux + redux saga + global stylesheet).
-- src/pages/_document.tsx: NextJS document configuration for styled-components.
+- src/pages/_document.tsx: NextJS document configuration for emotion components.
 - src/pages/_error.tsx: NextJS fallback 404 page.
 - src/reducers: redux reducers.
 - src/sagas: redux sagas.
@@ -226,8 +226,9 @@ Click [here](package.json) to see latest versions.
 - <a href="https://github.com/babel/babel">Babel</a>
 - <a href="https://github.com/cypress-io/cypress">Cypress</a>
 - <a href="https://github.com/motdotla/dotenv">DotENV</a>
-- <a href="https://github.com/eslint/eslint/">Eslint</a>
+- <a href="https://github.com/emotion-js/emotion">Emotion</a>
 - <a href="http://airbnb.io/enzyme/">Enzyme</a>
+- <a href="https://github.com/eslint/eslint/">Eslint</a>
 - <a href="https://github.com/typicode/husky">Husky</a>
 - <a href="https://github.com/facebook/jest">Jest</a>
 - <a href="https://github.com/zeit/next.js">NextJS</a>
@@ -242,7 +243,6 @@ Click [here](package.json) to see latest versions.
 - <a href="https://stylelint.io/">Stylelint</a>
 - <a href="https://github.com/kristerkari/stylelint-scss">Stylelint-SCSS</a>
 - <a href="https://github.com/stylelint/stylelint-config-recommended">Stylelint-Config-Recommended</a>
-- <a href="https://github.com/styled-components/styled-components">Styled Components</a>
 </code></pre>
 </details>
 <br />

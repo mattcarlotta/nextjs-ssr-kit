@@ -1,8 +1,5 @@
 import styled from "@emotion/styled";
-// import { BsThreeDots } from "react-icons/bs";
-// import Button from "~components/Layout/Button";
-import EditButton from "~components/Layout/EditButton";
-import DeleteButton from "~components/Layout/DeleteButton";
+import { BsPencilSquare, BsThreeDots, BsTrash } from "react-icons/bs";
 import Flex from "~components/Layout/Flex";
 import FlexEnd from "~components/Layout/FlexEnd";
 import FlexStart from "~components/Layout/FlexStart";
@@ -12,6 +9,9 @@ import UserBackground from "./UserBackground";
 import UserDetails from "./UserDetails";
 import UserName from "./UserName";
 import { CardProps } from "~types";
+import Dropdown from "../Dropdown";
+import Menu from "../Menu";
+import MenuItem from "../MenuItem";
 
 const Divider = styled.li`
   display: inline-block;
@@ -41,16 +41,32 @@ const Card = ({
           <UserName>{userName}</UserName>
         </FlexStart>
         <FlexEnd>
-          <EditButton
-            className="hidden"
-            dataTestId="edit"
-            onClick={() => handleEditClick(_id)}
-          />
-          <DeleteButton
-            className="hidden"
-            dataTestId="delete"
-            onClick={() => deleteUser(_id)}
-          />
+          <Dropdown
+            menu={
+              <Menu>
+                <MenuItem>
+                  <div
+                    role="button"
+                    data-testid="edit"
+                    onClick={() => handleEditClick(_id)}
+                  >
+                    <BsPencilSquare />
+                  </div>
+                </MenuItem>
+                <MenuItem>
+                  <div
+                    role="button"
+                    data-testid="delete"
+                    onClick={() => deleteUser(_id)}
+                  >
+                    <BsTrash />
+                  </div>
+                </MenuItem>
+              </Menu>
+            }
+          >
+            <BsThreeDots />
+          </Dropdown>
         </FlexEnd>
       </Flex>
       <UserDetails>
