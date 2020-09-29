@@ -14,7 +14,7 @@ const CloseModalButton = styled.button`
   margin-right: 5px;
 
   &:hover {
-    color: #f5222d;
+    color: #fff;
   }
 
   &:focus {

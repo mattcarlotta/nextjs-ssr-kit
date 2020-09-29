@@ -47,7 +47,7 @@ export default styled(UserListNavigation)`
   @media (max-width: 800px) {
     ${Flex},${FlexStart}, ${FlexEnd} {
       display: block !important;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       width: 100% !important;
     }
   }

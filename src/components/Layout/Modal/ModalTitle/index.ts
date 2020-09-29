@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 const ModalTitle = styled.div`
   padding: 2px;
   font-weight: bold;
-  color: #666;
+  color: #fff;
   font-size: 16px;
 `;
 

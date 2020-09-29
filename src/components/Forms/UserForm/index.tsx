@@ -14,7 +14,7 @@ import { FormEvent, UserFormProps, UserFormState } from "~types";
 const Form = styled.form`
   margin: 0 auto;
   text-align: left;
-  padding: 5px;
+  padding: 10px;
 `;
 
 const UserForm = (props: UserFormProps): JSX.Element => {

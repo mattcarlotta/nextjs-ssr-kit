@@ -30,14 +30,14 @@ const Button = styled(StyledButton)`
     return "#ccc";
   }};
   background: ${({ danger, primary }) => {
-    if (primary) return "#03a9f3";
-    if (danger) return "#f0506e";
+    if (primary) return "#0076ff";
+    if (danger) return "#e60f00";
     return "#000";
   }};
   border: 1px solid
     ${({ danger, primary }) => {
-      if (primary) return "#03a9f3";
-      if (danger) return "#f0506e";
+      if (primary) return "#0076ff";
+      if (danger) return "#e60f00";
       return "transparent";
     }};
   font-size: 16px;
@@ -50,8 +50,8 @@ const Button = styled(StyledButton)`
   border-radius: 4px;
   box-shadow: 0 2px 7px 0
     ${({ danger, primary }) => {
-      if (primary) return "rgba(3, 169, 243, 0.39);";
-      if (danger) return "rgba(239, 80, 110, 0.39);";
+      if (primary) return "rgba(3, 77, 243, 0.39);";
+      if (danger) return "rgba(239, 52, 52, 0.39);";
       return "rgba(130, 130, 130, 0.19);";
     }};
 
@@ -59,14 +59,14 @@ const Button = styled(StyledButton)`
     text-decoration: none;
     color: #fff;
     background: ${({ danger, primary }) => {
-      if (primary) return "#028ddf";
-      if (danger) return "#d93252";
+      if (primary) return "#006ae6";
+      if (danger) return "#d71002";
       return "#000";
     }};
     box-shadow: 0 3px 10px 0
       ${({ danger, primary }) => {
-        if (primary) return "rgba(3, 169, 243, 0.39);";
-        if (danger) return "rgba(239, 80, 110, 0.39);";
+        if (primary) return "rgba(3, 77, 243, 0.39);";
+        if (danger) return "rgba(239, 52, 52, 0.39);";
         return "rgba(140, 140, 140, 0.39);";
       }};
   }

@@ -37,7 +37,7 @@ const Modal = ({
             <ModalContent data-testid="modal-content">
               <Flex
                 data-testid="modal-header"
-                style={{ padding: 15, width: "auto" }}
+                style={{ padding: 15, width: "auto", background: "#0076ff" }}
               >
                 <FlexStart>
                   <ModalTitle data-testid="modal-title">{title}</ModalTitle>

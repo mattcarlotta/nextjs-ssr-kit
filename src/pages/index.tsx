@@ -16,7 +16,7 @@ const PageContainer = styled.div`
 `;
 
 const Home: NextPage = () => (
-  <Center data-testid="home-page" style={{ height: "100%", color: "#007ec5" }}>
+  <Center data-testid="home-page" style={{ height: "100%", color: "#0076ff" }}>
     <Header title="Home" url="/" />
     <PageContainer>
       <img
