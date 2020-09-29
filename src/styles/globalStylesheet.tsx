@@ -31,7 +31,15 @@ export const GlobalStylesheet = (): JSX.Element => (
         font-family: "Poppins Light", -apple-system, BlinkMacSystemFont,
           "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans",
           "Droid Sans", "Helvetica Neue", sans-serif;
-        background-color: #ebebeb;
+        background-color: #f0f0f0;
+      }
+
+      .Toastify__toast--info {
+        background: #0076ff;
+      }
+
+      .Toastify__toast--error {
+        background: #ed1700;
       }
 
       ::-moz-focus-inner {

@@ -1,32 +1,28 @@
 import { toast } from "react-toastify";
 import {
-  FaInfo,
-  FaCheck,
-  FaExclamationTriangle,
-  FaBug,
-  FaExclamationCircle,
-} from "react-icons/fa";
-import AlertContainer from "~components/Layout/AlertContainer";
-import AlertMessage from "~components/Layout/AlertMessage";
-import AlertType from "~components/Layout/AlertType";
+  BsCheckBox,
+  BsFillExclamationOctagonFill,
+  BsFillExclamationTriangleFill,
+  BsInfoSquareFill,
+  BsQuestionSquareFill,
+} from "react-icons/bs";
+import AlertContainer from "./AlertContainer";
+import AlertMessage from "./AlertMessage";
+import AlertType from "./AlertType";
 import { ToastProps } from "~types";
-
-const style = {
-  marginTop: 9,
-};
 
 export const displayIcon = (type: string | undefined): JSX.Element => {
   switch (type) {
     case "success":
-      return <FaCheck style={style} />;
+      return <BsCheckBox />;
     case "info":
-      return <FaInfo />;
+      return <BsInfoSquareFill />;
     case "error":
-      return <FaExclamationCircle />;
+      return <BsFillExclamationOctagonFill />;
     case "warning":
-      return <FaExclamationTriangle style={style} />;
+      return <BsFillExclamationTriangleFill />;
     default:
-      return <FaBug style={style} />;
+      return <BsQuestionSquareFill />;
   }
 };
 

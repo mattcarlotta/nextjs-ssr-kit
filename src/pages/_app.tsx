@@ -26,7 +26,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       <GlobalStylesheet />
       <ToastContainer
         position="top-right"
-        autoClose={7500}
+        autoClose={70500}
         hideProgressBar={false}
         newestOnTop={false}
         draggable

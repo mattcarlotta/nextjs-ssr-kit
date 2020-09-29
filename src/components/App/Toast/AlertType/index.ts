@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
 
 const AlertType = styled.div`
-  font-size: 15px;
-  padding-top: 8px;
+  font-size: 19px;
   flex-shrink: 0;
-  text-align: center;
-  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-self: self-start;
+  width: 35px;
 `;
 
 export default AlertType;

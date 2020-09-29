@@ -45,7 +45,7 @@ const Input = styled(InputComponent)`
     text-indent: 10px;
     height: 40px;
     width: 100%;
-    background: #fff;
+    background: #ebebeb;
     color: #3a3a3a;
     border: 1px solid ${({ errors }) => (errors ? "#d03916" : "#d3d3d3")};
     border-radius: 4px;
@@ -53,7 +53,7 @@ const Input = styled(InputComponent)`
     transition-property: color, border;
 
     ::placeholder {
-      color: #bbb;
+      color: #919191;
     }
 
     :focus {

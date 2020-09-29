@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { BsFillPersonPlusFill } from "react-icons/bs";
 import { resetMessage } from "~actions/Server";
 import * as actions from "~actions/Users";
 import UserForm from "~components/Forms/UserForm";
@@ -107,7 +108,19 @@ const ShowUsers: NextPage = () => {
         {state.openModal && (
           <Modal
             onClick={handleCloseModal}
-            title="Create New User"
+            title={
+              <>
+                <BsFillPersonPlusFill
+                  style={{
+                    fontSize: 18,
+                    marginRight: 8,
+                    position: "relative",
+                    top: 2,
+                  }}
+                />
+                New User Form
+              </>
+            }
             maxWidth="750px"
           >
             <UserForm

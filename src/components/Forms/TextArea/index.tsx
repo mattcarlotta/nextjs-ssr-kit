@@ -48,7 +48,7 @@ const TextArea = styled(TextAreaComponent)`
     height: 173px;
     overflow-y: auto;
     width: 100%;
-    background: #fff;
+    background: #ebebeb;
     color: #3a3a3a;
     border: 1px solid ${({ errors }) => (errors ? "#d03916" : "#d3d3d3")};
     border-radius: 4px;
@@ -56,11 +56,11 @@ const TextArea = styled(TextAreaComponent)`
     transition-property: color, border;
     resize: none;
 
-    &::placeholder {
-      color: #bbb;
+    ::placeholder {
+      color: #919191;
     }
 
-    &:focus {
+    :focus {
       outline: 0;
       border: 1px solid #028ddf;
       box-shadow: 0 4px 14px 0 rgba(130, 130, 130, 0.19);

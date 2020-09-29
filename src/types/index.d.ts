@@ -53,6 +53,7 @@ export type BaseFieldProps = {
   label: string;
   value?: string;
   required: boolean;
+  placeholder?: string;
   errors?: string;
   onChange?: (event: ChangeEvent<any>) => void;
   style?: CSSProperties;
@@ -156,7 +157,7 @@ export type ModalProps = {
   children: ReactNode;
   maxWidth?: string;
   onClick: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  title?: string;
+  title?: string | ReactNode;
 };
 
 export type ShowUsersState = {

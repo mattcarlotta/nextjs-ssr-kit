@@ -1,6 +1,6 @@
 /* istanbul ignore file */
 import styled from "@emotion/styled";
-import { FaFileAlt, FaUserPlus } from "react-icons/fa";
+import { BsServer, BsPersonPlusFill } from "react-icons/bs";
 import Button from "~components/Layout/Button";
 import HomeIcon from "~components/Layout/HomeIcon";
 import Flex from "~components/Layout/Flex";
@@ -13,7 +13,7 @@ const iconStyle = {
   position: "relative",
   top: 2,
   fontSize: 18,
-  marginRight: 5,
+  marginRight: 8,
 } as CSSProperties;
 
 const UserListNavigation = ({
@@ -24,19 +24,19 @@ const UserListNavigation = ({
   <div data-testid="user-list-navigation" className={className}>
     <Link href="/">
       <HomeIcon />
-      <span>Go Back</span>
+      Go Back
     </Link>
     <Flex width="780px" style={{ margin: "20px auto 10px" }}>
       <FlexStart>
         <Button dataTestId="seed-database" type="button" onClick={seedDB}>
-          <FaFileAlt style={iconStyle} />
-          <span>Seed Database</span>
+          <BsServer style={iconStyle} />
+          Seed Database
         </Button>
       </FlexStart>
       <FlexEnd>
         <Button dataTestId="open-modal" type="button" onClick={openModal}>
-          <FaUserPlus style={iconStyle} />
-          <span>Create New User</span>
+          <BsPersonPlusFill style={iconStyle} />
+          Create User
         </Button>
       </FlexEnd>
     </Flex>

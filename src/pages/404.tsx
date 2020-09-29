@@ -17,7 +17,14 @@ const NotFound: NextPage = () => (
     <Head>
       <title>Not Found - NextJS SSR Kit</title>
     </Head>
-    <Center style={{ color: "#03a9f3" }}>
+    <Center
+      style={{
+        color: "#03a9f3",
+        background: "#fff",
+        boxShadow: "0 4px 14px 0 rgba(130, 130, 130, 0.19)",
+        padding: 40,
+      }}
+    >
       <ErrorStatus>404</ErrorStatus>
       <ErrorMessage>Uh Oh! Page not found!</ErrorMessage>
       <Link href="/">

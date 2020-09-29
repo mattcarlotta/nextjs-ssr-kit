@@ -14,7 +14,7 @@ import { FormEvent, UserFormProps, UserFormState } from "~types";
 const Form = styled.form`
   margin: 0 auto;
   text-align: left;
-  padding: 10px;
+  padding: 5px;
 `;
 
 const UserForm = (props: UserFormProps): JSX.Element => {
@@ -86,15 +86,9 @@ const UserForm = (props: UserFormProps): JSX.Element => {
       <Flex direction="row" flexwrap justify="space-between">
         <FieldGenerator fields={fields} onChange={handleChange} />
       </Flex>
-      <Flex style={{ padding: "0 20px" }}>
+      <Flex style={{ padding: "0 15px", marginBottom: 10 }}>
         <FlexStart>
-          <Button
-            dataTestId="cancel"
-            danger
-            type="button"
-            onClick={cancelForm}
-            style={{ marginRight: 10 }}
-          >
+          <Button dataTestId="cancel" danger type="button" onClick={cancelForm}>
             Cancel
           </Button>
         </FlexStart>

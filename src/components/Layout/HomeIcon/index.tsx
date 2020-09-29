@@ -1,4 +1,4 @@
-import { FaHome } from "react-icons/fa";
+import { BsFillHouseFill } from "react-icons/bs";
 import { FC } from "~types";
 
 const HomeIcon: FC = () => (
@@ -6,7 +6,7 @@ const HomeIcon: FC = () => (
     data-testid="home-icon"
     style={{ marginRight: "4px", fontSize: "20px" }}
   >
-    <FaHome style={{ position: "relative", top: 3 }} />
+    <BsFillHouseFill style={{ position: "relative", top: 3, marginRight: 4 }} />
   </span>
 );
 
