@@ -1,9 +1,11 @@
 import styled from "@emotion/styled";
 import { BsPencilSquare, BsThreeDots, BsTrash } from "react-icons/bs";
+import Avatar from "~components/Layout/Avatar";
 import Flex from "~components/Layout/Flex";
 import FlexEnd from "~components/Layout/FlexEnd";
 import FlexStart from "~components/Layout/FlexStart";
 import FadeIn from "~components/Layout/FadeIn";
+import toInitials from "~utils/toInitials";
 import UserAddress from "./UserAddress";
 import UserBackground from "./UserBackground";
 import UserDetails from "./UserDetails";
@@ -38,6 +40,7 @@ const Card = ({
     <div className={className}>
       <Flex>
         <FlexStart>
+          <Avatar>{toInitials(`${firstName} ${lastName}`)}</Avatar>
           <UserName>{userName}</UserName>
         </FlexStart>
         <FlexEnd>
@@ -69,10 +72,7 @@ const Card = ({
           </Dropdown>
         </FlexEnd>
       </Flex>
-      <UserDetails>
-        {firstName} {lastName}
-        <span>({email})</span>
-      </UserDetails>
+      <UserDetails>{email}</UserDetails>
       <UserAddress>
         <li>{street}</li>
         <Divider />
