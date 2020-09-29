@@ -11,7 +11,7 @@ const BackgroundOverlay = styled.div`
   z-index: 3;
   position: fixed;
   touch-action: none;
-  background-color: rgba(0, 0, 0, 0.65);
+  background-color: rgba(0, 0, 0, 0.25);
 `;
 
 export default BackgroundOverlay;

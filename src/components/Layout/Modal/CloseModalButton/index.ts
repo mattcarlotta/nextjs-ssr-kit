@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 const CloseModalButton = styled.button`
   cursor: pointer;
-  color: #d2d2d2;
+  color: #ededed;
   border: 0;
   height: 25px;
   width: 25px;
@@ -13,11 +13,11 @@ const CloseModalButton = styled.button`
   font-size: 20px;
   margin-right: 5px;
 
-  &:hover {
+  :hover {
     color: #fff;
   }
 
-  &:focus {
+  :focus {
     outline: none;
   }
 `;

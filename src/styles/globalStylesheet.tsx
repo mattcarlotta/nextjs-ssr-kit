@@ -12,6 +12,7 @@ export const GlobalStylesheet = (): JSX.Element => (
       }
 
       #__next,
+      #app,
       body,
       html {
         min-height: 100vh;
@@ -40,6 +41,10 @@ export const GlobalStylesheet = (): JSX.Element => (
 
       .Toastify__toast--error {
         background: #ed1700;
+      }
+
+      .blurred {
+        filter: blur(4px);
       }
 
       ::-moz-focus-inner {

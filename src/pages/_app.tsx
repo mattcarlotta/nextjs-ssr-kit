@@ -22,7 +22,9 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
       </Head>
-      <Component {...pageProps} />
+      <div id="app">
+        <Component {...pageProps} />
+      </div>
       <GlobalStylesheet />
       <ToastContainer
         position="top-right"

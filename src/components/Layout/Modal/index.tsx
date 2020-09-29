@@ -22,9 +22,12 @@ const Modal = ({
   /* istanbul ignore next */
   useEffect(() => {
     document.body.style.overflow = "hidden";
+    const appEl = document.getElementById("app");
+    if (appEl) appEl.className = "blurred";
 
     return () => {
       document.body.style.overflow = "visible";
+      if (appEl) appEl.className = "";
     };
   }, []);
 
