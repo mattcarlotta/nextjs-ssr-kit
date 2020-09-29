@@ -1,19 +1,20 @@
 import styled from "@emotion/styled";
 import { BsPencilSquare, BsThreeDots, BsTrash } from "react-icons/bs";
 import Avatar from "~components/Layout/Avatar";
+import Dropdown from "~components/Layout/Dropdown";
 import Flex from "~components/Layout/Flex";
 import FlexEnd from "~components/Layout/FlexEnd";
 import FlexStart from "~components/Layout/FlexStart";
 import FadeIn from "~components/Layout/FadeIn";
+import Menu from "~components/Layout/Menu";
+import MenuButton from "~components/Layout/MenuButton";
+import MenuItem from "~components/Layout/MenuItem";
 import toInitials from "~utils/toInitials";
 import UserAddress from "./UserAddress";
 import UserBackground from "./UserBackground";
 import UserDetails from "./UserDetails";
 import UserName from "./UserName";
 import { CardProps } from "~types";
-import Dropdown from "../Dropdown";
-import Menu from "../Menu";
-import MenuItem from "../MenuItem";
 
 const Divider = styled.li`
   display: inline-block;
@@ -23,7 +24,7 @@ const Divider = styled.li`
   border-left: 1px solid #d3d3d3;
 `;
 
-const Card = ({
+const CardComponent = ({
   className,
   _id,
   idx,
@@ -48,22 +49,22 @@ const Card = ({
             menu={
               <Menu>
                 <MenuItem>
-                  <div
+                  <MenuButton
                     role="button"
                     data-testid="edit"
                     onClick={() => handleEditClick(_id)}
                   >
                     <BsPencilSquare />
-                  </div>
+                  </MenuButton>
                 </MenuItem>
                 <MenuItem>
-                  <div
+                  <MenuButton
                     role="button"
                     data-testid="delete"
                     onClick={() => deleteUser(_id)}
                   >
                     <BsTrash />
-                  </div>
+                  </MenuButton>
                 </MenuItem>
               </Menu>
             }
@@ -95,7 +96,7 @@ const Card = ({
   </FadeIn>
 );
 
-export default styled(Card)`
+const Card = styled(CardComponent)`
   @media (max-width: 500px) {
     ${Flex},${FlexStart}, ${FlexEnd} {
       display: block !important;
@@ -104,3 +105,5 @@ export default styled(Card)`
     text-align: center;
   }
 `;
+
+export default Card;

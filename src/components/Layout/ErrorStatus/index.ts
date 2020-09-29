@@ -1,4 +1,3 @@
-/* istanbul ignore file */
 import styled from "@emotion/styled";
 
 const ErrorStatus = styled.div`

@@ -1,16 +1,16 @@
-import Link from "next/link";
+import NextLink from "next/link";
 import styled from "@emotion/styled";
 import { LinkProps } from "~types";
 
 const LinkComponent = ({ children, className, href, ...rest }: LinkProps) => (
-  <Link href={href} prefetch={false} passHref>
+  <NextLink href={href} prefetch={false} passHref>
     <a data-testid="link" {...rest} className={className}>
       {children}
     </a>
-  </Link>
+  </NextLink>
 );
 
-const StyledLink = styled(LinkComponent)`
+const Link = styled(LinkComponent)`
   cursor: pointer;
   color: #fff;
   font-size: 16px;
@@ -36,4 +36,4 @@ const StyledLink = styled(LinkComponent)`
   }
 `;
 
-export default StyledLink;
+export default Link;

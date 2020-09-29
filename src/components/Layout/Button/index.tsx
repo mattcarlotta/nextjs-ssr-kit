@@ -52,7 +52,7 @@ const Button = styled(StyledButton)`
     ${({ danger, primary }) => {
       if (primary) return "rgba(3, 77, 243, 0.39);";
       if (danger) return "rgba(239, 52, 52, 0.39);";
-      return "rgba(130, 130, 130, 0.19);";
+      return "rgba(130, 130, 130, 0.39);";
     }};
 
   :hover {
@@ -63,7 +63,7 @@ const Button = styled(StyledButton)`
       if (danger) return "#d71002";
       return "#000";
     }};
-    box-shadow: 0 3px 10px 0
+    box-shadow: 0 4px 14px 0
       ${({ danger, primary }) => {
         if (primary) return "rgba(3, 77, 243, 0.39);";
         if (danger) return "rgba(239, 52, 52, 0.39);";

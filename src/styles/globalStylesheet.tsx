@@ -1,4 +1,3 @@
-/* istanbul ignore file */
 import { css, Global } from "@emotion/core";
 
 export const GlobalStylesheet = (): JSX.Element => (

@@ -7,12 +7,7 @@ const MenuItem = styled.div`
   user-select: none;
   transition: all 200ms ease-in-out;
 
-  div {
-    cursor: pointer;
-    padding: 12px 15px 8px;
-  }
-
-  &:hover {
+  :hover {
     background-color: #ddd;
   }
 `;

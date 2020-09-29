@@ -13,16 +13,8 @@ const CardWrapper = styled.div`
   border-radius: 4px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 
-  .hidden {
-    opacity: 0;
-  }
-
   :hover {
     box-shadow: 0 10px 20px 0 rgba(130, 130, 130, 0.39);
-
-    .hidden {
-      opacity: 1;
-    }
   }
 `;
 

@@ -1,14 +1,13 @@
-/* istanbul ignore file */
 import styled from "@emotion/styled";
 import FadeIn from "~components/Layout/FadeIn";
 import { LoadingUsersProps } from "~types";
 
-const LoadingUsers = ({ className }: LoadingUsersProps) => (
+const LoadingUsersComponent = ({ className }: LoadingUsersProps) => (
   <FadeIn data-testid="loading-users" timing="0.6s">
     <div className={className} />
   </FadeIn>
 );
-export default styled(LoadingUsers)`
+const LoadingUsers = styled(LoadingUsersComponent)`
   @keyframes wave {
     0% {
       left: -60%;
@@ -73,3 +72,5 @@ export default styled(LoadingUsers)`
     ${({ duration }) => duration === "0s" && "display: none;"};
   }
 `;
+
+export default LoadingUsers;
