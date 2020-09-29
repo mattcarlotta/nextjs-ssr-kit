@@ -1,40 +1,23 @@
 /* istanbul ignore file */
-import styled from "styled-components";
 import { FaTrashAlt } from "react-icons/fa";
+import Button from "~components/Layout/Button";
 import { DeleteButtonProps } from "~types";
 
 const DeleteButton = ({
   className,
   dataTestId,
   onClick,
-  style,
 }: DeleteButtonProps): JSX.Element => (
-  <button
+  <Button
+    danger
     data-testid={dataTestId}
     type="button"
-    style={style}
+    padding="0.25rem 0.5rem"
     className={className}
     onClick={onClick}
   >
     <FaTrashAlt />
-  </button>
+  </Button>
 );
 
-export default styled(DeleteButton)`
-  cursor: pointer;
-  color: #f5222d;
-  font-size: 20px;
-  background-color: transparent;
-  outline: 0;
-  border: 0;
-  transition: 0.1s ease-in-out;
-  transition-property: color;
-  opacity: 0.4;
-
-  &:hover,
-  &:focus {
-    color: #f5222d;
-    outline: none;
-    opacity: 0.8;
-  }
-`;
+export default DeleteButton;

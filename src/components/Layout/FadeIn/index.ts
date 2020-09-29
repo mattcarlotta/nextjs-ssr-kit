@@ -1,7 +1,19 @@
 /* istanbul ignore file */
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
-export default styled.div<{ timing?: string }>`
+const FadeIn = styled.div<{ timing?: string }>`
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
   animation: ${({ timing }) =>
-    `fadeIn ${timing || "1s"} 0s ease-in-out forwards`};
+    `fade-in ${timing || "1s"} 0s ease-in-out forwards`};
 `;
+
+export default FadeIn;

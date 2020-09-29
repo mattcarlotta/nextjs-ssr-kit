@@ -1,7 +1,7 @@
 /* istanbul ignore file */
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
-export default styled.div`
+const BackgroundOverlay = styled.div`
   opacity: 1;
   transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   top: 0;
@@ -11,5 +11,7 @@ export default styled.div`
   z-index: 3;
   position: fixed;
   touch-action: none;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.65);
 `;
+
+export default BackgroundOverlay;

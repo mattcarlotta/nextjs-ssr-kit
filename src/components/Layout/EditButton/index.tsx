@@ -1,39 +1,23 @@
-import styled from "styled-components";
 import { FaPencilAlt } from "react-icons/fa";
+import Button from "~components/Layout/Button";
 import { EditButtonProps } from "~types";
 
 const EditButton = ({
   className,
   dataTestId,
   onClick,
-  style,
 }: EditButtonProps): JSX.Element => (
-  <button
+  <Button
     data-testid={dataTestId}
+    primary
     type="button"
-    style={style}
+    padding="0.25rem 0.5rem"
+    style={{ marginRight: "10px" }}
     className={className}
     onClick={onClick}
   >
     <FaPencilAlt />
-  </button>
+  </Button>
 );
 
-export default styled(EditButton)`
-  cursor: pointer;
-  font-size: 20px;
-  background-color: transparent;
-  outline: 0;
-  border: 0;
-  color: #4691f6;
-  transition: 0.1s ease-in-out;
-  transition-property: color;
-  opacity: 0.4;
-
-  :hover,
-  :focus {
-    color: #4691f6;
-    outline: none;
-    opacity: 0.8;
-  }
-`;
+export default EditButton;

@@ -1,18 +1,29 @@
+import styled from "@emotion/styled";
 import { FaCoffee } from "react-icons/fa";
+import Center from "~components/Layout/Center";
 import Link from "~components/Navigation/Link";
 import SubTitle from "~components/Layout/SubTitle";
 import Header from "~components/Navigation/Header";
 import { NextPage } from "~types";
 
+const PageContainer = styled.div`
+  max-width: 850px;
+  width: 100%;
+  padding-top: 25vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+`;
+
 const Home: NextPage = () => (
-  <div
+  <Center
     data-testid="home-page"
-    css="text-align: center;height: 100%;color: #007ec5;background-color: #ebebeb;"
+    style={{ height: "100%", color: "#007ec5", background: "#ebebeb" }}
   >
     <Header title="Home" url="/" />
-    <div css="max-width: 850px;width: 100%;padding-top: 25vh;margin-left: auto;	margin-right: auto;margin-bottom: 20px;">
+    <PageContainer>
       <img
-        css="margin-bottom: 10px;width: 100%;"
+        style={{ marginBottom: "10px", width: "100%" }}
         src="/images/nextjsKit.png"
         alt="ssrLogoLight.png"
       />
@@ -28,8 +39,8 @@ const Home: NextPage = () => (
         />
         See Example
       </Link>
-    </div>
-  </div>
+    </PageContainer>
+  </Center>
 );
 
 export default Home;

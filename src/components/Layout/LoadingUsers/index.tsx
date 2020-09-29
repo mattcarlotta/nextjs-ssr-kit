@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import FadeIn from "~components/Layout/FadeIn";
 import { LoadingUsersProps } from "~types";
 
@@ -9,6 +9,30 @@ const LoadingUsers = ({ className }: LoadingUsersProps) => (
   </FadeIn>
 );
 export default styled(LoadingUsers)`
+  @keyframes wave {
+    0% {
+      left: -60%;
+    }
+
+    100% {
+      left: 125%;
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      background-color: #eee;
+    }
+
+    50% {
+      background-color: #e4e4e4;
+    }
+
+    100% {
+      background-color: #eee;
+    }
+  }
+
   display: inline-block;
   height: ${({ height }) => (height ? `${height}px` : "50px")};
   width: ${({ width }) => (width ? `${width}px` : "50px")};

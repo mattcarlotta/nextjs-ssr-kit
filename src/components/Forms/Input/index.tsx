@@ -1,5 +1,6 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import FieldError from "~components/Forms/FieldError";
+import Label from "~components/Forms/Label";
 import { InputProps } from "~types";
 
 const InputComponent = ({
@@ -14,9 +15,7 @@ const InputComponent = ({
   style,
 }: InputProps) => (
   <div data-testid="input-container" style={style} className={className}>
-    <label css="margin: 0;display: block;" htmlFor={name}>
-      {label}
-    </label>
+    <Label htmlFor={name}>{label}</Label>
     <input
       aria-label={name}
       data-testid={name}
@@ -42,10 +41,6 @@ const Input = styled(InputComponent)`
   display: flex;
   flex-direction: column;
 
-  label {
-    width: 100%;
-  }
-
   input {
     text-indent: 10px;
     height: 40px;
@@ -57,13 +52,14 @@ const Input = styled(InputComponent)`
     transition: 0.2s ease-in-out;
     transition-property: color, border;
 
-    &::placeholder {
+    ::placeholder {
       color: #bbb;
     }
 
-    &:focus {
+    :focus {
       outline: 0;
-      border: 1px solid #1890ff;
+      border: 1px solid #028ddf;
+      box-shadow: 0 4px 14px 0 rgba(130, 130, 130, 0.19);
     }
   }
 `;

@@ -1,4 +1,7 @@
 import Head from "next/head";
+import Center from "~components/Layout/Center";
+import ErrorMessage from "~components/Layout/ErrorMessage";
+import ErrorStatus from "~components/Layout/ErrorStatus";
 import Flex from "~components/Layout/Flex";
 import HomeIcon from "~components/Layout/HomeIcon";
 import Link from "~components/Navigation/Link";
@@ -14,16 +17,14 @@ const NotFound: NextPage = () => (
     <Head>
       <title>Not Found - NextJS SSR Kit</title>
     </Head>
-    <div css="color: #03a9f3;text-align: center;">
-      <div css="font-size: 120px;margin-bottom: 0;padding: 0px;">404</div>
-      <div css="font-size: 32px;font-weight: bold;margin-top: -5px;margin-bottom: 20px;letter-spacing: 2px;">
-        Uh Oh! Page not found!
-      </div>
+    <Center style={{ color: "#03a9f3" }}>
+      <ErrorStatus>404</ErrorStatus>
+      <ErrorMessage>Uh Oh! Page not found!</ErrorMessage>
       <Link href="/">
         <HomeIcon />
         <span>Go Back</span>
       </Link>
-    </div>
+    </Center>
   </Flex>
 );
 

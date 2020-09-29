@@ -6,6 +6,9 @@ import {
   FaBug,
   FaExclamationCircle,
 } from "react-icons/fa";
+import AlertContainer from "~components/Layout/AlertContainer";
+import AlertMessage from "~components/Layout/AlertMessage";
+import AlertType from "~components/Layout/AlertType";
 import { ToastProps } from "~types";
 
 const style = {
@@ -29,20 +32,10 @@ export const displayIcon = (type: string | undefined): JSX.Element => {
 
 const ToastMessage = ({ type, message }: ToastProps): null => {
   toast[type](
-    <div data-testid="modal-alert" css="display: flex; color: white;">
-      <div
-        data-testid="modal-alert-type"
-        css="font-size:15px;padding-top: 8px;flex-shrink: 0;text-align: center;width: 30px;"
-      >
-        {displayIcon(type)}
-      </div>
-      <div
-        data-testid="modal-message"
-        css="flex-grow: 1;font-size: 15px;padding: 8px 12px;"
-      >
-        {message}
-      </div>
-    </div>,
+    <AlertContainer data-testid="modal-alert">
+      <AlertType data-testid="modal-alert-type">{displayIcon(type)}</AlertType>
+      <AlertMessage data-testid="modal-message">{message}</AlertMessage>
+    </AlertContainer>,
   );
 
   return null;

@@ -1,6 +1,8 @@
-/* istanbul ignore file */
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
-export default styled.h2`
-  margin: 5px;
+const SubTitle = styled.h2`
+  margin-top: 5px;
+  margin-bottom: 20px;
 `;
+
+export default SubTitle;

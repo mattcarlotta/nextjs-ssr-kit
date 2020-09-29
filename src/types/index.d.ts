@@ -97,6 +97,7 @@ export interface ButtonProps extends ComponentProps {
   dataTestId?: string;
   disabled?: boolean;
   danger?: boolean;
+  padding?: string;
   primary?: boolean;
   onClick?: (event: any) => void;
   type: "button" | "submit" | "reset" | undefined;

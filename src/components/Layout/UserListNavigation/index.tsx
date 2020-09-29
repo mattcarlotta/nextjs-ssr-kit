@@ -1,6 +1,5 @@
 /* istanbul ignore file */
-import styled from "styled-components";
-import PropTypes from "prop-types";
+import styled from "@emotion/styled";
 import { FaFileAlt, FaUserPlus } from "react-icons/fa";
 import Button from "~components/Layout/Button";
 import HomeIcon from "~components/Layout/HomeIcon";
@@ -27,7 +26,7 @@ const UserListNavigation = ({
       <HomeIcon />
       <span>Go Back</span>
     </Link>
-    <Flex width="780px" style={{ margin: "10px auto" }}>
+    <Flex width="780px" style={{ margin: "20px auto 10px" }}>
       <FlexStart>
         <Button dataTestId="seed-database" type="button" onClick={seedDB}>
           <FaFileAlt style={iconStyle} />
@@ -35,12 +34,7 @@ const UserListNavigation = ({
         </Button>
       </FlexStart>
       <FlexEnd>
-        <Button
-          dataTestId="open-modal"
-          primary
-          type="button"
-          onClick={openModal}
-        >
+        <Button dataTestId="open-modal" type="button" onClick={openModal}>
           <FaUserPlus style={iconStyle} />
           <span>Create New User</span>
         </Button>
@@ -48,12 +42,6 @@ const UserListNavigation = ({
     </Flex>
   </div>
 );
-
-UserListNavigation.propTypes = {
-  className: PropTypes.string.isRequired,
-  openModal: PropTypes.func.isRequired,
-  seedDB: PropTypes.func.isRequired,
-};
 
 export default styled(UserListNavigation)`
   @media (max-width: 800px) {
