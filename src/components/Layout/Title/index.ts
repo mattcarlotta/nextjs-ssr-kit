@@ -1,6 +1,8 @@
 /* istanbul ignore file */
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
-export default styled.h1`
+const Title = styled.h1`
   margin: 5px;
 `;
+
+export default Title;

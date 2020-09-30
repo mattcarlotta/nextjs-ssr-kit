@@ -1,4 +1,4 @@
-![bnej5es.png](https://i.imgur.com/bnej5es.png)
+![logo.png](https://i.imgur.com/xd1mL6K.png)
 
 <img src="https://img.shields.io/github/package-json/v/mattcarlotta/nextjs-ssr-kit?style=for-the-badge"></img> [![Codecov](https://img.shields.io/codecov/c/github/mattcarlotta/nextjs-ssr-kit?style=for-the-badge)](https://codecov.io/gh/mattcarlotta/nextjs-ssr-kit) [![Open Issues](https://img.shields.io/github/issues-raw/mattcarlotta/nextjs-ssr-kit?style=for-the-badge)](https://github.com/mattcarlotta/nextjs-ssr-kit/issues) [![Dependencies](https://img.shields.io/david/mattcarlotta/nextjs-ssr-kit.svg?style=for-the-badge)](https://david-dm.org/mattcarlotta/nextjs-ssr-kit) [![License](https://img.shields.io/github/license/mattcarlotta/nextjs-ssr-kit?style=for-the-badge)](https://github.com/mattcarlotta/nextjs-ssr-kit/blob/master/LICENSE)
 
@@ -36,7 +36,7 @@
 
 ✔️ Redux + Redux + Redux Saga implementation.
 
-✔️ Styled-components implementation.
+✔️ Emotion implementation.
 
 ✔️ Eslint JS/JSX files.
 
@@ -156,7 +156,7 @@ In order to interact with the API, you'll need to:
 - src/components: react components.
 - src/constants: redux constants.
 - src/pages/_app.tsx: NextJS app configuration (redux + redux saga + global stylesheet).
-- src/pages/_document.tsx: NextJS document configuration for styled-components.
+- src/pages/_document.tsx: NextJS document configuration for emotion components.
 - src/pages/_error.tsx: NextJS fallback 404 page.
 - src/reducers: redux reducers.
 - src/sagas: redux sagas.
@@ -226,8 +226,9 @@ Click [here](package.json) to see latest versions.
 - <a href="https://github.com/babel/babel">Babel</a>
 - <a href="https://github.com/cypress-io/cypress">Cypress</a>
 - <a href="https://github.com/motdotla/dotenv">DotENV</a>
-- <a href="https://github.com/eslint/eslint/">Eslint</a>
+- <a href="https://github.com/emotion-js/emotion">Emotion</a>
 - <a href="http://airbnb.io/enzyme/">Enzyme</a>
+- <a href="https://github.com/eslint/eslint/">Eslint</a>
 - <a href="https://github.com/typicode/husky">Husky</a>
 - <a href="https://github.com/facebook/jest">Jest</a>
 - <a href="https://github.com/zeit/next.js">NextJS</a>
@@ -242,7 +243,6 @@ Click [here](package.json) to see latest versions.
 - <a href="https://stylelint.io/">Stylelint</a>
 - <a href="https://github.com/kristerkari/stylelint-scss">Stylelint-SCSS</a>
 - <a href="https://github.com/stylelint/stylelint-config-recommended">Stylelint-Config-Recommended</a>
-- <a href="https://github.com/styled-components/styled-components">Styled Components</a>
 </code></pre>
 </details>
 <br />
@@ -286,8 +286,6 @@ If you run into any issues, please fill out an issue report <a href="https://git
 ### Unresolved
 
 ⚠️ Importing a component or page that imports a `.css`, `.scss` or `.sass` file breaks `next/link` components. See <a href="https://github.com/zeit/next-plugins/issues/282">issue tracker</a>.
-
-⚠️ Ideally testing against styled-components would be handled by [jest-styled-components](https://github.com/styled-components/jest-styled-components), however there's a bug where the package attempts to collect styles from `-sc` classNames. Since v5.0, `-sc` classNames don't contain styles and therefore `toHaveStyleRule` won't work unless styled-components is downgraded to v4. As a result, the package has been temporary inlined until the issue has been fixed. See <a href="https://github.com/styled-components/jest-styled-components/issues/338">issue tracker</a>.
 
 ### Unresolvable
 

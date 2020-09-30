@@ -9,11 +9,9 @@ module.exports = api => {
     presets: ["next/babel"],
     plugins: [
       [
-        "styled-components",
+        "emotion",
         {
-          ssr: true,
-          displayName: true,
-          preprocess: false,
+          labelFormat: "[filename]",
         },
       ],
       inProd &&

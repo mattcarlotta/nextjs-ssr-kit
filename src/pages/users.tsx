@@ -1,8 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { BsFillPersonPlusFill } from "react-icons/bs";
 import { resetMessage } from "~actions/Server";
 import * as actions from "~actions/Users";
 import UserForm from "~components/Forms/UserForm";
+import Center from "~components/Layout/Center";
 import DisplayUserList from "~components/Layout/DisplayUserList";
 import Modal from "~components/Layout/Modal";
 import FadeIn from "~components/Layout/FadeIn";
@@ -99,14 +101,26 @@ const ShowUsers: NextPage = () => {
   }, [dispatch, reduxProps.isLoading]);
 
   return (
-    <div data-testid="users-page" css="padding: 10px 0 40px;">
+    <div data-testid="users-page" style={{ padding: "20px 0 40px" }}>
       <Header title="Users" url="/users" />
-      <div css="text-align: center;">
+      <Center>
         <UserListNavigation openModal={handleOpenModal} seedDB={seedDBAction} />
         {state.openModal && (
           <Modal
             onClick={handleCloseModal}
-            title="Create New User Form"
+            title={
+              <>
+                <BsFillPersonPlusFill
+                  style={{
+                    fontSize: 18,
+                    marginRight: 8,
+                    position: "relative",
+                    top: 2,
+                  }}
+                />
+                New User Form
+              </>
+            }
             maxWidth="750px"
           >
             <UserForm
@@ -134,7 +148,7 @@ const ShowUsers: NextPage = () => {
             />
           </FadeIn>
         )}
-      </div>
+      </Center>
     </div>
   );
 };

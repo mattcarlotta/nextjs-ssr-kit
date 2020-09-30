@@ -9,6 +9,7 @@ import CloseModalButton from "./CloseModalButton";
 import ModalContent from "./ModalContent";
 import ModalContainer from "./ModalContainer";
 import ModalRoot from "./ModalRoot";
+import ModalTitle from "./ModalTitle";
 import WindowContainer from "./WindowContainer";
 import { ModalProps } from "~types";
 
@@ -21,9 +22,12 @@ const Modal = ({
   /* istanbul ignore next */
   useEffect(() => {
     document.body.style.overflow = "hidden";
+    const appEl = document.getElementById("app");
+    if (appEl) appEl.className = "blurred";
 
     return () => {
       document.body.style.overflow = "visible";
+      if (appEl) appEl.className = "";
     };
   }, []);
 
@@ -36,15 +40,10 @@ const Modal = ({
             <ModalContent data-testid="modal-content">
               <Flex
                 data-testid="modal-header"
-                style={{ padding: 15, width: "auto" }}
+                style={{ padding: 15, width: "auto", background: "#0076ff" }}
               >
                 <FlexStart>
-                  <div
-                    data-testid="modal-title"
-                    css="padding: 2px;font-weight: bold;color: #7d7d7d;font-size: 16px;"
-                  >
-                    {title}
-                  </div>
+                  <ModalTitle data-testid="modal-title">{title}</ModalTitle>
                 </FlexStart>
                 <FlexEnd>
                   <CloseModalButton
@@ -56,7 +55,7 @@ const Modal = ({
                   </CloseModalButton>
                 </FlexEnd>
               </Flex>
-              <div data-testid="modal-body" css="padding: 10px 20px 20px;">
+              <div data-testid="modal-body" style={{ padding: "20px" }}>
                 {children}
               </div>
             </ModalContent>

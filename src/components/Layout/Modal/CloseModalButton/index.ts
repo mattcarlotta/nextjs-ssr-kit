@@ -1,9 +1,9 @@
 /* istanbul ignore file */
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
-export default styled.button`
+const CloseModalButton = styled.button`
   cursor: pointer;
-  color: #d2d2d2;
+  color: #ededed;
   border: 0;
   height: 25px;
   width: 25px;
@@ -13,11 +13,13 @@ export default styled.button`
   font-size: 20px;
   margin-right: 5px;
 
-  &:hover {
-    color: #f5222d;
+  :hover {
+    color: #fff;
   }
 
-  &:focus {
+  :focus {
     outline: none;
   }
 `;
+
+export default CloseModalButton;

@@ -18,7 +18,7 @@ describe("Input", () => {
   let inputNode: ReactWrapper;
   beforeEach(() => {
     wrapper = mount(<Input {...initialProps} />);
-    inputNode = wrapper.find("[data-testid='input']");
+    inputNode = wrapper.find("[data-testid='input']").first();
   });
 
   afterEach(() => {

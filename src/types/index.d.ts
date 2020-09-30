@@ -53,6 +53,7 @@ export type BaseFieldProps = {
   label: string;
   value?: string;
   required: boolean;
+  placeholder?: string;
   errors?: string;
   onChange?: (event: ChangeEvent<any>) => void;
   style?: CSSProperties;
@@ -97,6 +98,7 @@ export interface ButtonProps extends ComponentProps {
   dataTestId?: string;
   disabled?: boolean;
   danger?: boolean;
+  padding?: string;
   primary?: boolean;
   onClick?: (event: any) => void;
   type: "button" | "submit" | "reset" | undefined;
@@ -118,6 +120,25 @@ export interface DisplayUserListProps {
     id: string,
   }) => ReturnType<typeof actions.updateUser>;
 }
+
+export type DropdownProps = {
+  children: ReactNode;
+  menu: ReactNode;
+};
+
+export type DropdownClickHandlerProps = {
+  children: ({
+    isVisible,
+    handleMenuClick,
+  }: {
+    isVisible: boolean;
+    handleMenuClick: () => void;
+  }) => JSX.Element;
+};
+
+export type DropdownClickHandlerState = {
+  isVisible: boolean;
+};
 
 export interface EditButtonProps extends ActionButtonProps {
   onClick: (event: any) => void;
@@ -155,7 +176,7 @@ export type ModalProps = {
   children: ReactNode;
   maxWidth?: string;
   onClick: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  title?: string;
+  title?: string | ReactNode;
 };
 
 export type ShowUsersState = {

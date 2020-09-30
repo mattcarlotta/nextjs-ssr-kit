@@ -1,6 +1,7 @@
 require("../../env");
 const { connectDatabase } = require("../index");
 const { logErrorMessage, logInfoMessage } = require("../../logger");
+
 const { DATABASE, DROP, EXIT } = process.env;
 
 /**

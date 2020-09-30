@@ -1,28 +1,34 @@
-import Link from "next/link";
-import styled from "styled-components";
+import NextLink from "next/link";
+import styled from "@emotion/styled";
 import { LinkProps } from "~types";
 
 const LinkComponent = ({ children, className, href, ...rest }: LinkProps) => (
-  <Link href={href} prefetch={false} passHref>
+  <NextLink href={href} prefetch={false} passHref>
     <a data-testid="link" {...rest} className={className}>
       {children}
     </a>
-  </Link>
+  </NextLink>
 );
 
-const StyledLink = styled(LinkComponent)`
+const Link = styled(LinkComponent)`
   cursor: pointer;
-  display: block;
-  color: #007ec5;
+  color: #fff;
   font-size: 16px;
   text-align: center;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
   text-transform: uppercase;
+  background-color: #0076ff;
+  border: 1px solid #0076ff;
+  box-shadow: 0 4px 14px 0 rgba(0, 118, 255, 0.39);
+  padding: 0.5rem 2rem;
+  border-radius: 4px;
+  margin: 0;
+  font-weight: 500;
 
   :hover {
-    color: #0f7ae5;
-    text-decoration: underline;
+    background: #fff;
+    color: #0076ff;
   }
 
   :focus {
@@ -30,4 +36,4 @@ const StyledLink = styled(LinkComponent)`
   }
 `;
 
-export default StyledLink;
+export default Link;

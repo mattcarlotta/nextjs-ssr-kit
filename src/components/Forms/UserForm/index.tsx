@@ -1,13 +1,21 @@
 import { useCallback, useEffect, useState } from "react";
+import styled from "@emotion/styled";
 import Button from "~components/Layout/Button";
 import FieldGenerator from "~components/Forms/FieldGenerator";
 import Flex from "~components/Layout/Flex";
 import FlexEnd from "~components/Layout/FlexEnd";
+import FlexStart from "~components/Layout/FlexStart";
 import fieldValidator from "~utils/fieldValidator";
 import fieldUpdater from "~utils/fieldUpdater";
 import parseFields from "~utils/parseFields";
 import generateFields from "./Fields";
 import { FormEvent, UserFormProps, UserFormState } from "~types";
+
+const Form = styled.form`
+  margin: 0 auto;
+  text-align: left;
+  padding: 10px;
+`;
 
 const UserForm = (props: UserFormProps): JSX.Element => {
   const [state, setState] = useState<UserFormState>({
@@ -74,34 +82,28 @@ const UserForm = (props: UserFormProps): JSX.Element => {
   }, [errors, fields, isSubmitting, id, parseFields, resetMessage]);
 
   return (
-    <form
-      data-testid="user-form"
-      css="margin: 0 auto;text-align: left; padding: 5px;"
-      onSubmit={handleSubmit}
-    >
+    <Form data-testid="user-form" onSubmit={handleSubmit}>
       <Flex direction="row" flexwrap justify="space-between">
         <FieldGenerator fields={fields} onChange={handleChange} />
       </Flex>
-      <FlexEnd>
-        <Button
-          dataTestId="cancel"
-          danger
-          type="button"
-          onClick={cancelForm}
-          style={{ marginRight: 10 }}
-        >
-          Cancel
-        </Button>
-        <Button
-          dataTestId="submit"
-          primary
-          disabled={isSubmitting}
-          type="submit"
-        >
-          Submit
-        </Button>
-      </FlexEnd>
-    </form>
+      <Flex style={{ padding: "0 15px", marginBottom: 10 }}>
+        <FlexStart>
+          <Button dataTestId="cancel" danger type="button" onClick={cancelForm}>
+            Cancel
+          </Button>
+        </FlexStart>
+        <FlexEnd>
+          <Button
+            dataTestId="submit"
+            primary
+            disabled={isSubmitting}
+            type="submit"
+          >
+            Submit
+          </Button>
+        </FlexEnd>
+      </Flex>
+    </Form>
   );
 };
 
