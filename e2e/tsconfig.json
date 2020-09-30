@@ -2,8 +2,9 @@
   "compilerOptions": {
     "baseUrl": "./e2e",
     "rootDir": "./e2e",
-    "target": "es5",
-    "lib": ["es5", "dom"],
+    "target": "es6",
+    "lib": ["es6", "dom"],
+    "moduleResolution": "node",
     "strict": true,
     "types": ["cypress"],
     "noEmit": true
