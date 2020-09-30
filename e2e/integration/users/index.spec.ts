@@ -1,3 +1,10 @@
+const selectCardOption = (option: string, item: number = 1): void => {
+  cy.get("[data-testid=dropdown-container]").eq(item).click();
+  cy.get("[data-testid=dropdown-menu]").within(() => {
+    cy.get(`[data-testid='${option}']`).click();
+  });
+};
+
 context("Users Page", () => {
   before(() => {
     cy.exec("npm run seed:prod");
@@ -20,23 +27,23 @@ context("Users Page", () => {
   it("deletes a user card", () => {
     cy.get("[data-testid=modal-alert]").click();
 
-    cy.get("[data-testid=delete]").first().click();
+    selectCardOption("delete");
 
     cy.get("[data-testid=card-container]").should("have.length", 2);
 
     cy.get("[data-testid=modal-message]")
       .should("have.length", 1)
-      .and("have.text", "Successfully deleted exampleuser1.");
+      .and("have.text", "Successfully deleted notjohnsson.");
   });
 
   it("displays an edit form", () => {
-    cy.get("[data-testid=edit]").first().click();
+    selectCardOption("edit");
 
     cy.get("[data-testid=user-form]").should("have.length", 1);
   });
 
   it("renders errors if a required input is empty", () => {
-    cy.get("[data-testid=edit]").first().click();
+    selectCardOption("edit");
 
     cy.get("input[data-testid=userName]").clear();
 
@@ -48,9 +55,9 @@ context("Users Page", () => {
   it("displays an error if an edited username matches a pre-existing username", () => {
     cy.get("[data-testid=modal-alert]").click();
 
-    cy.get("[data-testid=edit]").first().click();
+    selectCardOption("edit");
 
-    cy.get("input[data-testid=userName]").clear().type("exampleuser3");
+    cy.get("input[data-testid=userName]").clear().type("bobbin4apples");
 
     cy.get("[data-testid=submit]").click();
 
@@ -62,7 +69,7 @@ context("Users Page", () => {
   it("cancels updating the user", () => {
     cy.get("[data-testid=modal-alert]").click();
 
-    cy.get("[data-testid=edit]").first().click();
+    selectCardOption("edit");
 
     cy.get("[data-testid=cancel]").click();
 
@@ -72,15 +79,15 @@ context("Users Page", () => {
   it("updates a user", () => {
     cy.get("[data-testid=modal-alert]").click();
 
-    cy.get("[data-testid=edit]").first().click();
+    selectCardOption("edit");
 
-    cy.get("input[data-testid=userName]").clear().type("exampleuser4");
+    cy.get("input[data-testid=userName]").clear().type("snapplecracklepop");
 
     cy.get("[data-testid=submit]").click();
 
     cy.get("[data-testid=modal-message]")
       .should("have.length", 1)
-      .and("have.text", "Successfully updated exampleuser4.");
+      .and("have.text", "Successfully updated snapplecracklepop.");
   });
 
   it("displays a create user form", () => {
@@ -134,7 +141,7 @@ context("Users Page", () => {
       "backgroundInfo",
     ].forEach(name => {
       let value = "123@email.com";
-      if (name === "userName") value = "exampleuser3";
+      if (name === "userName") value = "bobbin4apples";
       cy.get(`[data-testid=${name}]`).type(value);
     });
     cy.get("[data-testid=submit]").click();
@@ -170,8 +177,9 @@ context("Users Page", () => {
   });
 
   it("when there is no user data present it displays a nodata card", () => {
-    cy.get("[data-testid=delete]").click({ multiple: true });
-
+    [2, 1, 0].forEach(item => {
+      selectCardOption("delete", item);
+    });
     cy.get("[data-testid=no-data]").should("have.length", 1);
   });
 

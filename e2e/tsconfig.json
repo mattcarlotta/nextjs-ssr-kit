@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./e2e",
     "rootDir": "./e2e",
     "target": "es5",
     "lib": ["es5", "dom"],

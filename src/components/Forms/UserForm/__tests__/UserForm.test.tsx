@@ -36,7 +36,7 @@ describe("UserForm", () => {
   it("calls the handleChange which updates a field", () => {
     const value = "updated!";
     const name = "userName";
-    const inputNode = () => wrapper.find("[data-testid='userName']");
+    const inputNode = () => wrapper.find("[data-testid='userName']").first();
 
     inputNode().simulate("change", { target: { name, value } });
 
@@ -68,9 +68,12 @@ describe("UserForm", () => {
         "zipCode",
         "backgroundInfo",
       ].forEach(name => {
-        wrapper.find(`[data-testid="${name}"]`).simulate("change", {
-          target: { name, value: "email@123.com" },
-        });
+        wrapper
+          .find(`[data-testid="${name}"]`)
+          .first()
+          .simulate("change", {
+            target: { name, value: "email@123.com" },
+          });
       });
     });
 

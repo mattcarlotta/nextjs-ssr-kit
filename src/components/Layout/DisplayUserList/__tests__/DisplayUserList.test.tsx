@@ -72,13 +72,24 @@ describe("DisplayUserList", () => {
     });
 
     it("calls deleteUser when the delete button is clicked", () => {
-      wrapper.find("[data-testid='delete']").simulate("click");
+      wrapper
+        .find("[data-testid='dropdown-container']")
+        .first()
+        .simulate("click");
+
+      wrapper.find("[data-testid='delete']").first().simulate("click");
 
       expect(deleteUser).toHaveBeenCalledWith("1");
     });
 
     it("calls handleEditClick when the edit button is clicked", () => {
-      wrapper.find("[data-testid='edit']").simulate("click");
+      wrapper
+        .find("[data-testid='dropdown-container']")
+        .first()
+        .simulate("click");
+
+      wrapper.find("[data-testid='edit']").first().simulate("click");
+
       expect(handleEditClick).toHaveBeenCalledWith("1");
     });
 

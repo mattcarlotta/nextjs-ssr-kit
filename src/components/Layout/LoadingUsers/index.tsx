@@ -4,7 +4,7 @@ import { LoadingUsersProps } from "~types";
 
 const LoadingUsersComponent = ({ className }: LoadingUsersProps) => (
   <FadeIn data-testid="loading-users" timing="0.6s">
-    <div className={className} />
+    <div data-testid="loading-user-card" className={className} />
   </FadeIn>
 );
 const LoadingUsers = styled(LoadingUsersComponent)`
@@ -47,7 +47,7 @@ const LoadingUsers = styled(LoadingUsersComponent)`
   animation: pulse ${({ duration }) => duration || "2.5s"} infinite ease-in-out;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 
-  &:before {
+  :before {
     content: "";
     position: absolute;
     height: ${({ height }) => (height ? `${height * 2}px` : "100px")};
@@ -69,7 +69,6 @@ const LoadingUsers = styled(LoadingUsersComponent)`
     );
     animation: wave ${({ duration }) => duration || "2.5s"} infinite ease-in-out;
     transform: rotate(25deg);
-    ${({ duration }) => duration === "0s" && "display: none;"};
   }
 `;
 

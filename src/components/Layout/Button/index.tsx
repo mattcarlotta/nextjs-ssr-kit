@@ -50,9 +50,9 @@ const Button = styled(StyledButton)`
   border-radius: 4px;
   box-shadow: 0 2px 7px 0
     ${({ danger, primary }) => {
-      if (primary) return "rgba(3, 77, 243, 0.39);";
-      if (danger) return "rgba(239, 52, 52, 0.39);";
-      return "rgba(130, 130, 130, 0.39);";
+      if (primary) return "rgba(3, 77, 243, 0.39)";
+      if (danger) return "rgba(239, 52, 52, 0.39)";
+      return "rgba(130, 130, 130, 0.39)";
     }};
 
   :hover {
@@ -65,9 +65,9 @@ const Button = styled(StyledButton)`
     }};
     box-shadow: 0 4px 14px 0
       ${({ danger, primary }) => {
-        if (primary) return "rgba(3, 77, 243, 0.39);";
-        if (danger) return "rgba(239, 52, 52, 0.39);";
-        return "rgba(140, 140, 140, 0.39);";
+        if (primary) return "rgba(3, 77, 243, 0.39)";
+        if (danger) return "rgba(239, 52, 52, 0.39)";
+        return "rgba(140, 140, 140, 0.39)";
       }};
   }
 `;

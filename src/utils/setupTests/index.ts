@@ -4,7 +4,9 @@ import { JSDOM } from "jsdom";
 import { configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import "jest-enzyme";
-import "../toHaveStyleRule";
+import { matchers } from "jest-emotion";
+
+expect.extend(matchers);
 
 configure({ adapter: new Adapter() });
 
