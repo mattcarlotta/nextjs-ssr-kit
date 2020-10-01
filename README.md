@@ -123,10 +123,12 @@ In order to interact with the API, you'll need to:
 | `build`          | Compiles `src` application to a `.next/static` directory for production.        |
 | `build:stage`    | Compiles `src` application to a `.next/static` directory for staging.           |
 | `dev`            | Starts development server (`localhost:3000`).                                   |
+| `drop:dev`       | Drops development database from Mongo.                                          |
 | `drop:prod`      | Drops production database from Mongo.                                           |
 | `drop:stage`     | Drops staging database from Mongo.                                              |
 | `lint`           | Lints all `.ts`/`.tsx` files in `src`.                                          |
 | `lint:styles`    | Lints all `.scss` files in `src`.                                               |
+| `seed:dev`       | Seeds development database for Mongo.                                           |
 | `seed:prod`      | Seeds production database for Mongo.                                            |
 | `seed:stage`     | Seeds staging database for Mongo.                                               |
 | `start`          | Starts a production server at `localhost:8080` (must run `build` first).†       |
