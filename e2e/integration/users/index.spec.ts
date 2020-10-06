@@ -176,13 +176,6 @@ context("Users Page", () => {
       .and("have.text", "Successfully created 123@email.com.");
   });
 
-  it("when there is no user data present it displays a nodata card", () => {
-    [2, 1, 0].forEach(item => {
-      selectCardOption("delete", item);
-    });
-    cy.get("[data-testid=no-data]").should("have.length", 1);
-  });
-
   it("when the 'Go Back' link is pressed, it navigates to home", () => {
     cy.get("[data-testid=link]").click();
 
