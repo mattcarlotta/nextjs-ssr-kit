@@ -1,7 +1,32 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+/* eslint-disable  react/no-danger */
+import Document, {
+  DocumentContext,
+  Html,
+  Head,
+  Main,
+  NextScript,
+} from "next/document";
+import { extractCritical } from "emotion-server";
 import { version } from "../../package.json";
 
 class CustomDocument extends Document {
+  static async getInitialProps(ctx: DocumentContext): Promise<any> {
+    const initialProps = await Document.getInitialProps(ctx);
+    const styles = extractCritical(initialProps.html);
+    return {
+      ...initialProps,
+      styles: (
+        <>
+          {initialProps.styles}
+          <style
+            data-emotion-css={styles.ids.join(" ")}
+            dangerouslySetInnerHTML={{ __html: styles.css }}
+          />
+        </>
+      ),
+    };
+  }
+
   render = (): JSX.Element => (
     <Html lang="en">
       <Head>
@@ -25,3 +50,4 @@ class CustomDocument extends Document {
 }
 
 export default CustomDocument;
+/* eslint-enable  react/no-danger */
