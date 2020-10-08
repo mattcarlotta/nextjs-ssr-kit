@@ -1,12 +1,9 @@
-import { User } from "~models";
-import { NextApiRequest, NextApiResponse } from "~types";
+import { Request, Response } from "express";
+import User from "~models/user";
 
-const updateUser = async (
-  req: NextApiRequest,
-  res: NextApiResponse,
-): Promise<any> => {
+const updateUser = async (req: Request, res: Response): Promise<any> => {
   try {
-    const { id: _id } = req.query;
+    const { id: _id } = req.params;
     const { userName } = req.body;
     if (!_id || !userName) throw String("Missing user update parameters.");
 

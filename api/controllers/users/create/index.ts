@@ -1,11 +1,8 @@
+import { Request, Response } from "express";
 import isEmpty from "lodash.isempty";
-import { User } from "~models";
-import { NextApiRequest, NextApiResponse } from "~types";
+import User from "~models/user";
 
-const createUser = async (
-  req: NextApiRequest,
-  res: NextApiResponse,
-): Promise<any> => {
+const createUser = async (req: Request, res: Response): Promise<any> => {
   try {
     const {
       email,

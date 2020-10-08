@@ -1,6 +1,6 @@
-require("../../env");
-const { connectDatabase } = require("../index");
-const { logErrorMessage, logInfoMessage } = require("../../logger");
+import "~env";
+import { connectToDB, createConnectionToDatabase } from "~database";
+import { logErrorMessage, logInfoMessage } from "~logger";
 
 const { DATABASE, DROP, EXIT } = process.env;
 
@@ -8,17 +8,17 @@ const { DATABASE, DROP, EXIT } = process.env;
  * Function to tear down the testing Mongo database.
  *
  * @function
- * @async
- * @function connectDatabase - connects to testing Mongo database.
+ * @function createConnectionToDatabase - connects to testing Mongo database.
  * @function dropDatabase - drops testing Mongo database.
  * @function close - closes connection to testing Mongo database.
  * @returns {string} - displays a:  PASS  utils/teardownDB.js message to console.
  * @throws {error} - displays a:  FAIL  utils/teardownDB.js message to console with the error.
  */
 
-const teardownDB = () => {
+const teardownDB = (): Promise<any> => {
   return new Promise(async (resolve, reject) => {
-    const db = connectDatabase();
+    await connectToDB();
+    const db = await createConnectionToDatabase();
     try {
       await db.dropDatabase();
       await db.close();
@@ -39,4 +39,4 @@ const teardownDB = () => {
 
 if (DROP) teardownDB();
 
-module.exports = teardownDB;
+export default teardownDB;

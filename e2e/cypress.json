@@ -1,6 +1,6 @@
 {
   "defaultCommandTimeout": 10000,
-  "baseUrl": "http://localhost:8080",
+  "baseUrl": "http://localhost:3000",
   "fixturesFolder": "./fixtures",
   "integrationFolder": "./integration",
   "pluginsFile": "./plugins/index.ts",

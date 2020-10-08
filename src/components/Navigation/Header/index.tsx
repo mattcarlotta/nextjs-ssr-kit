@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { HeaderProps } from "~types";
 
-const { LOCALHOST } = process.env;
+const { CLIENT } = process.env;
 
 const Header = ({
   description,
@@ -11,10 +11,10 @@ const Header = ({
 }: HeaderProps): JSX.Element => (
   <Head>
     <title>{title} - NextJS SSR Kit</title>
-    <link rel="canonical" href={`${LOCALHOST}${url}`} />
+    <link rel="canonical" href={`${CLIENT}${url}`} />
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={`${LOCALHOST}${url}`} />
+    <meta property="og:url" content={`${CLIENT}${url}`} />
     <meta property="og:type" content={type} />
   </Head>
 );

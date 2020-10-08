@@ -1,13 +1,11 @@
 require("./env");
-require("./database");
-require("./models/all");
 const openBrowser = require("react-dev-utils/openBrowser");
 const plugins = require("./config/plugins");
 
-const { NODE_ENV, LOCALHOST } = process.env;
+const { CLIENT, NODE_ENV } = process.env;
 
 /* opens a browser window */
-if (NODE_ENV === "development") openBrowser(LOCALHOST);
+if (NODE_ENV === "development") openBrowser(CLIENT);
 
 module.exports = {
   webpack(config, { isServer }) {

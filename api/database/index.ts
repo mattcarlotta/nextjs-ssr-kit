@@ -1,9 +1,9 @@
-const bluebird = require("bluebird");
-const mongoose = require("mongoose");
-const { logErrorMessage, logInfoMessage } = require("../logger");
+import bluebird from "bluebird";
+import mongoose from "mongoose";
+import { logErrorMessage, logInfoMessage } from "~logger";
 
 const { DATABASE, NODE_ENV } = process.env;
-const inTesting = NODE_ENV === "testing";
+const inTesting = NODE_ENV === "test";
 
 const options = {
   useNewUrlParser: true, // avoids DeprecationWarning: current URL string parser is deprecated
@@ -12,12 +12,13 @@ const options = {
   useUnifiedTopology: true, // avoids DeprecationWarning: current Server Discovery and Monitoring engine is deprecated
 };
 
-module.exports.connectDatabase = () =>
+mongoose.Promise = bluebird;
+
+export const createConnectionToDatabase = (): mongoose.Connection =>
   mongoose.createConnection(`mongodb://localhost/${DATABASE}`, options);
 
-mongoose.connect(`mongodb://localhost/${DATABASE}`, options); // connect to our mongodb database
-
-mongoose.Promise = bluebird; // bluebird for mongoose promises
+export const connectToDB = (): Promise<typeof mongoose> =>
+  mongoose.connect(`mongodb://localhost/${DATABASE}`, options);
 
 if (!inTesting) {
   mongoose.connection.on(

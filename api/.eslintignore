@@ -1,0 +1,11 @@
+.next
+*.json
+build
+config
+node_modules
+middlewares
+e2e
+src
+**/coverage
+babel.config.js
+next.config.js

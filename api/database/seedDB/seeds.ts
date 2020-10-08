@@ -1,4 +1,4 @@
-module.exports = [
+const seeds = [
   {
     email: "thefifthelement@example.com",
     firstName: "Bob",
@@ -45,3 +45,4 @@ module.exports = [
     },
   },
 ];
+export default seeds;

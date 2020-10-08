@@ -55,6 +55,15 @@
 <pre><code>
 ├── .github
 ├── .next
+├── src
+|   ├── controllers
+|   ├── database
+|   ├── middlewares
+|   ├── models
+|   ├── routes
+|   ├── .eslintignore
+|   ├── .eslintrc
+|   └── server.ts
 ├── build
 ├── config
 ├── database
@@ -72,7 +81,6 @@
 |   ├── sagas
 |   ├── store
 |   ├── styles
-|   ├── global.d.ts
 |   └── jest.d.ts
 |
 ├── .browserslistrc
@@ -116,35 +124,23 @@ In order to interact with the API, you'll need to:
 
 ## Commands
 
-| `yarn <command>` | Description                                                                     |
-| ---------------- | ------------------------------------------------------------------------------- |
-| `analyze:prod`   | Compiles `src` app and spawns webpack chunk distribution charts for production. |
-| `analyze:stage`  | Compiles `src` app and spawns webpack chunk distribution charts for staging.    |
-| `build`          | Compiles `src` application to a `.next/static` directory for production.        |
-| `build:stage`    | Compiles `src` application to a `.next/static` directory for staging.           |
-| `dev`            | Starts development server (`localhost:3000`).                                   |
-| `drop:dev`       | Drops development database from Mongo.                                          |
-| `drop:prod`      | Drops production database from Mongo.                                           |
-| `drop:stage`     | Drops staging database from Mongo.                                              |
-| `lint`           | Lints all `.ts`/`.tsx` files in `src`.                                          |
-| `lint:styles`    | Lints all `.scss` files in `src`.                                               |
-| `seed:dev`       | Seeds development database for Mongo.                                           |
-| `seed:prod`      | Seeds production database for Mongo.                                            |
-| `seed:stage`     | Seeds staging database for Mongo.                                               |
-| `start`          | Starts a production server at `localhost:8080` (must run `build` first).†       |
-| `staging`        | Starts a staging server at `localhost:8080` (must run `build` first).           |
-| `test`           | Runs `.test.tsx` files in `src` once.                                           |
-| `test:cov`       | Runs `.test.tsx` files in `src` with code coverage.                             |
-| `test:e2e`       | Runs cypress `.spec.js` files in `e2e` in a browser.                            |
-| `test:e2erun`    | Runs cypress `.spec.js` files in `e2e` headlessly.                              |
-| `test:failed`    | Runs and watches `.test.tsx` files that failed in `src`.                        |
-| `test:prod`      | Compiles `src` app for production and runs `start` command after compilation.   |
-| `test:stage`     | Compiles `src` app for staging and runs `staging` command after compilation.    |
-| `test:watch`     | Runs and watches `.tsx` files in `src` that have changed since last commit.     |
-| `test:watchall`  | Runs and watches all `.test.jsx` files in `src`.                                |
-| `tsc`            | Type checks all `.ts`/`.tsx` files in `src`.                                    |
+| `yarn <command>` | Description                                                                                      |
+| ---------------- | ------------------------------------------------------------------------------------------------ |
+| `build`          | Compiles `src` app to `.next/static` and `api` to `dist` for production. †                       |
+| `build:staging`  | Compiles `src` app to `.next/static` and `api` to `dist` for staging.                            |
+| `dev`            | Starts development servers (`localhost:3000` for app and `localhost:5000` for api).              |
+| `lint`           | Lints all `.ts`/`.tsx` files in `src`.                                                           |
+| `lint:api`       | Lints all `.ts` files in `api`.                                                                  |
+| `start`          | Starts production servers (must run `build` first).                                              |
+| `start:staging`  | Starts staging servers (must run `build:staging` first).                                         |
+| `test`           | Runs `.test.tsx` files in `src` once.                                                            |
+| `test:cov`       | Runs `.test.tsx` files in `src` with code coverage.                                              |
+| `test:e2e`       | Runs cypress `.spec.js` files in `e2e` in a browser (run `build:staging`/`start:staging` first). |
+| `test:e2erun`    | Runs cypress `.spec.js` files in `e2e` headlessly.                                               |
+| `test:watch`     | Runs and watches `.tsx` files in `src` that have changed since last commit.                      |
+| `test:watchall`  | Runs and watches all `.test.jsx` files in `src`.                                                 |
 
-† Note: Before running this command, you must edit the [.env.production](env/.env.production#L1) file and update the `baseURL` from `http://localhost:8080/api/` to include your remote server address.
+† Note: Before running this command, you must edit the [.env.production](env/.env.production#) file and update the `baseURL` from `http://localhost:5000/api/` to include your remote API server host and update `CLIENT` from `http://localhost:3000` to include your remote server application host.
 
 <hr />
 
@@ -171,7 +167,6 @@ In order to interact with the API, you'll need to:
 - src/utils/parseFields/index.ts: custom functions for parsing form fields into a simple object.
 - src/utils/parseResponse/index.ts: custom functions for parsing 'res' responses.
 - src/global.d.ts: typescript types for jest globals.
-- src/jest.d.ts: typescript types for custom toHaveStyleRule.
 - .eslintignore: NextJS eslint config.
 - .eslintrc: NextJS eslint ignore config.
 - .stylelintrc: stylelint config.
@@ -187,9 +182,14 @@ In order to interact with the API, you'll need to:
 <details>
 <summary>Click to expand API configuration</summary>
 <pre><code>
-- database: Mongo connection configuration.
-- models: Mongo models for Mongoose.
-- src/pages/api/*: API route controllers.
+- api/controllers: Express route controllers.
+- api/database: Mongo connection configuration.
+- api/middlewares: Express middlewares.
+- api/models: Mongoose models for Mongo.
+- api/routes: Express routes.
+- .eslintignore: API eslint config.
+- .eslintrc: API eslint ignore config.
+- server.ts: Express server setup.
 </code></pre>
 </details>
 <br />
@@ -201,14 +201,19 @@ In order to interact with the API, you'll need to:
 <pre><code>
 - .github: Continous integration using Github Actions and repo issue templates.
 - .next: NextJS development/production compiled source.
+- build: API compiled source.
 - e2e: cypress test suites.
+- env: Shareable ENV variables.
 - config: webpack supporting configuration files.
 - logger: shareable chalk console notifications.
 - .browserslistrc: browsers list config (for babel transpiling).
 - .prettierc: prettier config.
 - .npmrc: yarn config.
 - babel.config.js: babel config.
-- tsconfig.js: TS compiler options (integration with IDE)
+- nodemon.json: Development options for reloading the API process on save.
+- prod-path.js: Resolving aliased modules for API in production.
+- tsconfig.api.json: TS compiler options for the API (integration with IDE)
+- tsconfig.json: TS compiler options for Next (integration with IDE)
 </code></pre>
 </details>
 <br />
@@ -255,8 +260,12 @@ Click [here](package.json) to see latest versions.
 <summary>Click to expand brief overview of API packages</summary>
 <pre><code>
 - <a href="https://github.com/petkaantonov/bluebird">Bluebird</a>
+- <a href="https://github.com/expressjs/body-parser">Body Parser</a>
+- <a href="https://github.com/expressjs/cors">CORS</a>
 - <a href="https://github.com/motdotla/dotenv">DotENV</a>
+- <a href="https://github.com/expressjs/express">Express</a>
 - <a href="https://mongoosejs.com/">Mongoose</a>
+- <a href="https://github.com/expressjs/morgan">Morgan</a>
 - <a href="https://github.com/prettier/prettier">Prettier</a>
 </code></pre>
 </details>
@@ -274,10 +283,11 @@ By default, most directories within the root and `src` directories are [aliased]
 
 By default, this project attempts to import `.env` files placed within the `env` directory according to the `process.env.NODE_ENV` variable (`development`, `staging` and `production`, ...etc). However, this has been set up to be flexible so that if you don't wish to utilize any `.env` files, then as long the following `process.env` variables are defined, then the `.env` files and/or directory can be discarded:
 
-- `baseURL` (used [here](src/utils/axiosConfig/index.ts#L5))
-- `DATABASE` (used [here](database/index.js#L5))
-- `LOCALHOST` (required for development only, used [here](next.config.js#L7), [here](config/plugins.js#L21), and [here](config/plugins.js#L40))
-- `PORT` (required for development only, used [here](config/plugins.js#L22) and [here](config/plugins.js#L42))
+- `APIPORT` (required and used [here](api/server.ts#L20))
+- `baseURL` (required and used [here](src/utils/axiosConfig/index.ts#L5))
+- `CLIENT` (required and used [here](next.config.js#L7), [here](config/plugins.js#L21), [here](config/plugins.js#L40) and [here](api/middlewares/index.ts#34))
+- `DATABASE` (required and used [here](api/database/index.ts))
+- `PORT` (required and used [here](config/plugins.js#L22) and [here](config/plugins.js#L42))
 
 <hr />
 

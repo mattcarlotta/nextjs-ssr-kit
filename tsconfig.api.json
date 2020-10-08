@@ -1,0 +1,26 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./api",
+    "checkJs": false,
+    "noEmit": false,
+    "module": "commonjs",
+    "outDir": "build",
+    "target": "es5",
+    "paths": {
+      "~env": ["../env/index"],
+      "~logger": ["../logger/index"],
+      "~atypes": ["atypes/index"],
+      "~controllers/*": ["controllers/*"],
+      "~database/*": ["database/*"],
+      "~database": ["database/index"],
+      "~models": ["models/index"],
+      "~middlewares": ["middlewares/index"],
+      "~models/*": ["models/*"],
+      "~routes/*": ["routes/*"],
+      "~routes": ["routes/index"],
+      "~utils/*": ["utils/*"]
+    }
+  },
+  "include": ["api/**/*.ts"]
+}
