@@ -55,7 +55,7 @@
 <pre><code>
 ├── .github
 ├── .next
-├── src
+├── api
 |   ├── controllers
 |   ├── database
 |   ├── middlewares
@@ -275,7 +275,7 @@ Click [here](package.json) to see latest versions.
 
 ## NextJS and API Integrations
 
-By default, most directories within the root and `src` directories are [aliased](tsconfig.json#L22-L37) (`~`). This means that you can refer to root files or directories by using the `~` symbol followed by a child file or directory name (root-level `index.js` files [require their own aliases](https://github.com/zeit/next.js/issues/12743), as such this project has been set up to handle predefined directories -- you'll be responsible for any additional directories). For example, `~models`, refers to the root [models/index.js](models/index.js) file, while `~models/users` refers to the [model/user.js](models/user.js) file. This allows for rapid development when referring to root-level directories as it eliminates the hassle of specifiying relative paths (like `../../../../../../../models`) to the directory!
+By default, most directories within the root and `src` directories are [aliased](tsconfig.json#L22-L37) (`~`). This means that you can refer to root files or directories by using the `~` symbol followed by a child file or directory name (root-level `index.js` files [require their own aliases](https://github.com/zeit/next.js/issues/12743), as such this project has been set up to handle predefined directories -- you'll be responsible for any additional directories). For example, `~models`, refers to the root [models/index.js](api/models/index.js) file, while `~models/users` refers to the [model/user.js](api/models/user.js) file. This allows for rapid development when referring to root-level directories as it eliminates the hassle of specifiying relative paths (like `../../../../../../../models`) to the directory!
 
 <hr />
 
@@ -284,8 +284,8 @@ By default, most directories within the root and `src` directories are [aliased]
 By default, this project attempts to import `.env` files placed within the `env` directory according to the `process.env.NODE_ENV` variable (`development`, `staging` and `production`, ...etc). However, this has been set up to be flexible so that if you don't wish to utilize any `.env` files, then as long the following `process.env` variables are defined, then the `.env` files and/or directory can be discarded:
 
 - `APIPORT` (required and used [here](api/server.ts#L20))
-- `baseURL` (required and used [here](src/utils/axiosConfig/index.ts#L5))
-- `CLIENT` (required and used [here](next.config.js#L7), [here](config/plugins.js#L21), [here](config/plugins.js#L40) and [here](api/middlewares/index.ts#34))
+- `baseURL` (required and used [here](src/utils/axiosConfig/index.ts#L8))
+- `CLIENT` (required and used [here](next.config.js#L8), [here](config/plugins.js#L21), [here](config/plugins.js#L40) and [here](api/middlewares/index.ts#L34))
 - `DATABASE` (required and used [here](api/database/index.ts))
 - `PORT` (required and used [here](config/plugins.js#L22) and [here](config/plugins.js#L42))
 
