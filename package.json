@@ -1,6 +1,6 @@
 {
   "name": "nextjs-ssr-kit",
-  "version": "5.1.1",
+  "version": "5.1.2",
   "description": "A fullstack MERN SSR boilerplate.",
   "repository": "https://github.com/mattcarlotta/nextjs-ssr-kit",
   "author": "Matt Carlotta",
@@ -54,8 +54,6 @@
     "bluebird": "^3.7.2",
     "chalk": "^4.1.0",
     "dotenv": "^8.2.0",
-    "emotion": "^10.0.27",
-    "emotion-server": "^10.0.27",
     "lodash.get": "^4.4.2",
     "lodash.isempty": "^4.4.0",
     "mongoose": "^5.10.7",
