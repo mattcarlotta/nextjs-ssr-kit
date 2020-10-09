@@ -19,6 +19,7 @@
     "strict": true,
     "target": "esnext",
     "paths": {
+      "~api/*": ["api/*"],
       "~env": ["env/index"],
       "~logger": ["logger/index"],
       "~controllers/*": ["api/controllers/*"],

@@ -1,6 +1,9 @@
-import "~env";
-import { connectToDB, createConnectionToDatabase } from "~database";
-import { logErrorMessage, logInfoMessage } from "~logger";
+// Since this is being utilized by "jest.api.json", paths must be relative
+
+import mongoose from "mongoose";
+import "../../../env";
+import { connectToDB, createConnectionToDatabase } from "../index";
+import { logErrorMessage, logInfoMessage } from "../../../logger";
 
 const { DATABASE, DROP, EXIT } = process.env;
 
@@ -29,9 +32,14 @@ const teardownDB = (): Promise<any> => {
 
       if (EXIT) process.exit(0);
 
+      mongoose.connection.close();
+
       return resolve();
     } catch (err) {
       logErrorMessage(`seedDB.js\x1b[0m\x1b[31m\n${err.toString()}\x1b[0m`);
+
+      mongoose.connection.close();
+
       return reject(process.exit(0));
     }
   });

@@ -1,6 +1,8 @@
+// Since this is being utilized by "seedDB" and "teardownDB" within Jest, paths must be relative
+
 import bluebird from "bluebird";
 import mongoose from "mongoose";
-import { logErrorMessage, logInfoMessage } from "~logger";
+import { logErrorMessage, logInfoMessage } from "../../logger";
 
 const { DATABASE, NODE_ENV } = process.env;
 const inTesting = NODE_ENV === "test";
@@ -14,8 +16,10 @@ const options = {
 
 mongoose.Promise = bluebird;
 
-export const createConnectionToDatabase = (): mongoose.Connection =>
-  mongoose.createConnection(`mongodb://localhost/${DATABASE}`, options);
+export const createConnectionToDatabase = (): mongoose.Connection & {
+  then: Promise<mongoose.Connection>["then"];
+  catch: Promise<mongoose.Connection>["catch"];
+} => mongoose.createConnection(`mongodb://localhost/${DATABASE}`, options);
 
 export const connectToDB = (): Promise<typeof mongoose> =>
   mongoose.connect(`mongodb://localhost/${DATABASE}`, options);

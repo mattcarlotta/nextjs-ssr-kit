@@ -1,0 +1,37 @@
+{
+  "testEnvironment": "node",
+  "verbose": false,
+  "clearMocks": true,
+  "rootDir": "./",
+  "modulePaths": ["<rootDir>", "node_modules"],
+  "moduleNameMapper": {
+    "~env": "<rootDir>/env",
+    "~logger": "<rootDir>/logger",
+    "~controllers/(.*)$": "<rootDir>/api/controllers/$1",
+    "~database": "<rootDir>/api/database",
+    "~database/(.*)$": "<rootDir>/api/database/$1",
+    "~middlewares": "<rootDir>/api/middlewares",
+    "~models/(.*)$": "<rootDir>/api/models/$1",
+    "~routes": "<rootDir>/api/routes/index",
+    "~routes/(.*)$": "<rootDir>/api/routes/$1"
+  },
+  "transform": {
+    "^.+\\.(ts|js)$": "babel-jest"
+  },
+  "moduleFileExtensions": ["ts", "js", "json"],
+  "collectCoverageFrom": ["api/**/*.{ts,tsx}", "!src/**/*d.ts"],
+  "testPathIgnorePatterns": [
+    "<rootDir>/.next",
+    "<rootDir>/coverage",
+    "<rootDir>/config",
+    "<rootDir>/e2e",
+    "<rootDir>/node_modules",
+    "<rootDir>/public",
+    "<rootDir>/src",
+    "<rootDir>/babel.config.js",
+    "<rootDir>/next.config.js"
+  ],
+  "setupFilesAfterEnv": ["<rootDir>/api/setupTests.ts"],
+  "globalSetup": "<rootDir>/api/database/seedDB/index.ts",
+  "globalTeardown": "<rootDir>/api/database/teardownDB/index.ts"
+}

@@ -13,6 +13,7 @@
   },
   "testPathIgnorePatterns": [
     "<rootDir>/.next",
+    "<rootDir>/api",
     "<rootDir>/coverage",
     "<rootDir>/config",
     "<rootDir>/e2e",
@@ -25,8 +26,7 @@
   "collectCoverageFrom": ["src/**/*.{ts,tsx}", "!src/**/*d.ts"],
   "coveragePathIgnorePatterns": [
     "<rootDir>/src/middlewares",
-    "<rootDir>/src/pages",
-    "<rootDir>/src/utils/toHaveStyleRule"
+    "<rootDir>/src/pages"
   ],
   "setupFilesAfterEnv": ["<rootDir>/src/utils/setupTests/index.ts"]
 }

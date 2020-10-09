@@ -1,7 +1,10 @@
-import "~env";
-import { connectToDB, createConnectionToDatabase } from "~database";
-import User from "~models/user";
-import { logErrorMessage, logInfoMessage } from "~logger";
+// Since this is being utilized by "jest.api.json", paths must be relative
+
+import mongoose from "mongoose";
+import "../../../env";
+import { connectToDB, createConnectionToDatabase } from "../index";
+import { logErrorMessage, logInfoMessage } from "../../../logger";
+import User from "../../models/user";
 import seeds from "./seeds";
 
 const { DATABASE, EXIT, SEED } = process.env;
@@ -33,9 +36,13 @@ const seedDB = (): Promise<any> => {
 
       if (EXIT) process.exit(0);
 
+      mongoose.connection.close();
+
       return resolve();
     } catch (err) {
       logErrorMessage(`seedDB.js\x1b[0m\x1b[31m\n${err.toString()}\x1b[0m`);
+
+      mongoose.connection.close();
 
       if (EXIT) process.exit(0);
 
@@ -46,4 +53,4 @@ const seedDB = (): Promise<any> => {
 
 if (SEED) seedDB();
 
-module.exports = seedDB;
+export default seedDB;
