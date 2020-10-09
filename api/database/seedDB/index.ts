@@ -31,7 +31,7 @@ const seedDB = (): Promise<any> => {
       await db.close();
 
       logInfoMessage(
-        `\x1b[2mutils/\x1b[0m\x1b[1mseedDB.js\x1b[0m (${DATABASE})`,
+        `\x1b[2mutils/\x1b[0m\x1b[1mseedDB.js\x1b[0m (${DATABASE})\n`,
       );
 
       if (EXIT) process.exit(0);
@@ -40,7 +40,7 @@ const seedDB = (): Promise<any> => {
 
       return resolve();
     } catch (err) {
-      logErrorMessage(`seedDB.js\x1b[0m\x1b[31m\n${err.toString()}\x1b[0m`);
+      logErrorMessage(`seedDB.js\x1b[0m\x1b[31m\n${err.toString()}\x1b[0m\n`);
 
       mongoose.connection.close();
 

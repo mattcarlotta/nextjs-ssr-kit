@@ -5,7 +5,16 @@
   "rootDir": "./",
   "modulePaths": ["<rootDir>", "node_modules"],
   "moduleNameMapper": {
-    "~(.*)$": "<rootDir>/api/$1"
+    "~env": "<rootDir>/env",
+    "~logger": "<rootDir>/logger",
+    "~api/(.*)$": "<rootDir>/api/$1",
+    "~controllers/(.*)$": "<rootDir>/api/controllers/$1",
+    "~database": "<rootDir>/api/database",
+    "~database/(.*)$": "<rootDir>/api/database/$1",
+    "~middlewares": "<rootDir>/api/middlewares",
+    "~models/(.*)$": "<rootDir>/api/models/$1",
+    "~routes": "<rootDir>/api/routes/index",
+    "~routes/(.*)$": "<rootDir>/api/routes/$1"
   },
   "transform": {
     "^.+\\.(ts|js)$": "babel-jest"
@@ -24,7 +33,7 @@
     "<rootDir>/babel.config.js",
     "<rootDir>/next.config.js"
   ],
-  "setupFilesAfterEnv": ["<rootDir>/api/setupTests.ts"],
+  "setupFilesAfterEnv": ["<rootDir>/api/utils/setupTests/index.ts"],
   "globalSetup": "<rootDir>/api/database/seedDB/index.ts",
   "globalTeardown": "<rootDir>/api/database/teardownDB/index.ts"
 }

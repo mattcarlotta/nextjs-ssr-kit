@@ -27,6 +27,7 @@ const createUser = async (req: Request, res: Response): Promise<any> => {
     if (userNameTaken) throw String("That username is already in use!");
 
     await User.create(req.body);
+
     res.status(201).json({ message: `Successfully created ${userName}.` });
   } catch (err) {
     res.status(400).json({ err: err.toString() });
