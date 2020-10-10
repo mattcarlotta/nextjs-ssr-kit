@@ -48,7 +48,8 @@
     "*.{ts,tsx}": [
       "npm run lint",
       "npm run lint:api",
-      "npm run test"
+      "npm run test",
+      "npm run test:api"
     ],
     "*.scss": [
       "npm run lint:styles"

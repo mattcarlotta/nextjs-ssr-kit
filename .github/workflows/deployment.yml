@@ -43,11 +43,16 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: yarn install
 
-      - name: Run Tests
-        id: tests
+      - name: Run App Tests
+        id: app-tests
+        run: yarn test
+
+      - name: Run API Tests
+        if: steps.build.app-tests == 0
+        id: api-tests
         run: yarn test
 
       - name: Run E2E Tests
-        if: steps.build.tests == 0
+        if: steps.build.api-tests == 0
         id: build
         run: yarn test:e2erun
