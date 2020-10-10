@@ -31,7 +31,7 @@
     "start:app": "NODE_ENV=production next start",
     "start:staging": "npm run start:apistage & npm run staging",
     "staging": "NODE_ENV=production inStaging=true next start",
-    "test": "NODE_ENV=test jest --config ./jest.json --detectOpenHandles --passWithNoTests",
+    "test": "NODE_ENV=test jest --config ./jest.json --passWithNoTests",
     "test:api": "NODE_ENV=test jest --config ./api/jest.json --passWithNoTests",
     "test:apicov": "NODE_ENV=test jest --config ./api/jest.json --coverage",
     "test:apiwatch": "NODE_ENV=test jest --config ./api/jest.json --watchAll",
