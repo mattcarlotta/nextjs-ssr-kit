@@ -61,9 +61,15 @@
 |   ├── middlewares
 |   ├── models
 |   ├── routes
+|   ├── utils
 |   ├── .eslintignore
 |   ├── .eslintrc
-|   └── server.ts
+|   ├── jest.json
+|   ├── nodemon.json
+|   ├── prod-paths.json
+|   ├── server.ts
+|   └── tsconfig.json
+|
 ├── build
 ├── config
 ├── database
@@ -81,7 +87,7 @@
 |   ├── sagas
 |   ├── store
 |   ├── styles
-|   └── jest.d.ts
+|   └── global.d.ts
 |
 ├── .browserslistrc
 ├── .eslintignore
@@ -134,11 +140,14 @@ In order to interact with the API, you'll need to:
 | `start`          | Starts production servers (must run `build` first).                                              |
 | `start:staging`  | Starts staging servers (must run `build:staging` first).                                         |
 | `test`           | Runs `.test.tsx` files in `src` once.                                                            |
+| `test:api`       | Runs `.spec.ts` files in `api` once.                                                             |
+| `test:apicov`    | Runs `.spec.ts` files in `api` with code coverage.                                               |
+| `test:apiwatch`  | Runs and watches all `.spec.ts` files in `api` for changes.                                      |
 | `test:cov`       | Runs `.test.tsx` files in `src` with code coverage.                                              |
 | `test:e2e`       | Runs cypress `.spec.js` files in `e2e` in a browser (run `build:staging`/`start:staging` first). |
 | `test:e2erun`    | Runs cypress `.spec.js` files in `e2e` headlessly.                                               |
 | `test:watch`     | Runs and watches `.tsx` files in `src` that have changed since last commit.                      |
-| `test:watchall`  | Runs and watches all `.test.jsx` files in `src`.                                                 |
+| `test:watchall`  | Runs and watches all `.test.jsx` files in `src` for changes.                                     |
 
 † Note: Before running this command, you must edit the [.env.production](env/.env.production#) file and update the `baseURL` from `http://localhost:5000/api/` to include your remote API server host and update `CLIENT` from `http://localhost:3000` to include your remote server application host.
 
@@ -149,30 +158,33 @@ In order to interact with the API, you'll need to:
 <details>
 <summary>Click to expand NextJS configuration</summary>
 <pre><code>
+- .next: NextJS development/production compiled source.
 - public: NextJS public assets.
-- src/actions: redux actions.
-- src/components: react components.
-- src/constants: redux constants.
+- src/actions: Redux actions.
+- src/components: React components.
+- src/constants: Redux constants.
 - src/pages/_app.tsx: NextJS app configuration (redux + redux saga + global stylesheet).
 - src/pages/_document.tsx: NextJS document configuration for emotion components.
 - src/pages/_error.tsx: NextJS fallback 404 page.
-- src/reducers: redux reducers.
-- src/sagas: redux sagas.
-- src/store: redux store configuration.
-- src/styles: custom component/page styles.
-- src/types: shareable typescript types and interfaces.
-- src/utils/__mocks__/mockAxios.ts: a mocked axios instance for testing.
-- src/utils/setupTest/index.ts: enzyme test setup for your React components.
-- src/utils/axiosConfig/index.ts: custom axios configuration.
-- src/utils/parseFields/index.ts: custom functions for parsing form fields into a simple object.
-- src/utils/parseResponse/index.ts: custom functions for parsing 'res' responses.
+- src/reducers: Redux reducers.
+- src/sagas: Redux sagas.
+- src/store: Redux store configuration.
+- src/styles: Custom component/page styles.
+- src/types: Shareable typescript types and interfaces.
+- src/utils/__mocks__/mockAxios.ts: A mocked axios instance for testing.
+- src/utils/setupTest/index.ts: Enzyme test setup for your React components.
+- src/utils/axiosConfig/index.ts: Custom axios configuration.
+- src/utils/parseFields/index.ts: Custom functions for parsing form fields into a simple object.
+- src/utils/parseResponse/index.ts: Custom functions for parsing 'res' responses.
 - src/global.d.ts: typescript types for jest globals.
-- .eslintignore: NextJS eslint config.
-- .eslintrc: NextJS eslint ignore config.
-- .stylelintrc: stylelint config.
-- jest.json: jest config for NextJS.
-- next.env.d.ts: types for NextJS project.
-- next.config.js: custom NextJS webpack config.
+- .eslintignore: NextJS eslint config for NextJS.
+- .eslintrc: NextJS eslint ignore config for NextJS.
+- .stylelintrc: Stylelint config for NextJS.
+- babel.config.js: Babel config for NextJS.
+- jest.json: jest Config for NextJS.
+- next.env.d.ts: Types for NextJS.
+- next.config.js: Custom NextJS webpack config.
+- tsconfig.json: TS compiler options for Next (integration with IDE)
 </code></pre>
 </details>
 <br />
@@ -187,9 +199,14 @@ In order to interact with the API, you'll need to:
 - api/middlewares: Express middlewares.
 - api/models: Mongoose models for Mongo.
 - api/routes: Express routes.
-- .eslintignore: API eslint config.
-- .eslintrc: API eslint ignore config.
-- server.ts: Express server setup.
+- api/.eslintignore: API eslint config.
+- api/.eslintrc: API eslint ignore config.
+- api/jest.json: jest config for API.
+- api/nodemon.json: Development options for reloading the API process on save.
+- api/prod-path.js: Resolving aliased modules for API in production.
+- api/server.ts: Express server setup.
+- api/tsconfig.json: TS compiler options for the API (integration with IDE)
+- build: API compiled source.
 </code></pre>
 </details>
 <br />
@@ -200,20 +217,13 @@ In order to interact with the API, you'll need to:
 <summary>Click to expand misc configurations</summary>
 <pre><code>
 - .github: Continous integration using Github Actions and repo issue templates.
-- .next: NextJS development/production compiled source.
-- build: API compiled source.
-- e2e: cypress test suites.
+- e2e: Cypress end-to-end test suites.
 - env: Shareable ENV variables.
-- config: webpack supporting configuration files.
-- logger: shareable chalk console notifications.
-- .browserslistrc: browsers list config (for babel transpiling).
-- .prettierc: prettier config.
-- .npmrc: yarn config.
-- babel.config.js: babel config.
-- nodemon.json: Development options for reloading the API process on save.
-- prod-path.js: Resolving aliased modules for API in production.
-- tsconfig.api.json: TS compiler options for the API (integration with IDE)
-- tsconfig.json: TS compiler options for Next (integration with IDE)
+- config: Webpack supporting configuration files.
+- logger: Shareable chalk console notifications.
+- .browserslistrc: Browsers list config (for babel transpiling).
+- .prettierc: Prettier config.
+- .npmrc: Yarn config.
 </code></pre>
 </details>
 <br />

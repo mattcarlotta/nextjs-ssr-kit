@@ -1,4 +1,4 @@
-// Since this is being utilized by "jest.api.json", paths must be relative
+// Since this is being utilized by "jest.json", paths must be relative
 
 import mongoose from "mongoose";
 import "../../../env";

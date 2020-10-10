@@ -14,6 +14,7 @@
   "testPathIgnorePatterns": [
     "<rootDir>/.next",
     "<rootDir>/api",
+    "<rootDir>/build",
     "<rootDir>/coverage",
     "<rootDir>/config",
     "<rootDir>/e2e",
