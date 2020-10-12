@@ -61,14 +61,15 @@
 |   ├── middlewares
 |   ├── models
 |   ├── routes
-|   ├── utils
+|   ├── test
 |   ├── .eslintignore
 |   ├── .eslintrc
 |   ├── jest.json
 |   ├── nodemon.json
 |   ├── prod-paths.json
 |   ├── server.ts
-|   └── tsconfig.json
+|   ├── tsconfig.json
+|   └── tsconfig.prod.json
 |
 ├── build
 ├── config
@@ -199,6 +200,7 @@ In order to interact with the API, you'll need to:
 - api/middlewares: Express middlewares.
 - api/models: Mongoose models for Mongo.
 - api/routes: Express routes.
+- api/test/utils: Test setup utils.
 - api/.eslintignore: API eslint config.
 - api/.eslintrc: API eslint ignore config.
 - api/jest.json: jest config for API.
@@ -206,6 +208,7 @@ In order to interact with the API, you'll need to:
 - api/prod-path.js: Resolving aliased modules for API in production.
 - api/server.ts: Express server setup.
 - api/tsconfig.json: TS compiler options for the API (integration with IDE)
+- api/tsconfig.prod.json: TS compiler options for building the API (excludes tests)
 - build: API compiled source.
 </code></pre>
 </details>

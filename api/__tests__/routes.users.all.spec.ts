@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { createConnectionToDatabase } from "~database";
-import app from "~api/utils/testServer";
+import app from "~test/utils/testServer";
 
 describe("Get All Users Route", () => {
   let db: mongoose.Connection;

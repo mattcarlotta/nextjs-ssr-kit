@@ -9,7 +9,7 @@
   "scripts": {
     "analyze": "rimraf .next/analyze && analyze=true npm run build",
     "build": "npm run build:api && concurrently --success first --kill-others \"npm run start:api\" \"npm run build:app\"",
-    "build:api": "rimraf build && tsc --p ./api/tsconfig.json",
+    "build:api": "rimraf build && tsc --p ./api/tsconfig.prod.json",
     "build:app": "inStaging=false next build",
     "build:stage": "NODE_ENV=production inStaging=true next build",
     "build:staging": "npm run seed:prod && npm run build:api && concurrently --success first --kill-others \"npm run start:apistage\" \"npm run build:stage\"",
@@ -149,7 +149,6 @@
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-scss": "^3.18.0",
     "supertest": "^5.0.0",
-    "ts-jest": "^26.4.1",
     "ts-node": "^9.0.0",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^4.0.3",

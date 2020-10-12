@@ -13,7 +13,8 @@
     "~middlewares": "<rootDir>middlewares",
     "~models/(.*)$": "<rootDir>models/$1",
     "~routes": "<rootDir>routes/index",
-    "~routes/(.*)$": "<rootDir>routes/$1"
+    "~routes/(.*)$": "<rootDir>routes/$1",
+    "~test/(.*)$": "<rootDir>test/$1"
   },
   "transform": {
     "^.+\\.(ts|js)$": "babel-jest"
@@ -25,7 +26,7 @@
     "<rootDir>/database",
     "<rootDir>/middlewares"
   ],
-  "setupFilesAfterEnv": ["<rootDir>utils/setupTests/index.ts"],
+  "setupFilesAfterEnv": ["<rootDir>test/utils/setupTests/index.ts"],
   "globalSetup": "<rootDir>database/seedDB/index.ts",
   "globalTeardown": "<rootDir>database/teardownDB/index.ts"
 }
