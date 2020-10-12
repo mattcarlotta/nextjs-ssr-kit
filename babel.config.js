@@ -6,14 +6,16 @@ module.exports = api => {
   api.cache(() => process.env.NODE_ENV);
 
   return {
-    presets: ["next/babel"],
-    plugins: [
+    presets: [
+      "next/babel",
       [
-        "emotion",
+        "@emotion/babel-preset-css-prop",
         {
           labelFormat: "[filename]",
         },
       ],
+    ],
+    plugins: [
       inProd &&
         !inStage && [
           "react-remove-properties",

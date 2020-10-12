@@ -13,7 +13,7 @@ coverage
 /out/
 
 # production
-/build
+build
 
 # eslint caches
 .caches

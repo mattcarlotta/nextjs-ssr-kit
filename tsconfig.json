@@ -17,15 +17,22 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "esnext",
+    "target": "es6",
     "paths": {
+      "~env": ["env/index"],
+      "~logger": ["logger/index"],
+      "~controllers/*": ["api/controllers/*"],
+      "~database/*": ["api/database/*"],
+      "~database": ["api/database/index"],
+      "~models": ["api/models/index"],
+      "~middlewares": ["api/middlewares/index"],
+      "~models/*": ["api/models/*"],
+      "~routes/*": ["api/routes/*"],
+      "~routes": ["api/routes/index"],
+      "~test/*": ["api/test/*"],
       "~actions/*": ["src/actions/*"],
       "~components/*": ["src/components/*"],
       "~constants": ["src/constants/index"],
-      "~database/*": ["database/*"],
-      "~database": ["database/index"],
-      "~middlewares": ["src/middlewares/index"],
-      "~models": ["models/index"],
       "~pages/*": ["src/pages/*"],
       "~reducers/*": ["src/reducers/*"],
       "~reducers": ["src/reducers/index"],
@@ -38,5 +45,5 @@
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", ".next", "out", "e2e"]
+  "exclude": ["node_modules", ".next", "out", "e2e", "build"]
 }

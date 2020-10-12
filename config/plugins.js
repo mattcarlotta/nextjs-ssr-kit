@@ -5,7 +5,7 @@ const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 const WebpackBar = require("webpackbar");
 const address = require("address");
 
-const { analyze, baseURL, LOCALHOST, NODE_ENV, PORT } = process.env;
+const { analyze, baseURL, CLIENT, NODE_ENV, PORT } = process.env;
 const remoteAddress = address.ip();
 const inDev = NODE_ENV === "development";
 
@@ -18,7 +18,7 @@ module.exports = isServer => {
       new DefinePlugin({
         "process.env": {
           baseURL: JSON.stringify(baseURL),
-          LOCALHOST: JSON.stringify(LOCALHOST),
+          CLIENT: JSON.stringify(CLIENT),
           PORT: JSON.stringify(PORT),
           NODE_ENV: JSON.stringify(NODE_ENV),
         },
@@ -37,7 +37,7 @@ module.exports = isServer => {
         new FriendlyErrorsWebpackPlugin({
           compilationSuccessInfo: {
             messages: [
-              `Local development build: \x1b[1m${LOCALHOST}\x1b[0m`,
+              `Local development build: \x1b[1m${CLIENT}\x1b[0m`,
               remoteAddress &&
                 `Remote development build: \x1b[1mhttp://${remoteAddress}:${PORT}\x1b[0m`,
             ].filter(Boolean),
