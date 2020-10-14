@@ -4,7 +4,7 @@ import {
   BsFillExclamationOctagonFill,
   BsFillExclamationTriangleFill,
   BsInfoSquareFill,
-  BsQuestionSquareFill,
+  BsQuestionSquareFill
 } from "react-icons/bs";
 import AlertContainer from "./AlertContainer";
 import AlertMessage from "./AlertMessage";
@@ -31,7 +31,7 @@ const ToastMessage = ({ type, message }: ToastProps): null => {
     <AlertContainer data-testid="modal-alert">
       <AlertType data-testid="modal-alert-type">{displayIcon(type)}</AlertType>
       <AlertMessage data-testid="modal-message">{message}</AlertMessage>
-    </AlertContainer>,
+    </AlertContainer>
   );
 
   return null;

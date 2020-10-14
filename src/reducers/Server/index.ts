@@ -4,7 +4,7 @@ import { AnyAction, ServerReducerState } from "~types";
 
 export const initialState: ServerReducerState = {
   error: "",
-  message: "",
+  message: ""
 };
 
 /**
@@ -15,7 +15,7 @@ export const initialState: ServerReducerState = {
  */
 const serverReducer = (
   state: ServerReducerState = initialState,
-  { payload, type }: AnyAction,
+  { payload, type }: AnyAction
 ): ServerReducerState => {
   switch (type) {
     case HYDRATE:

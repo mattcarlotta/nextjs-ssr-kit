@@ -7,7 +7,7 @@ const Header = ({
   description,
   title,
   type,
-  url,
+  url
 }: HeaderProps): JSX.Element => (
   <Head>
     <title>{title} - NextJS SSR Kit</title>
@@ -21,7 +21,7 @@ const Header = ({
 
 Header.defaultProps = {
   description: "A fullstack MERN SSR boilerplate.",
-  type: "website",
+  type: "website"
 };
 
 export default Header;

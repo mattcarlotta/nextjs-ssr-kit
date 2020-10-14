@@ -17,7 +17,7 @@ const Modal = ({
   children,
   maxWidth,
   onClick,
-  title,
+  title
 }: ModalProps): JSX.Element => {
   /* istanbul ignore next */
   useEffect(() => {
@@ -63,7 +63,7 @@ const Modal = ({
         </ModalRoot>
       </WindowContainer>
     </div>,
-    document.body,
+    document.body
   );
 };
 

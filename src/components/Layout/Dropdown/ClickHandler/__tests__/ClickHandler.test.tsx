@@ -35,7 +35,7 @@ describe("Modal Click Handler", () => {
           )}
         </ClickHandler>
         <div className="outside-content" />
-      </div>,
+      </div>
     );
   });
 
@@ -52,7 +52,7 @@ describe("Modal Click Handler", () => {
       .find("ClickHandler")
       .instance()
       .handleClickOutside({
-        target: wrapper.find("div.dropdown-container").getDOMNode(),
+        target: wrapper.find("div.dropdown-container").getDOMNode()
       });
 
     expect(wrapper.find("[data-testid='close-dropdown']")).not.toExist();
@@ -67,7 +67,7 @@ describe("Modal Click Handler", () => {
       .find("ClickHandler")
       .instance()
       .handleClickOutside({
-        target: wrapper.find("div.outside-content").getDOMNode(),
+        target: wrapper.find("div.outside-content").getDOMNode()
       });
 
     wrapper.update();

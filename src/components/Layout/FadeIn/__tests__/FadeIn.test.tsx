@@ -16,7 +16,7 @@ describe("FadeIn", () => {
 
     expect(wrapper).toHaveStyleRule(
       "animation",
-      "fade-in 2s 0s ease-in-out forwards",
+      "fade-in 2s 0s ease-in-out forwards"
     );
   });
 });

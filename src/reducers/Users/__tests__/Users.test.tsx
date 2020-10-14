@@ -9,56 +9,56 @@ const users = [
       state: "CA",
       suite: "1404",
       city: "SJ",
-      zipCode: "55555",
+      zipCode: "55555"
     },
     backgroundInfo: "Hi.",
     email: "test@test.com",
     firstName: "Bob",
     lastName: "Dole",
     userName: "bobdole",
-    _id: "123456789",
-  },
+    _id: "123456789"
+  }
 ];
 
 describe("User Reducer", () => {
   it("initially matches the initialState pattern", () => {
     expect(userReducer(undefined, { payload: {}, type: "" })).toEqual(
-      initialState,
+      initialState
     );
   });
 
   it("rehydrates", () => {
     const state = userReducer(undefined, {
       type: HYDRATE,
-      payload: { users: { data: users, isLoading: false } },
+      payload: { users: { data: users, isLoading: false } }
     });
 
     expect(state).toEqual({
       data: users,
-      isLoading: false,
+      isLoading: false
     });
   });
 
   it("sets user data", () => {
     const state = userReducer(undefined, {
       type: constants.USERS_SET_DATA,
-      payload: { users },
+      payload: { users }
     });
 
     expect(state).toEqual({
       data: users,
-      isLoading: false,
+      isLoading: false
     });
   });
 
   it("resets users data during fetch", () => {
     let state = userReducer(undefined, {
       type: constants.USERS_SET_DATA,
-      payload: { users },
+      payload: { users }
     });
 
     state = userReducer(state, {
-      type: constants.USERS_FETCH,
+      type: constants.USERS_FETCH
     });
 
     expect(state).toEqual(initialState);
@@ -67,11 +67,11 @@ describe("User Reducer", () => {
   it("resets users data", () => {
     let state = userReducer(undefined, {
       type: constants.USERS_SET_DATA,
-      payload: { users },
+      payload: { users }
     });
 
     state = userReducer(state, {
-      type: constants.USERS_RESET,
+      type: constants.USERS_RESET
     });
 
     expect(state).toEqual(initialState);

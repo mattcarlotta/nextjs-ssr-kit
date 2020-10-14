@@ -6,7 +6,7 @@ class ClickHandler extends Component<
   DropdownClickHandlerState
 > {
   state = {
-    isVisible: false,
+    isVisible: false
   };
 
   componentDidMount(): void {
@@ -45,7 +45,7 @@ class ClickHandler extends Component<
     <div ref={this.wrapperRef}>
       {this.props.children({
         isVisible: this.state.isVisible,
-        handleMenuClick: this.handleMenuClick,
+        handleMenuClick: this.handleMenuClick
       })}
     </div>
   );

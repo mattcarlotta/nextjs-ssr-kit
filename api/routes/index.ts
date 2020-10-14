@@ -6,7 +6,7 @@ import {
   getUsers,
   seedDB,
   updateUser,
-  viewUser,
+  viewUser
 } from "~controllers/users";
 
 const router = Router();

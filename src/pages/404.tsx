@@ -22,7 +22,7 @@ const NotFound: NextPage = () => (
         color: "#03a9f3",
         background: "#fff",
         boxShadow: "0 4px 14px 0 rgba(130, 130, 130, 0.19)",
-        padding: 40,
+        padding: 40
       }}
     >
       <ErrorStatus>404</ErrorStatus>

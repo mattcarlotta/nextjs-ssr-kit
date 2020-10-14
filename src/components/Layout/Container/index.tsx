@@ -6,7 +6,7 @@ const Container = ({
   children,
   dataTestId,
   innerStyle,
-  style,
+  style
 }: ContainerProps): JSX.Element => (
   <ContainerWrapper data-testid={dataTestId} style={style}>
     <CardWrapper style={innerStyle}>{children}</CardWrapper>

@@ -21,7 +21,7 @@ const UserForm = (props: UserFormProps): JSX.Element => {
   const [state, setState] = useState<UserFormState>({
     fields: generateFields(props),
     errors: 0,
-    isSubmitting: false,
+    isSubmitting: false
   });
   const { fields, errors, isSubmitting } = state;
   const {
@@ -31,21 +31,21 @@ const UserForm = (props: UserFormProps): JSX.Element => {
     resetMessage,
     serverError,
     serverMessage,
-    submitAction,
+    submitAction
   } = props;
 
   const handleChange = useCallback(
     ({
-      target: { name, value },
+      target: { name, value }
     }: {
       target: { name: string; value: string };
     }) => {
       setState(prevState => ({
         ...prevState,
-        fields: fieldUpdater(prevState.fields, name, value),
+        fields: fieldUpdater(prevState.fields, name, value)
       }));
     },
-    [fieldUpdater],
+    [fieldUpdater]
   );
 
   const handleSubmit = useCallback(
@@ -56,10 +56,10 @@ const UserForm = (props: UserFormProps): JSX.Element => {
       setState(prevState => ({
         fields: !errors ? prevState.fields : validatedFields,
         errors,
-        isSubmitting: !errors,
+        isSubmitting: !errors
       }));
     },
-    [fields, fieldValidator],
+    [fields, fieldValidator]
   );
 
   useEffect(() => {
@@ -73,7 +73,7 @@ const UserForm = (props: UserFormProps): JSX.Element => {
     if (!errors && isSubmitting)
       submitAction({
         props: parseFields(fields),
-        id,
+        id
       });
 
     return () => {

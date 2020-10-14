@@ -13,8 +13,8 @@ const props = {
     state: "GA",
     suite: "",
     city: "Atlanta",
-    zipCode: "55555",
-  },
+    zipCode: "55555"
+  }
 };
 
 const id = "123456789";

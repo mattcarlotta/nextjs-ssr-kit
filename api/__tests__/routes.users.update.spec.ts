@@ -14,8 +14,8 @@ const data = {
     state: "GA",
     suite: "",
     city: "Atlanta",
-    zipCode: "55555",
-  },
+    zipCode: "55555"
+  }
 };
 
 const invalidId = new mongoose.Types.ObjectId();

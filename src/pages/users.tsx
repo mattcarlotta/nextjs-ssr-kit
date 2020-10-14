@@ -16,41 +16,41 @@ import {
   ServerReducerState,
   ShowUsersState,
   UserReducerState,
-  UserData,
+  UserData
 } from "~types";
 
 const ShowUsers: NextPage = () => {
   const [state, setState] = useState<ShowUsersState>({
     isEditingID: "",
-    openModal: false,
+    openModal: false
   });
   const dispatch = useDispatch();
   const createUserAction = useCallback(
     ({ props }: { props: UserData }) => dispatch(actions.createUser({ props })),
-    [actions.createUser, dispatch],
+    [actions.createUser, dispatch]
   );
   const deleteUserAction = useCallback(
     (id: string) => dispatch(actions.deleteUser(id)),
-    [actions.deleteUser, dispatch],
+    [actions.deleteUser, dispatch]
   );
   const seedDBAction = useCallback(() => dispatch(actions.seedDB()), [
     actions.seedDB,
-    dispatch,
+    dispatch
   ]);
   const updateUserAction = useCallback(
     ({ props, id }: { props: UserData; id: string }) =>
       dispatch(actions.updateUser({ props, id })),
-    [actions.updateUser, dispatch],
+    [actions.updateUser, dispatch]
   );
   const resetMessageAction = useCallback(() => dispatch(resetMessage()), [
     resetMessage,
-    dispatch,
+    dispatch
   ]);
 
   const reduxProps = useSelector(
     ({
       users,
-      server,
+      server
     }: {
       users: UserReducerState;
       server: ServerReducerState;
@@ -58,22 +58,22 @@ const ShowUsers: NextPage = () => {
       data: users.data,
       isLoading: users.isLoading,
       serverError: server.error,
-      serverMessage: server.message,
-    }),
+      serverMessage: server.message
+    })
   );
 
   const handleEditClick = useCallback(
     (id: string) => setState(prevState => ({ ...prevState, isEditingID: id })),
-    [],
+    []
   );
 
   const handleResetEditClick = useCallback(
     () =>
       setState(prevState => ({
         ...prevState,
-        isEditingID: "",
+        isEditingID: ""
       })),
-    [],
+    []
   );
 
   const handleOpenModal = useCallback(
@@ -81,9 +81,9 @@ const ShowUsers: NextPage = () => {
       setState(prevState => ({
         ...prevState,
         openModal: true,
-        isEditingID: "",
+        isEditingID: ""
       })),
-    [],
+    []
   );
 
   const handleCloseModal = useCallback(
@@ -91,9 +91,9 @@ const ShowUsers: NextPage = () => {
       setState(prevState => ({
         ...prevState,
         openModal: false,
-        isEditingID: "",
+        isEditingID: ""
       })),
-    [],
+    []
   );
 
   useEffect(() => {
@@ -115,7 +115,7 @@ const ShowUsers: NextPage = () => {
                     fontSize: 18,
                     marginRight: 8,
                     position: "relative",
-                    top: 2,
+                    top: 2
                   }}
                 />
                 New User Form

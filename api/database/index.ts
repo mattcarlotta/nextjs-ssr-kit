@@ -11,7 +11,7 @@ const options = {
   useNewUrlParser: true, // avoids DeprecationWarning: current URL string parser is deprecated
   useCreateIndex: true, // avoids DeprecationWarning: collection.ensureIndex is deprecated.
   useFindAndModify: false, // avoids DeprecationWarning: collection.findAndModify is deprecated.
-  useUnifiedTopology: true, // avoids DeprecationWarning: current Server Discovery and Monitoring engine is deprecated
+  useUnifiedTopology: true // avoids DeprecationWarning: current Server Discovery and Monitoring engine is deprecated
 };
 
 mongoose.Promise = bluebird;
@@ -27,17 +27,17 @@ export const connectToDB = (): Promise<typeof mongoose> =>
 if (!inTesting) {
   mongoose.connection.on(
     "connected",
-    () => logInfoMessage(`Connected to ${DATABASE}`), // log mongodb connection established
+    () => logInfoMessage(`Connected to ${DATABASE}`) // log mongodb connection established
   );
 
   mongoose.connection.on(
     "disconnected",
-    () => logInfoMessage(`Disconnected from ${DATABASE}`), // log mongodb connection disconnected
+    () => logInfoMessage(`Disconnected from ${DATABASE}`) // log mongodb connection disconnected
   );
 
   mongoose.connection.on(
     "error",
-    () => logErrorMessage(`Connection error to ${DATABASE}`), // log mongodb connection error
+    () => logErrorMessage(`Connection error to ${DATABASE}`) // log mongodb connection error
   );
 
   process.on("SIGINT", () => {

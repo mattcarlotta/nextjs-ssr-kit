@@ -4,7 +4,7 @@ import { AnyAction, UserReducerState } from "~types";
 
 export const initialState: UserReducerState = {
   data: [],
-  isLoading: true,
+  isLoading: true
 };
 
 /**
@@ -14,7 +14,7 @@ export const initialState: UserReducerState = {
  */
 const userReducer = (
   state: UserReducerState = initialState,
-  { payload, type }: AnyAction,
+  { payload, type }: AnyAction
 ): UserReducerState => {
   switch (type) {
     case HYDRATE: {
@@ -28,7 +28,7 @@ const userReducer = (
       return {
         ...state,
         data: payload.users,
-        isLoading: false,
+        isLoading: false
       };
     }
     default: {

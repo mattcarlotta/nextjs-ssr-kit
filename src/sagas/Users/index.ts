@@ -45,7 +45,7 @@ export function* fetchUsers(): SagaIterator {
  * @throws {action} - A toast error message.
  */
 export function* createUser({
-  props,
+  props
 }: ReturnType<typeof actions.createUser>): SagaIterator {
   try {
     yield put(resetMessage());
@@ -76,7 +76,7 @@ export function* createUser({
  * @throws {action} - A toast error message.
  */
 export function* deleteUser({
-  id,
+  id
 }: ReturnType<typeof actions.deleteUser>): SagaIterator {
   try {
     yield put(resetMessage());
@@ -130,7 +130,7 @@ export function* seedDB(): SagaIterator {
  */
 export function* updateUser({
   props,
-  id,
+  id
 }: ReturnType<typeof actions.updateUser>): SagaIterator {
   try {
     yield put(resetMessage());
@@ -161,6 +161,6 @@ export default function* authSagas(): SagaIterator {
     takeLatest(constants.USERS_DELETE, deleteUser),
     takeLatest(constants.USERS_FETCH, fetchUsers),
     takeLatest(constants.USERS_SEED, seedDB),
-    takeLatest(constants.USERS_UPDATE, updateUser),
+    takeLatest(constants.USERS_UPDATE, updateUser)
   ]);
 }

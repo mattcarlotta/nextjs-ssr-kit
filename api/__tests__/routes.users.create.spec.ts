@@ -13,8 +13,8 @@ const data = {
     state: "GA",
     suite: "",
     city: "Atlanta",
-    zipCode: "55555",
-  },
+    zipCode: "55555"
+  }
 };
 
 describe("Get All Users Route", () => {
@@ -59,7 +59,7 @@ describe("Get All Users Route", () => {
       .expect(201)
       .then(res => {
         expect(res.body.message).toEqual(
-          `Successfully created ${data.userName}.`,
+          `Successfully created ${data.userName}.`
         );
         done();
       });

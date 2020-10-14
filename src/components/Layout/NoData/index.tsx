@@ -5,7 +5,7 @@ import { CSSProperties, FC } from "~types";
 
 const styles = {
   color: "#d4d3d3",
-  margin: 0,
+  margin: 0
 } as CSSProperties;
 
 const NoData: FC = () => (

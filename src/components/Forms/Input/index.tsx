@@ -34,7 +34,7 @@ const InputComponent = ({
   placeholder,
   type,
   value,
-  style,
+  style
 }: InputProps) => (
   <div data-testid="input-container" style={style} className={className}>
     <Label htmlFor={name}>{label}</Label>

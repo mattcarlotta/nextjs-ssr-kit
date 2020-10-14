@@ -9,7 +9,7 @@ import { AnyAction, UserData, UserProps, UpdatedUserProps } from "~types";
  */
 export const createUser = ({ props }: UserProps): AnyAction => ({
   type: constants.USERS_CREATE,
-  props,
+  props
 });
 
 /**
@@ -20,7 +20,7 @@ export const createUser = ({ props }: UserProps): AnyAction => ({
  */
 export const deleteUser = (id: string): AnyAction => ({
   type: constants.USERS_DELETE,
-  id,
+  id
 });
 
 /**
@@ -29,7 +29,7 @@ export const deleteUser = (id: string): AnyAction => ({
  * @returns {AnyAction} a redux action
  */
 export const fetchUsers = (): AnyAction => ({
-  type: constants.USERS_FETCH,
+  type: constants.USERS_FETCH
 });
 
 /**
@@ -37,7 +37,7 @@ export const fetchUsers = (): AnyAction => ({
  * @returns {AnyAction} a redux action
  */
 export const resetUsers = (): AnyAction => ({
-  type: constants.USERS_RESET,
+  type: constants.USERS_RESET
 });
 
 /**
@@ -46,7 +46,7 @@ export const resetUsers = (): AnyAction => ({
  * @returns {AnyAction} a redux action
  */
 export const seedDB = (): AnyAction => ({
-  type: constants.USERS_SEED,
+  type: constants.USERS_SEED
 });
 
 /**
@@ -57,7 +57,7 @@ export const seedDB = (): AnyAction => ({
  */
 export const setUsers = (data: UserData[]): AnyAction => ({
   type: constants.USERS_SET_DATA,
-  payload: !isEmpty(data) ? data : [],
+  payload: !isEmpty(data) ? data : []
 });
 
 /**
@@ -70,5 +70,5 @@ export const setUsers = (data: UserData[]): AnyAction => ({
 export const updateUser = ({ props, id }: UpdatedUserProps): AnyAction => ({
   type: constants.USERS_UPDATE,
   props,
-  id,
+  id
 });

@@ -7,7 +7,7 @@ import {
   CSSProperties,
   FC,
   FormEvent,
-  ReactNode,
+  ReactNode
 } from "react";
 import { AnyAction, Store } from "redux";
 import { SagaIterator } from "redux-saga";
@@ -117,7 +117,7 @@ export interface DisplayUserListProps {
   resetMessage: () => void;
   updateUser: ({
     props: UserData,
-    id: string,
+    id: string
   }) => ReturnType<typeof actions.updateUser>;
 }
 
@@ -129,7 +129,7 @@ export type DropdownProps = {
 export type DropdownClickHandlerProps = {
   children: ({
     isVisible,
-    handleMenuClick,
+    handleMenuClick
   }: {
     isVisible: boolean;
     handleMenuClick: () => void;
@@ -207,7 +207,7 @@ export interface UserFormProps extends UserData {
   cancelForm?: (event: any) => void;
   submitAction: ({
     props: UserData,
-    id: string,
+    id: string
   }) => ReturnType<typeof actions.createUser | typeof actions.updateUser>;
 }
 
@@ -272,5 +272,5 @@ export {
   NextApiResponse,
   NextPage,
   ReactNode,
-  SagaIterator,
+  SagaIterator
 };

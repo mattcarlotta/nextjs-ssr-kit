@@ -12,7 +12,7 @@ import { BaseFieldProps } from "~types";
  */
 
 const fieldValidator = <T extends any[]>(
-  fields: T,
+  fields: T
 ): { validatedFields: T; errors: number } => {
   try {
     if (isEmpty(fields)) throw new Error("You must supply an array of fields!");
@@ -23,7 +23,7 @@ const fieldValidator = <T extends any[]>(
       const {
         type,
         value,
-        required,
+        required
       }: Pick<BaseFieldProps, "type" | "value" | "required"> = field;
       if ((!value && required) || (isEmpty(value) && required)) {
         errors = "Required.";

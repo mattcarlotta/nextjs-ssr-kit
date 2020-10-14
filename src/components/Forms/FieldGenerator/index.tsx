@@ -23,7 +23,7 @@ const FieldGenerator = <
   K extends (e: ChangeEvent<HTMLInputElement>) => void
 >({
   fields,
-  onChange,
+  onChange
 }: {
   fields: T;
   onChange: K;

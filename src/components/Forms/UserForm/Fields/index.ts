@@ -9,7 +9,7 @@ const fields = (props: UserFormProps): BaseFieldProps[] => [
     placeholder: "Enter username...",
     errors: "",
     style: { width: "50%" },
-    required: true,
+    required: true
   },
   {
     name: "email",
@@ -19,7 +19,7 @@ const fields = (props: UserFormProps): BaseFieldProps[] => [
     placeholder: "Enter email...",
     errors: "",
     style: { width: "50%" },
-    required: true,
+    required: true
   },
   {
     name: "firstName",
@@ -29,7 +29,7 @@ const fields = (props: UserFormProps): BaseFieldProps[] => [
     placeholder: "Enter user's first name...",
     errors: "",
     style: { width: "50%" },
-    required: true,
+    required: true
   },
   {
     name: "lastName",
@@ -39,7 +39,7 @@ const fields = (props: UserFormProps): BaseFieldProps[] => [
     placeholder: "Enter user's last name...",
     errors: "",
     style: { width: "50%" },
-    required: true,
+    required: true
   },
   {
     name: "street",
@@ -49,7 +49,7 @@ const fields = (props: UserFormProps): BaseFieldProps[] => [
     placeholder: "Enter a street address...",
     errors: "",
     style: { width: "65%" },
-    required: true,
+    required: true
   },
   {
     name: "suite",
@@ -59,7 +59,7 @@ const fields = (props: UserFormProps): BaseFieldProps[] => [
     placeholder: "Optional suite address...",
     errors: "",
     style: { width: "35%" },
-    required: false,
+    required: false
   },
   {
     name: "city",
@@ -69,7 +69,7 @@ const fields = (props: UserFormProps): BaseFieldProps[] => [
     placeholder: "Enter a city...",
     errors: "",
     style: { width: "40%" },
-    required: true,
+    required: true
   },
   {
     name: "state",
@@ -79,7 +79,7 @@ const fields = (props: UserFormProps): BaseFieldProps[] => [
     placeholder: "Enter a state...",
     errors: "",
     style: { width: "40%" },
-    required: true,
+    required: true
   },
   {
     name: "zipCode",
@@ -89,7 +89,7 @@ const fields = (props: UserFormProps): BaseFieldProps[] => [
     placeholder: "Enter a zip code...",
     errors: "",
     style: { width: "20%" },
-    required: true,
+    required: true
   },
   {
     name: "backgroundInfo",
@@ -99,8 +99,8 @@ const fields = (props: UserFormProps): BaseFieldProps[] => [
     placeholder: "Enter user's background information...",
     errors: "",
     style: { width: "100%" },
-    required: true,
-  },
+    required: true
+  }
 ];
 
 export default fields;

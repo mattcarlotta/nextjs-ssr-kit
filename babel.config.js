@@ -11,16 +11,13 @@ module.exports = api => {
       [
         "@emotion/babel-preset-css-prop",
         {
-          labelFormat: "[filename]",
-        },
-      ],
+          labelFormat: "[filename]"
+        }
+      ]
     ],
     plugins: [
       inProd &&
-        !inStage && [
-          "react-remove-properties",
-          { properties: ["data-testid"] },
-        ],
-    ].filter(Boolean),
+        !inStage && ["react-remove-properties", { properties: ["data-testid"] }]
+    ].filter(Boolean)
   };
 };

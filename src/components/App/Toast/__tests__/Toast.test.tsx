@@ -4,7 +4,7 @@ import {
   BsFillExclamationOctagonFill,
   BsFillExclamationTriangleFill,
   BsInfoSquareFill,
-  BsQuestionSquareFill,
+  BsQuestionSquareFill
 } from "react-icons/bs";
 import { ToastContainer } from "react-toastify";
 import Toast, { displayIcon } from "../index";
@@ -23,7 +23,7 @@ describe("ShowMemberDetails", () => {
           pauseOnHover
         />
         <Toast type="success" message="Hello" />
-      </>,
+      </>
     );
   });
 

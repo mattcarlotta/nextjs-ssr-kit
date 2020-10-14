@@ -12,7 +12,7 @@ export const makeStore: MakeStore<ReducerState> = () => {
 
   const store = createStore(
     rootReducer,
-    composeWithDevTools(applyMiddleware(saga)),
+    composeWithDevTools(applyMiddleware(saga))
   );
 
   (store as SagaStore).sagaTask = saga.run(rootSaga);

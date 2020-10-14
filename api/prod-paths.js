@@ -12,6 +12,6 @@ tsconfigpaths.register({
     "~middlewares": ["api/middlewares/index"],
     "~models/*": ["api/models/*"],
     "~routes/*": ["api/routes/*"],
-    "~routes": ["api/routes/index"],
-  },
+    "~routes": ["api/routes/index"]
+  }
 });

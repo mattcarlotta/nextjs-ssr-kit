@@ -14,5 +14,5 @@ module.exports = {
 
     /* return new config to next */
     return config;
-  },
+  }
 };

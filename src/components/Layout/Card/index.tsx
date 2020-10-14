@@ -35,7 +35,7 @@ const CardComponent = ({
   deleteUser,
   handleEditClick,
   lastName,
-  userName,
+  userName
 }: CardProps): JSX.Element => (
   <FadeIn data-testid="card-container" timing={`${0.5 + idx / 10}s`}>
     <div className={className}>

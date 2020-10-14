@@ -20,7 +20,7 @@ describe("LoadingUsers", () => {
     expect(StyledNode).toHaveStyleRule("width", "780px");
     expect(StyledNode).toHaveStyleRule(
       "animation",
-      "pulse 1s infinite ease-in-out",
+      "pulse 1s infinite ease-in-out"
     );
 
     expect(StyledNode).toHaveStyleRule("height", "796px", { target: "before" });
@@ -28,7 +28,7 @@ describe("LoadingUsers", () => {
     expect(StyledNode).toHaveStyleRule(
       "animation",
       "wave 1s infinite ease-in-out",
-      { target: "before" },
+      { target: "before" }
     );
   });
 });

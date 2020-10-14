@@ -22,7 +22,7 @@ const seedDB = (): Promise<any> => {
     const db = await createConnectionToDatabase();
     try {
       const databaseExists = User.findOne({
-        email: "thefifthelement@example.com",
+        email: "thefifthelement@example.com"
       });
       if (databaseExists) await db.dropDatabase();
 
@@ -31,7 +31,7 @@ const seedDB = (): Promise<any> => {
       await db.close();
 
       logInfoMessage(
-        `\x1b[2mutils/\x1b[0m\x1b[1mseedDB.js\x1b[0m (${DATABASE})\n`,
+        `\x1b[2mutils/\x1b[0m\x1b[1mseedDB.js\x1b[0m (${DATABASE})\n`
       );
 
       if (EXIT) process.exit(0);

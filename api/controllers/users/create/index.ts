@@ -10,7 +10,7 @@ const createUser = async (req: Request, res: Response): Promise<any> => {
       lastName,
       userName,
       backgroundInfo,
-      address,
+      address
     } = req.body;
 
     if (

@@ -4,7 +4,7 @@ import serverReducer from "./Server";
 
 const reducers = {
   server: serverReducer,
-  users: userReducer,
+  users: userReducer
 };
 
 export default combineReducers(reducers);

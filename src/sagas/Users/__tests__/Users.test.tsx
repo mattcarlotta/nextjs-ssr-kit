@@ -18,14 +18,14 @@ const user = {
     state: "CA",
     suite: "1404",
     city: "SJ",
-    zipCode: "55555",
+    zipCode: "55555"
   },
   backgroundInfo: "Hi.",
   email: "test~test.com",
   firstName: "Bob",
   lastName: "Dole",
   userName: "bobdole",
-  _id: id,
+  _id: id
 };
 
 const data = { users: [user] };
@@ -64,7 +64,7 @@ describe("User Sagas", () => {
         .withReducer(userReducer)
         .hasFinalState({
           data: [user],
-          isLoading: false,
+          isLoading: false
         })
         .run();
     });
@@ -78,7 +78,7 @@ describe("User Sagas", () => {
         .withReducer(serverReducer)
         .hasFinalState({
           error: err,
-          message: "",
+          message: ""
         })
         .run();
     });
@@ -121,7 +121,7 @@ describe("User Sagas", () => {
         .withReducer(userReducer)
         .hasFinalState({
           data: [user],
-          isLoading: false,
+          isLoading: false
         })
         .run();
     });
@@ -135,7 +135,7 @@ describe("User Sagas", () => {
         .withReducer(serverReducer)
         .hasFinalState({
           error: err,
-          message: "",
+          message: ""
         })
         .run();
     });
@@ -176,7 +176,7 @@ describe("User Sagas", () => {
         .withReducer(userReducer)
         .hasFinalState({
           data: [user],
-          isLoading: false,
+          isLoading: false
         })
         .run();
     });
@@ -190,7 +190,7 @@ describe("User Sagas", () => {
         .withReducer(serverReducer)
         .hasFinalState({
           error: err,
-          message: "",
+          message: ""
         })
         .run();
     });
@@ -221,7 +221,7 @@ describe("User Sagas", () => {
         .withReducer(userReducer)
         .hasFinalState({
           data: [user],
-          isLoading: false,
+          isLoading: false
         })
         .run();
     });
@@ -235,7 +235,7 @@ describe("User Sagas", () => {
         .withReducer(serverReducer)
         .hasFinalState({
           error: err,
-          message: "",
+          message: ""
         })
         .run();
     });
@@ -278,7 +278,7 @@ describe("User Sagas", () => {
         .withReducer(userReducer)
         .hasFinalState({
           data: [user],
-          isLoading: false,
+          isLoading: false
         })
         .run();
     });
@@ -292,7 +292,7 @@ describe("User Sagas", () => {
         .withReducer(serverReducer)
         .hasFinalState({
           error: err,
-          message: "",
+          message: ""
         })
         .run();
     });

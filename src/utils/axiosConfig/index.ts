@@ -5,7 +5,7 @@ import axios from "axios";
 const { baseURL } = process.env;
 
 export const app = axios.create({
-  baseURL,
+  baseURL
 });
 
 app.interceptors.response.use(
@@ -14,7 +14,7 @@ app.interceptors.response.use(
     const err = get(error, ["response", "data", "err"]);
 
     return Promise.reject(err || error.message);
-  },
+  }
 );
 
 export default app;
