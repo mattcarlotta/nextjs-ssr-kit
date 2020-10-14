@@ -9,7 +9,7 @@ const StyledButton = ({
   children,
   onClick,
   style,
-  type,
+  type
 }: ButtonProps): JSX.Element => (
   <button
     data-testid={dataTestId}

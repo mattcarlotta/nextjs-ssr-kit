@@ -28,15 +28,15 @@ describe("Get All Users Route", () => {
                 suite: expect.any(String),
                 city: expect.any(String),
                 state: expect.any(String),
-                zipCode: expect.any(String),
+                zipCode: expect.any(String)
               }),
               email: expect.any(String),
               firstName: expect.any(String),
               lastName: expect.any(String),
               userName: expect.any(String),
-              backgroundInfo: expect.any(String),
-            }),
-          ]),
+              backgroundInfo: expect.any(String)
+            })
+          ])
         });
         done();
       });

@@ -37,7 +37,7 @@ const TextAreaComponent = ({
   onChange,
   rows,
   value,
-  style,
+  style
 }: TextAreaProps) => (
   <div data-testid="textarea-container" className={className} style={style}>
     <Label htmlFor={name}>{label}</Label>

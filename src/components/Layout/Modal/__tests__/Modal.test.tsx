@@ -7,7 +7,7 @@ const initialProps = {
   children: <p data-testid="modal-details">Test</p>,
   maxWidth: "",
   onClick,
-  title: "Test Title",
+  title: "Test Title"
 };
 
 describe("Modal", () => {
@@ -31,7 +31,7 @@ describe("Modal", () => {
 
   it("renders the title", () => {
     expect(wrapper.find("[data-testid='modal-title']").first()).toHaveText(
-      initialProps.title,
+      initialProps.title
     );
   });
 
@@ -48,7 +48,7 @@ describe("Modal", () => {
 
   it("initially sets the max-width to 600px", () => {
     expect(
-      wrapper.find("[data-testid='modal-container']").first(),
+      wrapper.find("[data-testid='modal-container']").first()
     ).toHaveStyleRule("max-width", "600px");
   });
 
@@ -56,7 +56,7 @@ describe("Modal", () => {
     wrapper.setProps({ maxWidth: "700px" });
 
     expect(
-      wrapper.find("[data-testid='modal-container']").first(),
+      wrapper.find("[data-testid='modal-container']").first()
     ).toHaveStyleRule("max-width", "700px");
   });
 });

@@ -11,8 +11,8 @@ const seeds = [
       suite: "",
       city: "Victoria Valley",
       state: "CA",
-      zipCode: "55555",
-    },
+      zipCode: "55555"
+    }
   },
   {
     email: "twotimechampion@example.com",
@@ -26,8 +26,8 @@ const seeds = [
       suite: "",
       city: "Blank Hills",
       state: "MI",
-      zipCode: "55555",
-    },
+      zipCode: "55555"
+    }
   },
   {
     email: "lyricalsonday@example.com",
@@ -41,8 +41,8 @@ const seeds = [
       suite: "Apt 1202",
       city: "Mintville",
       state: "WA",
-      zipCode: "55555",
-    },
-  },
+      zipCode: "55555"
+    }
+  }
 ];
 export default seeds;

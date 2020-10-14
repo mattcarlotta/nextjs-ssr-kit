@@ -10,7 +10,7 @@ const initialProps = {
   label: "Test",
   onChange,
   type: "text",
-  value: "",
+  value: ""
 };
 
 describe("Input", () => {

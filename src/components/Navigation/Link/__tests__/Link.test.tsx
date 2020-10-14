@@ -4,7 +4,7 @@ import Link from "../index";
 const initProps = {
   children: "Test",
   style: {},
-  href: "/test",
+  href: "/test"
 };
 
 const wrapper = mount(<Link {...initProps} />);

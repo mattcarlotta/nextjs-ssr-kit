@@ -10,7 +10,7 @@ const initProps = {
   label: "First Name",
   onChange,
   type: "text",
-  value: "",
+  value: ""
 };
 
 describe("TextArea", () => {

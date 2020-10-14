@@ -11,8 +11,8 @@ const userSchema = new Schema({
     suite: String,
     city: String,
     state: String,
-    zipCode: String,
-  },
+    zipCode: String
+  }
 });
 
 export default models.User || model("User", userSchema);

@@ -33,7 +33,7 @@ const parseFields = (fields: any[]): Record<string, unknown> => {
         }
         return acc;
       },
-      {},
+      {}
     );
 
     return parsedFields;

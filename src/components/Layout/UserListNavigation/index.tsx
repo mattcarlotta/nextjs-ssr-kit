@@ -13,13 +13,13 @@ const iconStyle = {
   position: "relative",
   top: 2,
   fontSize: 18,
-  marginRight: 8,
+  marginRight: 8
 } as CSSProperties;
 
 const UserListNavigation = ({
   className,
   openModal,
-  seedDB,
+  seedDB
 }: UserListNavigationProps) => (
   <div data-testid="user-list-navigation" className={className}>
     <Link href="/">

@@ -14,8 +14,8 @@ const data = {
     state: "GA",
     suite: "",
     city: "Atlanta",
-    zipCode: "55555",
-  },
+    zipCode: "55555"
+  }
 };
 
 describe("Delete User Route", () => {
@@ -38,7 +38,7 @@ describe("Delete User Route", () => {
       .expect(400)
       .then(res => {
         expect(res.body.err).toEqual(
-          "Unable to locate that user for deletion.",
+          "Unable to locate that user for deletion."
         );
         done();
       });
@@ -51,7 +51,7 @@ describe("Delete User Route", () => {
       .expect(200)
       .then(res => {
         expect(res.body.message).toEqual(
-          `Successfully deleted ${user.userName}.`,
+          `Successfully deleted ${user.userName}.`
         );
         done();
       });

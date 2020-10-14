@@ -16,7 +16,7 @@ const initialProps = {
   handleCloseModal,
   handleResetEditClick,
   resetMessage,
-  updateUser,
+  updateUser
 };
 
 describe("DisplayUserList", () => {
@@ -56,15 +56,15 @@ describe("DisplayUserList", () => {
               suite: "20",
               city: "Glasgow",
               state: "CA",
-              zipCode: "1",
+              zipCode: "1"
             },
             isEditingID: "",
             handleCloseModal,
             handleResetEditClick,
             resetMessage,
-            updateUser,
-          },
-        ],
+            updateUser
+          }
+        ]
       });
     });
     it("renders the card when there is no editing ID", () => {

@@ -14,8 +14,8 @@ const middlewares = (app: Express): void => {
       morgan(
         inProduction
           ? ":remote-addr [:date] :referrer :method :url HTTP/:http-version :status :res[content-length]"
-          : "tiny",
-      ),
+          : "tiny"
+      )
     ); // logging framework
   }
   if (inProduction) {
@@ -23,16 +23,14 @@ const middlewares = (app: Express): void => {
       compression({
         level: 6, // set compression level from 1 to 9 (6 by default)
         filter: (req, res) =>
-          req.headers["x-no-compression"]
-            ? false
-            : compression.filter(req, res), // set predicate to determine whether to compress
-      }),
+          req.headers["x-no-compression"] ? false : compression.filter(req, res) // set predicate to determine whether to compress
+      })
     );
   }
   app.use(
     cors({
-      origin: CLIENT,
-    }),
+      origin: CLIENT
+    })
   ); // allows receiving of cookies/tokens from front-end
   app.use(bodyParser.json()); // parses header requests (req.body)
   app.use(bodyParser.urlencoded({ extended: true })); // allows objects and arrays to be URL-encoded

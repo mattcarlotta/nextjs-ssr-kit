@@ -8,7 +8,7 @@ const initialFields = [
     value: "1",
     errors: "",
     style: { width: "20%" },
-    required: true,
+    required: true
   },
   {
     name: "city",
@@ -17,7 +17,7 @@ const initialFields = [
     value: "2",
     errors: "",
     style: { width: "20%" },
-    required: true,
+    required: true
   },
   {
     name: "suite",
@@ -26,7 +26,7 @@ const initialFields = [
     value: "",
     errors: "",
     style: { width: "20%" },
-    required: true,
+    required: true
   },
   {
     name: "email",
@@ -35,8 +35,8 @@ const initialFields = [
     value: "",
     errors: "",
     style: { width: "100%" },
-    required: true,
-  },
+    required: true
+  }
 ];
 
 describe("ParseFields", () => {
@@ -45,7 +45,7 @@ describe("ParseFields", () => {
       expect(ParseFields([]));
     } catch (e) {
       expect(e.toString()).toEqual(
-        "Error: You must supply an array of fields!",
+        "Error: You must supply an array of fields!"
       );
     }
   });
@@ -56,9 +56,9 @@ describe("ParseFields", () => {
       expect.objectContaining({
         address: expect.objectContaining({
           zipCode: "1",
-          city: "2",
-        }),
-      }),
+          city: "2"
+        })
+      })
     );
   });
 });

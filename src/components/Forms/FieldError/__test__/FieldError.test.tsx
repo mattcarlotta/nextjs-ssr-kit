@@ -2,7 +2,7 @@ import { mount, ReactWrapper } from "enzyme";
 import FieldError from "../index";
 
 const initialProps = {
-  errors: "",
+  errors: ""
 };
 
 describe("Field Error", () => {

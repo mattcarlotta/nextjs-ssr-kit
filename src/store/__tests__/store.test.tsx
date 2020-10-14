@@ -23,20 +23,20 @@ describe("Store", () => {
           joiners: expect.any(Array),
           meta: {
             location: undefined,
-            name: "rootSaga",
+            name: "rootSaga"
           },
           queue: {
             abort: expect.any(Function),
             addTask: expect.any(Function),
             cancelAll: expect.any(Function),
-            getTasks: expect.any(Function),
+            getTasks: expect.any(Function)
           },
           result: expect.any(Function),
           setContext: expect.any(Function),
-          toPromise: expect.any(Function),
+          toPromise: expect.any(Function)
         },
-        subscribe: expect.any(Function),
-      }),
+        subscribe: expect.any(Function)
+      })
     );
   });
 
@@ -44,7 +44,7 @@ describe("Store", () => {
     expect(wrapper).toEqual({
       getServerSideProps: expect.any(Function),
       getStaticProps: expect.any(Function),
-      withRedux: expect.any(Function),
+      withRedux: expect.any(Function)
     });
   });
 });

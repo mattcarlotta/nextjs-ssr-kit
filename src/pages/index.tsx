@@ -31,7 +31,7 @@ const Home: NextPage = () => (
             position: "relative",
             top: 6,
             fontSize: 23,
-            marginRight: 6,
+            marginRight: 6
           }}
         />
         See Example

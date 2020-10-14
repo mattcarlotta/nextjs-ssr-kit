@@ -8,7 +8,7 @@ const initialFields = [
     value: "",
     errors: "",
     style: { width: "20%" },
-    required: true,
+    required: true
   },
   {
     name: "email",
@@ -17,8 +17,8 @@ const initialFields = [
     value: "",
     errors: "",
     style: { width: "100%" },
-    required: true,
-  },
+    required: true
+  }
 ];
 
 const invalidFields = [
@@ -29,8 +29,8 @@ const invalidFields = [
     value: "test",
     errors: "",
     style: { width: "20%" },
-    required: true,
-  },
+    required: true
+  }
 ];
 
 describe("FieldValidator", () => {
@@ -45,10 +45,10 @@ describe("FieldValidator", () => {
           value: "",
           errors: "Required.",
           style: expect.any(Object),
-          required: true,
-        }),
+          required: true
+        })
       ]),
-      errors: 2,
+      errors: 2
     });
   });
 
@@ -63,10 +63,10 @@ describe("FieldValidator", () => {
           value: "test",
           errors: "Invalid email.",
           style: expect.any(Object),
-          required: expect.any(Boolean),
-        }),
+          required: expect.any(Boolean)
+        })
       ]),
-      errors: 1,
+      errors: 1
     });
   });
 
@@ -75,7 +75,7 @@ describe("FieldValidator", () => {
       expect(FieldValidator([]));
     } catch (e) {
       expect(e.toString()).toEqual(
-        "Error: You must supply an array of fields!",
+        "Error: You must supply an array of fields!"
       );
     }
   });

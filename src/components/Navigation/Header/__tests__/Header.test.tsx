@@ -3,7 +3,7 @@ import Header from "../index";
 
 const initProps = {
   title: "Home",
-  url: "/",
+  url: "/"
 };
 
 const wrapper = mount(<Header {...initProps} />);

@@ -13,7 +13,7 @@ const initialProps = {
   serverMessage: "",
   resetForm,
   cancelForm,
-  submitAction,
+  submitAction
 };
 
 describe("UserForm", () => {
@@ -66,13 +66,13 @@ describe("UserForm", () => {
         "city",
         "state",
         "zipCode",
-        "backgroundInfo",
+        "backgroundInfo"
       ].forEach(name => {
         wrapper
           .find(`[data-testid="${name}"]`)
           .first()
           .simulate("change", {
-            target: { name, value: "email@123.com" },
+            target: { name, value: "email@123.com" }
           });
       });
     });
@@ -88,15 +88,15 @@ describe("UserForm", () => {
             suite: value,
             city: value,
             state: value,
-            zipCode: value,
+            zipCode: value
           },
           userName: value,
           email: value,
           firstName: value,
           lastName: value,
-          backgroundInfo: value,
+          backgroundInfo: value
         },
-        id,
+        id
       });
     });
 
