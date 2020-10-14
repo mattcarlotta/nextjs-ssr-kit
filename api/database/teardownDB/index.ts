@@ -18,31 +18,29 @@ const { DATABASE, DROP, EXIT } = process.env;
  * @throws {error} - displays a:  FAIL  utils/teardownDB.js message to console with the error.
  */
 
-const teardownDB = (): Promise<any> => {
-  return new Promise(async (resolve, reject) => {
+const teardownDB = async (): Promise<any> => {
+  try {
     await connectToDB();
     const db = await createConnectionToDatabase();
-    try {
-      await db.dropDatabase();
-      await db.close();
+    await db.dropDatabase();
+    await db.close();
 
-      logInfoMessage(
-        `\x1b[2mutils/\x1b[0m\x1b[1mteardownDB.js\x1b[0m (${DATABASE})\n`
-      );
+    logInfoMessage(
+      `\x1b[2mutils/\x1b[0m\x1b[1mteardownDB.js\x1b[0m (${DATABASE})\n`
+    );
 
-      if (EXIT) process.exit(0);
+    if (EXIT) process.exit(0);
 
-      mongoose.connection.close();
+    mongoose.connection.close();
 
-      return resolve();
-    } catch (err) {
-      logErrorMessage(`seedDB.js\x1b[0m\x1b[31m\n${err.toString()}\x1b[0m\n`);
+    return null;
+  } catch (err) {
+    logErrorMessage(`seedDB.js\x1b[0m\x1b[31m\n${err.toString()}\x1b[0m\n`);
 
-      mongoose.connection.close();
+    mongoose.connection.close();
 
-      return reject(process.exit(0));
-    }
-  });
+    if (EXIT) process.exit(0);
+  }
 };
 
 if (DROP) teardownDB();
