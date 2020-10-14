@@ -8,6 +8,7 @@ export const GlobalStylesheet = (): JSX.Element => (
         font-style: normal;
         font-weight: normal;
         src: url("/fonts/Poppins-Light.ttf") format("truetype");
+        font-display: swap;
       }
 
       #__next,

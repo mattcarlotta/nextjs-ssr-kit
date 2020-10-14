@@ -12,6 +12,12 @@ class CustomDocument extends Document {
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="msapplication-navbutton-color" content="#000000" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link
+          rel="preload"
+          href="/fonts/Poppins-Light.ttf"
+          as="font"
+          crossOrigin="anonymous"
+        />
         <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="build version" content={version} />
