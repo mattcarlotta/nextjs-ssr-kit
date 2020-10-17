@@ -65,5 +65,7 @@ jobs:
 
       - name: Run E2E Tests
         if: steps.build.api-tests == 0
-        id: build
-        run: yarn test:e2erun
+        uses: cypress-io/github-action@v2
+        with:
+          build: yarn build:staging
+          start: yarn start:staging
