@@ -75,7 +75,6 @@
 ├── config
 ├── database
 ├── e2e
-├── env
 ├── logger
 ├── models
 ├── public
@@ -133,6 +132,7 @@ In order to interact with the API, you'll need to:
 
 | `yarn <command>` | Description                                                                                      |
 | ---------------- | ------------------------------------------------------------------------------------------------ |
+| `analyze`        | Compiles `src` app to `.next/static` and displays chunk distribution charts for production.      |
 | `build`          | Compiles `src` app to `.next/static` and `api` to `dist` for production. †                       |
 | `build:staging`  | Compiles `src` app to `.next/static` and `api` to `dist` for staging.                            |
 | `dev`            | Starts development servers (`localhost:3000` for app and `localhost:5000` for api).              |
@@ -150,7 +150,7 @@ In order to interact with the API, you'll need to:
 | `test:watch`     | Runs and watches `.tsx` files in `src` that have changed since last commit.                      |
 | `test:watchall`  | Runs and watches all `.test.jsx` files in `src` for changes.                                     |
 
-† Note: Before running this command, you must edit the [.env.production](env/.env.production#) file and update the `baseURL` from `http://localhost:5000/api/` to include your remote API server host and update `CLIENT` from `http://localhost:3000` to include your remote server application host.
+† Note: Before running this command, you must edit the [.env.production](.env.production#) file and update the `baseURL` from `http://localhost:5000/api/` to include your remote API server host and update `CLIENT` from `http://localhost:3000` to include your remote server application host.
 
 <hr />
 
@@ -221,7 +221,6 @@ In order to interact with the API, you'll need to:
 <pre><code>
 - .github: Continous integration using Github Actions and repo issue templates.
 - e2e: Cypress end-to-end test suites.
-- env: Shareable ENV variables.
 - config: Webpack supporting configuration files.
 - logger: Shareable chalk console notifications.
 - .browserslistrc: Browsers list config (for babel transpiling).
@@ -294,7 +293,7 @@ By default, most directories within the root and `src` directories are [aliased]
 
 ## ENV Setup
 
-By default, this project attempts to import `.env` files placed within the `env` directory according to the `process.env.NODE_ENV` variable (`development`, `staging` and `production`, ...etc). However, this has been set up to be flexible so that if you don't wish to utilize any `.env` files, then as long the following `process.env` variables are defined, then the `.env` files and/or directory can be discarded:
+By default, this project attempts to import `.env` files placed within the `root` directory according to the `process.env.ENV_LOAD` variable (`development`, `staging` and `production`, ...etc; see snackables [documentation](https://github.com/mattcarlotta/snackables/blob/main/README.md) for more info). However, this has been set up to be flexible so that if you don't wish to utilize any `.env` files, then as long the following `process.env` variables are defined, then the `.env` files and/or directory can be discarded:
 
 - `APIPORT` (required and used [here](api/server.ts#L20))
 - `baseURL` (required and used [here](src/utils/axiosConfig/index.ts#L8))

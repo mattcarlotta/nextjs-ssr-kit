@@ -1,7 +1,7 @@
 // Since this is being utilized by "jest.json", paths must be relative
 
+import "snackables";
 import mongoose from "mongoose";
-import "../../../env";
 import { connectToDB, createConnectionToDatabase } from "../index";
 import { logErrorMessage, logInfoMessage } from "../../../logger";
 

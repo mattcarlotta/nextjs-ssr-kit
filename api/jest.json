@@ -4,7 +4,6 @@
   "clearMocks": true,
   "modulePaths": ["<rootDir>", "node_modules"],
   "moduleNameMapper": {
-    "~env": "<rootDir>../env",
     "~logger": "<rootDir>../logger",
     "~api/(.*)$": "<rootDir>$1",
     "~controllers/(.*)$": "<rootDir>controllers/$1",
