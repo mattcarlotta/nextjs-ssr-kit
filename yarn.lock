@@ -11101,10 +11101,10 @@ sliced@1.0.1:
   resolved "https://registry.yarnpkg.com/sliced/-/sliced-1.0.1.tgz#0b3a662b5d04c3177b1926bea82b03f837a2ef41"
   integrity sha1-CzpmK10Ewxd7GSa+qCsD+Dei70E=
 
-snackables@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/snackables/-/snackables-0.0.7.tgz#1eaa83b56592c70162f05d708ddb8d120be3da84"
-  integrity sha512-eNIRSHUCvqBFM4AwQRo4DmFrVFcToTA9HaXfdeRPFCs3E4ageRF8akGzxeFTe65N2xJLi7QAnV6OGBuBOb74+Q==
+snackables@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/snackables/-/snackables-0.0.8.tgz#b3ed348a0b6cd340b9a1f0feb5216eca3024bfeb"
+  integrity sha512-CZHASMWaiZ2J3h1L51vXvpE2ge+7e0r2MyuV97b9kh2xQWT5EZdozNldRs61MWtoQOgFprRhFqkkiQYBSgDGsQ==
 
 snapdragon-node@^2.0.1:
   version "2.1.1"
