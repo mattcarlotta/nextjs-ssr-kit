@@ -244,7 +244,6 @@ Click [here](package.json) to see latest versions.
 - <a href="https://github.com/axios/axios">Axios</a>
 - <a href="https://github.com/babel/babel">Babel</a>
 - <a href="https://github.com/cypress-io/cypress">Cypress</a>
-- <a href="https://github.com/motdotla/dotenv">DotENV</a>
 - <a href="https://github.com/emotion-js/emotion">Emotion</a>
 - <a href="http://airbnb.io/enzyme/">Enzyme</a>
 - <a href="https://github.com/eslint/eslint/">Eslint</a>
@@ -258,6 +257,7 @@ Click [here](package.json) to see latest versions.
 - <a href="https://github.com/reduxjs/redux">Redux</a>
 - <a href="https://github.com/zalmoxisus/redux-devtools-extension">Redux DevTools Extension</a>
 - <a href="https://redux-saga.js.org/">Redux Saga</a>
+- <a href="https://github.com/mattcarlotta/snackables">Snackables</a>
 - <a href="https://github.com/sass/dart-sassr">Sass</a>
 - <a href="https://stylelint.io/">Stylelint</a>
 - <a href="https://github.com/kristerkari/stylelint-scss">Stylelint-SCSS</a>
@@ -274,11 +274,11 @@ Click [here](package.json) to see latest versions.
 - <a href="https://github.com/petkaantonov/bluebird">Bluebird</a>
 - <a href="https://github.com/expressjs/body-parser">Body Parser</a>
 - <a href="https://github.com/expressjs/cors">CORS</a>
-- <a href="https://github.com/motdotla/dotenv">DotENV</a>
 - <a href="https://github.com/expressjs/express">Express</a>
 - <a href="https://mongoosejs.com/">Mongoose</a>
 - <a href="https://github.com/expressjs/morgan">Morgan</a>
 - <a href="https://github.com/prettier/prettier">Prettier</a>
+- <a href="https://github.com/mattcarlotta/snackables">Snackables</a>
 </code></pre>
 </details>
 <br />
