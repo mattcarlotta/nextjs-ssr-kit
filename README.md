@@ -257,8 +257,8 @@ Click [here](package.json) to see latest versions.
 - <a href="https://github.com/reduxjs/redux">Redux</a>
 - <a href="https://github.com/zalmoxisus/redux-devtools-extension">Redux DevTools Extension</a>
 - <a href="https://redux-saga.js.org/">Redux Saga</a>
-- <a href="https://github.com/mattcarlotta/snackables">Snackables</a>
 - <a href="https://github.com/sass/dart-sassr">Sass</a>
+- <a href="https://github.com/mattcarlotta/snackables">Snackables</a>
 - <a href="https://stylelint.io/">Stylelint</a>
 - <a href="https://github.com/kristerkari/stylelint-scss">Stylelint-SCSS</a>
 - <a href="https://github.com/stylelint/stylelint-config-recommended">Stylelint-Config-Recommended</a>
