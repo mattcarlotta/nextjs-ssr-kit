@@ -2,7 +2,6 @@ const { DefinePlugin } = require("webpack");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
 const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
-const WebpackBar = require("webpackbar");
 const address = require("address");
 
 const { analyze, baseURL, CLIENT, NODE_ENV, PORT } = process.env;
@@ -20,18 +19,12 @@ module.exports = isServer => {
           baseURL: JSON.stringify(baseURL),
           CLIENT: JSON.stringify(CLIENT),
           PORT: JSON.stringify(PORT),
-          NODE_ENV: JSON.stringify(NODE_ENV),
-        },
-      }),
+          NODE_ENV: JSON.stringify(NODE_ENV)
+        }
+      })
     );
   } else {
     plugins.push(
-      /* shows a compilation bar instead of the default compile message */
-      new WebpackBar({
-        color: "#268bd2",
-        minimal: false,
-        compiledIn: false,
-      }),
       /* in console error */
       inDev &&
         new FriendlyErrorsWebpackPlugin({
@@ -39,15 +32,15 @@ module.exports = isServer => {
             messages: [
               `Local development build: \x1b[1m${CLIENT}\x1b[0m`,
               remoteAddress &&
-                `Remote development build: \x1b[1mhttp://${remoteAddress}:${PORT}\x1b[0m`,
+                `Remote development build: \x1b[1mhttp://${remoteAddress}:${PORT}\x1b[0m`
             ].filter(Boolean),
             notes: [
               "Note that the development build is not optimized.",
-              "To create a production build, use \x1b[1m\x1b[32myarn build\x1b[0m.\n",
-            ],
+              "To create a production build, use \x1b[1m\x1b[32myarn build\x1b[0m.\n"
+            ]
           },
-          clearConsole: false,
-        }),
+          clearConsole: false
+        })
     );
   }
 
@@ -58,8 +51,8 @@ module.exports = isServer => {
         analyzerMode: "static",
         reportFilename: isServer
           ? "../analyze/server.html"
-          : "./analyze/client.html",
-      }),
+          : "./analyze/client.html"
+      })
     );
   }
 
