@@ -10,6 +10,7 @@ const updateUser = async (req: Request, res: Response): Promise<any> => {
     const existingUser = await User.findOne({ _id });
     if (!existingUser) throw String("Unable to locate that user to update.");
 
+    /* istanbul ignore next */
     if (existingUser.userName !== userName) {
       const userNameTaken = await User.findOne({ userName });
       if (userNameTaken) throw String("That username is already in use!");
