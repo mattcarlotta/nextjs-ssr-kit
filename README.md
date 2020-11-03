@@ -72,7 +72,6 @@
 |   └── tsconfig.prod.json
 |
 ├── build
-├── config
 ├── database
 ├── e2e
 ├── logger
@@ -221,7 +220,6 @@ In order to interact with the API, you'll need to:
 <pre><code>
 - .github: Continous integration using Github Actions and repo issue templates.
 - e2e: Cypress end-to-end test suites.
-- config: Webpack supporting configuration files.
 - logger: Shareable chalk console notifications.
 - .browserslistrc: Browsers list config (for babel transpiling).
 - .prettierc: Prettier config.
