@@ -11320,10 +11320,10 @@ sliced@1.0.1:
   resolved "https://registry.yarnpkg.com/sliced/-/sliced-1.0.1.tgz#0b3a662b5d04c3177b1926bea82b03f837a2ef41"
   integrity sha1-CzpmK10Ewxd7GSa+qCsD+Dei70E=
 
-snackables@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/snackables/-/snackables-1.0.1.tgz#3c5b8df3e51110c27d013d2c1a64fe6c4532e2f5"
-  integrity sha512-r6r85aTUzvK6NzzGeBdwuhHdevlzX9FEohsV7iUpWZiZBbgCzcrDRV4LPkZtT9T4oC4RWTTZPArARZY5heFjTA==
+snackables@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/snackables/-/snackables-1.0.2.tgz#3ff995f0977852954e8b0115b985751aa3a550fe"
+  integrity sha512-F7yjylCdtvvcBglYLe7P0cNK3AmY2pH+gca8uE5dB9462kYcur95wWbbcvoECw5fdRStc0WzattIgVVlfw+sgw==
 
 snapdragon-node@^2.0.1:
   version "2.1.1"
