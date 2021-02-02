@@ -1,3 +1,4 @@
+import * as React from "react";
 import styled from "@emotion/styled";
 import { FaCoffee } from "react-icons/fa";
 import Center from "~components/Layout/Center";

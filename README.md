@@ -72,10 +72,8 @@
 |   └── tsconfig.prod.json
 |
 ├── build
-├── config
 ├── database
 ├── e2e
-├── env
 ├── logger
 ├── models
 ├── public
@@ -133,6 +131,7 @@ In order to interact with the API, you'll need to:
 
 | `yarn <command>` | Description                                                                                      |
 | ---------------- | ------------------------------------------------------------------------------------------------ |
+| `analyze`        | Compiles `src` app to `.next/static` and displays chunk distribution charts for production.      |
 | `build`          | Compiles `src` app to `.next/static` and `api` to `dist` for production. †                       |
 | `build:staging`  | Compiles `src` app to `.next/static` and `api` to `dist` for staging.                            |
 | `dev`            | Starts development servers (`localhost:3000` for app and `localhost:5000` for api).              |
@@ -150,7 +149,7 @@ In order to interact with the API, you'll need to:
 | `test:watch`     | Runs and watches `.tsx` files in `src` that have changed since last commit.                      |
 | `test:watchall`  | Runs and watches all `.test.jsx` files in `src` for changes.                                     |
 
-† Note: Before running this command, you must edit the [.env.production](env/.env.production#) file and update the `baseURL` from `http://localhost:5000/api/` to include your remote API server host and update `CLIENT` from `http://localhost:3000` to include your remote server application host.
+† Note: Before running this command, you must edit the [.env.production](.env.production#) file and update the `baseURL` from `http://localhost:5000/api/` to include your remote API server host and update `CLIENT` from `http://localhost:3000` to include your remote server application host.
 
 <hr />
 
@@ -221,8 +220,6 @@ In order to interact with the API, you'll need to:
 <pre><code>
 - .github: Continous integration using Github Actions and repo issue templates.
 - e2e: Cypress end-to-end test suites.
-- env: Shareable ENV variables.
-- config: Webpack supporting configuration files.
 - logger: Shareable chalk console notifications.
 - .browserslistrc: Browsers list config (for babel transpiling).
 - .prettierc: Prettier config.
@@ -245,7 +242,6 @@ Click [here](package.json) to see latest versions.
 - <a href="https://github.com/axios/axios">Axios</a>
 - <a href="https://github.com/babel/babel">Babel</a>
 - <a href="https://github.com/cypress-io/cypress">Cypress</a>
-- <a href="https://github.com/motdotla/dotenv">DotENV</a>
 - <a href="https://github.com/emotion-js/emotion">Emotion</a>
 - <a href="http://airbnb.io/enzyme/">Enzyme</a>
 - <a href="https://github.com/eslint/eslint/">Eslint</a>
@@ -260,6 +256,7 @@ Click [here](package.json) to see latest versions.
 - <a href="https://github.com/zalmoxisus/redux-devtools-extension">Redux DevTools Extension</a>
 - <a href="https://redux-saga.js.org/">Redux Saga</a>
 - <a href="https://github.com/sass/dart-sassr">Sass</a>
+- <a href="https://github.com/mattcarlotta/snackables">Snackables</a>
 - <a href="https://stylelint.io/">Stylelint</a>
 - <a href="https://github.com/kristerkari/stylelint-scss">Stylelint-SCSS</a>
 - <a href="https://github.com/stylelint/stylelint-config-recommended">Stylelint-Config-Recommended</a>
@@ -275,11 +272,11 @@ Click [here](package.json) to see latest versions.
 - <a href="https://github.com/petkaantonov/bluebird">Bluebird</a>
 - <a href="https://github.com/expressjs/body-parser">Body Parser</a>
 - <a href="https://github.com/expressjs/cors">CORS</a>
-- <a href="https://github.com/motdotla/dotenv">DotENV</a>
 - <a href="https://github.com/expressjs/express">Express</a>
 - <a href="https://mongoosejs.com/">Mongoose</a>
 - <a href="https://github.com/expressjs/morgan">Morgan</a>
 - <a href="https://github.com/prettier/prettier">Prettier</a>
+- <a href="https://github.com/mattcarlotta/snackables">Snackables</a>
 </code></pre>
 </details>
 <br />
@@ -294,7 +291,7 @@ By default, most directories within the root and `src` directories are [aliased]
 
 ## ENV Setup
 
-By default, this project attempts to import `.env` files placed within the `env` directory according to the `process.env.NODE_ENV` variable (`development`, `staging` and `production`, ...etc). However, this has been set up to be flexible so that if you don't wish to utilize any `.env` files, then as long the following `process.env` variables are defined, then the `.env` files and/or directory can be discarded:
+By default, this project attempts to import `.env` files placed within the `root` directory according to the `process.env.ENV_LOAD` variable (`development`, `staging` and `production`, ...etc; see snackables [documentation](https://github.com/mattcarlotta/snackables/blob/main/README.md) for more info). However, this has been set up to be flexible so that if you don't wish to utilize any `.env` files, then as long the following `process.env` variables are defined, then the `.env` files and/or directory can be discarded:
 
 - `APIPORT` (required and used [here](api/server.ts#L20))
 - `baseURL` (required and used [here](src/utils/axiosConfig/index.ts#L8))
@@ -309,6 +306,8 @@ By default, this project attempts to import `.env` files placed within the `env`
 If you run into any issues, please fill out an issue report <a href="https://github.com/mattcarlotta/nextjs-ssr-kit/issues">here</a>.
 
 ### Unresolved
+
+⚠️ As of updating this boilerplate to v7.0.0, [enzyme-react-adapter-16](https://www.npmjs.com/package/enzyme-adapter-react-16) does **NOT** currently support React 17, see [issue tracker](https://github.com/enzymejs/enzyme/issues/2429). As such, this boilerplate is forced to use [@wojtekmaj/enzyme-adapter-react-17](https://www.npmjs.com/package/@wojtekmaj/enzyme-adapter-react-17) as a replacement until support is officially added. If concerned or incompatibilities arise, please downgrade to `react` and `react-dom` to 16.x.x and revert back to `enzyme-react-adapter-16` in the [setupTests](src/utils/setupTests/index.ts#L5) file.
 
 ⚠️ Importing a component or page that imports a `.css`, `.scss` or `.sass` file breaks `next/link` components. See <a href="https://github.com/zeit/next-plugins/issues/282">issue tracker</a>.
 

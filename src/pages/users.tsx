@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BsFillPersonPlusFill } from "react-icons/bs";
 import { resetMessage } from "~actions/Server";
@@ -20,29 +20,29 @@ import {
 } from "~types";
 
 const ShowUsers: NextPage = () => {
-  const [state, setState] = useState<ShowUsersState>({
+  const [state, setState] = React.useState<ShowUsersState>({
     isEditingID: "",
     openModal: false
   });
   const dispatch = useDispatch();
-  const createUserAction = useCallback(
+  const createUserAction = React.useCallback(
     ({ props }: { props: UserData }) => dispatch(actions.createUser({ props })),
     [actions.createUser, dispatch]
   );
-  const deleteUserAction = useCallback(
+  const deleteUserAction = React.useCallback(
     (id: string) => dispatch(actions.deleteUser(id)),
     [actions.deleteUser, dispatch]
   );
-  const seedDBAction = useCallback(() => dispatch(actions.seedDB()), [
+  const seedDBAction = React.useCallback(() => dispatch(actions.seedDB()), [
     actions.seedDB,
     dispatch
   ]);
-  const updateUserAction = useCallback(
+  const updateUserAction = React.useCallback(
     ({ props, id }: { props: UserData; id: string }) =>
       dispatch(actions.updateUser({ props, id })),
     [actions.updateUser, dispatch]
   );
-  const resetMessageAction = useCallback(() => dispatch(resetMessage()), [
+  const resetMessageAction = React.useCallback(() => dispatch(resetMessage()), [
     resetMessage,
     dispatch
   ]);
@@ -62,12 +62,12 @@ const ShowUsers: NextPage = () => {
     })
   );
 
-  const handleEditClick = useCallback(
+  const handleEditClick = React.useCallback(
     (id: string) => setState(prevState => ({ ...prevState, isEditingID: id })),
     []
   );
 
-  const handleResetEditClick = useCallback(
+  const handleResetEditClick = React.useCallback(
     () =>
       setState(prevState => ({
         ...prevState,
@@ -76,7 +76,7 @@ const ShowUsers: NextPage = () => {
     []
   );
 
-  const handleOpenModal = useCallback(
+  const handleOpenModal = React.useCallback(
     () =>
       setState(prevState => ({
         ...prevState,
@@ -86,7 +86,7 @@ const ShowUsers: NextPage = () => {
     []
   );
 
-  const handleCloseModal = useCallback(
+  const handleCloseModal = React.useCallback(
     () =>
       setState(prevState => ({
         ...prevState,
@@ -96,7 +96,7 @@ const ShowUsers: NextPage = () => {
     []
   );
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (reduxProps.isLoading) dispatch(actions.fetchUsers());
   }, [dispatch, reduxProps.isLoading]);
 

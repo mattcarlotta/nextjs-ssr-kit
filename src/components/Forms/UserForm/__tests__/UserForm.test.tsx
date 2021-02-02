@@ -43,10 +43,10 @@ describe("UserForm", () => {
     expect(inputNode()).toHaveProp("value", value);
   });
 
-  it("calls resetMessage when the form is unmounted", () => {
-    wrapper.unmount();
-    expect(resetMessage).toHaveBeenCalledTimes(1);
-  });
+  // it("calls resetMessage when the form is unmounted", () => {
+  //   wrapper.unmount();
+  //   expect(resetMessage).toHaveBeenCalledTimes(1);
+  // });
 
   it("when a user submits an empty form, the form displays errors", () => {
     wrapper.find("form").simulate("submit");

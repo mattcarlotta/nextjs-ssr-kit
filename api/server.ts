@@ -1,4 +1,3 @@
-import "~env";
 import express from "express";
 import middlewares from "~middlewares";
 import { connectToDB } from "~database";
