@@ -307,6 +307,8 @@ If you run into any issues, please fill out an issue report <a href="https://git
 
 ### Unresolved
 
+⚠️ As of updating this boilerplate to v7.0.0, [enzyme-react-adapter-16](https://www.npmjs.com/package/enzyme-adapter-react-16) does **NOT** currently support React 17, see [issue tracker](https://github.com/enzymejs/enzyme/issues/2429). As such, this boilerplate is forced to use [@wojtekmaj/enzyme-adapter-react-17](https://www.npmjs.com/package/@wojtekmaj/enzyme-adapter-react-17) as a replacement until support is officially added. If concerned or incompatibilities arise, please downgrade to `react` and `react-dom` to 16.x.x and revert back to `enzyme-react-adapter-16` in the [setupTests](src/utils/setupTests/index.ts#L5) file.
+
 ⚠️ Importing a component or page that imports a `.css`, `.scss` or `.sass` file breaks `next/link` components. See <a href="https://github.com/zeit/next-plugins/issues/282">issue tracker</a>.
 
 ### Unresolvable

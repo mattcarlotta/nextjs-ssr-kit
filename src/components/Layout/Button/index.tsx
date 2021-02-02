@@ -1,4 +1,5 @@
 /* eslint-disable react/button-has-type */
+import * as React from "react";
 import styled from "@emotion/styled";
 import { ButtonProps } from "~types";
 

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import * as React from "react";
 import Head from "next/head";
 import { ToastContainer } from "react-toastify";
 import toast from "~components/App/Toast";
@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { AppProps, FC } from "~types";
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
-  useEffect(() => {
+  React.useEffect(() => {
     toast({ type: "info", message: "Welcome to the NextJS SSR Kit!" });
   }, []);
 

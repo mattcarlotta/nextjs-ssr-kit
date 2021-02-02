@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import * as React from "react";
 import styled from "@emotion/styled";
 import Button from "~components/Layout/Button";
 import FieldGenerator from "~components/Forms/FieldGenerator";
@@ -18,7 +18,7 @@ const Form = styled.form`
 `;
 
 const UserForm = (props: UserFormProps): JSX.Element => {
-  const [state, setState] = useState<UserFormState>({
+  const [state, setState] = React.useState<UserFormState>({
     fields: generateFields(props),
     errors: 0,
     isSubmitting: false
@@ -34,7 +34,7 @@ const UserForm = (props: UserFormProps): JSX.Element => {
     submitAction
   } = props;
 
-  const handleChange = useCallback(
+  const handleChange = React.useCallback(
     ({
       target: { name, value }
     }: {
@@ -48,7 +48,7 @@ const UserForm = (props: UserFormProps): JSX.Element => {
     [fieldUpdater]
   );
 
-  const handleSubmit = useCallback(
+  const handleSubmit = React.useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       const { validatedFields, errors } = fieldValidator(fields);
@@ -62,14 +62,14 @@ const UserForm = (props: UserFormProps): JSX.Element => {
     [fields, fieldValidator]
   );
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (serverError && isSubmitting)
       setState(prevState => ({ ...prevState, isSubmitting: false }));
 
     if (serverMessage && isSubmitting) resetForm();
   }, [isSubmitting, serverError, serverMessage, resetForm, resetMessage]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!errors && isSubmitting)
       submitAction({
         props: parseFields(fields),
