@@ -1,6 +1,6 @@
 {
   "name": "nextjs-ssr-kit",
-  "version": "7.0.1",
+  "version": "7.0.2",
   "description": "A fullstack MERN SSR boilerplate.",
   "repository": "https://github.com/mattcarlotta/nextjs-ssr-kit",
   "author": "Matt Carlotta",
@@ -133,9 +133,9 @@
     "jsdom": "^16.4.0",
     "lint-staged": "^10.5.3",
     "nodemon": "^2.0.7",
+    "opener": "^1.5.2",
     "prettier": "^2.2.1",
     "prop-types": "^15.7.2",
-    "react-dev-utils": "^11.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-saga-test-plan": "^4.0.1",
     "sass": "^1.32.6",
