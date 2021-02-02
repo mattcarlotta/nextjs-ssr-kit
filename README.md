@@ -118,7 +118,7 @@ git clone git@github.com:mattcarlotta/nextjs-ssr-kit.git
 
 3 - Run `yarn dev` to run a development server.
 
-Provided in this boilerplate is an example of how to integrate a RESTful API (utilizing MongoDB).
+Provided in this boilerplate is an example of how to integrate a RESTful API utilizing MongoDB.
 
 In order to interact with the API, you'll need to:
 
@@ -149,7 +149,7 @@ In order to interact with the API, you'll need to:
 | `test:watch`     | Runs and watches `.tsx` files in `src` that have changed since last commit.                      |
 | `test:watchall`  | Runs and watches all `.test.jsx` files in `src` for changes.                                     |
 
-† Note: Before running this command, you must edit the [.env.production](.env.production#) file and update the `baseURL` from `http://localhost:5000/api/` to include your remote API server host and update `CLIENT` from `http://localhost:3000` to include your remote server application host.
+† Note: Before running this command, you must edit the [.env.prod](.env.prod#2) file and update the `baseURL` from `http://localhost:5000/api/` to include your remote API server host and update `CLIENT` from `http://localhost:3000` to include your remote server application host.
 
 <hr />
 
@@ -285,19 +285,19 @@ Click [here](package.json) to see latest versions.
 
 ## NextJS and API Integrations
 
-By default, most directories within the root and `src` directories are [aliased](tsconfig.json#L22-L37) (`~`). This means that you can refer to root files or directories by using the `~` symbol followed by a child file or directory name (root-level `index.js` files [require their own aliases](https://github.com/zeit/next.js/issues/12743), as such this project has been set up to handle predefined directories -- you'll be responsible for any additional directories). For example, `~models`, refers to the root [models/index.js](api/models/index.js) file, while `~models/users` refers to the [model/user.js](api/models/user.js) file. This allows for rapid development when referring to root-level directories as it eliminates the hassle of specifiying relative paths (like `../../../../../../../models`) to the directory!
+By default, most directories within the root and `src` directories are [aliased](tsconfig.json#L22-L43) (`~`). This means that you can refer to root files or directories by using the `~` symbol followed by a child file or directory name (root-level `index.js` files [require their own aliases](https://github.com/zeit/next.js/issues/12743), as such this project has been set up to handle predefined directories -- you'll be responsible for any additional directories). For example, `~middlewares` refers to the [api/middlewares/index.ts](api/middlewares/index.ts) file, while `~models/users` refers to the [api/model/user.ts](api/models/user.ts) file. This allows for rapid development when referring to root-level directories as it eliminates the hassle of specifiying relative paths (like `../../../../../../../models`) to the directory!
 
 <hr />
 
 ## ENV Setup
 
-By default, this project attempts to import `.env` files placed within the `root` directory according to the `process.env.ENV_LOAD` variable (`development`, `staging` and `production`, ...etc; see snackables [documentation](https://github.com/mattcarlotta/snackables/blob/main/README.md) for more info). However, this has been set up to be flexible so that if you don't wish to utilize any `.env` files, then as long the following `process.env` variables are defined, then the `.env` files and/or directory can be discarded:
+By default, this project attempts to import `.env` files placed within the `root` directory according to the `process.env.ENV_LOAD` variable (`dev`, `staging`, `prod`, `test`, ...etc; see snackables [documentation](https://github.com/mattcarlotta/snackables/blob/main/README.md) for more info). However, this has been set up to be flexible so that if you don't wish to utilize any `.env` files, then as long the following `process.env` variables are defined, then the `.env` files and/or directory can be discarded:
 
-- `APIPORT` (required and used [here](api/server.ts#L20))
+- `APIPORT` (required and used [here](api/server.ts#L19))
 - `baseURL` (required and used [here](src/utils/axiosConfig/index.ts#L8))
-- `CLIENT` (required and used [here](next.config.js#L8), [here](config/plugins.js#L21), [here](config/plugins.js#L40) and [here](api/middlewares/index.ts#L34))
+- `CLIENT` (required and used [here](next.config.js#L8), [here](next.config.js#L14) and [here](api/middlewares/index.ts#L32))
 - `DATABASE` (required and used [here](api/database/index.ts))
-- `PORT` (required and used [here](config/plugins.js#L22) and [here](config/plugins.js#L42))
+- `PORT` (required and used [here](next.config.js#L14))
 
 <hr />
 
@@ -308,16 +308,6 @@ If you run into any issues, please fill out an issue report <a href="https://git
 ### Unresolved
 
 ⚠️ As of updating this boilerplate to v7.0.0, [enzyme-react-adapter-16](https://www.npmjs.com/package/enzyme-adapter-react-16) does **NOT** currently support React 17, see [issue tracker](https://github.com/enzymejs/enzyme/issues/2429). As such, this boilerplate is forced to use [@wojtekmaj/enzyme-adapter-react-17](https://www.npmjs.com/package/@wojtekmaj/enzyme-adapter-react-17) as a replacement until support is officially added. If concerned or incompatibilities arise, please downgrade to `react` and `react-dom` to 16.x.x and revert back to `enzyme-react-adapter-16` in the [setupTests](src/utils/setupTests/index.ts#L5) file.
-
-⚠️ Importing a component or page that imports a `.css`, `.scss` or `.sass` file breaks `next/link` components. See <a href="https://github.com/zeit/next-plugins/issues/282">issue tracker</a>.
-
-### Unresolvable
-
-⚠️ Attempting to import a CSS file from `node_modules` within a component may result in incorrectly ordered stylesheets. Same holds true for UI libraries that attempt to import a CSS file when a component is imported. Instead, CSS files from `node_modules` should only be imported within the [\_app.js](src/pages/_app.js) file -- either directly imported or imported within the [globals.scss](src/styles/globals.scss) file which is then directly imported into the `_app.js` file as a global stylesheet. See [Adding a Global Stylesheet](https://nextjs.org/docs/basic-features/built-in-css-support#adding-a-global-stylesheet) for more information.
-
-⚠️ Adding `.test.tsx` files within the `pages` directory causes NextJS to fail upon production compilation. Unfortunately, NextJS handles all files and folders within the `pages` directory as reachable views. Instead, it's recommended to write end-to-end tests for `pages` using [cypress](https://www.npmjs.com/package/cypress).
-
-<hr />
 
 ## Contributors
 
