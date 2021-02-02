@@ -1,11 +1,11 @@
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
-const openBrowser = require("react-dev-utils/openBrowser");
+const open = require("opener");
 
 const { analyze, baseURL, CLIENT, PORT, NODE_ENV } = process.env;
 
 /* opens a browser window */
-if (NODE_ENV === "development") openBrowser(CLIENT);
+if (NODE_ENV === "development") open(CLIENT);
 
 module.exports = {
   env: {
