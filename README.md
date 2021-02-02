@@ -149,7 +149,7 @@ In order to interact with the API, you'll need to:
 | `test:watch`     | Runs and watches `.tsx` files in `src` that have changed since last commit.                      |
 | `test:watchall`  | Runs and watches all `.test.jsx` files in `src` for changes.                                     |
 
-† Note: Before running this command, you must edit the [.env.prod](.env.prod#2) file and update the `baseURL` from `http://localhost:5000/api/` to include your remote API server host and update `CLIENT` from `http://localhost:3000` to include your remote server application host.
+† Note: Before running this command, you must edit the [.env.prod](.env.prod#L2) file and update the `baseURL` from `http://localhost:5000/api/` to include your remote API server host and update `CLIENT` from `http://localhost:3000` to include your remote server application host.
 
 <hr />
 
