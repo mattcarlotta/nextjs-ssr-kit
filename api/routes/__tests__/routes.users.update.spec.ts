@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import User from "~models/user";
-import { createConnectionToDatabase } from "~database";
+import { connectToDB } from "~database";
 import app from "~test/utils/testServer";
 
 const data = {
@@ -21,15 +21,14 @@ const data = {
 const invalidId = new mongoose.Types.ObjectId();
 
 describe("Update User Route", () => {
-  let db: mongoose.Connection;
   let user: any;
   beforeAll(async () => {
-    db = await createConnectionToDatabase();
+    await connectToDB();
     user = await User.create(data);
   });
 
   afterAll(async () => {
-    await db.close();
+    await mongoose.connection.close();
   });
 
   it("rejects invalid requests where the username doesn't exist in req.body", async done => {

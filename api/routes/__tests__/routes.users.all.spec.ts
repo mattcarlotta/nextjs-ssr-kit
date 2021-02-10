@@ -1,15 +1,14 @@
 import mongoose from "mongoose";
-import { createConnectionToDatabase } from "~database";
+import { connectToDB } from "~database";
 import app from "~test/utils/testServer";
 
 describe("Get All Users Route", () => {
-  let db: mongoose.Connection;
   beforeAll(async () => {
-    db = await createConnectionToDatabase();
+    await connectToDB();
   });
 
   afterAll(async () => {
-    await db.close();
+    await mongoose.connection.close();
   });
 
   it("routes requests to the getUsers controller", async done => {
