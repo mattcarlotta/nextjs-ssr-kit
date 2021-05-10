@@ -1,6 +1,13 @@
 import styled from "@emotion/styled";
 import FadeIn from "~components/Layout/FadeIn";
-import { LoadingUsersProps } from "~types";
+
+export type LoadingUsersProps = {
+  className?: string;
+  duration?: string;
+  height?: number;
+  opacity?: string;
+  width?: number;
+};
 
 const LoadingUsersComponent = ({ className }: LoadingUsersProps) => (
   <FadeIn data-testid="loading-users" timing="0.6s">

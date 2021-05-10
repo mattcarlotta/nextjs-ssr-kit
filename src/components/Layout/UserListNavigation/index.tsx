@@ -7,7 +7,7 @@ import Flex from "~components/Layout/Flex";
 import FlexEnd from "~components/Layout/FlexEnd";
 import FlexStart from "~components/Layout/FlexStart";
 import Link from "~components/Navigation/Link";
-import { CSSProperties, UserListNavigationProps } from "~types";
+import { CSSProperties } from "~types";
 
 const iconStyle = {
   position: "relative",
@@ -15,6 +15,12 @@ const iconStyle = {
   fontSize: 18,
   marginRight: 8
 } as CSSProperties;
+
+export type UserListNavigationProps = {
+  className?: string;
+  openModal: (event: any) => void;
+  seedDB: (type: string) => ReturnType<typeof actions.seedDB>;
+};
 
 const UserListNavigation = ({
   className,

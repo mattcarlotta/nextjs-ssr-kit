@@ -3,11 +3,11 @@ import Head from "next/head";
 import { ToastContainer } from "react-toastify";
 import toast from "~components/App/Toast";
 import GlobalStylesheet from "~styles/globalStylesheet";
-import { wrapper } from "~store";
+import { withRedux } from "~store";
 import "react-toastify/dist/ReactToastify.css";
-import { AppProps, FC } from "~types";
+import { AppProps, ReactElement } from "~types";
 
-const App: FC<AppProps> = ({ Component, pageProps }) => {
+const App = ({ Component, pageProps }: AppProps): ReactElement => {
   React.useEffect(() => {
     toast({ type: "info", message: "Welcome to the NextJS SSR Kit!" });
   }, []);
@@ -36,4 +36,4 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
   );
 };
 
-export default wrapper.withRedux(App);
+export default withRedux(App);

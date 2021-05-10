@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import * as React from "react";
 import { createPortal } from "react-dom";
 import { FaTimes } from "react-icons/fa";
 import Flex from "~components/Layout/Flex";
@@ -11,16 +11,23 @@ import ModalContainer from "./ModalContainer";
 import ModalRoot from "./ModalRoot";
 import ModalTitle from "./ModalTitle";
 import WindowContainer from "./WindowContainer";
-import { ModalProps } from "~types";
+import { MouseEvent, ReactNode, ReactElement } from "~types";
+
+export type ModalProps = {
+  children: ReactNode;
+  maxWidth?: string;
+  onClick: (event: MouseEvent<HTMLButtonElement>) => void;
+  title?: ReactNode;
+};
 
 const Modal = ({
   children,
   maxWidth,
   onClick,
   title
-}: ModalProps): JSX.Element => {
+}: ModalProps): ReactElement => {
   /* istanbul ignore next */
-  useEffect(() => {
+  React.useEffect(() => {
     document.body.style.overflow = "hidden";
     const appEl = document.getElementById("app");
     if (appEl) appEl.className = "blurred";

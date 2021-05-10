@@ -1,7 +1,7 @@
 import { BsFillHouseFill } from "react-icons/bs";
-import { FC } from "~types";
+import { ReactElement } from "~types";
 
-const HomeIcon: FC = () => (
+const HomeIcon = (): ReactElement => (
   <span
     data-testid="home-icon"
     style={{ marginRight: "4px", fontSize: "20px" }}

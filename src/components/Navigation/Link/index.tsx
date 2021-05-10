@@ -1,6 +1,12 @@
 import NextLink from "next/link";
 import styled from "@emotion/styled";
-import { LinkProps } from "~types";
+import { ReactNode } from "~types";
+
+export type LinkProps = {
+  children: ReactNode;
+  className?: string;
+  href: string;
+};
 
 const LinkComponent = ({ children, className, href, ...rest }: LinkProps) => (
   <NextLink href={href} prefetch={false} passHref>

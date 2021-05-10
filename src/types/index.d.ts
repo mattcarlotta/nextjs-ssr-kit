@@ -7,11 +7,22 @@ import {
   CSSProperties,
   FC,
   FormEvent,
+  MouseEvent,
+  ReactElement,
   ReactNode
 } from "react";
 import { AnyAction, Store } from "redux";
-import { SagaIterator } from "redux-saga";
+import { SagaIterator, Task } from "redux-saga";
+import { ConnectedProps } from "react-redux";
+import { TRootState } from "~reducers";
 import * as actions from "../actions/Users";
+
+export type PickReduxState<T> = Pick<TRootState, T>;
+
+export interface ActionType<T, P = void> {
+  type: T;
+  payload?: P;
+}
 
 /// ACTIONS ///
 
@@ -74,7 +85,7 @@ export interface CardProps {
   deleteUser: (id: string) => ReturnType<typeof actions.deleteUser>;
 }
 
-type ComponentProps = {
+export type BaseComponentProps = {
   className?: string;
   children?: any;
   errors?: string;
@@ -93,16 +104,6 @@ export type ContainerProps = {
   innerStyle?: CSSProperties;
   style?: CSSProperties;
 };
-
-export interface ButtonProps extends ComponentProps {
-  dataTestId?: string;
-  disabled?: boolean;
-  danger?: boolean;
-  padding?: string;
-  primary?: boolean;
-  onClick?: (event: any) => void;
-  type: "button" | "submit" | "reset" | undefined;
-}
 
 export interface DeleteButtonProps extends ActionButtonProps {
   onClick: () => ReturnType<typeof actions.deleteUser>;
@@ -156,7 +157,7 @@ export type HeaderProps = {
   url: string;
 };
 
-export type InputProps = ComponentProps;
+export type InputProps = BaseComponentProps;
 
 export type LinkProps = {
   children: ReactNode;
@@ -172,26 +173,14 @@ export type LoadingUsersProps = {
   width?: number;
 };
 
-export type ModalProps = {
-  children: ReactNode;
-  maxWidth?: string;
-  onClick: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  title?: string | ReactNode;
-};
-
 export type ShowUsersState = {
   isEditingID: string;
   openModal: boolean;
 };
 
-export interface TextAreaProps extends ComponentProps {
+export interface TextAreaProps extends BaseComponentProps {
   rows?: number;
 }
-
-export type ToastProps = {
-  type: "success" | "info" | "error" | "warning";
-  message: string;
-};
 
 export interface UserFormFields extends BaseFieldProps {
   disabled?: boolean;
@@ -268,9 +257,11 @@ export {
   CSSProperties,
   FC,
   FormEvent,
+  MouseEvent,
   NextApiRequest,
   NextApiResponse,
   NextPage,
+  ReactElement,
   ReactNode,
   SagaIterator
 };

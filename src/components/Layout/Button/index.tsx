@@ -1,7 +1,17 @@
 /* eslint-disable react/button-has-type */
 import * as React from "react";
 import styled from "@emotion/styled";
-import { ButtonProps } from "~types";
+import { BaseComponentProps } from "~types";
+
+export type ButtonProps = BaseComponentProps & {
+  dataTestId?: string;
+  disabled?: boolean;
+  danger?: boolean;
+  padding?: string;
+  primary?: boolean;
+  onClick?: (event: any) => void;
+  type: "button" | "submit" | "reset" | undefined;
+};
 
 const StyledButton = ({
   dataTestId,

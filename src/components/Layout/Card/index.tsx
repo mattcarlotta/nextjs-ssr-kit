@@ -15,7 +15,6 @@ import UserAddress from "./UserAddress";
 import UserBackground from "./UserBackground";
 import UserDetails from "./UserDetails";
 import UserName from "./UserName";
-import { CardProps } from "~types";
 
 const Divider = styled.li`
   display: inline-block;
@@ -24,6 +23,21 @@ const Divider = styled.li`
   margin: 0 10px;
   border-left: 1px solid #d3d3d3;
 `;
+
+export interface CardProps {
+  _id: string;
+  email?: string;
+  firstName?: string;
+  lastName?: string;
+  userName?: string;
+  backgroundInfo?: string;
+  address: any;
+  key: any;
+  className?: string;
+  idx: number;
+  handleEditClick: (id: string) => void;
+  deleteUser: (id: string) => ReturnType<typeof actions.deleteUser>;
+}
 
 const CardComponent = ({
   className,

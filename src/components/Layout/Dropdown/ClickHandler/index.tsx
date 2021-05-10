@@ -1,7 +1,20 @@
-import { createRef, Component } from "react";
-import { DropdownClickHandlerProps, DropdownClickHandlerState } from "~types";
+import * as React from "react";
 
-class ClickHandler extends Component<
+export type DropdownClickHandlerProps = {
+  children: ({
+    isVisible,
+    handleMenuClick
+  }: {
+    isVisible: boolean;
+    handleMenuClick: () => void;
+  }) => JSX.Element;
+};
+
+export type DropdownClickHandlerState = {
+  isVisible: boolean;
+};
+
+class ClickHandler extends React.Component<
   DropdownClickHandlerProps,
   DropdownClickHandlerState
 > {
@@ -19,7 +32,7 @@ class ClickHandler extends Component<
     document.addEventListener("scroll", this.handleMenuScrollClose);
   }
 
-  wrapperRef = createRef<HTMLDivElement>();
+  wrapperRef = React.createRef<HTMLDivElement>();
 
   handleClickOutside = (event: Event): void => {
     if (

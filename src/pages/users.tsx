@@ -12,21 +12,25 @@ import LoadingUsers from "~components/Layout/LoadingUsers";
 import UserListNavigation from "~components/Layout/UserListNavigation";
 import Header from "~components/Navigation/Header";
 import {
-  NextPage,
+  ReactElement,
   ServerReducerState,
-  ShowUsersState,
   UserReducerState,
   UserData
 } from "~types";
 
-const ShowUsers: NextPage = () => {
+export type ShowUsersState = {
+  isEditingID: string;
+  openModal: boolean;
+};
+
+const ShowUsers = (): ReactElement => {
   const [state, setState] = React.useState<ShowUsersState>({
     isEditingID: "",
     openModal: false
   });
   const dispatch = useDispatch();
   const createUserAction = React.useCallback(
-    ({ props }: { props: UserData }) => dispatch(actions.createUser({ props })),
+    ({ props }: { props: UserData }) => dispatch(actions.createUser(props)),
     [actions.createUser, dispatch]
   );
   const deleteUserAction = React.useCallback(

@@ -5,9 +5,9 @@ import ErrorStatus from "~components/Layout/ErrorStatus";
 import Flex from "~components/Layout/Flex";
 import HomeIcon from "~components/Layout/HomeIcon";
 import Link from "~components/Navigation/Link";
-import { NextPage } from "~types";
+import { ReactElement } from "~types";
 
-const NotFound: NextPage = () => (
+const NotFound = (): ReactElement => (
   <Flex justify="center" style={{ height: "90vh" }} id="notfound">
     <Head>
       <title>Server Error - NextJS SSR Kit</title>

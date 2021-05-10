@@ -1,7 +1,11 @@
 import styled from "@emotion/styled";
 import FieldError from "~components/Forms/FieldError";
 import Label from "~components/Forms/Label";
-import { TextAreaProps } from "~types";
+import { BaseComponentProps } from "~types";
+
+export type TextAreaProps = BaseComponentProps & {
+  rows?: number;
+};
 
 const TextAreaField = styled.textarea<{ errors?: string }>`
   box-sizing: border-box;

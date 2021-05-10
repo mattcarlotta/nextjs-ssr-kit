@@ -10,9 +10,9 @@ import {
 import AlertContainer from "./AlertContainer";
 import AlertMessage from "./AlertMessage";
 import AlertType from "./AlertType";
-import { ToastProps } from "~types";
+import { ReactElement } from "~types";
 
-export const displayIcon = (type: string | undefined): JSX.Element => {
+export const displayIcon = (type: string | undefined): ReactElement => {
   switch (type) {
     case "success":
       return <BsCheckBox />;
@@ -25,6 +25,11 @@ export const displayIcon = (type: string | undefined): JSX.Element => {
     default:
       return <BsQuestionSquareFill />;
   }
+};
+
+export type ToastProps = {
+  type: "success" | "info" | "error" | "warning";
+  message: string;
 };
 
 const ToastMessage = ({ type, message }: ToastProps): null => {

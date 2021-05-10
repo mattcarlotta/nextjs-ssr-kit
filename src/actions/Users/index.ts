@@ -1,15 +1,17 @@
 import isEmpty from "lodash.isempty";
 import * as constants from "~constants";
-import { AnyAction, UserData, UserProps, UpdatedUserProps } from "~types";
+import { AnyAction, ActionType, UserData, UpdatedUserProps } from "~types";
 /**
  * Attempts to create a new user in DB.
  *
  * @param {object} props - contains user's email, firstName, lastName, userName, backgroundInfo street, state, suite, city, zipCode.
  * @returns {AnyAction} a redux action
  */
-export const createUser = ({ props }: UserProps): AnyAction => ({
+export const createUser = (
+  payload: UserData
+): ActionType<constants.CreateUser, UserData> => ({
   type: constants.USERS_CREATE,
-  props
+  payload
 });
 
 /**
@@ -18,9 +20,11 @@ export const createUser = ({ props }: UserProps): AnyAction => ({
  * @param {string} id - user id
  * @returns {AnyAction} a redux action
  */
-export const deleteUser = (id: string): AnyAction => ({
+export const deleteUser = (
+  payload: string
+): ActionType<constants.DeleteUser, string> => ({
   type: constants.USERS_DELETE,
-  id
+  payload
 });
 
 /**
@@ -28,7 +32,7 @@ export const deleteUser = (id: string): AnyAction => ({
  *
  * @returns {AnyAction} a redux action
  */
-export const fetchUsers = (): AnyAction => ({
+export const fetchUsers = (): ActionType<constants.FetchUser> => ({
   type: constants.USERS_FETCH
 });
 
@@ -36,7 +40,7 @@ export const fetchUsers = (): AnyAction => ({
  * Resets redux users state.
  * @returns {AnyAction} a redux action
  */
-export const resetUsers = (): AnyAction => ({
+export const resetUsers = (): ActionType<constants.ResetUsers> => ({
   type: constants.USERS_RESET
 });
 
@@ -45,7 +49,7 @@ export const resetUsers = (): AnyAction => ({
  *
  * @returns {AnyAction} a redux action
  */
-export const seedDB = (): AnyAction => ({
+export const seedDB = (): ActionType<constants.SeedUsers> => ({
   type: constants.USERS_SEED
 });
 

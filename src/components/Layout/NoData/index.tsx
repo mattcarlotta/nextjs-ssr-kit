@@ -1,14 +1,14 @@
 import { FaChartArea } from "react-icons/fa";
 import Container from "~components/Layout/Container";
 import Flex from "~components/Layout/Flex";
-import { CSSProperties, FC } from "~types";
+import { CSSProperties, ReactElement } from "~types";
 
 const styles = {
   color: "#d4d3d3",
   margin: 0
 } as CSSProperties;
 
-const NoData: FC = () => (
+const NoData = (): ReactElement => (
   <Container dataTestId="no-data" innerStyle={{ height: 400 }}>
     <Flex
       direction="column"

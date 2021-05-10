@@ -1,14 +1,21 @@
 import Head from "next/head";
-import { HeaderProps } from "~types";
+import { ReactElement } from "~types";
 
 const { CLIENT } = process.env;
+
+export type HeaderProps = {
+  description: string;
+  title: string;
+  type: string;
+  url: string;
+};
 
 const Header = ({
   description,
   title,
   type,
   url
-}: HeaderProps): JSX.Element => (
+}: HeaderProps): ReactElement => (
   <Head>
     <title>{title} - NextJS SSR Kit</title>
     <link rel="canonical" href={`${CLIENT}${url}`} />

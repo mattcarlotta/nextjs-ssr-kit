@@ -5,7 +5,21 @@ import Card from "~components/Layout/Card";
 import Container from "~components/Layout/Container";
 import FadeIn from "~components/Layout/FadeIn";
 import NoData from "~components/Layout/NoData";
-import { DisplayUserListProps, UserData } from "~types";
+import { UserData } from "~types";
+
+export interface DisplayUserListProps {
+  data: any[];
+  isEditingID?: string;
+  deleteUser: (id: string) => ReturnType<typeof actions.deleteUser>;
+  handleCloseModal: (event: any) => void;
+  handleEditClick: (id: string) => void;
+  handleResetEditClick: (event: any) => void;
+  resetMessage: () => void;
+  updateUser: ({
+    props: UserData,
+    id: string
+  }) => ReturnType<typeof actions.updateUser>;
+}
 
 const DisplayUserList = ({
   data,
