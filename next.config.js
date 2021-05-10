@@ -5,7 +5,7 @@ const open = require("opener");
 const { analyze, baseURL, CLIENT, PORT, NODE_ENV } = process.env;
 
 /* opens a browser window */
-if (NODE_ENV === "development") open(CLIENT);
+if (NODE_ENV === "development") setTimeout(() => open(CLIENT), 1000);
 
 module.exports = {
   env: {

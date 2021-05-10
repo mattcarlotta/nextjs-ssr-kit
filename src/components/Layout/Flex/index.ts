@@ -8,7 +8,6 @@ const Flex = styled.div<{
 }>`
   flex-direction: ${({ direction }) => direction || "row"};
   display: flex;
-  justify-content: center;
   align-items: center;
   width: ${({ width }) => width || "100%"};
   flex-wrap: ${({ flexwrap }) => (flexwrap ? "wrap" : "nowrap")};

@@ -1,6 +1,7 @@
 const selectCardOption = (option: string, item: number = 1): void => {
-  cy.get("[data-testid=dropdown-container]").eq(item).click();
-  cy.get("[data-testid=dropdown-menu]").within(() => {
+  cy.findByTestId("dropdown-container").eq(item).click();
+
+  cy.findByTestId("dropdown-menu").within(() => {
     cy.get(`[data-testid='${option}']`).click();
   });
 };
@@ -19,115 +20,115 @@ context("Users Page", () => {
   });
 
   it("displays the cards when data is present", () => {
-    cy.get("[data-testid=seed-database]").click();
+    cy.findByTestId("seed-database").click();
 
-    cy.get("[data-testid=card-container]").should("have.length", 3);
+    cy.findByTestId("card-container").should("have.length", 3);
   });
 
   it("deletes a user card", () => {
-    cy.get("[data-testid=modal-alert]").click();
+    cy.findByTestId("modal-alert").click();
 
     selectCardOption("delete");
 
-    cy.get("[data-testid=card-container]").should("have.length", 2);
+    cy.findByTestId("card-container").should("have.length", 2);
 
-    cy.get("[data-testid=modal-message]")
-      .should("have.length", 1)
+    cy.findByTestId("modal-message")
+      .should("exist")
       .and("have.text", "Successfully deleted notjohnsson.");
   });
 
   it("displays an edit form", () => {
     selectCardOption("edit");
 
-    cy.get("[data-testid=user-form]").should("have.length", 1);
+    cy.findByTestId("user-form").should("exist");
   });
 
   it("renders errors if a required input is empty", () => {
     selectCardOption("edit");
 
-    cy.get("input[data-testid=userName]").clear();
+    cy.findByTestId("userName").clear();
 
-    cy.get("[data-testid=submit]").click();
+    cy.findByTestId("submit").click();
 
-    cy.get("[data-testid=errors]").should("have.length", 1);
+    cy.findByTestId("errors").should("have.length", 1);
   });
 
   it("displays an error if an edited username matches a pre-existing username", () => {
-    cy.get("[data-testid=modal-alert]").click();
+    cy.findByTestId("modal-alert").click();
 
     selectCardOption("edit");
 
-    cy.get("input[data-testid=userName]").clear().type("bobbin4apples");
+    cy.findByTestId("userName").clear().type("bobbin4apples");
 
-    cy.get("[data-testid=submit]").click();
+    cy.findByTestId("submit").click();
 
-    cy.get("[data-testid=modal-message]")
-      .should("have.length", 1)
+    cy.findByTestId("modal-message")
+      .should("exist")
       .and("have.text", "That username is already in use!");
   });
 
   it("cancels updating the user", () => {
-    cy.get("[data-testid=modal-alert]").click();
+    cy.findByTestId("modal-alert").click();
 
     selectCardOption("edit");
 
-    cy.get("[data-testid=cancel]").click();
+    cy.findByTestId("cancel").click();
 
-    cy.get("[data-testid=user-form").should("have.length", 0);
+    cy.findByTestId("user-form").should("not.exist");
   });
 
   it("updates a user", () => {
-    cy.get("[data-testid=modal-alert]").click();
+    cy.findByTestId("modal-alert").click();
 
     selectCardOption("edit");
 
-    cy.get("input[data-testid=userName]").clear().type("snapplecracklepop");
+    cy.findByTestId("userName").clear().type("snapplecracklepop");
 
-    cy.get("[data-testid=submit]").click();
+    cy.findByTestId("submit").click();
 
-    cy.get("[data-testid=modal-message]")
-      .should("have.length", 1)
+    cy.findByTestId("modal-message")
+      .should("exist")
       .and("have.text", "Successfully updated snapplecracklepop.");
   });
 
   it("displays a create user form", () => {
-    cy.get("[data-testid=modal-alert]").click();
+    cy.findByTestId("modal-alert").click();
 
-    cy.get("[data-testid=open-modal]").click();
+    cy.findByTestId("open-modal").click();
 
-    cy.get("[data-testid=user-form]").should("have.length", 1);
+    cy.findByTestId("user-form").should("exist");
   });
 
-  it("cancels creating a user", () => {
-    cy.get("[data-testid=open-modal]").click();
+  it("cancels creating a user either by closing the modal or clicking the 'Cancel' button", () => {
+    cy.findByTestId("open-modal").click();
 
-    cy.get("[data-testid=user-form]").should("have.length", 1);
+    cy.findByTestId("user-form").should("exist");
 
-    cy.get("[data-testid=close-modal]").click();
+    cy.findByTestId("close-modal").click();
 
-    cy.get("[data-testid=user-form]").should("have.length", 0);
+    cy.findByTestId("user-form").should("not.exist");
 
-    cy.get("[data-testid=open-modal]").click();
+    cy.findByTestId("open-modal").click();
 
-    cy.get("[data-testid=user-form]").should("have.length", 1);
+    cy.findByTestId("user-form").should("exist");
 
-    cy.get("[data-testid=cancel]").click();
+    cy.findByTestId("cancel").click();
 
-    cy.get("[data-testid=user-form]").should("have.length", 0);
+    cy.findByTestId("user-form").should("not.exist");
   });
 
   it("displays errors when attempting to submit a form with empty fields", () => {
-    cy.get("[data-testid=open-modal]").click();
+    cy.findByTestId("open-modal").click();
 
-    cy.get("[data-testid=submit]").click();
+    cy.findByTestId("submit").click();
 
-    cy.get("[data-testid=errors]").should("have.length", 9);
+    cy.findByTestId("errors").should("have.length", 9);
   });
 
   it("displays an error if trying to create a user that already exists", () => {
-    cy.get("[data-testid=modal-alert]").click();
+    cy.findByTestId("modal-alert").click();
 
-    cy.get("[data-testid=open-modal]").click();
+    cy.findByTestId("open-modal").click();
     [
       "userName",
       "email",
@@ -138,23 +139,24 @@ context("Users Page", () => {
       "city",
       "state",
       "zipCode",
-      "backgroundInfo",
+      "backgroundInfo"
     ].forEach(name => {
       let value = "123@email.com";
       if (name === "userName") value = "bobbin4apples";
-      cy.get(`[data-testid=${name}]`).type(value);
+      cy.findByTestId(name).type(value);
     });
-    cy.get("[data-testid=submit]").click();
 
-    cy.get("[data-testid=modal-message]")
-      .should("have.length", 1)
+    cy.findByTestId("submit").click();
+
+    cy.findByTestId("modal-message")
+      .should("exist")
       .and("have.text", "That username is already in use!");
   });
 
   it("creates a new user", () => {
-    cy.get("[data-testid=modal-alert]").click();
+    cy.findByTestId("modal-alert").click();
 
-    cy.get("[data-testid=open-modal]").click();
+    cy.findByTestId("open-modal").click();
     [
       "userName",
       "email",
@@ -165,22 +167,23 @@ context("Users Page", () => {
       "city",
       "state",
       "zipCode",
-      "backgroundInfo",
+      "backgroundInfo"
     ].forEach(name => {
-      cy.get(`[data-testid=${name}]`).type("123@email.com");
+      cy.findByTestId(name).type("123@email.com");
     });
-    cy.get("[data-testid=submit]").click();
 
-    cy.get("[data-testid=modal-message]")
-      .should("have.length", 1)
+    cy.findByTestId("submit").click();
+
+    cy.findByTestId("modal-message")
+      .should("exist")
       .and("have.text", "Successfully created 123@email.com.");
   });
 
   it("when the 'Go Back' link is pressed, it navigates to home", () => {
-    cy.get("[data-testid=link]").click();
+    cy.findByTestId("link").click();
 
     cy.url().should("contain", "/");
 
-    cy.get("[data-testid=home-page]").should("have.length", 1);
+    cy.findByTestId("home-page").should("exist");
   });
 });

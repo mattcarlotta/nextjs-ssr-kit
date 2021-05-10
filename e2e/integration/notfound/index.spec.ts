@@ -4,25 +4,25 @@ context("Home Page", () => {
   });
 
   it("initially displays a welcome message", () => {
-    cy.get("[data-testid=modal-message]").should(
+    cy.findByTestId("modal-message").should(
       "have.text",
-      "Welcome to the NextJS SSR Kit!",
+      "Welcome to the NextJS SSR Kit!"
     );
   });
 
   it("initially displays a logo and with a  'See Example' link", () => {
-    cy.get("[data-testid=not-found-page]").should("have.length", 1);
+    cy.findByTestId("not-found-page").should("exist");
 
-    cy.get("[data-testid=link]")
+    cy.findByTestId("link")
       .should("have.length", 1)
       .and("have.attr", "href", "/");
   });
 
   it("allows a user to navigate to the home page", () => {
-    cy.get("[data-testid=link]").click();
+    cy.findByTestId("link]").click();
 
     cy.url().should("contain", "/");
 
-    cy.get("[data-testid=home-page]").should("have.length", 1);
+    cy.findByTestId("home-page").should("exist");
   });
 });

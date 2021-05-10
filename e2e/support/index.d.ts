@@ -1,11 +1,11 @@
 /// <reference types="cypress" />
 
 declare namespace Cypress {
-  interface Chainable {
+  export interface Chainable {
     /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
+     * Custom command to select a DOM element by data-testid attribute.
+     * @example cy.findByTestId("greeting")
      */
-    dataCy(value: string): Chainable<Element>;
+    findByTestId(value: string): Chainable<JQuery<HTMLElement>>;
   }
 }
