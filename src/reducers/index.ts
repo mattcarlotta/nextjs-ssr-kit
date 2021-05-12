@@ -7,4 +7,8 @@ const reducers = {
   users: userReducer
 };
 
-export default combineReducers(reducers);
+const RootReducer = combineReducers(reducers);
+
+export type TRootState = ReturnType<typeof RootReducer>;
+
+export default RootReducer;

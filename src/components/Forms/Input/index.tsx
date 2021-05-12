@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "@emotion/styled";
 import FieldError from "~components/Forms/FieldError";
 import Label from "~components/Forms/Label";
-import { InputProps } from "~types";
+import { BaseComponentProps } from "~types";
 
 const InputField = styled.input<{ errors?: string }>`
   text-indent: 10px;
@@ -36,7 +36,7 @@ const InputComponent = ({
   type,
   value,
   style
-}: InputProps) => (
+}: BaseComponentProps) => (
   <div data-testid="input-container" style={style} className={className}>
     <Label htmlFor={name}>{label}</Label>
     <InputField

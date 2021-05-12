@@ -13,7 +13,8 @@
     "~models/(.*)$": "<rootDir>models/$1",
     "~routes/(.*)$": "<rootDir>routes/$1",
     "~routes": "<rootDir>routes/index",
-    "~test/(.*)$": "<rootDir>test/$1"
+    "~testServer": "<rootDir>testServer/index",
+    "~utils/(.*)$": "<rootDir>utils/$1"
   },
   "transform": {
     "^.+\\.(ts|js)$": "babel-jest"

@@ -1,18 +1,14 @@
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 import User from "~models/user";
 import seeds from "~database/seedDB/seeds";
 
-const seedDB = async (_: Request, res: Response): Promise<any> => {
-  try {
-    await User.deleteMany({});
-    await User.insertMany(seeds);
+const seedDB = async (_: Request, res: Response): Promise<Response> => {
+  await User.deleteMany({});
+  await User.insertMany(seeds);
 
-    const users = await User.find({});
+  const users = await User.find({});
 
-    res.status(201).send({ users });
-  } catch (err) {
-    res.status(400).json({ err: err.toString() });
-  }
+  return res.status(201).send(users);
 };
 
 export default seedDB;

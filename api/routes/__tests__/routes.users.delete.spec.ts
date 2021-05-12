@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { connectToDB } from "~database";
-import User from "~models/user";
-import app from "~test/utils/testServer";
+import User, { TUserDocument } from "~models/user";
+import app from "~testServer";
 
 const data = {
   email: "deleteexample@test.com",
@@ -19,7 +19,7 @@ const data = {
 };
 
 describe("Delete User Route", () => {
-  let user: any;
+  let user: TUserDocument;
   beforeAll(async () => {
     await connectToDB();
     user = await User.create(data);

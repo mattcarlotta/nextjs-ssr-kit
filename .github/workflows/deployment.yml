@@ -8,7 +8,7 @@ name: Deployment
 jobs:
   deploy:
     if: "!contains(github.event.commits[0].message, '[skip-ci]')"
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
 
     services:
       mongodb:
@@ -50,9 +50,9 @@ jobs:
       - name: Run API Tests
         if: steps.build.app-tests == 0
         id: api-tests
-        run: yarn test:api
+        run: yarn t:api
 
       - name: Run E2E Tests
         if: steps.build.api-tests == 0
         id: build
-        run: yarn test:e2erun
+        run: yarn t:e2erun

@@ -79,24 +79,22 @@ describe("UserForm", () => {
 
     it("when the form is submitted, it calls submitAction with form values and an id when there is no errors", () => {
       const value = "email@123.com";
-      const id = "";
+      const _id = "";
       wrapper.find("form").simulate("submit");
       expect(submitAction).toHaveBeenCalledWith({
-        props: {
-          address: {
-            street: value,
-            suite: value,
-            city: value,
-            state: value,
-            zipCode: value
-          },
-          userName: value,
-          email: value,
-          firstName: value,
-          lastName: value,
-          backgroundInfo: value
+        _id,
+        address: {
+          street: value,
+          suite: value,
+          city: value,
+          state: value,
+          zipCode: value
         },
-        id
+        userName: value,
+        email: value,
+        firstName: value,
+        lastName: value,
+        backgroundInfo: value
       });
     });
 

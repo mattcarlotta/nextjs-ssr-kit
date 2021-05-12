@@ -1,6 +1,11 @@
 import { HYDRATE } from "next-redux-wrapper";
 import * as constants from "~constants";
-import { AnyAction, ServerReducerState } from "~types";
+import { AnyAction } from "~types";
+
+export type ServerReducerState = {
+  error: string;
+  message: string;
+};
 
 export const initialState: ServerReducerState = {
   error: "",

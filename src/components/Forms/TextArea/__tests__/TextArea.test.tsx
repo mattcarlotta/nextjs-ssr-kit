@@ -15,25 +15,26 @@ const initProps = {
 
 describe("TextArea", () => {
   let wrapper: ReactWrapper;
-  let textAreaNode: ReactWrapper;
+  let findById: (id: string) => ReactWrapper;
   beforeEach(() => {
     wrapper = mount(<Input {...initProps} />);
-    textAreaNode = wrapper.find("[data-testid='firstName']").first();
+    findById = (id: string): ReactWrapper =>
+      wrapper.find(`[data-testid='${id}']`).first();
   });
 
   it("renders without errors", () => {
-    expect(textAreaNode).toExist();
+    expect(wrapper).toExist();
   });
 
   it("adds a red border and displays an error message", () => {
     wrapper.setProps({ errors: "Required!" });
 
     // expect(wrapper).toHaveStyleRule("border", "1px solid #d03916");
-    expect(wrapper.find("[data-testid='errors']")).toHaveText("Required!");
+    expect(findById("errors")).toHaveText("Required!");
   });
 
   it("calls onChange when the input is updated", () => {
-    textAreaNode.simulate("change", { target: { value: "called" } });
+    findById("firstName").simulate("change", { target: { value: "called" } });
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 });

@@ -15,10 +15,11 @@ const initialProps = {
 
 describe("Input", () => {
   let wrapper: ReactWrapper;
-  let inputNode: ReactWrapper;
+  let findById: (id: string) => ReactWrapper;
   beforeEach(() => {
     wrapper = mount(<Input {...initialProps} />);
-    inputNode = wrapper.find("[data-testid='input']").first();
+    findById = (id: string): ReactWrapper =>
+      wrapper.find(`[data-testid='${id}']`).first();
   });
 
   afterEach(() => {
@@ -26,18 +27,18 @@ describe("Input", () => {
   });
 
   it("renders without errors", () => {
-    expect(inputNode).toExist();
+    expect(wrapper).toExist();
   });
 
   it("renders an error", () => {
     wrapper.setProps({ errors: "Required" });
-    const errorsNode = wrapper.find("[data-testid='errors']");
+    const errorsNode = findById("errors");
     expect(errorsNode).toExist();
     expect(errorsNode).toHaveText("Required");
   });
 
   it("calls onChange when the input is updated", () => {
-    inputNode.simulate("change", { target: { value: "called" } });
+    findById("input").simulate("change", { target: { value: "called" } });
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 });

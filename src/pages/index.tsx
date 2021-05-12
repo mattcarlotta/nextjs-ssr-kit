@@ -5,7 +5,7 @@ import Center from "~components/Layout/Center";
 import Link from "~components/Navigation/Link";
 import SubTitle from "~components/Layout/SubTitle";
 import Header from "~components/Navigation/Header";
-import { NextPage } from "~types";
+import { ReactElement } from "~types";
 
 const PageContainer = styled.div`
   max-width: 850px;
@@ -16,7 +16,7 @@ const PageContainer = styled.div`
   margin-bottom: 20px;
 `;
 
-const Home: NextPage = () => (
+const Home = (): ReactElement => (
   <Center data-testid="home-page" style={{ height: "100%", color: "#0076ff" }}>
     <Header title="Home" url="/" />
     <PageContainer>

@@ -2,9 +2,14 @@ import ClickHandler from "./ClickHandler";
 import DropdownContainer from "./DropdownContainer";
 import DropdownMenu from "./DropdownMenu";
 import SelectContainer from "./SelectContainer";
-import { DropdownProps, FC } from "~types";
+import { ReactNode, ReactElement } from "~types";
 
-const Dropdown: FC<DropdownProps> = ({ children, menu }) => (
+export type DropdownProps = {
+  children: ReactNode;
+  menu: ReactNode;
+};
+
+const Dropdown = ({ children, menu }: DropdownProps): ReactElement => (
   <ClickHandler>
     {({ isVisible, handleMenuClick }) => (
       <SelectContainer data-testid="select-container">

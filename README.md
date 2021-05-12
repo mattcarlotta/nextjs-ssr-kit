@@ -61,7 +61,7 @@
 |   ├── middlewares
 |   ├── models
 |   ├── routes
-|   ├── test
+|   ├── testServer
 |   ├── .eslintignore
 |   ├── .eslintrc
 |   ├── jest.json
@@ -78,6 +78,7 @@
 ├── models
 ├── public
 ├── src
+|   ├── @types
 |   ├── actions
 |   ├── components
 |   ├── constants
@@ -86,7 +87,8 @@
 |   ├── sagas
 |   ├── store
 |   ├── styles
-|   └── global.d.ts
+|   ├── types
+|   └── utils
 |
 ├── .browserslistrc
 ├── .eslintignore
@@ -129,25 +131,24 @@ In order to interact with the API, you'll need to:
 
 ## Commands
 
-| `yarn <command>` | Description                                                                                      |
-| ---------------- | ------------------------------------------------------------------------------------------------ |
-| `analyze`        | Compiles `src` app to `.next/static` and displays chunk distribution charts for production.      |
-| `build`          | Compiles `src` app to `.next/static` and `api` to `dist` for production. †                       |
-| `build:staging`  | Compiles `src` app to `.next/static` and `api` to `dist` for staging.                            |
-| `dev`            | Starts development servers (`localhost:3000` for app and `localhost:5000` for api).              |
-| `lint`           | Lints all `.ts`/`.tsx` files in `src`.                                                           |
-| `lint:api`       | Lints all `.ts` files in `api`.                                                                  |
-| `start`          | Starts production servers (must run `build` first).                                              |
-| `start:staging`  | Starts staging servers (must run `build:staging` first).                                         |
-| `test`           | Runs `.test.tsx` files in `src` once.                                                            |
-| `test:api`       | Runs `.spec.ts` files in `api` once.                                                             |
-| `test:apicov`    | Runs `.spec.ts` files in `api` with code coverage.                                               |
-| `test:apiwatch`  | Runs and watches all `.spec.ts` files in `api` for changes.                                      |
-| `test:cov`       | Runs `.test.tsx` files in `src` with code coverage.                                              |
-| `test:e2e`       | Runs cypress `.spec.js` files in `e2e` in a browser (run `build:staging`/`start:staging` first). |
-| `test:e2erun`    | Runs cypress `.spec.js` files in `e2e` headlessly.                                               |
-| `test:watch`     | Runs and watches `.tsx` files in `src` that have changed since last commit.                      |
-| `test:watchall`  | Runs and watches all `.test.jsx` files in `src` for changes.                                     |
+| `yarn <command>` | Description                                                                                 |
+| ---------------- | ------------------------------------------------------------------------------------------- |
+| `analyze`        | Compiles `src` app to `.next/static` and displays chunk distribution charts for production. |
+| `build`          | Compiles `src` app to `.next/static` and `api` to `build` for production. †                 |
+| `dev`            | Starts development servers (`localhost:3000` for app and `localhost:5000` for api).         |
+| `lint`           | Lints all `.ts`/`.tsx` files in `src`.                                                      |
+| `l:api`          | Lints all `.ts` files in `api`.                                                             |
+| `start`          | Starts production servers (must run `build` first).                                         |
+| `test`           | Runs `.test.tsx` files in `src` once.                                                       |
+| `t:api`          | Runs `.spec.ts` files in `api` once.                                                        |
+| `t:apicov`       | Runs `.spec.ts` files in `api` with code coverage.                                          |
+| `t:apiwatch`     | Runs and watches all `.spec.ts` files in `api` for changes.                                 |
+| `t:cov`          | Runs `.test.tsx` files in `src` with code coverage.                                         |
+| `t:e2e`          | Runs cypress `.spec.ts` files in `e2e` in a browser.                                        |
+| `t:e2erun`       | Runs cypress `.spec.ts` files in `e2e` headlessly.                                          |
+| `t:watch`        | Runs and watches `.tsx` files in `src` that have changed since last commit.                 |
+| `t:watchall`     | Runs and watches all `.test.tsx` files in `src` for changes.                                |
+| `tsc`            | Type checks all `.ts`/`.tsx` within the `src` and `api` directories.                        |
 
 † Note: Before running this command, you must edit the [.env.prod](.env.prod#L2) file and update the `baseURL` from `http://localhost:5000/api/` to include your remote API server host and update `CLIENT` from `http://localhost:3000` to include your remote server application host.
 
@@ -171,12 +172,12 @@ In order to interact with the API, you'll need to:
 - src/store: Redux store configuration.
 - src/styles: Custom component/page styles.
 - src/types: Shareable typescript types and interfaces.
-- src/utils/__mocks__/mockAxios.ts: A mocked axios instance for testing.
 - src/utils/setupTest/index.ts: Enzyme test setup for your React components.
 - src/utils/axiosConfig/index.ts: Custom axios configuration.
+- src/utils/mockAxios/index.ts: A mocked axios instance for testing.
 - src/utils/parseFields/index.ts: Custom functions for parsing form fields into a simple object.
 - src/utils/parseResponse/index.ts: Custom functions for parsing 'res' responses.
-- src/global.d.ts: typescript types for jest globals.
+- src/@types: typescript module declaration types for jest and redux globals.
 - .eslintignore: NextJS eslint config for NextJS.
 - .eslintrc: NextJS eslint ignore config for NextJS.
 - .stylelintrc: Stylelint config for NextJS.
@@ -199,7 +200,7 @@ In order to interact with the API, you'll need to:
 - api/middlewares: Express middlewares.
 - api/models: Mongoose models for Mongo.
 - api/routes: Express routes.
-- api/test/utils: Test setup utils.
+- api/testServer/index.ts: Test server.
 - api/.eslintignore: API eslint config.
 - api/.eslintrc: API eslint ignore config.
 - api/jest.json: jest config for API.
@@ -245,7 +246,6 @@ Click [here](package.json) to see latest versions.
 - <a href="https://github.com/emotion-js/emotion">Emotion</a>
 - <a href="http://airbnb.io/enzyme/">Enzyme</a>
 - <a href="https://github.com/eslint/eslint/">Eslint</a>
-- <a href="https://github.com/typicode/husky">Husky</a>
 - <a href="https://github.com/facebook/jest">Jest</a>
 - <a href="https://github.com/zeit/next.js">NextJS</a>
 - <a href="https://github.com/kirill-konshin/next-redux-wrapper">NextJS Redux Wrapper</a> 
@@ -270,7 +270,6 @@ Click [here](package.json) to see latest versions.
 <summary>Click to expand brief overview of API packages</summary>
 <pre><code>
 - <a href="https://github.com/petkaantonov/bluebird">Bluebird</a>
-- <a href="https://github.com/expressjs/body-parser">Body Parser</a>
 - <a href="https://github.com/expressjs/cors">CORS</a>
 - <a href="https://github.com/expressjs/express">Express</a>
 - <a href="https://mongoosejs.com/">Mongoose</a>

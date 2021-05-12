@@ -9,5 +9,5 @@
     "types": ["cypress"],
     "noEmit": true
   },
-  "include": ["../node_modules/cypress", "**/*.spec.ts"]
+  "include": ["../node_modules/cypress", "./support/index.d.ts", "**/*.spec.ts"]
 }

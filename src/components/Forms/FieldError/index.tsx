@@ -1,8 +1,15 @@
-import * as React from "react";
 import styled from "@emotion/styled";
-import { FieldErrorProps } from "~types";
+import { ReactElement } from "~types";
 
-const FieldErrorComponent = ({ className, errors }: FieldErrorProps) =>
+export type FieldErrorProps = {
+  className?: string;
+  errors?: string;
+};
+
+const FieldErrorComponent = ({
+  className,
+  errors
+}: FieldErrorProps): ReactElement | null =>
   errors ? (
     <span data-testid="errors" className={className}>
       {errors}

@@ -1,7 +1,7 @@
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 import User from "~models/user";
 
-const updateUser = async (req: Request, res: Response): Promise<any> => {
+const updateUser = async (req: Request, res: Response): Promise<Response> => {
   try {
     const { id: _id } = req.params;
     const { userName } = req.body;
@@ -16,11 +16,13 @@ const updateUser = async (req: Request, res: Response): Promise<any> => {
       if (userNameTaken) throw String("That username is already in use!");
     }
 
-    await User.updateOne({ _id }, req.body);
+    await existingUser.updateOne(req.body);
 
-    res.status(201).json({ message: `Successfully updated ${userName}.` });
+    return res
+      .status(201)
+      .json({ message: `Successfully updated ${userName}.` });
   } catch (err) {
-    res.status(400).json({ err: err.toString() });
+    return res.status(400).json({ err: err.toString() });
   }
 };
 

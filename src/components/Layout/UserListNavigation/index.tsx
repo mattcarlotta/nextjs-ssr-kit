@@ -1,4 +1,3 @@
-/* istanbul ignore file */
 import styled from "@emotion/styled";
 import { BsServer, BsPersonPlusFill } from "react-icons/bs";
 import Button from "~components/Layout/Button";
@@ -7,7 +6,8 @@ import Flex from "~components/Layout/Flex";
 import FlexEnd from "~components/Layout/FlexEnd";
 import FlexStart from "~components/Layout/FlexStart";
 import Link from "~components/Navigation/Link";
-import { CSSProperties, UserListNavigationProps } from "~types";
+import type { SeedDB } from "~actions/Users";
+import type { CSSProperties } from "~types";
 
 const iconStyle = {
   position: "relative",
@@ -16,7 +16,13 @@ const iconStyle = {
   marginRight: 8
 } as CSSProperties;
 
-const UserListNavigation = ({
+export type UserListNavigationProps = {
+  className?: string;
+  openModal: () => void;
+  seedDB: (type: string) => ReturnType<SeedDB>;
+};
+
+const UserListNavigationComponent = ({
   className,
   openModal,
   seedDB
@@ -43,7 +49,7 @@ const UserListNavigation = ({
   </div>
 );
 
-export default styled(UserListNavigation)`
+const UserListNavigation = styled(UserListNavigationComponent)`
   @media (max-width: 800px) {
     ${Flex},${FlexStart}, ${FlexEnd} {
       display: block !important;
@@ -54,3 +60,5 @@ export default styled(UserListNavigation)`
 
   margin-bottom: 10px;
 `;
+
+export default UserListNavigation;
