@@ -6,6 +6,10 @@
   "author": "Matt Carlotta",
   "license": "MIT",
   "private": false,
+  "engines": {
+    "node": ">=14",
+    "npm": ">=6"
+  },
   "scripts": {
     "analyze": "rimraf .next/analyze && analyze=true npm run build",
     "build": "npm run b:api && concurrently --success first --kill-others \"npm run s:api\" \"npm run b:app\"",
