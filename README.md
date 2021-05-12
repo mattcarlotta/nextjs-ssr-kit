@@ -139,15 +139,15 @@ In order to interact with the API, you'll need to:
 | `lint`           | Lints all `.ts`/`.tsx` files in `src`.                                                      |
 | `l:api`          | Lints all `.ts` files in `api`.                                                             |
 | `start`          | Starts production servers (must run `build` first).                                         |
-| `test`           | Runs `.test.tsx` files in `src` once.                                                       |
-| `t:api`          | Runs `.spec.ts` files in `api` once.                                                        |
-| `t:apicov`       | Runs `.spec.ts` files in `api` with code coverage.                                          |
-| `t:apiwatch`     | Runs and watches all `.spec.ts` files in `api` for changes.                                 |
-| `t:cov`          | Runs `.test.tsx` files in `src` with code coverage.                                         |
+| `test`           | Tests `.test.tsx` files in `src` once.                                                      |
+| `t:api`          | Tests `.spec.ts` files in `api` once.                                                       |
+| `t:apicov`       | Tests `.spec.ts` files in `api` with code coverage.                                         |
+| `t:apiwatch`     | Tests and watches all `.spec.ts` files in `api` for changes.                                |
+| `t:cov`          | Tests `.test.tsx` files in `src` with code coverage.                                        |
 | `t:e2e`          | Runs cypress `.spec.ts` files in `e2e` in a browser.                                        |
 | `t:e2erun`       | Runs cypress `.spec.ts` files in `e2e` headlessly.                                          |
-| `t:watch`        | Runs and watches `.tsx` files in `src` that have changed since last commit.                 |
-| `t:watchall`     | Runs and watches all `.test.tsx` files in `src` for changes.                                |
+| `t:watch`        | Tests and watches `.tsx` files in `src` that have changed since last commit.                |
+| `t:watchall`     | Tests and watches all `.test.tsx` files in `src` for changes.                               |
 | `tsc`            | Type checks all `.ts`/`.tsx` within the `src` and `api` directories.                        |
 
 † Note: Before running this command, you must edit the [.env.prod](.env.prod#L2) file and update the `baseURL` from `http://localhost:5000/api/` to include your remote API server host and update `CLIENT` from `http://localhost:3000` to include your remote server application host.
