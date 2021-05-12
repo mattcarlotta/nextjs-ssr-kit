@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { connectToDB } from "~database";
-import app from "~test/utils/testServer";
+import app from "~testServer";
 
 describe("Get All Users Route", () => {
   beforeAll(async () => {
@@ -17,8 +17,8 @@ describe("Get All Users Route", () => {
       .expect("Content-Type", /json/)
       .expect(200)
       .then(res => {
-        expect(res.body).toEqual({
-          users: expect.arrayContaining([
+        expect(res.body).toEqual(
+          expect.arrayContaining([
             expect.objectContaining({
               __v: expect.any(Number),
               _id: expect.anything(),
@@ -36,7 +36,7 @@ describe("Get All Users Route", () => {
               backgroundInfo: expect.any(String)
             })
           ])
-        });
+        );
         done();
       });
   });

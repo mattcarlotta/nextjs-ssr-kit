@@ -1,6 +1,11 @@
 import { HYDRATE } from "next-redux-wrapper";
 import * as constants from "~constants";
-import { AnyAction, UserReducerState } from "~types";
+import { AnyAction } from "~types";
+
+export type UserReducerState = {
+  data: [];
+  isLoading: boolean;
+};
 
 export const initialState: UserReducerState = {
   data: [],
@@ -27,7 +32,7 @@ const userReducer = (
     case constants.USERS_SET_DATA: {
       return {
         ...state,
-        data: payload.users,
+        data: payload,
         isLoading: false
       };
     }

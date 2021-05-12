@@ -34,9 +34,9 @@ export type ToastProps = {
 
 const ToastMessage = ({ type, message }: ToastProps): null => {
   toast[type](
-    <AlertContainer data-testid="modal-alert">
-      <AlertType data-testid="modal-alert-type">{displayIcon(type)}</AlertType>
-      <AlertMessage data-testid="modal-message">{message}</AlertMessage>
+    <AlertContainer data-testid="alert">
+      <AlertType data-testid="alert-type">{displayIcon(type)}</AlertType>
+      <AlertMessage data-testid="alert-message">{message}</AlertMessage>
     </AlertContainer>
   );
 

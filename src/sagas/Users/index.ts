@@ -45,12 +45,12 @@ export function* fetchUsers(): SagaIterator {
  * @throws {action} - A toast error message.
  */
 export function* createUser({
-  props
+  payload
 }: ReturnType<typeof actions.createUser>): SagaIterator {
   try {
     yield put(resetMessage());
 
-    const res = yield call(app.post, "users/create", props);
+    const res = yield call(app.post, "users/create", payload);
     const message = yield call(parseMessage, res);
 
     yield call(toast, { type: "success", message });
@@ -76,12 +76,12 @@ export function* createUser({
  * @throws {action} - A toast error message.
  */
 export function* deleteUser({
-  id
+  payload
 }: ReturnType<typeof actions.deleteUser>): SagaIterator {
   try {
     yield put(resetMessage());
 
-    const res = yield call(app.delete, `users/delete/${id}`);
+    const res = yield call(app.delete, `users/delete/${payload}`);
     const message = yield call(parseMessage, res);
 
     yield call(toast, { type: "success", message });
@@ -129,13 +129,12 @@ export function* seedDB(): SagaIterator {
  * @throws {action} - A redux action to display a server message by type.
  */
 export function* updateUser({
-  props,
-  id
+  payload
 }: ReturnType<typeof actions.updateUser>): SagaIterator {
   try {
     yield put(resetMessage());
 
-    const res = yield call(app.put, `users/update/${id}`, { ...props });
+    const res = yield call(app.put, `users/update/${payload?._id}`, payload);
     const message = yield call(parseMessage, res);
 
     yield call(toast, { type: "info", message });

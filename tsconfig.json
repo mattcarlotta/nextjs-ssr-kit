@@ -28,7 +28,7 @@
       "~models/*": ["api/models/*"],
       "~routes/*": ["api/routes/*"],
       "~routes": ["api/routes/index"],
-      "~test/*": ["api/test/*"],
+      "~testServer": ["api/testServer/index"],
       "~actions/*": ["src/actions/*"],
       "~components/*": ["src/components/*"],
       "~constants": ["src/constants/index"],

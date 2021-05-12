@@ -9,7 +9,7 @@ import fieldValidator from "~utils/fieldValidator";
 import fieldUpdater from "~utils/fieldUpdater";
 import parseFields from "~utils/parseFields";
 import generateFields from "./Fields";
-import { BaseFieldProps, FormEvent, UserData } from "~types";
+import type { BaseFieldProps, FormEvent, UserData } from "~types";
 
 const Form = styled.form`
   margin: 0 auto;
@@ -29,10 +29,7 @@ export interface UserFormProps extends UserData {
   serverMessage?: string;
   resetForm: (event?: any) => void;
   cancelForm?: (event: any) => void;
-  submitAction: ({
-    props: UserData,
-    id: string
-  }) => ReturnType<typeof actions.createUser | typeof actions.updateUser>;
+  submitAction: (payload: UserData) => void;
 }
 
 export interface UserFormState {
@@ -95,10 +92,7 @@ const UserForm = (props: UserFormProps): JSX.Element => {
 
   React.useEffect(() => {
     if (!errors && isSubmitting)
-      submitAction({
-        props: parseFields(fields),
-        id
-      });
+      submitAction({ ...parseFields(fields), _id: id });
 
     return () => {
       resetMessage();

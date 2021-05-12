@@ -1,7 +1,7 @@
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 import User from "~models/user";
 
-const deleteUser = async (req: Request, res: Response): Promise<any> => {
+const deleteUser = async (req: Request, res: Response): Promise<Response> => {
   try {
     const { id: _id } = req.params;
 
@@ -10,11 +10,11 @@ const deleteUser = async (req: Request, res: Response): Promise<any> => {
 
     await existingUser.deleteOne();
 
-    res
+    return res
       .status(200)
       .json({ message: `Successfully deleted ${existingUser.userName}.` });
   } catch (err) {
-    res.status(400).json({ err: err.toString() });
+    return res.status(400).json({ err: err.toString() });
   }
 };
 

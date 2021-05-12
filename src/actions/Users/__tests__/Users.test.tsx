@@ -17,19 +17,19 @@ const props = {
   }
 };
 
-const id = "123456789";
+const _id = "123456789";
 
 describe("User Actions", () => {
   it("returns USERS_CREATE with props", () => {
-    const value = actions.createUser({ props });
+    const value = actions.createUser(props);
 
-    expect(value).toEqual({ type: constants.USERS_CREATE, props });
+    expect(value).toEqual({ type: constants.USERS_CREATE, payload: props });
   });
 
   it("returns USERS_DELETE with an id", () => {
-    const value = actions.deleteUser(id);
+    const value = actions.deleteUser(_id);
 
-    expect(value).toEqual({ type: constants.USERS_DELETE, id });
+    expect(value).toEqual({ type: constants.USERS_DELETE, payload: _id });
   });
 
   it("returns USERS_FETCH", () => {
@@ -64,8 +64,9 @@ describe("User Actions", () => {
   });
 
   it("returns USERS_UPDATE with props and an id", () => {
-    const value = actions.updateUser({ props, id });
+    const payload = { ...props, _id };
+    const value = actions.updateUser(payload);
 
-    expect(value).toEqual({ type: constants.USERS_UPDATE, props, id });
+    expect(value).toEqual({ type: constants.USERS_UPDATE, payload });
   });
 });

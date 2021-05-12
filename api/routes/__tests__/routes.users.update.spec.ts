@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-import User from "~models/user";
 import { connectToDB } from "~database";
-import app from "~test/utils/testServer";
+import User, { TUserDocument } from "~models/user";
+import app from "~testServer";
 
 const data = {
   email: "updateexample@test.com",
@@ -21,7 +21,7 @@ const data = {
 const invalidId = new mongoose.Types.ObjectId();
 
 describe("Update User Route", () => {
-  let user: any;
+  let user: TUserDocument;
   beforeAll(async () => {
     await connectToDB();
     user = await User.create(data);

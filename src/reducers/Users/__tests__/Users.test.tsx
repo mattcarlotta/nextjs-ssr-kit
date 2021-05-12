@@ -42,7 +42,7 @@ describe("User Reducer", () => {
   it("sets user data", () => {
     const state = userReducer(undefined, {
       type: constants.USERS_SET_DATA,
-      payload: { users }
+      payload: users
     });
 
     expect(state).toEqual({

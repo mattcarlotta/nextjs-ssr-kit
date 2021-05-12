@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { connectToDB } from "~database";
-import app from "~test/utils/testServer";
+import app from "~testServer";
 
 const data = {
   email: "bobdole@test.com",

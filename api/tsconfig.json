@@ -4,9 +4,11 @@
     "checkJs": false,
     "noEmit": false,
     "noEmitOnError": true,
+    "lib": ["es6"],
     "module": "commonjs",
     "outDir": "../build",
-    "target": "es5",
+    "target": "es6",
+    "moduleResolution": "node",
     "paths": {
       "~logger": ["logger/index"],
       "~controllers/*": ["api/controllers/*"],
@@ -16,7 +18,7 @@
       "~models/*": ["api/models/*"],
       "~routes/*": ["api/routes/*"],
       "~routes": ["api/routes/index"],
-      "~test/*": ["api/test/*"]
+      "~testServer": ["api/testServer/index"]
     }
   },
   "include": ["**/*.ts"]

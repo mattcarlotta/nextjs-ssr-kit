@@ -36,7 +36,7 @@ export interface CardProps {
   className?: string;
   idx: number;
   handleEditClick: (id: string) => void;
-  deleteUser: (id: string) => ReturnType<typeof actions.deleteUser>;
+  deleteUser: (id: string) => void;
 }
 
 const CardComponent = ({

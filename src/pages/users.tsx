@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { connect } from "react-redux";
 import { BsFillPersonPlusFill } from "react-icons/bs";
 import { resetMessage } from "~actions/Server";
 import * as actions from "~actions/Users";
@@ -11,104 +11,94 @@ import FadeIn from "~components/Layout/FadeIn";
 import LoadingUsers from "~components/Layout/LoadingUsers";
 import UserListNavigation from "~components/Layout/UserListNavigation";
 import Header from "~components/Navigation/Header";
-import {
-  ReactElement,
-  ServerReducerState,
-  UserReducerState,
-  UserData
-} from "~types";
+import { ConnectedProps, ReactElement, UserData, PickReduxState } from "~types";
+
+/* istanbul ignore next */
+const mapState = ({ users, server }: PickReduxState<"users" | "server">) => ({
+  data: users.data,
+  isLoading: users.isLoading,
+  serverError: server.error,
+  serverMessage: server.message
+});
+
+/* istanbul ignore next */
+const mapDispatch = {
+  ...actions,
+  resetMessage
+};
+
+const connector = connect(mapState, mapDispatch);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
 
 export type ShowUsersState = {
   isEditingID: string;
   openModal: boolean;
 };
 
-const ShowUsers = (): ReactElement => {
+const ShowUsers = ({
+  createUser,
+  deleteUser,
+  fetchUsers,
+  isLoading,
+  resetMessage,
+  seedDB,
+  updateUser,
+  ...rest
+}: PropsFromRedux): ReactElement => {
   const [state, setState] = React.useState<ShowUsersState>({
     isEditingID: "",
     openModal: false
   });
-  const dispatch = useDispatch();
-  const createUserAction = React.useCallback(
-    ({ props }: { props: UserData }) => dispatch(actions.createUser(props)),
-    [actions.createUser, dispatch]
-  );
-  const deleteUserAction = React.useCallback(
-    (id: string) => dispatch(actions.deleteUser(id)),
-    [actions.deleteUser, dispatch]
-  );
-  const seedDBAction = React.useCallback(() => dispatch(actions.seedDB()), [
-    actions.seedDB,
-    dispatch
-  ]);
-  const updateUserAction = React.useCallback(
-    ({ props, id }: { props: UserData; id: string }) =>
-      dispatch(actions.updateUser({ props, id })),
-    [actions.updateUser, dispatch]
-  );
-  const resetMessageAction = React.useCallback(() => dispatch(resetMessage()), [
-    resetMessage,
-    dispatch
-  ]);
 
-  const reduxProps = useSelector(
-    ({
-      users,
-      server
-    }: {
-      users: UserReducerState;
-      server: ServerReducerState;
-    }) => ({
-      data: users.data,
-      isLoading: users.isLoading,
-      serverError: server.error,
-      serverMessage: server.message
-    })
-  );
+  const createUserAction = React.useCallback((payload: UserData) => {
+    createUser(payload);
+  }, []);
 
-  const handleEditClick = React.useCallback(
-    (id: string) => setState(prevState => ({ ...prevState, isEditingID: id })),
-    []
-  );
+  const deleteUserAction = (id: string): void => {
+    deleteUser(id);
+  };
 
-  const handleResetEditClick = React.useCallback(
-    () =>
-      setState(prevState => ({
-        ...prevState,
-        isEditingID: ""
-      })),
-    []
-  );
+  const updateUserAction = React.useCallback((payload: UserData): void => {
+    updateUser(payload);
+  }, []);
 
-  const handleOpenModal = React.useCallback(
-    () =>
-      setState(prevState => ({
-        ...prevState,
-        openModal: true,
-        isEditingID: ""
-      })),
-    []
-  );
+  const handleEditClick = (id: string): void => {
+    setState(prevState => ({ ...prevState, isEditingID: id }));
+  };
 
-  const handleCloseModal = React.useCallback(
-    () =>
-      setState(prevState => ({
-        ...prevState,
-        openModal: false,
-        isEditingID: ""
-      })),
-    []
-  );
+  const handleResetEditClick = (): void => {
+    setState(prevState => ({
+      ...prevState,
+      isEditingID: ""
+    }));
+  };
+
+  const handleOpenModal = (): void => {
+    setState(prevState => ({
+      ...prevState,
+      openModal: true,
+      isEditingID: ""
+    }));
+  };
+
+  const handleCloseModal = (): void => {
+    setState(prevState => ({
+      ...prevState,
+      openModal: false,
+      isEditingID: ""
+    }));
+  };
 
   React.useEffect(() => {
-    if (reduxProps.isLoading) dispatch(actions.fetchUsers());
-  }, [dispatch, reduxProps.isLoading]);
+    if (isLoading) fetchUsers();
+  }, [fetchUsers, isLoading]);
 
   return (
     <div data-testid="users-page" style={{ padding: "20px 0 40px" }}>
       <Header title="Users" url="/users" />
       <Center>
-        <UserListNavigation openModal={handleOpenModal} seedDB={seedDBAction} />
+        <UserListNavigation openModal={handleOpenModal} seedDB={seedDB} />
         {state.openModal && (
           <Modal
             onClick={handleCloseModal}
@@ -128,26 +118,27 @@ const ShowUsers = (): ReactElement => {
             maxWidth="750px"
           >
             <UserForm
-              {...reduxProps}
+              {...rest}
+              _id=""
               submitAction={createUserAction}
-              resetMessage={resetMessageAction}
+              resetMessage={resetMessage}
               cancelForm={handleCloseModal}
               resetForm={handleCloseModal}
             />
           </Modal>
         )}
-        {reduxProps.isLoading ? (
+        {isLoading ? (
           <LoadingUsers height={398} width={780} opacity="1" />
         ) : (
           <FadeIn timing="0.3s">
             <DisplayUserList
               {...state}
-              {...reduxProps}
+              {...rest}
               deleteUser={deleteUserAction}
               handleCloseModal={handleCloseModal}
               handleEditClick={handleEditClick}
               handleResetEditClick={handleResetEditClick}
-              resetMessage={resetMessageAction}
+              resetMessage={resetMessage}
               updateUser={updateUserAction}
             />
           </FadeIn>
@@ -157,4 +148,4 @@ const ShowUsers = (): ReactElement => {
   );
 };
 
-export default ShowUsers;
+export default connector(ShowUsers);

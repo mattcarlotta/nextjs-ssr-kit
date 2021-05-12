@@ -10,15 +10,12 @@ import { UserData } from "~types";
 export interface DisplayUserListProps {
   data: any[];
   isEditingID?: string;
-  deleteUser: (id: string) => ReturnType<typeof actions.deleteUser>;
+  deleteUser: (id: string) => void;
   handleCloseModal: (event: any) => void;
   handleEditClick: (id: string) => void;
   handleResetEditClick: (event: any) => void;
   resetMessage: () => void;
-  updateUser: ({
-    props: UserData,
-    id: string
-  }) => ReturnType<typeof actions.updateUser>;
+  updateUser: (payload: UserData) => void;
 }
 
 const DisplayUserList = ({

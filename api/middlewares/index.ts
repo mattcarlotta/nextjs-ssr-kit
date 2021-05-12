@@ -1,5 +1,4 @@
-import { Express } from "express";
-import bodyParser from "body-parser";
+import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import compression from "compression";
@@ -8,7 +7,7 @@ const { CLIENT, inStaging, NODE_ENV } = process.env;
 const inTesting = NODE_ENV === "test";
 const inProduction = NODE_ENV === "production";
 
-const middlewares = (app: Express): void => {
+const middlewares = (app: express.Express): void => {
   if (!inTesting && !inStaging) {
     app.use(
       morgan(
@@ -32,8 +31,8 @@ const middlewares = (app: Express): void => {
       origin: CLIENT
     })
   ); // allows receiving of cookies/tokens from front-end
-  app.use(bodyParser.json()); // parses header requests (req.body)
-  app.use(bodyParser.urlencoded({ extended: true })); // allows objects and arrays to be URL-encoded
+  app.use(express.json()); // parses header requests (req.body)
+  app.use(express.urlencoded({ extended: true })); // allows objects and arrays to be URL-encoded
   app.set("json spaces", 2); // sets JSON spaces for clarity
 };
 

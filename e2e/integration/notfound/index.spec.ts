@@ -4,10 +4,7 @@ context("Home Page", () => {
   });
 
   it("initially displays a welcome message", () => {
-    cy.findByTestId("modal-message").should(
-      "have.text",
-      "Welcome to the NextJS SSR Kit!"
-    );
+    cy.alertExistsWith("Welcome to the NextJS SSR Kit!");
   });
 
   it("initially displays a logo and with a  'See Example' link", () => {
@@ -19,7 +16,7 @@ context("Home Page", () => {
   });
 
   it("allows a user to navigate to the home page", () => {
-    cy.findByTestId("link]").click();
+    cy.findByTestId("link").click();
 
     cy.url().should("contain", "/");
 

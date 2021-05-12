@@ -6,6 +6,12 @@ const selectCardOption = (option: string, item: number = 1): void => {
   });
 };
 
+const clearAlerts = (): void => {
+  cy.findByTestId("alert").click();
+
+  cy.wait(1000);
+};
+
 context("Users Page", () => {
   before(() => {
     cy.exec("npm run seed:prod");
@@ -13,6 +19,7 @@ context("Users Page", () => {
 
   beforeEach(() => {
     cy.visit("/users");
+    clearAlerts();
   });
 
   after(() => {
@@ -26,15 +33,11 @@ context("Users Page", () => {
   });
 
   it("deletes a user card", () => {
-    cy.findByTestId("modal-alert").click();
-
     selectCardOption("delete");
 
     cy.findByTestId("card-container").should("have.length", 2);
 
-    cy.findByTestId("modal-message")
-      .should("exist")
-      .and("have.text", "Successfully deleted notjohnsson.");
+    cy.alertExistsWith("Successfully deleted notjohnsson.");
   });
 
   it("displays an edit form", () => {
@@ -54,22 +57,16 @@ context("Users Page", () => {
   });
 
   it("displays an error if an edited username matches a pre-existing username", () => {
-    cy.findByTestId("modal-alert").click();
-
     selectCardOption("edit");
 
     cy.findByTestId("userName").clear().type("bobbin4apples");
 
     cy.findByTestId("submit").click();
 
-    cy.findByTestId("modal-message")
-      .should("exist")
-      .and("have.text", "That username is already in use!");
+    cy.alertExistsWith("That username is already in use!");
   });
 
   it("cancels updating the user", () => {
-    cy.findByTestId("modal-alert").click();
-
     selectCardOption("edit");
 
     cy.findByTestId("cancel").click();
@@ -78,22 +75,16 @@ context("Users Page", () => {
   });
 
   it("updates a user", () => {
-    cy.findByTestId("modal-alert").click();
-
     selectCardOption("edit");
 
     cy.findByTestId("userName").clear().type("snapplecracklepop");
 
     cy.findByTestId("submit").click();
 
-    cy.findByTestId("modal-message")
-      .should("exist")
-      .and("have.text", "Successfully updated snapplecracklepop.");
+    cy.alertExistsWith("Successfully updated snapplecracklepop.");
   });
 
   it("displays a create user form", () => {
-    cy.findByTestId("modal-alert").click();
-
     cy.findByTestId("open-modal").click();
 
     cy.findByTestId("user-form").should("exist");
@@ -126,8 +117,6 @@ context("Users Page", () => {
   });
 
   it("displays an error if trying to create a user that already exists", () => {
-    cy.findByTestId("modal-alert").click();
-
     cy.findByTestId("open-modal").click();
     [
       "userName",
@@ -148,14 +137,10 @@ context("Users Page", () => {
 
     cy.findByTestId("submit").click();
 
-    cy.findByTestId("modal-message")
-      .should("exist")
-      .and("have.text", "That username is already in use!");
+    cy.alertExistsWith("That username is already in use!");
   });
 
   it("creates a new user", () => {
-    cy.findByTestId("modal-alert").click();
-
     cy.findByTestId("open-modal").click();
     [
       "userName",
@@ -174,9 +159,7 @@ context("Users Page", () => {
 
     cy.findByTestId("submit").click();
 
-    cy.findByTestId("modal-message")
-      .should("exist")
-      .and("have.text", "Successfully created 123@email.com.");
+    cy.alertExistsWith("Successfully created 123@email.com.");
   });
 
   it("when the 'Go Back' link is pressed, it navigates to home", () => {

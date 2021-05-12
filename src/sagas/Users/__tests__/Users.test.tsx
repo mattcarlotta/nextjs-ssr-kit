@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { expectSaga, testSaga } from "redux-saga-test-plan";
 import app from "~utils/axiosConfig";
 import * as actions from "~actions/Users";
@@ -8,7 +7,8 @@ import { resetMessage, setMessage } from "~actions/Server";
 import serverReducer from "~reducers/Server";
 import { parseData, parseMessage } from "~utils/parseResponse";
 import toast from "~components/App/Toast";
-import mockApp from "~utils/__mocks__/mockAxios.ts";
+import mockApp from "~utils/mockAxios";
+import { UserData } from "~types";
 
 const id = "123456789";
 
@@ -28,7 +28,7 @@ const user = {
   _id: id
 };
 
-const data = { users: [user] };
+const data = [user];
 
 describe("User Sagas", () => {
   afterEach(() => {
@@ -60,7 +60,6 @@ describe("User Sagas", () => {
       mockApp.onGet("users").reply(200, data);
 
       return expectSaga(sagas.fetchUsers)
-        .dispatch(actions.fetchUsers)
         .withReducer(userReducer)
         .hasFinalState({
           data: [user],
@@ -74,7 +73,6 @@ describe("User Sagas", () => {
       mockApp.onGet("users").reply(404, { err });
 
       return expectSaga(sagas.fetchUsers)
-        .dispatch(actions.fetchUsers)
         .withReducer(serverReducer)
         .hasFinalState({
           error: err,
@@ -85,27 +83,27 @@ describe("User Sagas", () => {
   });
 
   describe("Create New User", () => {
-    let props;
-    let message;
+    let payload: UserData;
+    let message: string;
     beforeAll(() => {
       message = "Successfully created a new user.";
-      props = user;
+      payload = user;
     });
 
     it("logical flow matches pattern for a creating a new user", () => {
       const res = { data: { message } };
 
-      testSaga(sagas.createUser, { props })
+      testSaga(sagas.createUser, actions.createUser(payload))
         .next()
         .put(resetMessage())
         .next()
-        .call(app.post, "users/create", props)
+        .call(app.post, "users/create", payload)
         .next(res)
         .call(parseMessage, res)
-        .next(res.data)
-        .call(toast, { type: "success", message: res.data })
+        .next(res.data.message)
+        .call(toast, { type: "success", message: res.data.message })
         .next()
-        .put(setMessage(res.data))
+        .put(setMessage(res.data.message))
         .next()
         .call(sagas.fetchUsers)
         .next()
@@ -116,8 +114,7 @@ describe("User Sagas", () => {
       mockApp.onPost("users/create").reply(200, { message });
       mockApp.onGet("users").reply(200, data);
 
-      return expectSaga(sagas.createUser, { props })
-        .dispatch(actions.createUser)
+      return expectSaga(sagas.createUser, actions.createUser(payload))
         .withReducer(userReducer)
         .hasFinalState({
           data: [user],
@@ -130,8 +127,7 @@ describe("User Sagas", () => {
       const err = "Unable to create a new user.";
       mockApp.onPost("users/create").reply(404, { err });
 
-      return expectSaga(sagas.createUser, { props })
-        .dispatch(actions.createUser)
+      return expectSaga(sagas.createUser, actions.createUser(payload))
         .withReducer(serverReducer)
         .hasFinalState({
           error: err,
@@ -142,7 +138,7 @@ describe("User Sagas", () => {
   });
 
   describe("Delete User", () => {
-    let message;
+    let message: string;
     beforeAll(() => {
       message = "Successfully deleted a user.";
     });
@@ -150,17 +146,17 @@ describe("User Sagas", () => {
     it("logical flow matches pattern for a deleting a user", () => {
       const res = { data: { message } };
 
-      testSaga(sagas.deleteUser, { id })
+      testSaga(sagas.deleteUser, actions.deleteUser(id))
         .next()
         .put(resetMessage())
         .next()
         .call(app.delete, `users/delete/${id}`)
         .next(res)
         .call(parseMessage, res)
-        .next(res.data)
-        .call(toast, { type: "success", message: res.data })
+        .next(res.data.message)
+        .call(toast, { type: "success", message: res.data.message })
         .next()
-        .put(setMessage(res.data))
+        .put(setMessage(res.data.message))
         .next()
         .call(sagas.fetchUsers)
         .next()
@@ -171,8 +167,7 @@ describe("User Sagas", () => {
       mockApp.onDelete(`users/delete/${id}`).reply(200, { message });
       mockApp.onGet("users").reply(200, data);
 
-      return expectSaga(sagas.deleteUser, { id })
-        .dispatch(actions.deleteUser)
+      return expectSaga(sagas.deleteUser, actions.deleteUser(id))
         .withReducer(userReducer)
         .hasFinalState({
           data: [user],
@@ -185,8 +180,7 @@ describe("User Sagas", () => {
       const err = "Unable to delete the user.";
       mockApp.onDelete(`users/delete/${id}`).reply(404, { err });
 
-      return expectSaga(sagas.deleteUser, { id })
-        .dispatch(actions.deleteUser)
+      return expectSaga(sagas.deleteUser, actions.deleteUser(id))
         .withReducer(serverReducer)
         .hasFinalState({
           error: err,
@@ -217,7 +211,6 @@ describe("User Sagas", () => {
       mockApp.onPost("users/seed").reply(200, data);
 
       return expectSaga(sagas.seedDB)
-        .dispatch(actions.seedDB)
         .withReducer(userReducer)
         .hasFinalState({
           data: [user],
@@ -231,7 +224,6 @@ describe("User Sagas", () => {
       mockApp.onPost("users/seed").reply(404, { err });
 
       return expectSaga(sagas.seedDB)
-        .dispatch(actions.seedDB)
         .withReducer(serverReducer)
         .hasFinalState({
           error: err,
@@ -242,27 +234,27 @@ describe("User Sagas", () => {
   });
 
   describe("Update User", () => {
-    let props;
-    let message;
+    let payload: UserData;
+    let message: string;
     beforeAll(() => {
       message = "Successfully updated a user.";
-      props = user;
+      payload = user;
     });
 
     it("logical flow matches pattern for a updating a user", () => {
       const res = { data: { message } };
 
-      testSaga(sagas.updateUser, { props, id })
+      testSaga(sagas.updateUser, actions.updateUser(payload))
         .next()
         .put(resetMessage())
         .next()
-        .call(app.put, `users/update/${id}`, props)
+        .call(app.put, `users/update/${id}`, payload)
         .next(res)
         .call(parseMessage, res)
-        .next(res.data)
-        .call(toast, { type: "info", message: res.data })
+        .next(res.data.message)
+        .call(toast, { type: "info", message: res.data.message })
         .next()
-        .put(setMessage(res.data))
+        .put(setMessage(res.data.message))
         .next()
         .call(sagas.fetchUsers)
         .next()
@@ -273,8 +265,7 @@ describe("User Sagas", () => {
       mockApp.onPut(`users/update/${id}`).reply(200, { message });
       mockApp.onGet("users").reply(200, data);
 
-      return expectSaga(sagas.updateUser, { props, id })
-        .dispatch(actions.updateUser)
+      return expectSaga(sagas.updateUser, actions.updateUser(payload))
         .withReducer(userReducer)
         .hasFinalState({
           data: [user],
@@ -287,8 +278,10 @@ describe("User Sagas", () => {
       const err = "Unable to update a user.";
       mockApp.onPut(`users/update/${id}`).reply(404, { err });
 
-      return expectSaga(sagas.updateUser, { props, id })
-        .dispatch(actions.updateUser)
+      return expectSaga(
+        sagas.updateUser,
+        actions.updateUser({ ...payload, _id: id })
+      )
         .withReducer(serverReducer)
         .hasFinalState({
           error: err,
